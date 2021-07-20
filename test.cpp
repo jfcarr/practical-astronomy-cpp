@@ -49,5 +49,26 @@ SCENARIO("Calculate civil day number, [date_time]") {
 
       THEN("The result is 1") { REQUIRE(result == 1); }
     }
+
+    WHEN("The date is 3/1/2000") {
+
+      int result = paDateTime.civil_date_to_day_number(3, 1, 2000);
+
+      THEN("The result is 61") { REQUIRE(result == 61); }
+    }
+
+    WHEN("The date is 6/1/2003") {
+
+      int result = paDateTime.civil_date_to_day_number(6, 1, 2003);
+
+      THEN("The result is 152") { REQUIRE(result == 152); }
+    }
+
+    WHEN("The date is 11/27/2009") {
+
+      int result = paDateTime.civil_date_to_day_number(11, 27, 2009);
+
+      THEN("The result is 331") { REQUIRE(result == 331); }
+    }
   }
 }
