@@ -1,4 +1,6 @@
 #include "pa_util.h"
+#include <cmath>
+#include <iostream>
 
 bool is_leap_year(int input_year) {
   double year = (double)input_year;
@@ -12,4 +14,13 @@ bool is_leap_year(int input_year) {
   } else {
     return false;
   }
+}
+
+double round_d(double input, int places) {
+  double multiplier = pow(10, places);
+
+  double a = input * multiplier;
+  a = (a >= 0) ? a + 0.5 : a - 0.5;
+
+  return (int)a / multiplier;
 }
