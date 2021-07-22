@@ -1,4 +1,5 @@
 COMPILER = clang++
+CPP_STD = c++17
 
 default:
 	@echo 'Targets:'
@@ -16,17 +17,20 @@ run-test: build-test
 
 build-test: test
 
-test: test.o pa_datetime.o pa_util.o
-	$(COMPILER) -o test test.o pa_datetime.o pa_util.o
+test: test.o pa_macros.o pa_util.o pa_datetime.o
+	$(COMPILER) -o test test.o pa_datetime.o pa_util.o pa_macros.o
 
 test.o: test.cpp
-	$(COMPILER) -c test.cpp
+	$(COMPILER) -std=$(CPP_STD) -c test.cpp
 
 pa_datetime.o: lib/pa_datetime.cpp lib/pa_datetime.h
-	$(COMPILER) -c lib/pa_datetime.cpp
+	$(COMPILER) -std=$(CPP_STD) -c lib/pa_datetime.cpp
 
 pa_util.o: lib/pa_util.cpp lib/pa_util.h
-	$(COMPILER) -c lib/pa_util.cpp
+	$(COMPILER) -std=$(CPP_STD) -c lib/pa_util.cpp
+
+pa_macros.o: lib/pa_macros.cpp lib/pa_macros.h
+	$(COMPILER) -std=$(CPP_STD) -c lib/pa_macros.cpp
 
 format:
 	clang-format -i test.cpp

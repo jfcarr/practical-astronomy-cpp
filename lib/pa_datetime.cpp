@@ -1,4 +1,5 @@
 #include "pa_datetime.h"
+#include "pa_macros.h"
 #include "pa_util.h"
 #include <cmath>
 
@@ -39,4 +40,18 @@ int PADateTime::civil_date_to_day_number(int month, int day, int year) {
   }
 
   return month + day;
+}
+
+double PADateTime::civil_time_to_decimal_hours(double hours, double minutes,
+                                               double seconds) {
+  return hms_dh(hours, minutes, seconds);
+}
+
+std::tuple<double, double, double>
+PADateTime::decimal_hours_to_civil_time(double decimal_hours) {
+  int hours = decimal_hours_hour(decimal_hours);
+  int minutes = decimal_hours_minute(decimal_hours);
+  double seconds = decimal_hours_second(decimal_hours);
+
+  return std::make_tuple(hours, minutes, seconds);
 }

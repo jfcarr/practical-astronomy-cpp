@@ -2,6 +2,8 @@
                           // in one cpp file
 #include "catch2/catch.hpp"
 #include "lib/pa_datetime.h"
+#include "lib/pa_util.h"
+#include <iostream>
 
 SCENARIO("Calculate date of Easter", "[date_time") {
   GIVEN("A PADateTime object") {
@@ -69,6 +71,32 @@ SCENARIO("Calculate civil day number, [date_time]") {
       int result = paDateTime.civil_date_to_day_number(11, 27, 2009);
 
       THEN("The result is 331") { REQUIRE(result == 331); }
+    }
+  }
+}
+
+SCENARIO("Convert civil time to and from decimal hours, [date_time]") {
+  GIVEN("A PADateTime object") {
+    PADateTime paDateTime;
+
+    WHEN("Civil time is 18:31:27") {
+      double result = paDateTime.civil_time_to_decimal_hours(18, 31, 27);
+
+      THEN("Decimal hours is 18.52416667") {
+        REQUIRE(round_d(result, 8) == 18.52416667);
+      }
+    }
+
+    WHEN("Decimal hours is 18.52416667") {
+      std::tuple<double, double, double> result =
+          paDateTime.decimal_hours_to_civil_time(18.52416667);
+      std::tuple<double, double, double> expected = std::make_tuple(18, 31, 27);
+
+      THEN("Civil time is 18:31:27") {
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(round_d(std::get<2>(result), 0) == std::get<2>(expected));
+      }
     }
   }
 }
