@@ -3,7 +3,7 @@
 #include "pa_util.h"
 #include <cmath>
 
-full_date PADateTime::get_date_of_easter(int input_year) {
+std::tuple<int, int, int> PADateTime::get_date_of_easter(int input_year) {
   double year = (double)input_year;
 
   double a = (int)year % 19;
@@ -24,9 +24,7 @@ full_date PADateTime::get_date_of_easter(int input_year) {
   double day = p + 1.0;
   double month = n;
 
-  struct full_date return_value = {(int)month, (int)day, (int)year};
-
-  return return_value;
+  return std::tuple<int, int, int>{(int)month, (int)day, (int)year};
 }
 
 int PADateTime::civil_date_to_day_number(int month, int day, int year) {
@@ -53,5 +51,5 @@ PADateTime::decimal_hours_to_civil_time(double decimal_hours) {
   int minutes = decimal_hours_minute(decimal_hours);
   double seconds = decimal_hours_second(decimal_hours);
 
-  return std::make_tuple(hours, minutes, seconds);
+  return std::tuple<double, double, double>{hours, minutes, seconds};
 }
