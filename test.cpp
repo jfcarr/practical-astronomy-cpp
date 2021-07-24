@@ -10,32 +10,35 @@ SCENARIO("Calculate date of Easter", "[date_time") {
     PADateTime paDateTime;
 
     WHEN("The year is 2003") {
-      full_date result = paDateTime.get_date_of_easter(2003);
+      std::tuple<int, int, int> result = paDateTime.get_date_of_easter(2003);
+      std::tuple<int, int, int> expected = std::make_tuple(4, 20, 2003);
 
       THEN("The result is 4/20/2003") {
-        REQUIRE(result.month == 4);
-        REQUIRE(result.day == 20);
-        REQUIRE(result.year == 2003);
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
       }
     }
 
     WHEN("The year is 2019") {
-      full_date result = paDateTime.get_date_of_easter(2019);
+      std::tuple<int, int, int> result = paDateTime.get_date_of_easter(2019);
+      std::tuple<int, int, int> expected = std::make_tuple(4, 21, 2019);
 
       THEN("The result is 4/21/2019") {
-        REQUIRE(result.month == 4);
-        REQUIRE(result.day == 21);
-        REQUIRE(result.year == 2019);
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
       }
     }
 
     WHEN("The year is 2020") {
-      full_date result = paDateTime.get_date_of_easter(2020);
+      std::tuple<int, int, int> result = paDateTime.get_date_of_easter(2020);
+      std::tuple<int, int, int> expected = std::make_tuple(4, 12, 2020);
 
       THEN("The result is 4/12/2020") {
-        REQUIRE(result.month == 4);
-        REQUIRE(result.day == 12);
-        REQUIRE(result.year == 2020);
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
       }
     }
   }
