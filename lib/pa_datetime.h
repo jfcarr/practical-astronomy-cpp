@@ -11,5 +11,13 @@ public:
                                      double seconds);
   std::tuple<double, double, double>
   decimal_hours_to_civil_time(double decimal_hours);
+  std::tuple<int, int, int, int, int, int> local_civil_time_to_universal_time(
+      double lct_hours, double lct_minutes, double lct_seconds,
+      bool is_daylight_savings, int zone_correction, double local_day,
+      int local_month, int local_year);
+  std::tuple<int, int, int, int, int, int> universal_time_to_local_civil_time(
+      double ut_hours, double ut_minutes, double ut_seconds,
+      bool is_daylight_savings, int zone_correction, int gw_day, int gw_month,
+      int gw_year);
 };
 #endif

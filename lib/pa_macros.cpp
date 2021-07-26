@@ -40,3 +40,77 @@ double decimal_hours_second(double decimal_hours) {
 
   return d;
 }
+
+double civil_date_to_julian_date(double day, double month, double year) {
+  double f_day = (double)day;
+  double f_month = (double)month;
+  double f_year = (double)year;
+
+  double y = (f_month < 3) ? f_year - 1 : f_year;
+  double m = (f_month < 3) ? f_month + 12 : f_month;
+
+  double b;
+
+  if (f_year > 1582) {
+    double a = floor(y / 100);
+    b = 2 - a + floor(a / 4);
+  } else {
+    if (f_year == 1582 && f_month > 10) {
+      double a = floor(y / 100);
+      b = 2 - a + floor(a / 4);
+    } else {
+      if (f_year == 1582 && f_month == 10 && f_day >= 15) {
+        double a = floor(y / 100);
+        b = 2 - a + floor(a / 4);
+      } else
+        b = 0;
+    }
+  }
+
+  double c = (y < 0) ? floor(((365.25 * y) - 0.75)) : floor(365.25 * y);
+  double d = floor(30.6001 * (m + 1.0));
+
+  return b + c + d + f_day + 1720994.5;
+}
+
+double julian_date_day(double julian_date) {
+  double i = floor(julian_date + 0.5);
+  double f = julian_date + 0.5 - i;
+  double a = floor((i - 1867216.25) / 36524.25);
+  double b = (i > 2299160) ? i + 1 + a - floor(a / 4) : i;
+  double c = b + 1524;
+  double d = floor((c - 122.1) / 365.25);
+  double e = floor(365.25 * d);
+  double g = floor((c - e) / 30.6001);
+
+  return c - e + f - floor(30.6001 * g);
+}
+
+int julian_date_month(double julian_date) {
+  double i = floor(julian_date + 0.5);
+  double a = floor((i - 1867216.25) / 36524.25);
+  double b = (i > 2299160) ? i + 1 + a - floor(a / 4) : i;
+  double c = b + 1524;
+  double d = floor((c - 122.1) / 365.25);
+  double e = floor(365.25 * d);
+  double g = floor((c - e) / 30.6001);
+
+  double returnValue = (g < 13.5) ? g - 1 : g - 13;
+
+  return (int)returnValue;
+}
+
+int julian_date_year(double julian_date) {
+  double i = floor(julian_date + 0.5);
+  double a = floor((i - 1867216.25) / 36524.25);
+  double b = (i > 2299160) ? i + 1.0 + a - floor(a / 4.0) : i;
+  double c = b + 1524;
+  double d = floor((c - 122.1) / 365.25);
+  double e = floor(365.25 * d);
+  double g = floor((c - e) / 30.6001);
+  double h = (g < 13.5) ? g - 1 : g - 13;
+
+  double returnValue = (h > 2.5) ? d - 4716 : d - 4715;
+
+  return (int)returnValue;
+}
