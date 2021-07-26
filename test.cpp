@@ -103,3 +103,43 @@ SCENARIO("Convert civil time to and from decimal hours, [date_time]") {
     }
   }
 }
+
+SCENARIO("Convert civil time to and from universal time, [date_time]") {
+  GIVEN("A PADateTime object") {
+    PADateTime paDateTime;
+
+    WHEN("Civil time is 03:37:00") {
+      std::tuple<int, int, int, int, int, int> result =
+          paDateTime.local_civil_time_to_universal_time(3, 37, 0, true, 4, 1, 7,
+                                                        2013);
+      std::tuple<int, int, int, int, int, int> expected =
+          std::make_tuple(22, 37, 0, 30, 6, 2013);
+
+      THEN("Universal time is 22:37:00") {
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+
+    WHEN("Universal time is 22:37:00") {
+      std::tuple<int, int, int, int, int, int> result =
+          paDateTime.universal_time_to_local_civil_time(22, 37, 0, true, 4, 30,
+                                                        6, 2013);
+      std::tuple<int, int, int, int, int, int> expected =
+          std::make_tuple(3, 37, 0, 1, 7, 2013);
+
+      THEN("Civil time is 03:37:00") {
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}
