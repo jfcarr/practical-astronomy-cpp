@@ -2,6 +2,17 @@
 #include "pa_util.h"
 #include <cmath>
 
+/**
+ * \brief Convert a Civil Time (hours,minutes,seconds) to Decimal Hours
+ *
+ * Original macro name: HMSDH
+ *
+ * @param hours Hours part of time.
+ * @param minutes Minutes part of time.
+ * @param seconds Seconds part of time.
+ *
+ * @return Time as a decimal value.
+ */
 double hms_dh(double hours, double minutes, double seconds) {
   double f_hours = hours;
   double f_minutes = minutes;
@@ -14,6 +25,15 @@ double hms_dh(double hours, double minutes, double seconds) {
   return (f_hours < 0 || f_minutes < 0 || f_seconds < 0) ? -c : c;
 }
 
+/**
+ * \brief Return the hour part of a Decimal Hours
+ *
+ * Original macro name: DHHour
+ *
+ * @param decimal_hours Time as a decimal value.
+ *
+ * @return Hour part of time.
+ */
 int decimal_hours_hour(double decimal_hours) {
   double a = std::abs(decimal_hours);
   double b = a * 3600;
@@ -23,6 +43,15 @@ int decimal_hours_hour(double decimal_hours) {
   return (decimal_hours < 0) ? (int)-(floor(e / 3600)) : (int)floor(e / 3600);
 }
 
+/**
+ * \brief Return the minutes part of a Decimal Hours
+ *
+ * Original macro name: DHMin
+ *
+ * @param decimal_hours Time as a decimal value.
+ *
+ * @return Minutes part of time.
+ */
 int decimal_hours_minute(double decimal_hours) {
   double a = std::abs(decimal_hours);
   double b = a * 3600;
@@ -32,6 +61,15 @@ int decimal_hours_minute(double decimal_hours) {
   return (int)floor(e / 60) % 60;
 }
 
+/**
+ * \brief Return the seconds part of a Decimal Hours
+ *
+ * Original macro name: DHSec
+ *
+ * @param decimal_hours Time as a decimal value.
+ *
+ * @return Seconds part of time.
+ */
 double decimal_hours_second(double decimal_hours) {
   double a = std::abs(decimal_hours);
   double b = a * 3600;
@@ -41,6 +79,17 @@ double decimal_hours_second(double decimal_hours) {
   return d;
 }
 
+/**
+ * \brief Convert a Greenwich Date/Civil Date (day,month,year) to Julian Date
+ *
+ * Original macro name: CDJD
+ *
+ * @param day Day part of civil date.
+ * @param month Month part of civil date.
+ * @param year Year part of civil date.
+ *
+ * @return Julian date
+ */
 double civil_date_to_julian_date(double day, double month, double year) {
   double f_day = (double)day;
   double f_month = (double)month;
@@ -73,6 +122,11 @@ double civil_date_to_julian_date(double day, double month, double year) {
   return b + c + d + f_day + 1720994.5;
 }
 
+/**
+ * \brief Returns the day part of a Julian Date
+ *
+ * Original macro name: JDCDay
+ */
 double julian_date_day(double julian_date) {
   double i = floor(julian_date + 0.5);
   double f = julian_date + 0.5 - i;
@@ -86,6 +140,11 @@ double julian_date_day(double julian_date) {
   return c - e + f - floor(30.6001 * g);
 }
 
+/**
+ * \brief Returns the month part of a Julian Date
+ *
+ * Original macro name: JDCMonth
+ */
 int julian_date_month(double julian_date) {
   double i = floor(julian_date + 0.5);
   double a = floor((i - 1867216.25) / 36524.25);
@@ -100,6 +159,11 @@ int julian_date_month(double julian_date) {
   return (int)returnValue;
 }
 
+/**
+ * \brief Returns the year part of a Julian Date
+ *
+ * Original macro name: JDCYear
+ */
 int julian_date_year(double julian_date) {
   double i = floor(julian_date + 0.5);
   double a = floor((i - 1867216.25) / 36524.25);

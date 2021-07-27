@@ -3,6 +3,13 @@
 #include "pa_util.h"
 #include <cmath>
 
+/**
+ * \brief Gets the date of Easter for the year specified.
+ *
+ * @param input_year Input year.
+ *
+ * @return tuple <int month, int day, int year>
+ */
 std::tuple<int, int, int> PADateTime::get_date_of_easter(int input_year) {
   double year = (double)input_year;
 
@@ -27,6 +34,15 @@ std::tuple<int, int, int> PADateTime::get_date_of_easter(int input_year) {
   return std::tuple<int, int, int>{(int)month, (int)day, (int)year};
 }
 
+/**
+ * \brief Calculate day number for a date.
+ *
+ * @param month Month part of date.
+ * @param day Day part of date.
+ * @param year Year part of date.
+ *
+ * @return Day number.
+ */
 int PADateTime::civil_date_to_day_number(int month, int day, int year) {
   if (month <= 2) {
     month--;
@@ -40,11 +56,27 @@ int PADateTime::civil_date_to_day_number(int month, int day, int year) {
   return month + day;
 }
 
+/**
+ * \brief Convert a Civil Time to Decimal Hours
+ *
+ * @param hours Hour part of HH:MM:SS
+ * @param minutes Minutes part of HH:MM:SS
+ * @param seconds Seconds part of HH:MM:SS
+ *
+ * @return Decimal hours.
+ */
 double PADateTime::civil_time_to_decimal_hours(double hours, double minutes,
                                                double seconds) {
   return hms_dh(hours, minutes, seconds);
 }
 
+/**
+ * \brief Convert Decimal Hours to Civil Time
+ *
+ * @param decimal_hours Time as a decimal, e.g., 8.5 for 08:30:00
+ *
+ * @return tuple <double hours, double minutes, double seconds>
+ */
 std::tuple<double, double, double>
 PADateTime::decimal_hours_to_civil_time(double decimal_hours) {
   int hours = decimal_hours_hour(decimal_hours);
