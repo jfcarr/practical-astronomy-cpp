@@ -3,11 +3,12 @@ CPP_STD = c++17
 
 default:
 	@echo 'Targets:'
-	@echo '  run-test-verbose'
-	@echo '  run-test'
-	@echo '  build-test'
-	@echo '  format'
-	@echo '  clean'
+	@echo '  run-test-verbose  -- Run unit tests, with verbose output'
+	@echo '  run-test          -- Run unit tests'
+	@echo '  build-test        -- Build test project'
+	@echo '  document          -- Generate documentation'
+	@echo '  format            -- Format source code'
+	@echo '  clean             -- Remove object and bin files'
 
 run-test-verbose: build-test
 	./test -s
@@ -31,6 +32,9 @@ pa_util.o: lib/pa_util.cpp lib/pa_util.h
 
 pa_macros.o: lib/pa_macros.cpp lib/pa_macros.h
 	$(COMPILER) -std=$(CPP_STD) -c lib/pa_macros.cpp
+
+document:
+	doxygen
 
 format:
 	clang-format -i test.cpp
