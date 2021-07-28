@@ -18,9 +18,9 @@ double hms_dh(double hours, double minutes, double seconds) {
   double f_minutes = minutes;
   double f_seconds = seconds;
 
-  double a = abs((int)f_seconds) / 60.0;
-  double b = (abs((int)f_minutes) + a) / 60.0;
-  double c = abs((int)f_hours) + b;
+  double a = std::abs(f_seconds) / 60;
+  double b = (std::abs(f_minutes) + a) / 60;
+  double c = std::abs(f_hours) + b;
 
   return (f_hours < 0 || f_minutes < 0 || f_seconds < 0) ? -c : c;
 }
