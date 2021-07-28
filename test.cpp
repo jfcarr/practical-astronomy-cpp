@@ -2,6 +2,7 @@
                           // in one cpp file
 #include "catch2/catch.hpp"
 #include "lib/pa_datetime.h"
+#include "lib/pa_types.h"
 #include "lib/pa_util.h"
 #include <iostream>
 
@@ -44,7 +45,7 @@ SCENARIO("Calculate date of Easter", "[date_time") {
   }
 }
 
-SCENARIO("Calculate civil day number, [date_time]") {
+SCENARIO("Calculate civil day number", "[date_time]") {
   GIVEN("A PADateTime object") {
     PADateTime paDateTime;
 
@@ -78,7 +79,7 @@ SCENARIO("Calculate civil day number, [date_time]") {
   }
 }
 
-SCENARIO("Convert civil time to and from decimal hours, [date_time]") {
+SCENARIO("Convert civil time to and from decimal hours", "[date_time]") {
   GIVEN("A PADateTime object") {
     PADateTime paDateTime;
 
@@ -104,7 +105,7 @@ SCENARIO("Convert civil time to and from decimal hours, [date_time]") {
   }
 }
 
-SCENARIO("Convert civil time to and from universal time, [date_time]") {
+SCENARIO("Convert civil time to and from universal time", "[date_time]") {
   GIVEN("A PADateTime object") {
     PADateTime paDateTime;
 
@@ -139,6 +140,42 @@ SCENARIO("Convert civil time to and from universal time, [date_time]") {
         REQUIRE(std::get<3>(result) == std::get<3>(expected));
         REQUIRE(std::get<4>(result) == std::get<4>(expected));
         REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}
+
+SCENARIO("Convert universal time to and from Greenwich sidereal time",
+         "[date_time]") {
+  GIVEN("A PADateTime object") {
+    PADateTime paDateTime;
+
+    WHEN("Universal time is 14:36:51.67") {
+      std::tuple<int, int, double> result =
+          paDateTime.universal_time_to_greenwich_sidereal_time(14, 36, 51.67,
+                                                               22, 4, 1980);
+
+      THEN("Greenwich sidereal time is 4:40:5.23") {
+        std::tuple<int, int, double> expected = std::make_tuple(4, 40, 5.23);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+      }
+    }
+
+    WHEN("Greenwich sidereal time is 4:40:5.23") {
+      std::tuple<int, int, double, pa_warning_flags> result =
+          paDateTime.greenwich_sidereal_time_to_universal_time(4, 40, 5.23, 22,
+                                                               4, 1980);
+      THEN("Universal time is 14:36:51.67") {
+        std::tuple<int, int, double, pa_warning_flags> expected =
+            std::make_tuple(14, 36, 51.67, pa_warning_flags::ok);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
       }
     }
   }

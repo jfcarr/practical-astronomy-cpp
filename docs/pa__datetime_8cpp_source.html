@@ -87,132 +87,185 @@ $(document).ready(function(){initNavTree('pa__datetime_8cpp_source.html',''); in
 <div class="contents">
 <a href="pa__datetime_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pa__datetime_8h.html">pa_datetime.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pa__macros_8h.html">pa_macros.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pa__util_8h.html">pa_util.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classPADateTime.html#a124ab2cc4fffb68b4721fa529c7c8847">   13</a></span>&#160;std::tuple&lt;int, int, int&gt; <a class="code" href="classPADateTime.html#a124ab2cc4fffb68b4721fa529c7c8847">PADateTime::get_date_of_easter</a>(<span class="keywordtype">int</span> input_year) {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">double</span> year = (double)input_year;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">double</span> a = (int)year % 19;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">double</span> b = floor(year / 100.0);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">double</span> c = (int)year % 100;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">double</span> d = floor(b / 4.0);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">double</span> e = (int)b % 4;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">double</span> f = floor((b + 8.0) / 25.0);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">double</span> g = floor((b - f + 1.0) / 3.0);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">double</span> h = (int)((19.0 * a) + b - d - g + 15.0) % 30;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">double</span> i = floor(c / 4.0);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">double</span> k = (int)c % 4;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">double</span> l = (int)(32.0 + 2.0 * (e + i) - h - k) % 7;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">double</span> m = floor((a + (11.0 * h) + (22.0 * l)) / 451.0);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">double</span> n = floor((h + l - (7.0 * m) + 114.0) / 31.0);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">double</span> p = (int)(h + l - (7.0 * m) + 114.0) % 31;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">double</span> day = p + 1.0;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">double</span> month = n;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;int, int, int&gt;{(int)month, (<span class="keywordtype">int</span>)day, (int)year};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classPADateTime.html#ae084b1b15cffe775de69593724f2ed16">   46</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classPADateTime.html#ae084b1b15cffe775de69593724f2ed16">PADateTime::civil_date_to_day_number</a>(<span class="keywordtype">int</span> month, <span class="keywordtype">int</span> day, <span class="keywordtype">int</span> year) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">if</span> (month &lt;= 2) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    month--;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    month = (<a class="code" href="pa__util_8cpp.html#ac7bb760deb727f628b940cedd89156d4">is_leap_year</a>(year) == <span class="keyword">true</span>) ? month * 62 : month * 63;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    month = (int)floor((<span class="keywordtype">double</span>)month / 2.0);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    month = (int)floor(((<span class="keywordtype">double</span>)month + 1.0) * 30.6);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    month = (<a class="code" href="pa__util_8cpp.html#ac7bb760deb727f628b940cedd89156d4">is_leap_year</a>(year) == <span class="keyword">true</span>) ? month - 62 : month - 63;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">return</span> month + day;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e">   68</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e">PADateTime::civil_time_to_decimal_hours</a>(<span class="keywordtype">double</span> hours, <span class="keywordtype">double</span> minutes,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                               <span class="keywordtype">double</span> seconds) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="pa__macros_8cpp.html#a345aa06a6dcf26eff9dd54dc5f212d96">hms_dh</a>(hours, minutes, seconds);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;std::tuple&lt;double, double, double&gt;</div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f">   81</a></span>&#160;<a class="code" href="classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f">PADateTime::decimal_hours_to_civil_time</a>(<span class="keywordtype">double</span> decimal_hours) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">int</span> hours = <a class="code" href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a>(decimal_hours);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">int</span> minutes = <a class="code" href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a>(decimal_hours);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">double</span> seconds = <a class="code" href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a>(decimal_hours);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;double, double, double&gt;{hours, minutes, seconds};</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;std::tuple&lt;int, int, int, int, int, int&gt;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classPADateTime.html#ad1379a2a6e6af91037149815b469438e">  105</a></span>&#160;<a class="code" href="classPADateTime.html#ad1379a2a6e6af91037149815b469438e">PADateTime::local_civil_time_to_universal_time</a>(</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">double</span> lct_hours, <span class="keywordtype">double</span> lct_minutes, <span class="keywordtype">double</span> lct_seconds,</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">bool</span> is_daylight_savings, <span class="keywordtype">int</span> zone_correction, <span class="keywordtype">double</span> local_day,</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">int</span> local_month, <span class="keywordtype">int</span> local_year) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">double</span> lct = <a class="code" href="classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e">civil_time_to_decimal_hours</a>(lct_hours, lct_minutes, lct_seconds);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">int</span> daylight_savings_offset = (is_daylight_savings) ? 1 : 0;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordtype">double</span> ut_interim = lct - daylight_savings_offset - zone_correction;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">double</span> g_day_interim = local_day + (ut_interim / 24);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordtype">double</span> jd = <a class="code" href="pa__macros_8cpp.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(g_day_interim, local_month, local_year);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordtype">double</span> g_day = <a class="code" href="pa__macros_8cpp.html#a5fd78858bdf83d01baf3bd3d51e266f6">julian_date_day</a>(jd);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">int</span> g_month = <a class="code" href="pa__macros_8cpp.html#aa8c42cd3facabaa7130faf475a34c166">julian_date_month</a>(jd);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">int</span> g_year = <a class="code" href="pa__macros_8cpp.html#aa1bb65879d6f9dcb8c4d09479d5fa8f3">julian_date_year</a>(jd);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">double</span> ut = 24 * (g_day - floor(g_day));</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;int, int, int, int, int, int&gt;{<a class="code" href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a>(ut),</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                                  <a class="code" href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a>(ut),</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                                  (int)<a class="code" href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a>(ut),</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                                  (int)floor(g_day),</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                                  g_month,</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                                  g_year};</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;std::tuple&lt;int, int, int, int, int, int&gt;</div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classPADateTime.html#af6cf7cad2d01fb3cff89c026690021f7">  148</a></span>&#160;<a class="code" href="classPADateTime.html#af6cf7cad2d01fb3cff89c026690021f7">PADateTime::universal_time_to_local_civil_time</a>(<span class="keywordtype">double</span> ut_hours,</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                               <span class="keywordtype">double</span> ut_minutes,</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                               <span class="keywordtype">double</span> ut_seconds,</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                               <span class="keywordtype">bool</span> is_daylight_savings,</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                               <span class="keywordtype">int</span> zone_correction, <span class="keywordtype">int</span> gw_day,</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                               <span class="keywordtype">int</span> gw_month, <span class="keywordtype">int</span> gw_year) {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordtype">int</span> dst_value = (is_daylight_savings) ? 1 : 0;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordtype">double</span> ut = <a class="code" href="pa__macros_8cpp.html#a345aa06a6dcf26eff9dd54dc5f212d96">hms_dh</a>(ut_hours, ut_minutes, ut_seconds);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">double</span> zone_time = ut + zone_correction;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordtype">double</span> local_time = zone_time + dst_value;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordtype">double</span> local_jd_plus_local_time =</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <a class="code" href="pa__macros_8cpp.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(gw_day, gw_month, gw_year) + (local_time / 24);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordtype">double</span> local_day = <a class="code" href="pa__macros_8cpp.html#a5fd78858bdf83d01baf3bd3d51e266f6">julian_date_day</a>(local_jd_plus_local_time);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordtype">double</span> integer_day = floor(local_day);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">int</span> local_month = <a class="code" href="pa__macros_8cpp.html#aa8c42cd3facabaa7130faf475a34c166">julian_date_month</a>(local_jd_plus_local_time);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">int</span> local_year = <a class="code" href="pa__macros_8cpp.html#aa1bb65879d6f9dcb8c4d09479d5fa8f3">julian_date_year</a>(local_jd_plus_local_time);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordtype">double</span> lct = 24 * (local_day - integer_day);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;int, int, int, int, int, int&gt;{</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      <a class="code" href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a>(lct),</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <a class="code" href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a>(lct),</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      (int)<a class="code" href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a>(lct),</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      (int)integer_day,</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      local_month,</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      local_year};</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pa__types_8h.html">pa_types.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pa__util_8h.html">pa_util.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classPADateTime.html#a124ab2cc4fffb68b4721fa529c7c8847">   14</a></span>&#160;std::tuple&lt;int, int, int&gt; <a class="code" href="classPADateTime.html#a124ab2cc4fffb68b4721fa529c7c8847">PADateTime::get_date_of_easter</a>(<span class="keywordtype">int</span> input_year) {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordtype">double</span> year = (double)input_year;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">double</span> a = (int)year % 19;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">double</span> b = floor(year / 100.0);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">double</span> c = (int)year % 100;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">double</span> d = floor(b / 4.0);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">double</span> e = (int)b % 4;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">double</span> f = floor((b + 8.0) / 25.0);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">double</span> g = floor((b - f + 1.0) / 3.0);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">double</span> h = (int)((19.0 * a) + b - d - g + 15.0) % 30;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">double</span> i = floor(c / 4.0);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">double</span> k = (int)c % 4;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">double</span> l = (int)(32.0 + 2.0 * (e + i) - h - k) % 7;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordtype">double</span> m = floor((a + (11.0 * h) + (22.0 * l)) / 451.0);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">double</span> n = floor((h + l - (7.0 * m) + 114.0) / 31.0);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">double</span> p = (int)(h + l - (7.0 * m) + 114.0) % 31;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">double</span> day = p + 1.0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">double</span> month = n;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;int, int, int&gt;{(int)month, (<span class="keywordtype">int</span>)day, (int)year};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classPADateTime.html#ae084b1b15cffe775de69593724f2ed16">   47</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classPADateTime.html#ae084b1b15cffe775de69593724f2ed16">PADateTime::civil_date_to_day_number</a>(<span class="keywordtype">int</span> month, <span class="keywordtype">int</span> day, <span class="keywordtype">int</span> year) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">if</span> (month &lt;= 2) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    month--;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    month = (<a class="code" href="pa__util_8cpp.html#ac7bb760deb727f628b940cedd89156d4">is_leap_year</a>(year) == <span class="keyword">true</span>) ? month * 62 : month * 63;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    month = (int)floor((<span class="keywordtype">double</span>)month / 2.0);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    month = (int)floor(((<span class="keywordtype">double</span>)month + 1.0) * 30.6);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    month = (<a class="code" href="pa__util_8cpp.html#ac7bb760deb727f628b940cedd89156d4">is_leap_year</a>(year) == <span class="keyword">true</span>) ? month - 62 : month - 63;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">return</span> month + day;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e">   69</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e">PADateTime::civil_time_to_decimal_hours</a>(<span class="keywordtype">double</span> hours, <span class="keywordtype">double</span> minutes,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                               <span class="keywordtype">double</span> seconds) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="pa__macros_8cpp.html#a345aa06a6dcf26eff9dd54dc5f212d96">hms_dh</a>(hours, minutes, seconds);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;std::tuple&lt;double, double, double&gt;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f">   82</a></span>&#160;<a class="code" href="classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f">PADateTime::decimal_hours_to_civil_time</a>(<span class="keywordtype">double</span> decimal_hours) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">int</span> hours = <a class="code" href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a>(decimal_hours);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">int</span> minutes = <a class="code" href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a>(decimal_hours);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">double</span> seconds = <a class="code" href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a>(decimal_hours);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;double, double, double&gt;{hours, minutes, seconds};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;std::tuple&lt;int, int, int, int, int, int&gt;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classPADateTime.html#ad1379a2a6e6af91037149815b469438e">  106</a></span>&#160;<a class="code" href="classPADateTime.html#ad1379a2a6e6af91037149815b469438e">PADateTime::local_civil_time_to_universal_time</a>(</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">double</span> lct_hours, <span class="keywordtype">double</span> lct_minutes, <span class="keywordtype">double</span> lct_seconds,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">bool</span> is_daylight_savings, <span class="keywordtype">int</span> zone_correction, <span class="keywordtype">double</span> local_day,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">int</span> local_month, <span class="keywordtype">int</span> local_year) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordtype">double</span> lct = <a class="code" href="classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e">civil_time_to_decimal_hours</a>(lct_hours, lct_minutes, lct_seconds);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">int</span> daylight_savings_offset = (is_daylight_savings) ? 1 : 0;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">double</span> ut_interim = lct - daylight_savings_offset - zone_correction;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">double</span> g_day_interim = local_day + (ut_interim / 24);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordtype">double</span> jd = <a class="code" href="pa__macros_8cpp.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(g_day_interim, local_month, local_year);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">double</span> g_day = <a class="code" href="pa__macros_8cpp.html#a5fd78858bdf83d01baf3bd3d51e266f6">julian_date_day</a>(jd);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">int</span> g_month = <a class="code" href="pa__macros_8cpp.html#aa8c42cd3facabaa7130faf475a34c166">julian_date_month</a>(jd);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordtype">int</span> g_year = <a class="code" href="pa__macros_8cpp.html#aa1bb65879d6f9dcb8c4d09479d5fa8f3">julian_date_year</a>(jd);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordtype">double</span> ut = 24 * (g_day - floor(g_day));</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;int, int, int, int, int, int&gt;{<a class="code" href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a>(ut),</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                                  <a class="code" href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a>(ut),</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                                  (int)<a class="code" href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a>(ut),</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                                  (int)floor(g_day),</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                                  g_month,</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                                  g_year};</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;std::tuple&lt;int, int, int, int, int, int&gt;</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="classPADateTime.html#af6cf7cad2d01fb3cff89c026690021f7">  149</a></span>&#160;<a class="code" href="classPADateTime.html#af6cf7cad2d01fb3cff89c026690021f7">PADateTime::universal_time_to_local_civil_time</a>(<span class="keywordtype">double</span> ut_hours,</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                               <span class="keywordtype">double</span> ut_minutes,</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                               <span class="keywordtype">double</span> ut_seconds,</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                               <span class="keywordtype">bool</span> is_daylight_savings,</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                               <span class="keywordtype">int</span> zone_correction, <span class="keywordtype">int</span> gw_day,</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                               <span class="keywordtype">int</span> gw_month, <span class="keywordtype">int</span> gw_year) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordtype">int</span> dst_value = (is_daylight_savings) ? 1 : 0;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">double</span> ut = <a class="code" href="pa__macros_8cpp.html#a345aa06a6dcf26eff9dd54dc5f212d96">hms_dh</a>(ut_hours, ut_minutes, ut_seconds);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordtype">double</span> zone_time = ut + zone_correction;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordtype">double</span> local_time = zone_time + dst_value;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordtype">double</span> local_jd_plus_local_time =</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <a class="code" href="pa__macros_8cpp.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(gw_day, gw_month, gw_year) + (local_time / 24);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordtype">double</span> local_day = <a class="code" href="pa__macros_8cpp.html#a5fd78858bdf83d01baf3bd3d51e266f6">julian_date_day</a>(local_jd_plus_local_time);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">double</span> integer_day = floor(local_day);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">int</span> local_month = <a class="code" href="pa__macros_8cpp.html#aa8c42cd3facabaa7130faf475a34c166">julian_date_month</a>(local_jd_plus_local_time);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">int</span> local_year = <a class="code" href="pa__macros_8cpp.html#aa1bb65879d6f9dcb8c4d09479d5fa8f3">julian_date_year</a>(local_jd_plus_local_time);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordtype">double</span> lct = 24 * (local_day - integer_day);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;int, int, int, int, int, int&gt;{</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <a class="code" href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a>(lct),</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <a class="code" href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a>(lct),</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      (int)<a class="code" href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a>(lct),</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      (int)integer_day,</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;      local_month,</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      local_year};</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;std::tuple&lt;int, int, double&gt;</div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="classPADateTime.html#ac83527c60b03732822ac09b95f4b2369">  190</a></span>&#160;<a class="code" href="classPADateTime.html#ac83527c60b03732822ac09b95f4b2369">PADateTime::universal_time_to_greenwich_sidereal_time</a>(</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordtype">double</span> ut_hours, <span class="keywordtype">double</span> ut_minutes, <span class="keywordtype">double</span> ut_seconds, <span class="keywordtype">double</span> gw_day,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordtype">int</span> gw_month, <span class="keywordtype">int</span> gw_year) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">double</span> jd = <a class="code" href="pa__macros_8cpp.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(gw_day, gw_month, gw_year);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="keywordtype">double</span> s = jd - 2451545.0;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="keywordtype">double</span> t = s / 36525.0;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordtype">double</span> t01 = 6.697374558 + (2400.051336 * t) + (0.000025862 * t * t);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordtype">double</span> t02 = t01 - (24.0 * floor(t01 / 24.0));</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keywordtype">double</span> ut = <a class="code" href="pa__macros_8cpp.html#a345aa06a6dcf26eff9dd54dc5f212d96">hms_dh</a>(ut_hours, ut_minutes, ut_seconds);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordtype">double</span> a = ut * 1.002737909;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordtype">double</span> gst1 = t02 + a;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordtype">double</span> gst2 = gst1 - (24.0 * floor(gst1 / 24.0));</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <span class="keywordtype">int</span> gst_hours = <a class="code" href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a>(gst2);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keywordtype">int</span> gst_minutes = <a class="code" href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a>(gst2);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordtype">double</span> gst_seconds = <a class="code" href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a>(gst2);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;int, int, double&gt;{gst_hours, gst_minutes, gst_seconds};</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;}</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;std::tuple&lt;int, int, double, pa_warning_flags&gt;</div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="classPADateTime.html#a37de556c7e92158c69aacaf44f1396bf">  224</a></span>&#160;<a class="code" href="classPADateTime.html#a37de556c7e92158c69aacaf44f1396bf">PADateTime::greenwich_sidereal_time_to_universal_time</a>(</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">double</span> gst_hours, <span class="keywordtype">double</span> gst_minutes, <span class="keywordtype">double</span> gst_seconds, <span class="keywordtype">double</span> gw_day,</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordtype">int</span> gw_month, <span class="keywordtype">int</span> gw_year) {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <span class="keywordtype">double</span> jd = <a class="code" href="pa__macros_8cpp.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(gw_day, gw_month, gw_year);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keywordtype">double</span> s = jd - 2451545;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keywordtype">double</span> t = s / 36525;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordtype">double</span> t01 = 6.697374558 + (2400.051336 * t) + (0.000025862 * t * t);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  <span class="keywordtype">double</span> t02 = t01 - (24 * floor(t01 / 24));</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="keywordtype">double</span> gstHours1 = <a class="code" href="pa__macros_8cpp.html#a345aa06a6dcf26eff9dd54dc5f212d96">hms_dh</a>(gst_hours, gst_minutes, gst_seconds);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keywordtype">double</span> a = gstHours1 - t02;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keywordtype">double</span> b = a - (24 * floor(a / 24));</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keywordtype">double</span> ut = b * 0.9972695663;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordtype">int</span> ut_hours = <a class="code" href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a>(ut);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordtype">int</span> ut_minutes = <a class="code" href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a>(ut);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keywordtype">double</span> ut_seconds = <a class="code" href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a>(ut);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <a class="code" href="pa__types_8h.html#a7fbd60529f7a3634859a2b492ae744e8">pa_warning_flags</a> warning_flag =</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      (ut &lt; 0.065574) ? <a class="code" href="pa__types_8h.html#a7fbd60529f7a3634859a2b492ae744e8a8de9aef05fc85e519a0cfce33573f492">pa_warning_flags::warning</a> : <a class="code" href="pa__types_8h.html#a7fbd60529f7a3634859a2b492ae744e8ad8b76af209cd7ba83b4ebf33ba1637b2">pa_warning_flags::ok</a>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordflow">return</span> std::tuple&lt;int, int, double, pa_warning_flags&gt;{</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      ut_hours, ut_minutes, ut_seconds, warning_flag};</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="apa__types_8h_html_a7fbd60529f7a3634859a2b492ae744e8ad8b76af209cd7ba83b4ebf33ba1637b2"><div class="ttname"><a href="pa__types_8h.html#a7fbd60529f7a3634859a2b492ae744e8ad8b76af209cd7ba83b4ebf33ba1637b2">ok</a></div><div class="ttdeci">@ ok</div><div class="ttdef"><b>Definition:</b> <a href="pa__types_8h_source.html#l00007">pa_types.h:7</a></div></div>
 <div class="ttc" id="apa__macros_8cpp_html_ac32da2203b0d5f1f5a4ebe482c6d4600"><div class="ttname"><a href="pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600">decimal_hours_second</a></div><div class="ttdeci">double decimal_hours_second(double decimal_hours)</div><div class="ttdoc">Return the seconds part of a Decimal Hours.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00073">pa_macros.cpp:73</a></div></div>
 <div class="ttc" id="apa__macros_8cpp_html_aae3208a69452872e03c79b984be08b9a"><div class="ttname"><a href="pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a">decimal_hours_hour</a></div><div class="ttdeci">int decimal_hours_hour(double decimal_hours)</div><div class="ttdoc">Return the hour part of a Decimal Hours.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00037">pa_macros.cpp:37</a></div></div>
 <div class="ttc" id="apa__macros_8h_html"><div class="ttname"><a href="pa__macros_8h.html">pa_macros.h</a></div></div>
 <div class="ttc" id="apa__macros_8cpp_html_ad51d420da53d3f525d5996099353773e"><div class="ttname"><a href="pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e">decimal_hours_minute</a></div><div class="ttdeci">int decimal_hours_minute(double decimal_hours)</div><div class="ttdoc">Return the minutes part of a Decimal Hours.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00055">pa_macros.cpp:55</a></div></div>
-<div class="ttc" id="aclassPADateTime_html_ad1379a2a6e6af91037149815b469438e"><div class="ttname"><a href="classPADateTime.html#ad1379a2a6e6af91037149815b469438e">PADateTime::local_civil_time_to_universal_time</a></div><div class="ttdeci">std::tuple&lt; int, int, int, int, int, int &gt; local_civil_time_to_universal_time(double lct_hours, double lct_minutes, double lct_seconds, bool is_daylight_savings, int zone_correction, double local_day, int local_month, int local_year)</div><div class="ttdoc">Convert local civil time to universal time.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00105">pa_datetime.cpp:105</a></div></div>
+<div class="ttc" id="aclassPADateTime_html_ad1379a2a6e6af91037149815b469438e"><div class="ttname"><a href="classPADateTime.html#ad1379a2a6e6af91037149815b469438e">PADateTime::local_civil_time_to_universal_time</a></div><div class="ttdeci">std::tuple&lt; int, int, int, int, int, int &gt; local_civil_time_to_universal_time(double lct_hours, double lct_minutes, double lct_seconds, bool is_daylight_savings, int zone_correction, double local_day, int local_month, int local_year)</div><div class="ttdoc">Convert local civil time to universal time.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00106">pa_datetime.cpp:106</a></div></div>
+<div class="ttc" id="apa__types_8h_html"><div class="ttname"><a href="pa__types_8h.html">pa_types.h</a></div></div>
 <div class="ttc" id="apa__util_8cpp_html_ac7bb760deb727f628b940cedd89156d4"><div class="ttname"><a href="pa__util_8cpp.html#ac7bb760deb727f628b940cedd89156d4">is_leap_year</a></div><div class="ttdeci">bool is_leap_year(int input_year)</div><div class="ttdef"><b>Definition:</b> <a href="pa__util_8cpp_source.html#l00010">pa_util.cpp:10</a></div></div>
 <div class="ttc" id="apa__macros_8cpp_html_a5fd78858bdf83d01baf3bd3d51e266f6"><div class="ttname"><a href="pa__macros_8cpp.html#a5fd78858bdf83d01baf3bd3d51e266f6">julian_date_day</a></div><div class="ttdeci">double julian_date_day(double julian_date)</div><div class="ttdoc">Returns the day part of a Julian Date.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00130">pa_macros.cpp:130</a></div></div>
-<div class="ttc" id="aclassPADateTime_html_ad8d965664b418d25080a64b4e4bd684f"><div class="ttname"><a href="classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f">PADateTime::decimal_hours_to_civil_time</a></div><div class="ttdeci">std::tuple&lt; double, double, double &gt; decimal_hours_to_civil_time(double decimal_hours)</div><div class="ttdoc">Convert Decimal Hours to Civil Time.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00081">pa_datetime.cpp:81</a></div></div>
+<div class="ttc" id="aclassPADateTime_html_ad8d965664b418d25080a64b4e4bd684f"><div class="ttname"><a href="classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f">PADateTime::decimal_hours_to_civil_time</a></div><div class="ttdeci">std::tuple&lt; double, double, double &gt; decimal_hours_to_civil_time(double decimal_hours)</div><div class="ttdoc">Convert Decimal Hours to Civil Time.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00082">pa_datetime.cpp:82</a></div></div>
+<div class="ttc" id="aclassPADateTime_html_ac83527c60b03732822ac09b95f4b2369"><div class="ttname"><a href="classPADateTime.html#ac83527c60b03732822ac09b95f4b2369">PADateTime::universal_time_to_greenwich_sidereal_time</a></div><div class="ttdeci">std::tuple&lt; int, int, double &gt; universal_time_to_greenwich_sidereal_time(double ut_hours, double ut_minutes, double ut_seconds, double gw_day, int gw_month, int gw_year)</div><div class="ttdoc">Convert Universal Time to Greenwich Sidereal Time.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00190">pa_datetime.cpp:190</a></div></div>
 <div class="ttc" id="apa__macros_8cpp_html_aa8c42cd3facabaa7130faf475a34c166"><div class="ttname"><a href="pa__macros_8cpp.html#aa8c42cd3facabaa7130faf475a34c166">julian_date_month</a></div><div class="ttdeci">int julian_date_month(double julian_date)</div><div class="ttdoc">Returns the month part of a Julian Date.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00148">pa_macros.cpp:148</a></div></div>
 <div class="ttc" id="apa__macros_8cpp_html_a345aa06a6dcf26eff9dd54dc5f212d96"><div class="ttname"><a href="pa__macros_8cpp.html#a345aa06a6dcf26eff9dd54dc5f212d96">hms_dh</a></div><div class="ttdeci">double hms_dh(double hours, double minutes, double seconds)</div><div class="ttdoc">Convert a Civil Time (hours,minutes,seconds) to Decimal Hours.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00016">pa_macros.cpp:16</a></div></div>
-<div class="ttc" id="aclassPADateTime_html_a5273aa19e338a4fabb8310c8962af79e"><div class="ttname"><a href="classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e">PADateTime::civil_time_to_decimal_hours</a></div><div class="ttdeci">double civil_time_to_decimal_hours(double hours, double minutes, double seconds)</div><div class="ttdoc">Convert a Civil Time to Decimal Hours.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00068">pa_datetime.cpp:68</a></div></div>
-<div class="ttc" id="aclassPADateTime_html_ae084b1b15cffe775de69593724f2ed16"><div class="ttname"><a href="classPADateTime.html#ae084b1b15cffe775de69593724f2ed16">PADateTime::civil_date_to_day_number</a></div><div class="ttdeci">int civil_date_to_day_number(int month, int day, int year)</div><div class="ttdoc">Calculate day number for a date.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00046">pa_datetime.cpp:46</a></div></div>
-<div class="ttc" id="aclassPADateTime_html_af6cf7cad2d01fb3cff89c026690021f7"><div class="ttname"><a href="classPADateTime.html#af6cf7cad2d01fb3cff89c026690021f7">PADateTime::universal_time_to_local_civil_time</a></div><div class="ttdeci">std::tuple&lt; int, int, int, int, int, int &gt; universal_time_to_local_civil_time(double ut_hours, double ut_minutes, double ut_seconds, bool is_daylight_savings, int zone_correction, int gw_day, int gw_month, int gw_year)</div><div class="ttdoc">Convert universal time to local civil time.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00148">pa_datetime.cpp:148</a></div></div>
-<div class="ttc" id="aclassPADateTime_html_a124ab2cc4fffb68b4721fa529c7c8847"><div class="ttname"><a href="classPADateTime.html#a124ab2cc4fffb68b4721fa529c7c8847">PADateTime::get_date_of_easter</a></div><div class="ttdeci">std::tuple&lt; int, int, int &gt; get_date_of_easter(int input_year)</div><div class="ttdoc">Gets the date of Easter for the year specified.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00013">pa_datetime.cpp:13</a></div></div>
+<div class="ttc" id="aclassPADateTime_html_a5273aa19e338a4fabb8310c8962af79e"><div class="ttname"><a href="classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e">PADateTime::civil_time_to_decimal_hours</a></div><div class="ttdeci">double civil_time_to_decimal_hours(double hours, double minutes, double seconds)</div><div class="ttdoc">Convert a Civil Time to Decimal Hours.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00069">pa_datetime.cpp:69</a></div></div>
+<div class="ttc" id="aclassPADateTime_html_ae084b1b15cffe775de69593724f2ed16"><div class="ttname"><a href="classPADateTime.html#ae084b1b15cffe775de69593724f2ed16">PADateTime::civil_date_to_day_number</a></div><div class="ttdeci">int civil_date_to_day_number(int month, int day, int year)</div><div class="ttdoc">Calculate day number for a date.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00047">pa_datetime.cpp:47</a></div></div>
+<div class="ttc" id="aclassPADateTime_html_a37de556c7e92158c69aacaf44f1396bf"><div class="ttname"><a href="classPADateTime.html#a37de556c7e92158c69aacaf44f1396bf">PADateTime::greenwich_sidereal_time_to_universal_time</a></div><div class="ttdeci">std::tuple&lt; int, int, double, pa_warning_flags &gt; greenwich_sidereal_time_to_universal_time(double gst_hours, double gst_minutes, double gst_seconds, double gw_day, int gw_month, int gw_year)</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00224">pa_datetime.cpp:224</a></div></div>
+<div class="ttc" id="apa__types_8h_html_a7fbd60529f7a3634859a2b492ae744e8"><div class="ttname"><a href="pa__types_8h.html#a7fbd60529f7a3634859a2b492ae744e8">pa_warning_flags</a></div><div class="ttdeci">pa_warning_flags</div><div class="ttdef"><b>Definition:</b> <a href="pa__types_8h_source.html#l00006">pa_types.h:6</a></div></div>
+<div class="ttc" id="aclassPADateTime_html_af6cf7cad2d01fb3cff89c026690021f7"><div class="ttname"><a href="classPADateTime.html#af6cf7cad2d01fb3cff89c026690021f7">PADateTime::universal_time_to_local_civil_time</a></div><div class="ttdeci">std::tuple&lt; int, int, int, int, int, int &gt; universal_time_to_local_civil_time(double ut_hours, double ut_minutes, double ut_seconds, bool is_daylight_savings, int zone_correction, int gw_day, int gw_month, int gw_year)</div><div class="ttdoc">Convert universal time to local civil time.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00149">pa_datetime.cpp:149</a></div></div>
+<div class="ttc" id="aclassPADateTime_html_a124ab2cc4fffb68b4721fa529c7c8847"><div class="ttname"><a href="classPADateTime.html#a124ab2cc4fffb68b4721fa529c7c8847">PADateTime::get_date_of_easter</a></div><div class="ttdeci">std::tuple&lt; int, int, int &gt; get_date_of_easter(int input_year)</div><div class="ttdoc">Gets the date of Easter for the year specified.</div><div class="ttdef"><b>Definition:</b> <a href="pa__datetime_8cpp_source.html#l00014">pa_datetime.cpp:14</a></div></div>
+<div class="ttc" id="apa__types_8h_html_a7fbd60529f7a3634859a2b492ae744e8a8de9aef05fc85e519a0cfce33573f492"><div class="ttname"><a href="pa__types_8h.html#a7fbd60529f7a3634859a2b492ae744e8a8de9aef05fc85e519a0cfce33573f492">warning</a></div><div class="ttdeci">@ warning</div><div class="ttdef"><b>Definition:</b> <a href="pa__types_8h_source.html#l00008">pa_types.h:8</a></div></div>
 <div class="ttc" id="apa__macros_8cpp_html_aa1bb65879d6f9dcb8c4d09479d5fa8f3"><div class="ttname"><a href="pa__macros_8cpp.html#aa1bb65879d6f9dcb8c4d09479d5fa8f3">julian_date_year</a></div><div class="ttdeci">int julian_date_year(double julian_date)</div><div class="ttdoc">Returns the year part of a Julian Date.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00167">pa_macros.cpp:167</a></div></div>
 <div class="ttc" id="apa__datetime_8h_html"><div class="ttname"><a href="pa__datetime_8h.html">pa_datetime.h</a></div></div>
 <div class="ttc" id="apa__util_8h_html"><div class="ttname"><a href="pa__util_8h.html">pa_util.h</a></div></div>

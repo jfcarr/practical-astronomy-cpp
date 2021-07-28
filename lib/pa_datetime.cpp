@@ -1,5 +1,6 @@
 #include "pa_datetime.h"
 #include "pa_macros.h"
+#include "pa_types.h"
 #include "pa_util.h"
 #include <cmath>
 
@@ -171,4 +172,75 @@ PADateTime::universal_time_to_local_civil_time(double ut_hours,
       (int)integer_day,
       local_month,
       local_year};
+}
+
+/**
+ * \brief Convert Universal Time to Greenwich Sidereal Time
+ *
+ * @param ut_hours Universal time, hours part.
+ * @param ut_minutes Universal time, minutes part.
+ * @param ut_seconds Universal time, seconds part.
+ * @param gw_day Greenwich date, day part.
+ * @param gw_month Greenwich date, month part.
+ * @param gw_year Greenwich date, year part.
+ *
+ * @return tuple <int gst_hours, int gst_minutes, double gst_seconds>
+ */
+std::tuple<int, int, double>
+PADateTime::universal_time_to_greenwich_sidereal_time(
+    double ut_hours, double ut_minutes, double ut_seconds, double gw_day,
+    int gw_month, int gw_year) {
+  double jd = civil_date_to_julian_date(gw_day, gw_month, gw_year);
+  double s = jd - 2451545.0;
+  double t = s / 36525.0;
+  double t01 = 6.697374558 + (2400.051336 * t) + (0.000025862 * t * t);
+  double t02 = t01 - (24.0 * floor(t01 / 24.0));
+  double ut = hms_dh(ut_hours, ut_minutes, ut_seconds);
+  double a = ut * 1.002737909;
+  double gst1 = t02 + a;
+  double gst2 = gst1 - (24.0 * floor(gst1 / 24.0));
+
+  int gst_hours = decimal_hours_hour(gst2);
+  int gst_minutes = decimal_hours_minute(gst2);
+  double gst_seconds = decimal_hours_second(gst2);
+
+  return std::tuple<int, int, double>{gst_hours, gst_minutes, gst_seconds};
+}
+
+/**
+ * Convert Greenwich Sidereal Time to Universal Time
+ *
+ * @param gst_hours Universal time, hours part.
+ * @param gst_minutes Universal time, minutes part.
+ * @param gst_seconds Universal time, seconds part.
+ * @param gw_day Greenwich date, day part.
+ * @param gw_month Greenwich date, month part.
+ * @param gw_year Greenwich date, year part.
+ *
+ * @return tuple <int ut_hours, int ut_minutes, double ut_seconds,
+ * pa_warning_flags warning_flag>
+ */
+std::tuple<int, int, double, pa_warning_flags>
+PADateTime::greenwich_sidereal_time_to_universal_time(
+    double gst_hours, double gst_minutes, double gst_seconds, double gw_day,
+    int gw_month, int gw_year) {
+  double jd = civil_date_to_julian_date(gw_day, gw_month, gw_year);
+  double s = jd - 2451545;
+  double t = s / 36525;
+  double t01 = 6.697374558 + (2400.051336 * t) + (0.000025862 * t * t);
+  double t02 = t01 - (24 * floor(t01 / 24));
+  double gstHours1 = hms_dh(gst_hours, gst_minutes, gst_seconds);
+
+  double a = gstHours1 - t02;
+  double b = a - (24 * floor(a / 24));
+  double ut = b * 0.9972695663;
+  int ut_hours = decimal_hours_hour(ut);
+  int ut_minutes = decimal_hours_minute(ut);
+  double ut_seconds = decimal_hours_second(ut);
+
+  pa_warning_flags warning_flag =
+      (ut < 0.065574) ? pa_warning_flags::warning : pa_warning_flags::ok;
+
+  return std::tuple<int, int, double, pa_warning_flags>{
+      ut_hours, ut_minutes, ut_seconds, warning_flag};
 }
