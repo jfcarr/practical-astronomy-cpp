@@ -3,28 +3,31 @@ var indexSectionsWithContent =
   0: "cdghijlopruw",
   1: "p",
   2: "p",
-  3: "cdghijlru",
-  4: "p",
-  5: "ow"
+  3: "p",
+  4: "cdghijlru",
+  5: "w",
+  6: "ow"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "files",
-  3: "functions",
-  4: "enums",
-  5: "enumvalues"
+  2: "namespaces",
+  3: "files",
+  4: "functions",
+  5: "enums",
+  6: "enumvalues"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Data Structures",
-  2: "Files",
-  3: "Functions",
-  4: "Enumerations",
-  5: "Enumerator"
+  2: "Namespaces",
+  3: "Files",
+  4: "Functions",
+  5: "Enumerations",
+  6: "Enumerator"
 };
 
