@@ -94,9 +94,9 @@ $(document).ready(function(){initNavTree('pa__macros_8cpp_source.html',''); init
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">double</span> f_minutes = minutes;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">double</span> f_seconds = seconds;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">double</span> a = abs((<span class="keywordtype">int</span>)f_seconds) / 60.0;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">double</span> b = (abs((<span class="keywordtype">int</span>)f_minutes) + a) / 60.0;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">double</span> c = abs((<span class="keywordtype">int</span>)f_hours) + b;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">double</span> a = std::abs(f_seconds) / 60;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">double</span> b = (std::abs(f_minutes) + a) / 60;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">double</span> c = std::abs(f_hours) + b;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordflow">return</span> (f_hours &lt; 0 || f_minutes &lt; 0 || f_seconds &lt; 0) ? -c : c;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
