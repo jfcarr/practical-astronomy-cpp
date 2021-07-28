@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 
+namespace pa_util {
 /**
  * Determine if year is a leap year.
  *
@@ -29,7 +30,7 @@ bool is_leap_year(int input_year) {
  *
  * @return Rounded input value.
  */
-double round_d(double input, int places) {
+double round(double input, int places) {
   double multiplier = pow(10, places);
 
   double a = input * multiplier;
@@ -37,3 +38,4 @@ double round_d(double input, int places) {
 
   return (int)a / multiplier;
 }
+} // namespace pa_util

@@ -4,6 +4,9 @@
 #include "pa_util.h"
 #include <cmath>
 
+using namespace pa_types;
+using namespace pa_util;
+
 /**
  * \brief Gets the date of Easter for the year specified.
  *
@@ -220,7 +223,7 @@ PADateTime::universal_time_to_greenwich_sidereal_time(
  * @return tuple <int ut_hours, int ut_minutes, double ut_seconds,
  * pa_warning_flags warning_flag>
  */
-std::tuple<int, int, double, pa_warning_flags>
+std::tuple<int, int, double, warning_flags>
 PADateTime::greenwich_sidereal_time_to_universal_time(
     double gst_hours, double gst_minutes, double gst_seconds, double gw_day,
     int gw_month, int gw_year) {
@@ -238,9 +241,9 @@ PADateTime::greenwich_sidereal_time_to_universal_time(
   int ut_minutes = decimal_hours_minute(ut);
   double ut_seconds = decimal_hours_second(ut);
 
-  pa_warning_flags warning_flag =
-      (ut < 0.065574) ? pa_warning_flags::warning : pa_warning_flags::ok;
+  warning_flags warning_flag =
+      (ut < 0.065574) ? warning_flags::warning : warning_flags::ok;
 
-  return std::tuple<int, int, double, pa_warning_flags>{
-      ut_hours, ut_minutes, ut_seconds, warning_flag};
+  return std::tuple<int, int, double, warning_flags>{ut_hours, ut_minutes,
+                                                     ut_seconds, warning_flag};
 }

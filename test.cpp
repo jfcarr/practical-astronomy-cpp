@@ -6,6 +6,9 @@
 #include "lib/pa_util.h"
 #include <iostream>
 
+using namespace pa_types;
+using namespace pa_util;
+
 SCENARIO("Calculate date of Easter", "[date_time") {
   GIVEN("A PADateTime object") {
     PADateTime paDateTime;
@@ -87,7 +90,7 @@ SCENARIO("Convert civil time to and from decimal hours", "[date_time]") {
       double result = paDateTime.civil_time_to_decimal_hours(18, 31, 27);
 
       THEN("Decimal hours is 18.52416667") {
-        REQUIRE(round_d(result, 8) == 18.52416667);
+        REQUIRE(round(result, 8) == 18.52416667);
       }
     }
 
@@ -99,7 +102,7 @@ SCENARIO("Convert civil time to and from decimal hours", "[date_time]") {
       THEN("Civil time is 18:31:27") {
         REQUIRE(std::get<0>(result) == std::get<0>(expected));
         REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(round_d(std::get<2>(result), 0) == std::get<2>(expected));
+        REQUIRE(round(std::get<2>(result), 0) == std::get<2>(expected));
       }
     }
   }
@@ -165,12 +168,12 @@ SCENARIO("Convert universal time to and from Greenwich sidereal time",
     }
 
     WHEN("Greenwich sidereal time is 4:40:5.23") {
-      std::tuple<int, int, double, pa_warning_flags> result =
+      std::tuple<int, int, double, warning_flags> result =
           paDateTime.greenwich_sidereal_time_to_universal_time(4, 40, 5.23, 22,
                                                                4, 1980);
       THEN("Universal time is 14:36:51.67") {
-        std::tuple<int, int, double, pa_warning_flags> expected =
-            std::make_tuple(14, 36, 51.67, pa_warning_flags::ok);
+        std::tuple<int, int, double, warning_flags> expected =
+            std::make_tuple(14, 36, 51.67, warning_flags::ok);
 
         REQUIRE(std::get<0>(result) == std::get<0>(expected));
         REQUIRE(std::get<1>(result) == std::get<1>(expected));

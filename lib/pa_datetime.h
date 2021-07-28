@@ -31,7 +31,7 @@ public:
                                             double ut_seconds, double gw_day,
                                             int gw_month, int gw_year);
 
-  std::tuple<int, int, double, pa_warning_flags>
+  std::tuple<int, int, double, pa_types::warning_flags>
   greenwich_sidereal_time_to_universal_time(double gst_hours,
                                             double gst_minutes,
                                             double gst_seconds, double gw_day,
