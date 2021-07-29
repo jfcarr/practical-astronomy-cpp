@@ -36,5 +36,13 @@ public:
                                             double gst_minutes,
                                             double gst_seconds, double gw_day,
                                             int gw_month, int gw_year);
+
+  std::tuple<int, int, double> greenwich_sidereal_time_to_local_sidereal_time(
+      double gst_hours, double gst_minutes, double gst_seconds,
+      double geographical_longitude);
+
+  std::tuple<int, int, double> local_sidereal_time_to_greenwich_sidereal_time(
+      double lst_hours, double lst_minutes, double lst_seconds,
+      double geographical_longitude);
 };
 #endif
