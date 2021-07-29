@@ -115,6 +115,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac83527c60b03732822ac09b95f4b2369"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3f40d20f805f077de75a4448cb27957"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; int, int, double, <a class="el" href="namespacepa__types.html#abd8e28d1f6cc273e99b3cbaf226bb55a">pa_types::warning_flags</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPADateTime.html#af3f40d20f805f077de75a4448cb27957">greenwich_sidereal_time_to_universal_time</a> (double gst_hours, double gst_minutes, double gst_seconds, double gw_day, int gw_month, int gw_year)</td></tr>
 <tr class="separator:af3f40d20f805f077de75a4448cb27957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2489f5858285a2156de0a615626d2e59"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; int, int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPADateTime.html#a2489f5858285a2156de0a615626d2e59">greenwich_sidereal_time_to_local_sidereal_time</a> (double gst_hours, double gst_minutes, double gst_seconds, double geographical_longitude)</td></tr>
+<tr class="memdesc:a2489f5858285a2156de0a615626d2e59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Greenwich Sidereal Time to Local Sidereal Time.  <a href="classPADateTime.html#a2489f5858285a2156de0a615626d2e59">More...</a><br /></td></tr>
+<tr class="separator:a2489f5858285a2156de0a615626d2e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98498c80bfdb4c169697a1b5e43ece5a"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; int, int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPADateTime.html#a98498c80bfdb4c169697a1b5e43ece5a">local_sidereal_time_to_greenwich_sidereal_time</a> (double lst_hours, double lst_minutes, double lst_seconds, double geographical_longitude)</td></tr>
+<tr class="memdesc:a98498c80bfdb4c169697a1b5e43ece5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Local Sidereal Time to Greenwich Sidereal Time.  <a href="classPADateTime.html#a98498c80bfdb4c169697a1b5e43ece5a">More...</a><br /></td></tr>
+<tr class="separator:a98498c80bfdb4c169697a1b5e43ece5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -272,6 +278,60 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2489f5858285a2156de0a615626d2e59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2489f5858285a2156de0a615626d2e59">&#9670;&nbsp;</a></span>greenwich_sidereal_time_to_local_sidereal_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; int, int, double &gt; greenwich_sidereal_time_to_local_sidereal_time </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gst_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gst_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gst_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geographical_longitude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Greenwich Sidereal Time to Local Sidereal Time. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gst_hours</td><td>Greenwich sidereal time, hours part. </td></tr>
+    <tr><td class="paramname">gst_minutes</td><td>Greenwich sidereal time, minutes part. </td></tr>
+    <tr><td class="paramname">gst_seconds</td><td>Greenwich sidereal time, seconds part. </td></tr>
+    <tr><td class="paramname">geographical_longitude</td><td>Geographical longitude.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;int lst_hours, int lst_minutes, double lst_seconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__datetime_8cpp_source.html#l00262">262</a> of file <a class="el" href="pa__datetime_8cpp_source.html">pa_datetime.cpp</a>.</p>
+
+</div>
+</div>
 <a id="af3f40d20f805f077de75a4448cb27957"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af3f40d20f805f077de75a4448cb27957">&#9670;&nbsp;</a></span>greenwich_sidereal_time_to_universal_time()</h2>
 
@@ -418,6 +478,60 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;int utHours, int utMinutes, int utSeconds, int gwDay, int gwMonth, int gwYear&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__datetime_8cpp_source.html#l00109">109</a> of file <a class="el" href="pa__datetime_8cpp_source.html">pa_datetime.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a98498c80bfdb4c169697a1b5e43ece5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98498c80bfdb4c169697a1b5e43ece5a">&#9670;&nbsp;</a></span>local_sidereal_time_to_greenwich_sidereal_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; int, int, double &gt; local_sidereal_time_to_greenwich_sidereal_time </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lst_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lst_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lst_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geographical_longitude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Local Sidereal Time to Greenwich Sidereal Time. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lst_hours</td><td>Local sidereal time, hours part. </td></tr>
+    <tr><td class="paramname">lst_minutes</td><td>Local sidereal time, minutes part. </td></tr>
+    <tr><td class="paramname">lst_seconds</td><td>Local sidereal time, seconds part. </td></tr>
+    <tr><td class="paramname">geographical_longitude</td><td>Geographical longitude.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;int gst_hours, int gst_minutes, double gst_seconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__datetime_8cpp_source.html#l00288">288</a> of file <a class="el" href="pa__datetime_8cpp_source.html">pa_datetime.cpp</a>.</p>
 
 </div>
 </div>
