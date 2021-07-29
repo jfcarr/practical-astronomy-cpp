@@ -247,3 +247,55 @@ PADateTime::greenwich_sidereal_time_to_universal_time(
   return std::tuple<int, int, double, warning_flags>{ut_hours, ut_minutes,
                                                      ut_seconds, warning_flag};
 }
+
+/**
+ * \brief Convert Greenwich Sidereal Time to Local Sidereal Time
+ *
+ * @param gst_hours Greenwich sidereal time, hours part.
+ * @param gst_minutes Greenwich sidereal time, minutes part.
+ * @param gst_seconds Greenwich sidereal time, seconds part.
+ * @param geographical_longitude Geographical longitude.
+ *
+ * @return tuple <int lst_hours, int lst_minutes, double lst_seconds>
+ */
+std::tuple<int, int, double>
+PADateTime::greenwich_sidereal_time_to_local_sidereal_time(
+    double gst_hours, double gst_minutes, double gst_seconds,
+    double geographical_longitude) {
+  double gst = hms_dh(gst_hours, gst_minutes, gst_seconds);
+  double offset = geographical_longitude / 15;
+  double lst_hours1 = gst + offset;
+  double lst_hours2 = lst_hours1 - (24 * floor(lst_hours1 / 24));
+
+  int lst_hours = decimal_hours_hour(lst_hours2);
+  int lst_minutes = decimal_hours_minute(lst_hours2);
+  double lst_seconds = decimal_hours_second(lst_hours2);
+
+  return std::tuple<int, int, double>{lst_hours, lst_minutes, lst_seconds};
+}
+
+/**
+ * \brief Convert Local Sidereal Time to Greenwich Sidereal Time
+ *
+ * @param lst_hours Local sidereal time, hours part.
+ * @param lst_minutes Local sidereal time, minutes part.
+ * @param lst_seconds Local sidereal time, seconds part.
+ * @param geographical_longitude Geographical longitude.
+ *
+ * @return tuple <int gst_hours, int gst_minutes, double gst_seconds>
+ */
+std::tuple<int, int, double>
+PADateTime::local_sidereal_time_to_greenwich_sidereal_time(
+    double lst_hours, double lst_minutes, double lst_seconds,
+    double geographical_longitude) {
+  double gst = hms_dh(lst_hours, lst_minutes, lst_seconds);
+  double long_hours = geographical_longitude / 15;
+  double gst1 = gst - long_hours;
+  double gst2 = gst1 - (24 * floor(gst1 / 24));
+
+  int gst_hours = decimal_hours_hour(gst2);
+  int gst_minutes = decimal_hours_minute(gst2);
+  double gst_seconds = decimal_hours_second(gst2);
+
+  return std::tuple<int, int, double>{gst_hours, gst_minutes, gst_seconds};
+}

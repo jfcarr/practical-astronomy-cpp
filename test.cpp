@@ -183,3 +183,39 @@ SCENARIO("Convert universal time to and from Greenwich sidereal time",
     }
   }
 }
+
+SCENARIO("Convert Greenwich Sidereal Time to and from Local Sidereal Time",
+         "[date_time]") {
+  GIVEN("A PADateTime object") {
+    PADateTime paDateTime;
+
+    WHEN("Greenwich Sidereal Time is 04:40:05.23, with Geographical Longitude "
+         "of -64") {
+      std::tuple<int, int, double> result =
+          paDateTime.greenwich_sidereal_time_to_local_sidereal_time(4, 40, 5.23,
+                                                                    -64);
+
+      THEN("Local Sidereal Time is 00:24:5.23") {
+        std::tuple<int, int, double> expected = std::make_tuple(0, 24, 5.23);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+      }
+    }
+
+    WHEN("Local Sidereal Time is 00:24:05.23, with Geographical Longitude "
+         "of -64") {
+      std::tuple<int, int, double> result =
+          paDateTime.local_sidereal_time_to_greenwich_sidereal_time(0, 24, 5.23,
+                                                                    -64);
+      THEN("Greenwich Sidereal Time is 04:40:5.23") {
+        std::tuple<int, int, double> expected = std::make_tuple(4, 40, 5.23);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+      }
+    }
+  }
+}
