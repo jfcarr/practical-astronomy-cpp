@@ -6,6 +6,7 @@
 
 using namespace pa_types;
 using namespace pa_util;
+using namespace pa_macros;
 
 /**
  * \brief Gets the date of Easter for the year specified.

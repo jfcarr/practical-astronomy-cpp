@@ -36,3 +36,39 @@ SCENARIO("Convert angle to and from decimal degrees", "[coordinates") {
     }
   }
 }
+
+SCENARIO("Convert Right Ascension to and from Hour Angle", "[coordinates]") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Right Ascension is 18 hours 32 minutes 21 seconds") {
+      std::tuple<double, double, double> result =
+          paCoordinates.right_ascension_to_hour_angle(
+              18, 32, 21, 14, 36, 51.67, false, -4, 22, 4, 1980, -64);
+
+      THEN("Hour angle is 9 hours 52 minutes 23.66 seconds") {
+        std::tuple<double, double, double> expected =
+            std::make_tuple(9, 52, 23.66);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+      }
+    }
+
+    WHEN("Hour Angle is 9 hours 52 minutes 23.66 seconds") {
+      std::tuple<double, double, double> result =
+          paCoordinates.hour_angle_to_right_ascension(
+              9, 52, 23.66, 14, 36, 51.67, false, -4, 22, 4, 1980, -64);
+
+      THEN("Right Ascension is 18 hours 32 minutes 21 seconds") {
+        std::tuple<double, double, double> expected =
+            std::make_tuple(18, 32, 21);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+      }
+    }
+  }
+}
