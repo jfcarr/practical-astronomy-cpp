@@ -18,11 +18,14 @@ run-test: build-test
 
 build-test: test
 
-test: test.o pa_macros.o pa_util.o pa_datetime.o
-	$(COMPILER) -o test test.o pa_datetime.o pa_util.o pa_macros.o
+test: test.o test_datetime.o pa_macros.o pa_util.o pa_datetime.o
+	$(COMPILER) -o test test.o test_datetime.o pa_datetime.o pa_util.o pa_macros.o
 
 test.o: test.cpp
 	$(COMPILER) -std=$(CPP_STD) -c test.cpp
+
+test_datetime.o: test_datetime.cpp
+	$(COMPILER) -std=$(CPP_STD) -c test_datetime.cpp
 
 pa_datetime.o: lib/pa_datetime.cpp lib/pa_datetime.h
 	$(COMPILER) -std=$(CPP_STD) -c lib/pa_datetime.cpp
