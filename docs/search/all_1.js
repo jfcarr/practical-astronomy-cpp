@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['decimal_5fhours_5fhour_3',['decimal_hours_hour',['../pa__macros_8cpp.html#aae3208a69452872e03c79b984be08b9a',1,'decimal_hours_hour(double decimal_hours):&#160;pa_macros.cpp'],['../pa__macros_8h.html#a00b42933d49e36d88f1bf574337457d9',1,'decimal_hours_hour(double decimalHours):&#160;pa_macros.cpp']]],
-  ['decimal_5fhours_5fminute_4',['decimal_hours_minute',['../pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e',1,'decimal_hours_minute(double decimal_hours):&#160;pa_macros.cpp'],['../pa__macros_8h.html#ad51d420da53d3f525d5996099353773e',1,'decimal_hours_minute(double decimal_hours):&#160;pa_macros.cpp']]],
-  ['decimal_5fhours_5fsecond_5',['decimal_hours_second',['../pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600',1,'decimal_hours_second(double decimal_hours):&#160;pa_macros.cpp'],['../pa__macros_8h.html#ac32da2203b0d5f1f5a4ebe482c6d4600',1,'decimal_hours_second(double decimal_hours):&#160;pa_macros.cpp']]],
-  ['decimal_5fhours_5fto_5fcivil_5ftime_6',['decimal_hours_to_civil_time',['../classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f',1,'PADateTime']]]
+  ['civil_5fdate_5fto_5fday_5fnumber_1',['civil_date_to_day_number',['../classPADateTime.html#ae084b1b15cffe775de69593724f2ed16',1,'PADateTime']]],
+  ['civil_5fdate_5fto_5fjulian_5fdate_2',['civil_date_to_julian_date',['../pa__macros_8cpp.html#a58764743980ce2d3a24c0699969773c9',1,'civil_date_to_julian_date(double day, double month, double year):&#160;pa_macros.cpp'],['../pa__macros_8h.html#a58764743980ce2d3a24c0699969773c9',1,'civil_date_to_julian_date(double day, double month, double year):&#160;pa_macros.cpp']]],
+  ['civil_5ftime_5fto_5fdecimal_5fhours_3',['civil_time_to_decimal_hours',['../classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e',1,'PADateTime']]]
 ];

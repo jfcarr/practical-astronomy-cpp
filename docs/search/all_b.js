@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['warning_31',['warning',['../namespacepa__types.html#abd8e28d1f6cc273e99b3cbaf226bb55aa8de9aef05fc85e519a0cfce33573f492',1,'pa_types']]],
-  ['warning_5fflags_32',['warning_flags',['../namespacepa__types.html#abd8e28d1f6cc273e99b3cbaf226bb55a',1,'pa_types']]]
+  ['universal_5ftime_5fto_5fgreenwich_5fsidereal_5ftime_34',['universal_time_to_greenwich_sidereal_time',['../classPADateTime.html#ac83527c60b03732822ac09b95f4b2369',1,'PADateTime']]],
+  ['universal_5ftime_5fto_5flocal_5fcivil_5ftime_35',['universal_time_to_local_civil_time',['../classPADateTime.html#af6cf7cad2d01fb3cff89c026690021f7',1,'PADateTime']]]
 ];
