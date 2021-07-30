@@ -98,6 +98,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a16092431a788465f80c4c7e6a17141a3"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a16092431a788465f80c4c7e6a17141a3">decimal_degrees_to_angle</a> (double decimal_degrees)</td></tr>
 <tr class="memdesc:a16092431a788465f80c4c7e6a17141a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Decimal Degrees to an Angle (degrees, minutes, and seconds)  <a href="classPACoordinates.html#a16092431a788465f80c4c7e6a17141a3">More...</a><br /></td></tr>
 <tr class="separator:a16092431a788465f80c4c7e6a17141a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae75af9fcb1656b9e6fc7cc9937a8cd0"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#aae75af9fcb1656b9e6fc7cc9937a8cd0">right_ascension_to_hour_angle</a> (double ra_hours, double ra_minutes, double ra_seconds, double lct_hours, double lct_minutes, double lct_seconds, bool is_daylight_savings, int zone_correction, double local_day, int local_month, int local_year, double geographical_longitude)</td></tr>
+<tr class="memdesc:aae75af9fcb1656b9e6fc7cc9937a8cd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Right Ascension to Hour Angle.  <a href="classPACoordinates.html#aae75af9fcb1656b9e6fc7cc9937a8cd0">More...</a><br /></td></tr>
+<tr class="separator:aae75af9fcb1656b9e6fc7cc9937a8cd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a051d7b5cdbfad4470f9013dbb5dccb9d"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a051d7b5cdbfad4470f9013dbb5dccb9d">hour_angle_to_right_ascension</a> (double hour_angle_hours, double hour_angle_minutes, double hour_angle_seconds, double lct_hours, double lct_minutes, double lct_seconds, bool is_daylight_savings, int zone_correction, double local_day, int local_month, int local_year, double geographical_longitude)</td></tr>
+<tr class="memdesc:a051d7b5cdbfad4470f9013dbb5dccb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Hour Angle to Right Ascension.  <a href="classPACoordinates.html#a051d7b5cdbfad4470f9013dbb5dccb9d">More...</a><br /></td></tr>
+<tr class="separator:a051d7b5cdbfad4470f9013dbb5dccb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -146,7 +152,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Decimal Degrees </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00019">19</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00020">20</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>
@@ -175,7 +181,193 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;double degrees, double minutes, double seconds&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00037">37</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00038">38</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a051d7b5cdbfad4470f9013dbb5dccb9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a051d7b5cdbfad4470f9013dbb5dccb9d">&#9670;&nbsp;</a></span>hour_angle_to_right_ascension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double &gt; hour_angle_to_right_ascension </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>hour_angle_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>hour_angle_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>hour_angle_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_daylight_savings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zone_correction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>local_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>local_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>local_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geographical_longitude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Hour Angle to Right Ascension. </p>
+<p>tuple &lt;double right_ascension_hours, double right_ascension_minutes, double right_ascension_seconds&gt; </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00086">86</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aae75af9fcb1656b9e6fc7cc9937a8cd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae75af9fcb1656b9e6fc7cc9937a8cd0">&#9670;&nbsp;</a></span>right_ascension_to_hour_angle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double &gt; right_ascension_to_hour_angle </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_daylight_savings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zone_correction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>local_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>local_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>local_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geographical_longitude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Right Ascension to Hour Angle. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;double hour_angle_hours, double hour_angle_minutes, double hour_angle_seconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00060">60</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>
