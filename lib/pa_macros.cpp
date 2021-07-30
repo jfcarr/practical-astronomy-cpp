@@ -4,6 +4,7 @@
 
 using namespace pa_util;
 
+namespace pa_macros {
 /**
  * \brief Convert a Civil Time (hours,minutes,seconds) to Decimal Hours
  *
@@ -180,3 +181,179 @@ int julian_date_year(double julian_date) {
 
   return (int)returnValue;
 }
+
+/**
+ * \brief Convert Right Ascension to Hour Angle
+ *
+ * Original macro name: RAHA
+ */
+double right_ascension_to_hour_angle(double ra_hours, double ra_minutes,
+                                     double ra_seconds, double lct_hours,
+                                     double lct_minutes, double lct_seconds,
+                                     int daylight_saving, int zone_correction,
+                                     double local_day, int local_month,
+                                     int local_year,
+                                     double geographical_longitude) {
+  double a = local_civil_time_to_universal_time(
+      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
+      local_day, local_month, local_year);
+  double b = local_civil_time_greenwich_day(lct_hours, lct_minutes, lct_seconds,
+                                            daylight_saving, zone_correction,
+                                            local_day, local_month, local_year);
+  int c = local_civil_time_greenwich_month(lct_hours, lct_minutes, lct_seconds,
+                                           daylight_saving, zone_correction,
+                                           local_day, local_month, local_year);
+  int d = local_civil_time_greenwich_year(lct_hours, lct_minutes, lct_seconds,
+                                          daylight_saving, zone_correction,
+                                          local_day, local_month, local_year);
+  double e = universal_time_to_greenwich_sidereal_time(a, 0, 0, b, c, d);
+  double f = greenwich_sidereal_time_to_local_sidereal_time(
+      e, 0, 0, geographical_longitude);
+  double g = hms_dh(ra_hours, ra_minutes, ra_seconds);
+  double h = f - g;
+
+  return (h < 0) ? 24 + h : h;
+}
+
+/**
+ * \brief Convert Hour Angle to Right Ascension
+ *
+ * Original macro name: HARA
+ */
+double hour_angle_to_right_ascension(double hour_angle_hours,
+                                     double hour_angle_minutes,
+                                     double hour_angle_seconds,
+                                     double lct_hours, double lct_minutes,
+                                     double lct_seconds, int daylight_saving,
+                                     int zone_correction, double local_day,
+                                     int local_month, int local_year,
+                                     double geographical_longitude) {
+  double a = local_civil_time_to_universal_time(
+      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
+      local_day, local_month, local_year);
+  double b = local_civil_time_greenwich_day(lct_hours, lct_minutes, lct_seconds,
+                                            daylight_saving, zone_correction,
+                                            local_day, local_month, local_year);
+  int c = local_civil_time_greenwich_month(lct_hours, lct_minutes, lct_seconds,
+                                           daylight_saving, zone_correction,
+                                           local_day, local_month, local_year);
+  int d = local_civil_time_greenwich_year(lct_hours, lct_minutes, lct_seconds,
+                                          daylight_saving, zone_correction,
+                                          local_day, local_month, local_year);
+  double e = universal_time_to_greenwich_sidereal_time(a, 0, 0, b, c, d);
+  double f = greenwich_sidereal_time_to_local_sidereal_time(
+      e, 0, 00, geographical_longitude);
+  double g = hms_dh(hour_angle_hours, hour_angle_minutes, hour_angle_seconds);
+  double h = f - g;
+
+  return (h < 0) ? 24 + h : h;
+}
+
+/**
+ * \brief Convert Local Civil Time to Universal Time
+ *
+ * Original macro name: LctUT
+ */
+double local_civil_time_to_universal_time(double lct_hours, double lct_minutes,
+                                          double lct_seconds,
+                                          int daylight_saving,
+                                          int zone_correction, double local_day,
+                                          int local_month, int local_year) {
+  double a = hms_dh(lct_hours, lct_minutes, lct_seconds);
+  double b = a - daylight_saving - zone_correction;
+  double c = local_day + (b / 24);
+  double d = civil_date_to_julian_date(c, local_month, local_year);
+  double e = julian_date_day(d);
+  double e1 = floor(e);
+
+  return 24 * (e - e1);
+}
+
+/**
+ * \brief Determine Greenwich Day for Local Time
+ *
+ * Original macro name: LctGDay
+ */
+double local_civil_time_greenwich_day(double lct_hours, double lct_minutes,
+                                      double lct_seconds, int daylight_saving,
+                                      int zone_correction, double local_day,
+                                      int local_month, int local_year) {
+  double a = hms_dh(lct_hours, lct_minutes, lct_seconds);
+  double b = a - daylight_saving - zone_correction;
+  double c = local_day + (b / 24);
+  double d = civil_date_to_julian_date(c, local_month, local_year);
+  double e = julian_date_day(d);
+
+  return floor(e);
+}
+
+/**
+ * \brief Determine Greenwich Month for Local Time
+ *
+ * Original macro name: LctGMonth
+ */
+double local_civil_time_greenwich_month(double lct_hours, double lct_minutes,
+                                        double lct_seconds, int daylight_saving,
+                                        int zone_correction, double local_day,
+                                        int local_month, int local_year) {
+  double a = hms_dh(lct_hours, lct_minutes, lct_seconds);
+  double b = a - daylight_saving - zone_correction;
+  double c = local_day + (b / 24);
+  double d = civil_date_to_julian_date(c, local_month, local_year);
+
+  return julian_date_month(d);
+}
+
+/**
+ * \brief Determine Greenwich Year for Local Time
+ *
+ * Original macro name: LctGYear
+ */
+double local_civil_time_greenwich_year(double lct_hours, double lct_minutes,
+                                       double lct_seconds, int daylight_saving,
+                                       int zone_correction, double local_day,
+                                       int local_month, int local_year) {
+  double a = hms_dh(lct_hours, lct_minutes, lct_seconds);
+  double b = a - daylight_saving - zone_correction;
+  double c = local_day + (b / 24);
+  double d = civil_date_to_julian_date(c, local_month, local_year);
+
+  return julian_date_year(d);
+}
+
+/**
+ * \brief Convert Universal Time to Greenwich Sidereal Time
+ *
+ * Original macro name: UTGST
+ */
+double universal_time_to_greenwich_sidereal_time(
+    double u_hours, double u_minutes, double u_seconds, double greenwich_day,
+    int greenwich_month, int greenwich_year) {
+  double a =
+      civil_date_to_julian_date(greenwich_day, greenwich_month, greenwich_year);
+  double b = a - 2451545;
+  double c = b / 36525;
+  double d = 6.697374558 + (2400.051336 * c) + (0.000025862 * c * c);
+  double e = d - (24 * floor(d / 24));
+  double f = hms_dh(u_hours, u_minutes, u_seconds);
+  double g = f * 1.002737909;
+  double h = e + g;
+
+  return h - (24 * floor(h / 24));
+}
+
+/**
+ * \brief Convert Greenwich Sidereal Time to Local Sidereal Time
+ *
+ * Original macro name: GSTLST
+ */
+double greenwich_sidereal_time_to_local_sidereal_time(
+    double greenwich_hours, double greenwich_minutes, double greenwich_seconds,
+    double geographical_longitude) {
+  double a = hms_dh(greenwich_hours, greenwich_minutes, greenwich_seconds);
+  double b = geographical_longitude / 15;
+  double c = a + b;
+
+  return c - (24 * floor(c / 24));
+}
+} // namespace pa_macros
