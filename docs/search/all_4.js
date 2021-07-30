@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['is_5fleap_5fyear_11',['is_leap_year',['../namespacepa__util.html#ac7bb760deb727f628b940cedd89156d4',1,'pa_util']]]
+  ['hms_5fdh_12',['hms_dh',['../pa__macros_8cpp.html#a345aa06a6dcf26eff9dd54dc5f212d96',1,'hms_dh(double hours, double minutes, double seconds):&#160;pa_macros.cpp'],['../pa__macros_8h.html#a345aa06a6dcf26eff9dd54dc5f212d96',1,'hms_dh(double hours, double minutes, double seconds):&#160;pa_macros.cpp']]]
 ];

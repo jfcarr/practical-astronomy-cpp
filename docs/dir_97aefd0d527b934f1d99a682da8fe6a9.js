@@ -1,5 +1,9 @@
 var dir_97aefd0d527b934f1d99a682da8fe6a9 =
 [
+    [ "pa_coordinates.cpp", "pa__coordinates_8cpp.html", null ],
+    [ "pa_coordinates.h", "pa__coordinates_8h.html", [
+      [ "PACoordinates", "classPACoordinates.html", "classPACoordinates" ]
+    ] ],
     [ "pa_datetime.cpp", "pa__datetime_8cpp.html", null ],
     [ "pa_datetime.h", "pa__datetime_8h.html", [
       [ "PADateTime", "classPADateTime.html", "classPADateTime" ]
