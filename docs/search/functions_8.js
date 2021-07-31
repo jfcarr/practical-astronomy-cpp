@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['right_5fascension_5fto_5fhour_5fangle_81',['right_ascension_to_hour_angle',['../classPACoordinates.html#aae75af9fcb1656b9e6fc7cc9937a8cd0',1,'PACoordinates::right_ascension_to_hour_angle()'],['../namespacepa__macros.html#aec9b7e82a4f2267f42f488684c402c01',1,'pa_macros::right_ascension_to_hour_angle()']]],
-  ['round_82',['round',['../namespacepa__util.html#ae6aecae204931a8a57e242e8d8c783b2',1,'pa_util']]]
+  ['local_5fcivil_5ftime_5fgreenwich_5fday_105',['local_civil_time_greenwich_day',['../namespacepa__macros.html#a836f1c31c4249f37050e25cc94369dfa',1,'pa_macros']]],
+  ['local_5fcivil_5ftime_5fgreenwich_5fmonth_106',['local_civil_time_greenwich_month',['../namespacepa__macros.html#a75f7c7fcf405ed0072dd7c9f85207199',1,'pa_macros']]],
+  ['local_5fcivil_5ftime_5fgreenwich_5fyear_107',['local_civil_time_greenwich_year',['../namespacepa__macros.html#a5b5a7641aa96923b29e9d4405bb25956',1,'pa_macros']]],
+  ['local_5fcivil_5ftime_5fto_5funiversal_5ftime_108',['local_civil_time_to_universal_time',['../classPADateTime.html#ad1379a2a6e6af91037149815b469438e',1,'PADateTime::local_civil_time_to_universal_time()'],['../namespacepa__macros.html#a6728ae3e47e31616752f31031cce1bd0',1,'pa_macros::local_civil_time_to_universal_time()']]],
+  ['local_5fsidereal_5ftime_5fto_5fgreenwich_5fsidereal_5ftime_109',['local_sidereal_time_to_greenwich_sidereal_time',['../classPADateTime.html#a98498c80bfdb4c169697a1b5e43ece5a',1,'PADateTime']]]
 ];

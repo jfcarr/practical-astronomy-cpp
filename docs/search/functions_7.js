@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['local_5fcivil_5ftime_5fgreenwich_5fday_76',['local_civil_time_greenwich_day',['../namespacepa__macros.html#a836f1c31c4249f37050e25cc94369dfa',1,'pa_macros']]],
-  ['local_5fcivil_5ftime_5fgreenwich_5fmonth_77',['local_civil_time_greenwich_month',['../namespacepa__macros.html#a75f7c7fcf405ed0072dd7c9f85207199',1,'pa_macros']]],
-  ['local_5fcivil_5ftime_5fgreenwich_5fyear_78',['local_civil_time_greenwich_year',['../namespacepa__macros.html#a5b5a7641aa96923b29e9d4405bb25956',1,'pa_macros']]],
-  ['local_5fcivil_5ftime_5fto_5funiversal_5ftime_79',['local_civil_time_to_universal_time',['../classPADateTime.html#ad1379a2a6e6af91037149815b469438e',1,'PADateTime::local_civil_time_to_universal_time()'],['../namespacepa__macros.html#a6728ae3e47e31616752f31031cce1bd0',1,'pa_macros::local_civil_time_to_universal_time()']]],
-  ['local_5fsidereal_5ftime_5fto_5fgreenwich_5fsidereal_5ftime_80',['local_sidereal_time_to_greenwich_sidereal_time',['../classPADateTime.html#a98498c80bfdb4c169697a1b5e43ece5a',1,'PADateTime']]]
+  ['julian_5fdate_5fday_102',['julian_date_day',['../namespacepa__macros.html#a5fd78858bdf83d01baf3bd3d51e266f6',1,'pa_macros']]],
+  ['julian_5fdate_5fmonth_103',['julian_date_month',['../namespacepa__macros.html#aa8c42cd3facabaa7130faf475a34c166',1,'pa_macros']]],
+  ['julian_5fdate_5fyear_104',['julian_date_year',['../namespacepa__macros.html#aa1bb65879d6f9dcb8c4d09479d5fa8f3',1,'pa_macros']]]
 ];
