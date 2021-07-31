@@ -80,8 +80,8 @@ std::tuple<double, double, double> PACoordinates::right_ascension_to_hour_angle(
 /**
  * \brief Convert Hour Angle to Right Ascension
  *
- * tuple <double right_ascension_hours, double right_ascension_minutes, double
- * right_ascension_seconds>
+ * @return tuple <double right_ascension_hours, double right_ascension_minutes,
+ * double right_ascension_seconds>
  */
 std::tuple<double, double, double> PACoordinates::hour_angle_to_right_ascension(
     double hour_angle_hours, double hour_angle_minutes,
@@ -102,4 +102,80 @@ std::tuple<double, double, double> PACoordinates::hour_angle_to_right_ascension(
 
   return std::tuple<double, double, double>{
       right_ascension_hours, right_ascension_minutes, right_ascension_seconds};
+}
+
+/**
+ * \brief Convert Equatorial Coordinates to Horizon Coordinates
+ *
+ * @return tuple <double azimuthDegrees, double azimuthMinutes, double
+ * azimuthSeconds, double altitudeDegrees, double altitudeMinutes, double
+ * altitudeSeconds>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::equatorial_coordinates_to_horizon_coordinates(
+    double hour_angle_hours, double hour_angle_minutes,
+    double hour_angle_seconds, double declination_degrees,
+    double declination_minutes, double declination_seconds,
+    double geographical_latitude) {
+  double azimuth_in_decimal_degrees = equatorial_coordinates_to_azimuth(
+      hour_angle_hours, hour_angle_minutes, hour_angle_seconds,
+      declination_degrees, declination_minutes, declination_seconds,
+      geographical_latitude);
+
+  double altitude_in_decimal_degrees = equatorial_coordinates_to_altitude(
+      hour_angle_hours, hour_angle_minutes, hour_angle_seconds,
+      declination_degrees, declination_minutes, declination_seconds,
+      geographical_latitude);
+
+  double azimuth_degrees = decimal_degrees_degrees(azimuth_in_decimal_degrees);
+  double azimuth_minutes = decimal_degrees_minutes(azimuth_in_decimal_degrees);
+  double azimuth_seconds = decimal_degrees_seconds(azimuth_in_decimal_degrees);
+
+  double altitude_degrees =
+      decimal_degrees_degrees(altitude_in_decimal_degrees);
+  double altitude_minutes =
+      decimal_degrees_minutes(altitude_in_decimal_degrees);
+  double altitude_seconds =
+      decimal_degrees_seconds(altitude_in_decimal_degrees);
+
+  return std::tuple<double, double, double, double, double, double>{
+      azimuth_degrees,  azimuth_minutes,  azimuth_seconds,
+      altitude_degrees, altitude_minutes, altitude_seconds};
+}
+
+/**
+ * \brief Convert Horizon Coordinates to Equatorial Coordinates
+ *
+ * @return tuple <double hour_angle_hours, double hour_angle_minutes, double
+ * hour_angle-seconds, double declination_degrees, double declination_minutes,
+ * double declination_seconds>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::horizon_coordinates_to_equatorial_coordinates(
+    double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
+    double altitude_degrees, double altitude_minutes, double altitude_seconds,
+    double geographical_latitude) {
+  double hour_angle_in_decimal_degrees = horizon_coordinates_to_hour_angle(
+      azimuth_degrees, azimuth_minutes, azimuth_seconds, altitude_degrees,
+      altitude_minutes, altitude_seconds, geographical_latitude);
+
+  double declination_in_decimal_degrees = horizon_coordinates_to_declination(
+      azimuth_degrees, azimuth_minutes, azimuth_seconds, altitude_degrees,
+      altitude_minutes, altitude_seconds, geographical_latitude);
+
+  int hour_angle_hours = decimal_hours_hour(hour_angle_in_decimal_degrees);
+  int hour_angle_minutes = decimal_hours_minute(hour_angle_in_decimal_degrees);
+  double hour_angle_seconds =
+      decimal_hours_second(hour_angle_in_decimal_degrees);
+
+  double declination_degrees =
+      decimal_degrees_degrees(declination_in_decimal_degrees);
+  double declination_minutes =
+      decimal_degrees_minutes(declination_in_decimal_degrees);
+  double declination_seconds =
+      decimal_degrees_seconds(declination_in_decimal_degrees);
+
+  return std::tuple<double, double, double, double, double, double>{
+      hour_angle_hours,    hour_angle_minutes,  hour_angle_seconds,
+      declination_degrees, declination_minutes, declination_seconds};
 }

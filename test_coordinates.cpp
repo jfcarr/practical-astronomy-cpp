@@ -72,3 +72,49 @@ SCENARIO("Convert Right Ascension to and from Hour Angle", "[coordinates]") {
     }
   }
 }
+
+SCENARIO("Convert Equatorial Coordinates to and from Horizon Coordinates") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Equatorial Coordinates are azimuth 5 degrees, 51 minutes, 44 seconds "
+         "and altitude 23 degrees, 13 minutes, 10 seconds") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.equatorial_coordinates_to_horizon_coordinates(
+              5, 51, 44, 23, 13, 10, 52);
+      THEN("Horizon Coordinates are azimuth 283 degrees 16 minutes 15.7 "
+           "seconds and altitude 19 degrees 20 minutes 3.64 seconds") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(283, 16, 15.7, 19, 20, 3.64);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+    WHEN("Horizon coordinates are azimuth 283 degrees 16 minutes 15.7 seconds "
+         "and altitude 19 degrees 20 minutes 3.64 seconds") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.horizon_coordinates_to_equatorial_coordinates(
+              283, 16, 15.7, 19, 20, 3.64, 52);
+      THEN("Equatorial coordinates are azimuth 5 degrees 51 minutes 44 seconds "
+           "and altitude 23 degrees 13 minutes 10 seconds") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(5, 51, 44, 23, 13, 10);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}
+// Assert.Equal((5, 51, 44, 23, 13, 10),
+// _paCoordinates.HorizonCoordinatesToEquatorialCoordinates(283, 16, 15.7, 19,
+// 20, 3.64, 52));
