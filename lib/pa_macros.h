@@ -49,5 +49,36 @@ double hour_angle_to_right_ascension(double hour_angle_hours,
                                      int zone_correction, double local_day,
                                      int local_month, int local_year,
                                      double geographical_longitude);
+double equatorial_coordinates_to_azimuth(double hour_angle_hours,
+                                         double hour_angle_minutes,
+                                         double hour_angle_seconds,
+                                         double declination_degrees,
+                                         double declination_minutes,
+                                         double declination_seconds,
+                                         double geographical_latitude);
+double degrees_minutes_seconds_to_decimal_degrees(double degrees,
+                                                  double minutes,
+                                                  double seconds);
+double degrees(double w);
+double equatorial_coordinates_to_altitude(double hour_angle_hours,
+                                          double hour_angle_minutes,
+                                          double hour_angle_seconds,
+                                          double declination_degrees,
+                                          double declination_minutes,
+                                          double declination_seconds,
+                                          double geographical_latitude);
+double decimal_degrees_degrees(double decimal_degrees);
+double decimal_degrees_minutes(double decimal_degrees);
+double decimal_degrees_seconds(double decimal_degrees);
+double horizon_coordinates_to_declination(
+    double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
+    double altitude_degrees, double altitude_minutes, double altitude_seconds,
+    double geographical_latitude);
+double horizon_coordinates_to_hour_angle(
+    double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
+    double altitude_degrees, double altitude_minutes, double altitude_seconds,
+    double geographical_latitude);
+double decimal_degrees_to_degree_hours(double decimal_degrees);
+double degree_hours_to_decimal_degrees(double degree_hours);
 } // namespace pa_macros
 #endif

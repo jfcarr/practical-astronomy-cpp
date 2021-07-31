@@ -24,5 +24,20 @@ public:
       double lct_seconds, bool is_daylight_savings, int zone_correction,
       double local_day, int local_month, int local_year,
       double geographical_longitude);
+
+  std::tuple<double, double, double, double, double, double>
+  equatorial_coordinates_to_horizon_coordinates(double hour_angle_hours,
+                                                double hour_angle_minutes,
+                                                double hour_angle_seconds,
+                                                double declination_degrees,
+                                                double declination_minutes,
+                                                double declination_seconds,
+                                                double geographical_latitude);
+
+  std::tuple<double, double, double, double, double, double>
+  horizon_coordinates_to_equatorial_coordinates(
+      double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
+      double altitude_degrees, double altitude_minutes, double altitude_seconds,
+      double geographical_latitude);
 };
 #endif

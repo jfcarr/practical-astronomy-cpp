@@ -104,6 +104,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a051d7b5cdbfad4470f9013dbb5dccb9d"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a051d7b5cdbfad4470f9013dbb5dccb9d">hour_angle_to_right_ascension</a> (double hour_angle_hours, double hour_angle_minutes, double hour_angle_seconds, double lct_hours, double lct_minutes, double lct_seconds, bool is_daylight_savings, int zone_correction, double local_day, int local_month, int local_year, double geographical_longitude)</td></tr>
 <tr class="memdesc:a051d7b5cdbfad4470f9013dbb5dccb9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Hour Angle to Right Ascension.  <a href="classPACoordinates.html#a051d7b5cdbfad4470f9013dbb5dccb9d">More...</a><br /></td></tr>
 <tr class="separator:a051d7b5cdbfad4470f9013dbb5dccb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeaa16cf056ccbbccad424cc499154be"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#abeaa16cf056ccbbccad424cc499154be">equatorial_coordinates_to_horizon_coordinates</a> (double hour_angle_hours, double hour_angle_minutes, double hour_angle_seconds, double declination_degrees, double declination_minutes, double declination_seconds, double geographical_latitude)</td></tr>
+<tr class="memdesc:abeaa16cf056ccbbccad424cc499154be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Equatorial Coordinates to Horizon Coordinates.  <a href="classPACoordinates.html#abeaa16cf056ccbbccad424cc499154be">More...</a><br /></td></tr>
+<tr class="separator:abeaa16cf056ccbbccad424cc499154be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a998797a6ddc3eb67c31d9ceca6abde77"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a998797a6ddc3eb67c31d9ceca6abde77">horizon_coordinates_to_equatorial_coordinates</a> (double azimuth_degrees, double azimuth_minutes, double azimuth_seconds, double altitude_degrees, double altitude_minutes, double altitude_seconds, double geographical_latitude)</td></tr>
+<tr class="memdesc:a998797a6ddc3eb67c31d9ceca6abde77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Horizon Coordinates to Equatorial Coordinates.  <a href="classPACoordinates.html#a998797a6ddc3eb67c31d9ceca6abde77">More...</a><br /></td></tr>
+<tr class="separator:a998797a6ddc3eb67c31d9ceca6abde77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -182,6 +188,132 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;double degrees, double minutes, double seconds&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00038">38</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abeaa16cf056ccbbccad424cc499154be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeaa16cf056ccbbccad424cc499154be">&#9670;&nbsp;</a></span>equatorial_coordinates_to_horizon_coordinates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; equatorial_coordinates_to_horizon_coordinates </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>hour_angle_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>hour_angle_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>hour_angle_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>declination_degrees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>declination_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>declination_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geographical_latitude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Equatorial Coordinates to Horizon Coordinates. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;double azimuthDegrees, double azimuthMinutes, double azimuthSeconds, double altitudeDegrees, double altitudeMinutes, double altitudeSeconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00115">115</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a998797a6ddc3eb67c31d9ceca6abde77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a998797a6ddc3eb67c31d9ceca6abde77">&#9670;&nbsp;</a></span>horizon_coordinates_to_equatorial_coordinates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; horizon_coordinates_to_equatorial_coordinates </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>azimuth_degrees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>azimuth_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>azimuth_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>altitude_degrees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>altitude_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>altitude_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geographical_latitude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Horizon Coordinates to Equatorial Coordinates. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;double hour_angle_hours, double hour_angle_minutes, double hour_angle-seconds, double declination_degrees, double declination_minutes, double declination_seconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00154">154</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>
@@ -272,7 +404,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Convert Hour Angle to Right Ascension. </p>
-<p>tuple &lt;double right_ascension_hours, double right_ascension_minutes, double right_ascension_seconds&gt; </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;double right_ascension_hours, double right_ascension_minutes, double right_ascension_seconds&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00086">86</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 

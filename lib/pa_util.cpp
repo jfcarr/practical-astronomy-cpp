@@ -38,4 +38,14 @@ double round(double input, int places) {
 
   return (int)a / multiplier;
 }
+
+/**
+ * \brief Convert degrees to radians
+ */
+double degrees_to_radians(double degrees) { return (degrees * M_PI) / 180; }
+
+/**
+ * \brief Convert radians to degrees
+ */
+double radians_to_degrees(double radians) { return (radians * 180) / M_PI; }
 } // namespace pa_util

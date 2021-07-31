@@ -356,4 +356,183 @@ double greenwich_sidereal_time_to_local_sidereal_time(
 
   return c - (24 * floor(c / 24));
 }
+
+/**
+ * \brief Convert Equatorial Coordinates to Azimuth (in decimal degrees)
+ *
+ * Original macro name: EQAz
+ */
+double equatorial_coordinates_to_azimuth(double hour_angle_hours,
+                                         double hour_angle_minutes,
+                                         double hour_angle_seconds,
+                                         double declination_degrees,
+                                         double declination_minutes,
+                                         double declination_seconds,
+                                         double geographical_latitude) {
+  double a = hms_dh(hour_angle_hours, hour_angle_minutes, hour_angle_seconds);
+  double b = a * 15;
+  double c = degrees_to_radians(b);
+  double d = degrees_minutes_seconds_to_decimal_degrees(
+      declination_degrees, declination_minutes, declination_seconds);
+  double e = degrees_to_radians(d);
+  double f = degrees_to_radians(geographical_latitude);
+  double g = sin(e) * sin(f) + cos(e) * cos(f) * cos(c);
+  double h = -cos(e) * cos(f) * sin(c);
+  double i = sin(e) - (sin(f) * g);
+  double j = degrees(atan2(h, i));
+
+  return j - 360.0 * floor(j / 360);
+}
+
+/**
+ * \brief Convert Equatorial Coordinates to Altitude (in decimal degrees)
+ *
+ * Original macro name: EQAlt
+ */
+double equatorial_coordinates_to_altitude(double hour_angle_hours,
+                                          double hour_angle_minutes,
+                                          double hour_angle_seconds,
+                                          double declination_degrees,
+                                          double declination_minutes,
+                                          double declination_seconds,
+                                          double geographical_latitude) {
+  double a = hms_dh(hour_angle_hours, hour_angle_minutes, hour_angle_seconds);
+  double b = a * 15;
+  double c = degrees_to_radians(b);
+  double d = degrees_minutes_seconds_to_decimal_degrees(
+      declination_degrees, declination_minutes, declination_seconds);
+  double e = degrees_to_radians(d);
+  double f = degrees_to_radians(geographical_latitude);
+  double g = sin(e) * sin(f) + cos(e) * cos(f) * cos(c);
+
+  return degrees(asin(g));
+}
+
+/**
+ * \brief Convert Degrees Minutes Seconds to Decimal Degrees
+ *
+ * Original macro name: DMSDD
+ */
+double degrees_minutes_seconds_to_decimal_degrees(double degrees,
+                                                  double minutes,
+                                                  double seconds) {
+  double a = std::abs(seconds) / 60;
+  double b = (std::abs(minutes) + a) / 60;
+  double c = std::abs(degrees) + b;
+
+  return (degrees < 0 || minutes < 0 || seconds < 0) ? -c : c;
+}
+
+/**
+ * \brief Convert W to Degrees
+ *
+ * Original macro name: Degrees
+ */
+double degrees(double w) { return w * 57.29577951; }
+
+/**
+ * \brief Return Degrees part of Decimal Degrees
+ *
+ * Original macro name: DDDeg
+ */
+double decimal_degrees_degrees(double decimal_degrees) {
+  double a = std::abs(decimal_degrees);
+  double b = a * 3600;
+  double c = round(b - 60 * floor(b / 60), 2);
+  double e = (c == 60) ? 60 : b;
+
+  return (decimal_degrees < 0) ? -(floor(e / 3600)) : floor(e / 3600);
+}
+
+/**
+ * \brief Return Minutes part of Decimal Degrees
+ *
+ * Original macro name: DDMin
+ */
+double decimal_degrees_minutes(double decimal_degrees) {
+  double a = std::abs(decimal_degrees);
+  double b = a * 3600;
+  double c = round(b - 60 * floor(b / 60), 2);
+  double e = (c == 60) ? b + 60 : b;
+
+  return (int)floor(e / 60) % 60;
+}
+
+/**
+ * \brief Return Seconds part of Decimal Degrees
+ *
+ * Original macro name: DDSec
+ */
+double decimal_degrees_seconds(double decimal_degrees) {
+  double a = std::abs(decimal_degrees);
+  double b = a * 3600;
+  double c = round(b - 60 * floor(b / 60), 2);
+  double d = (c == 60) ? 0 : c;
+
+  return d;
+}
+
+/**
+ * \brief Convert Decimal Degrees to Degree-Hours
+ *
+ * Original macro name: DDDH
+ */
+double decimal_degrees_to_degree_hours(double decimal_degrees) {
+  return decimal_degrees / 15;
+}
+
+/**
+ * \brief Convert Degree-Hours to Decimal Degrees
+ *
+ * Original macro name: DHDD
+ */
+double degree_hours_to_decimal_degrees(double degree_hours) {
+  return degree_hours * 15;
+}
+
+/**
+ * \brief Convert Horizon Coordinates to Declination (in decimal degrees)
+ *
+ * Original macro name: HORDec
+ */
+double horizon_coordinates_to_declination(
+    double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
+    double altitude_degrees, double altitude_minutes, double altitude_seconds,
+    double geographical_latitude) {
+  double a = degrees_minutes_seconds_to_decimal_degrees(
+      azimuth_degrees, azimuth_minutes, azimuth_seconds);
+  double b = degrees_minutes_seconds_to_decimal_degrees(
+      altitude_degrees, altitude_minutes, altitude_seconds);
+  double c = degrees_to_radians(a);
+  double d = degrees_to_radians(b);
+  double e = degrees_to_radians(geographical_latitude);
+  double f = sin(d) * sin(e) + cos(d) * cos(e) * cos(c);
+
+  return degrees(asin(f));
+}
+
+/**
+ * \brief Convert Horizon Coordinates to Hour Angle (in decimal degrees)
+ *
+ * Original macro name: HORHa
+ */
+double horizon_coordinates_to_hour_angle(
+    double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
+    double altitude_degrees, double altitude_minutes, double altitude_seconds,
+    double geographical_latitude) {
+  double a = degrees_minutes_seconds_to_decimal_degrees(
+      azimuth_degrees, azimuth_minutes, azimuth_seconds);
+  double b = degrees_minutes_seconds_to_decimal_degrees(
+      altitude_degrees, altitude_minutes, altitude_seconds);
+  double c = degrees_to_radians(a);
+  double d = degrees_to_radians(b);
+  double e = degrees_to_radians(geographical_latitude);
+  double f = sin(d) * sin(e) + cos(d) * cos(e) * cos(c);
+  double g = -cos(d) * cos(e) * sin(c);
+  double h = sin(d) - sin(e) * f;
+  double i = decimal_degrees_to_degree_hours(degrees(atan2(g, h)));
+
+  return i - 24 * floor(i / 24);
+}
+
 } // namespace pa_macros
