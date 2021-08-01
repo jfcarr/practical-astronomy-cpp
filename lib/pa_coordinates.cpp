@@ -195,3 +195,90 @@ double PACoordinates::mean_obliquity_of_the_ecliptic(double greenwich_day,
 
   return 23.439292 - de2;
 }
+
+/**
+ * \brief Convert Ecliptic Coordinates to Equatorial Coordinates
+ *
+ * @return tuple <double outRAHours, double outRAMinutes, double outRASeconds,
+ * double outDecDegrees, double outDecMinutes, double outDecSeconds>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::ecliptic_coordinate_to_equatorial_coordinate(
+    double ecliptic_longitude_degrees, double ecliptic_longitude_minutes,
+    double ecliptic_longitude_seconds, double ecliptic_latitude_degrees,
+    double ecliptic_latitude_minutes, double ecliptic_latitude_seconds,
+    double greenwich_day, int greenwich_month, int greenwich_year) {
+  double ec_lon_deg = degrees_minutes_seconds_to_decimal_degrees(
+      ecliptic_longitude_degrees, ecliptic_longitude_minutes,
+      ecliptic_longitude_seconds);
+  double ec_lat_deg = degrees_minutes_seconds_to_decimal_degrees(
+      ecliptic_latitude_degrees, ecliptic_latitude_minutes,
+      ecliptic_latitude_seconds);
+  double ec_lon_rad = degrees_to_radians(ec_lon_deg);
+  double ec_lat_rad = degrees_to_radians(ec_lat_deg);
+  double obliq_deg = obliq(greenwich_day, greenwich_month, greenwich_year);
+  double obliq_rad = degrees_to_radians(obliq_deg);
+  double sin_dec = sin(ec_lat_rad) * cos(obliq_rad) +
+                   cos(ec_lat_rad) * sin(obliq_rad) * sin(ec_lon_rad);
+  double dec_rad = asin(sin_dec);
+  double dec_deg = degrees(dec_rad);
+  double y =
+      sin(ec_lon_rad) * cos(obliq_rad) - tan(ec_lat_rad) * sin(obliq_rad);
+  double x = cos(ec_lon_rad);
+  double ra_rad = atan2(y, x);
+  double ra_deg_1 = degrees(ra_rad);
+  double ra_deg_2 = ra_deg_1 - 360 * floor(ra_deg_1 / 360);
+  double ra_hours = decimal_degrees_to_degree_hours(ra_deg_2);
+
+  int out_ra_hours = decimal_hours_hour(ra_hours);
+  int out_ra_minutes = decimal_hours_minute(ra_hours);
+  double out_ra_seconds = decimal_hours_second(ra_hours);
+  double out_dec_degrees = decimal_degrees_degrees(dec_deg);
+  double out_dec_minutes = decimal_degrees_minutes(dec_deg);
+  double out_dec_seconds = decimal_degrees_seconds(dec_deg);
+
+  return std::tuple<double, double, double, double, double, double>{
+      out_ra_hours,    out_ra_minutes,  out_ra_seconds,
+      out_dec_degrees, out_dec_minutes, out_dec_seconds};
+}
+
+/**
+ * \brief Convert Equatorial Coordinates to Ecliptic Coordinates
+ *
+ * @return tuple <double outEclLongDeg, double outEclLongMin, double
+ * outEclLongSec, double outEclLatDeg, double outEclLatMin, double outEclLatSec>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::equatorial_coordinate_to_ecliptic_coordinate(
+    double ra_hours, double ra_minutes, double ra_seconds, double dec_degrees,
+    double dec_minutes, double dec_seconds, double gw_day, int gw_month,
+    int gw_year) {
+  double ra_deg =
+      degree_hours_to_decimal_degrees(hms_dh(ra_hours, ra_minutes, ra_seconds));
+  double dec_deg = degrees_minutes_seconds_to_decimal_degrees(
+      dec_degrees, dec_minutes, dec_seconds);
+  double ra_rad = degrees_to_radians(ra_deg);
+  double dec_rad = degrees_to_radians(dec_deg);
+  double obliq_deg = obliq(gw_day, gw_month, gw_year);
+  double obliq_rad = degrees_to_radians(obliq_deg);
+  double sin_ecl_lat = sin(dec_rad) * cos(obliq_rad) -
+                       cos(dec_rad) * sin(obliq_rad) * sin(ra_rad);
+  double ecl_lat_rad = asin(sin_ecl_lat);
+  double ecl_lat_deg = degrees(ecl_lat_rad);
+  double y = sin(ra_rad) * cos(obliq_rad) + tan(dec_rad) * sin(obliq_rad);
+  double x = cos(ra_rad);
+  double ecl_long_rad = atan2(y, x);
+  double ecl_long_deg1 = degrees(ecl_long_rad);
+  double ecl_long_deg2 = ecl_long_deg1 - 360 * floor(ecl_long_deg1 / 360);
+
+  double out_ecl_long_deg = decimal_degrees_degrees(ecl_long_deg2);
+  double out_ecl_long_min = decimal_degrees_minutes(ecl_long_deg2);
+  double out_ecl_long_sec = decimal_degrees_seconds(ecl_long_deg2);
+  double out_ecl_lat_deg = decimal_degrees_degrees(ecl_lat_deg);
+  double out_ecl_lat_min = decimal_degrees_minutes(ecl_lat_deg);
+  double out_ecl_lat_sec = decimal_degrees_seconds(ecl_lat_deg);
+
+  return std::tuple<double, double, double, double, double, double>{
+      out_ecl_long_deg, out_ecl_long_min, out_ecl_long_sec,
+      out_ecl_lat_deg,  out_ecl_lat_min,  out_ecl_lat_sec};
+}

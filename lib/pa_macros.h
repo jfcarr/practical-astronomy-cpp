@@ -80,5 +80,8 @@ double horizon_coordinates_to_hour_angle(
     double geographical_latitude);
 double decimal_degrees_to_degree_hours(double decimal_degrees);
 double degree_hours_to_decimal_degrees(double degree_hours);
+double obliq(double greenwich_day, int greenwich_month, int greenwich_year);
+double nutat_long(double gd, int gm, int gy);
+double nutat_obl(double greenwich_day, int greenwich_month, int greenwich_year);
 } // namespace pa_macros
 #endif

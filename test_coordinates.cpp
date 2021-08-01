@@ -132,3 +132,49 @@ SCENARIO("Calculate Obliquity of the Ecliptic") {
     }
   }
 }
+
+SCENARIO("Convert Ecliptic Coordinates to and from Equatorial Coordinates") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Ecliptic coordinates are Ecliptic Longitude 139d 41m 10s and "
+         "Ecliptic Latitude 4d 52m 31s") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.ecliptic_coordinate_to_equatorial_coordinate(
+              139, 41, 10, 4, 52, 31, 6, 7, 2009);
+
+      THEN("Equatorial coordinates are Right Ascension 9h 34m 53.4s and "
+           "Declination 19d 32m 8.52s") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(9, 34, 53.4, 19, 32, 8.52);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+
+    WHEN("Equatorial coordinates are Right Ascension 9h 34m 53.4s and "
+         "Declination 19d 32m 8.52s") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.equatorial_coordinate_to_ecliptic_coordinate(
+              9, 34, 53.4, 19, 32, 8.52, 6, 7, 2009);
+
+      THEN("Ecliptic coordinates are Ecliptic Longitude 139d 41m 9.97s and "
+           "Ecliptic Latitude 4d 52m 30.99s") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(139, 41, 9.97, 4, 52, 30.99);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}
