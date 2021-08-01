@@ -25,6 +25,9 @@ var pa__macros_8h =
     [ "local_civil_time_greenwich_month", "pa__macros_8h.html#a75f7c7fcf405ed0072dd7c9f85207199", null ],
     [ "local_civil_time_greenwich_year", "pa__macros_8h.html#a5b5a7641aa96923b29e9d4405bb25956", null ],
     [ "local_civil_time_to_universal_time", "pa__macros_8h.html#a6728ae3e47e31616752f31031cce1bd0", null ],
+    [ "nutat_long", "pa__macros_8h.html#a391122ac795779141fa6e68be12cfc3d", null ],
+    [ "nutat_obl", "pa__macros_8h.html#a1f4a8335dda7b61e3691c744382bf770", null ],
+    [ "obliq", "pa__macros_8h.html#a4a412f51e0cfdc7030d5d9295a989c6b", null ],
     [ "right_ascension_to_hour_angle", "pa__macros_8h.html#aec9b7e82a4f2267f42f488684c402c01", null ],
     [ "universal_time_to_greenwich_sidereal_time", "pa__macros_8h.html#ae3c090f41754b86e21f4a29b7d3cb464", null ]
 ];

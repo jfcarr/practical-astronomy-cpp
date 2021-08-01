@@ -535,4 +535,125 @@ double horizon_coordinates_to_hour_angle(
   return i - 24 * floor(i / 24);
 }
 
+/**
+ * \brief Obliquity of the Ecliptic for a Greenwich Date
+ *
+ * Original macro name: Obliq
+ */
+double obliq(double greenwich_day, int greenwich_month, int greenwich_year) {
+  double a =
+      civil_date_to_julian_date(greenwich_day, greenwich_month, greenwich_year);
+  double b = a - 2415020;
+  double c = (b / 36525) - 1;
+  double d = c * (46.815 + c * (0.0006 - (c * 0.00181)));
+  double e = d / 3600;
+
+  return 23.43929167 - e +
+         nutat_obl(greenwich_day, greenwich_month, greenwich_year);
+}
+
+/**
+ * \brief Nutation amount to be added in ecliptic longitude, in degrees.
+ *
+ * Original macro name: NutatLong
+ */
+double nutat_long(double gd, int gm, int gy) {
+  double dj = civil_date_to_julian_date(gd, gm, gy) - 2415020;
+  double t = dj / 36525;
+  double t2 = t * t;
+
+  double a = 100.0021358 * t;
+  double b = 360 * (a - floor(a));
+
+  double l1 = 279.6967 + 0.000303 * t2 + b;
+  double l2 = 2 * degrees_to_radians(l1);
+
+  a = 1336.855231 * t;
+  b = 360 * (a - floor(a));
+
+  double d1 = 270.4342 - 0.001133 * t2 + b;
+  double d2 = 2 * degrees_to_radians(d1);
+
+  a = 99.99736056 * t;
+  b = 360 * (a - floor(a));
+
+  double m1 = 358.4758 - 0.00015 * t2 + b;
+  m1 = degrees_to_radians(m1);
+
+  a = 1325.552359 * t;
+  b = 360 * (a - floor(a));
+
+  double m2 = 296.1046 + 0.009192 * t2 + b;
+  m2 = degrees_to_radians(m2);
+
+  a = 5.372616667 * t;
+  b = 360 * (a - floor(a));
+
+  double n1 = 259.1833 + 0.002078 * t2 - b;
+  n1 = degrees_to_radians(n1);
+
+  double n2 = 2.0 * n1;
+
+  double dp = (-17.2327 - 0.01737 * t) * sin(n1);
+  dp = dp + (-1.2729 - 0.00013 * t) * sin(l2) + 0.2088 * sin(n2);
+  dp = dp - 0.2037 * sin(d2) + (0.1261 - 0.00031 * t) * sin(m1);
+  dp = dp + 0.0675 * sin(m2) - (0.0497 - 0.00012 * t) * sin(l2 + m1);
+  dp = dp - 0.0342 * sin(d2 - n1) - 0.0261 * sin(d2 + m2);
+  dp = dp + 0.0214 * sin(l2 - m1) - 0.0149 * sin(l2 - d2 + m2);
+  dp = dp + 0.0124 * sin(l2 - n1) + 0.0114 * sin(d2 - m2);
+
+  return dp / 3600;
+}
+
+/**
+ * \brief Nutation of Obliquity
+ *
+ * Original macro name: NutatObl
+ */
+double nutat_obl(double greenwich_day, int greenwich_month,
+                 int greenwich_year) {
+  double dj = civil_date_to_julian_date(greenwich_day, greenwich_month,
+                                        greenwich_year) -
+              2415020;
+  double t = dj / 36525;
+  double t2 = t * t;
+
+  double a = 100.0021358 * t;
+  double b = 360 * (a - floor(a));
+
+  double l1 = 279.6967 + 0.000303 * t2 + b;
+  double l2 = 2 * degrees_to_radians(l1);
+
+  a = 1336.855231 * t;
+  b = 360 * (a - floor(a));
+
+  double d1 = 270.4342 - 0.001133 * t2 + b;
+  double d2 = 2 * degrees_to_radians(d1);
+
+  a = 99.99736056 * t;
+  b = 360 * (a - floor(a));
+
+  double m1 = degrees_to_radians(358.4758 - 0.00015 * t2 + b);
+
+  a = 1325.552359 * t;
+  b = 360 * (a - floor(a));
+
+  double m2 = degrees_to_radians(296.1046 + 0.009192 * t2 + b);
+
+  a = 5.372616667 * t;
+  b = 360 * (a - floor(a));
+
+  double n1 = degrees_to_radians(259.1833 + 0.002078 * t2 - b);
+
+  double n2 = 2 * n1;
+
+  double ddo = (9.21 + 0.00091 * t) * cos(n1);
+  ddo = ddo + (0.5522 - 0.00029 * t) * cos(l2) - 0.0904 * cos(n2);
+  ddo = ddo + 0.0884 * cos(d2) + 0.0216 * cos(l2 + m1);
+  ddo = ddo + 0.0183 * cos(d2 - n1) + 0.0113 * cos(d2 + m2);
+  ddo = ddo - 0.0093 * cos(l2 - m1) - 0.0066 * cos(l2 - n1);
+
+  return ddo / 3600;
+}
+
 } // namespace pa_macros

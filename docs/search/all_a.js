@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ok_38',['ok',['../namespacepa__types.html#abd8e28d1f6cc273e99b3cbaf226bb55aad8b76af209cd7ba83b4ebf33ba1637b2',1,'pa_types']]]
+  ['nutat_5flong_40',['nutat_long',['../namespacepa__macros.html#a391122ac795779141fa6e68be12cfc3d',1,'pa_macros']]],
+  ['nutat_5fobl_41',['nutat_obl',['../namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770',1,'pa_macros']]]
 ];
