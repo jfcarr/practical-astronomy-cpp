@@ -463,7 +463,113 @@ $(document).ready(function(){initNavTree('pa__macros_8cpp_source.html',''); init
 <div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;  <span class="keywordflow">return</span> i - 24 * floor(i / 24);</div>
 <div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;}</div>
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160; </div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;} <span class="comment">// namespace pa_macros</span></div>
+<div class="line"><a name="l00543"></a><span class="lineno"><a class="line" href="namespacepa__macros.html#a4a412f51e0cfdc7030d5d9295a989c6b">  543</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="namespacepa__macros.html#a4a412f51e0cfdc7030d5d9295a989c6b">obliq</a>(<span class="keywordtype">double</span> greenwich_day, <span class="keywordtype">int</span> greenwich_month, <span class="keywordtype">int</span> greenwich_year) {</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  <span class="keywordtype">double</span> a =</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;      <a class="code" href="namespacepa__macros.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(greenwich_day, greenwich_month, greenwich_year);</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;  <span class="keywordtype">double</span> b = a - 2415020;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;  <span class="keywordtype">double</span> c = (b / 36525) - 1;</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;  <span class="keywordtype">double</span> d = c * (46.815 + c * (0.0006 - (c * 0.00181)));</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;  <span class="keywordtype">double</span> e = d / 3600;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;  <span class="keywordflow">return</span> 23.43929167 - e +</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;         <a class="code" href="namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770">nutat_obl</a>(greenwich_day, greenwich_month, greenwich_year);</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;}</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160; </div>
+<div class="line"><a name="l00560"></a><span class="lineno"><a class="line" href="namespacepa__macros.html#a391122ac795779141fa6e68be12cfc3d">  560</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="namespacepa__macros.html#a391122ac795779141fa6e68be12cfc3d">nutat_long</a>(<span class="keywordtype">double</span> gd, <span class="keywordtype">int</span> gm, <span class="keywordtype">int</span> gy) {</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;  <span class="keywordtype">double</span> dj = <a class="code" href="namespacepa__macros.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(gd, gm, gy) - 2415020;</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;  <span class="keywordtype">double</span> t = dj / 36525;</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;  <span class="keywordtype">double</span> t2 = t * t;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160; </div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;  <span class="keywordtype">double</span> a = 100.0021358 * t;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  <span class="keywordtype">double</span> b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160; </div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;  <span class="keywordtype">double</span> l1 = 279.6967 + 0.000303 * t2 + b;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;  <span class="keywordtype">double</span> l2 = 2 * <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(l1);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160; </div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;  a = 1336.855231 * t;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;  b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160; </div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  <span class="keywordtype">double</span> d1 = 270.4342 - 0.001133 * t2 + b;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;  <span class="keywordtype">double</span> d2 = 2 * <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(d1);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160; </div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;  a = 99.99736056 * t;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;  b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160; </div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;  <span class="keywordtype">double</span> m1 = 358.4758 - 0.00015 * t2 + b;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;  m1 = <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(m1);</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;  a = 1325.552359 * t;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;  b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160; </div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;  <span class="keywordtype">double</span> m2 = 296.1046 + 0.009192 * t2 + b;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;  m2 = <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(m2);</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160; </div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;  a = 5.372616667 * t;</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;  b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160; </div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;  <span class="keywordtype">double</span> n1 = 259.1833 + 0.002078 * t2 - b;</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;  n1 = <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(n1);</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160; </div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;  <span class="keywordtype">double</span> n2 = 2.0 * n1;</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160; </div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;  <span class="keywordtype">double</span> dp = (-17.2327 - 0.01737 * t) * sin(n1);</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;  dp = dp + (-1.2729 - 0.00013 * t) * sin(l2) + 0.2088 * sin(n2);</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;  dp = dp - 0.2037 * sin(d2) + (0.1261 - 0.00031 * t) * sin(m1);</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;  dp = dp + 0.0675 * sin(m2) - (0.0497 - 0.00012 * t) * sin(l2 + m1);</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;  dp = dp - 0.0342 * sin(d2 - n1) - 0.0261 * sin(d2 + m2);</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;  dp = dp + 0.0214 * sin(l2 - m1) - 0.0149 * sin(l2 - d2 + m2);</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;  dp = dp + 0.0124 * sin(l2 - n1) + 0.0114 * sin(d2 - m2);</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160; </div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;  <span class="keywordflow">return</span> dp / 3600;</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;}</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160; </div>
+<div class="line"><a name="l00613"></a><span class="lineno"><a class="line" href="namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770">  613</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770">nutat_obl</a>(<span class="keywordtype">double</span> greenwich_day, <span class="keywordtype">int</span> greenwich_month,</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                 <span class="keywordtype">int</span> greenwich_year) {</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;  <span class="keywordtype">double</span> dj = <a class="code" href="namespacepa__macros.html#a58764743980ce2d3a24c0699969773c9">civil_date_to_julian_date</a>(greenwich_day, greenwich_month,</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;                                        greenwich_year) -</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;              2415020;</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;  <span class="keywordtype">double</span> t = dj / 36525;</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;  <span class="keywordtype">double</span> t2 = t * t;</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160; </div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;  <span class="keywordtype">double</span> a = 100.0021358 * t;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;  <span class="keywordtype">double</span> b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160; </div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;  <span class="keywordtype">double</span> l1 = 279.6967 + 0.000303 * t2 + b;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;  <span class="keywordtype">double</span> l2 = 2 * <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(l1);</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160; </div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  a = 1336.855231 * t;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;  b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160; </div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  <span class="keywordtype">double</span> d1 = 270.4342 - 0.001133 * t2 + b;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  <span class="keywordtype">double</span> d2 = 2 * <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(d1);</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160; </div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;  a = 99.99736056 * t;</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160; </div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;  <span class="keywordtype">double</span> m1 = <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(358.4758 - 0.00015 * t2 + b);</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160; </div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  a = 1325.552359 * t;</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160; </div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  <span class="keywordtype">double</span> m2 = <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(296.1046 + 0.009192 * t2 + b);</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160; </div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  a = 5.372616667 * t;</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  b = 360 * (a - floor(a));</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160; </div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  <span class="keywordtype">double</span> n1 = <a class="code" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a>(259.1833 + 0.002078 * t2 - b);</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160; </div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  <span class="keywordtype">double</span> n2 = 2 * n1;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160; </div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  <span class="keywordtype">double</span> ddo = (9.21 + 0.00091 * t) * cos(n1);</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  ddo = ddo + (0.5522 - 0.00029 * t) * cos(l2) - 0.0904 * cos(n2);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  ddo = ddo + 0.0884 * cos(d2) + 0.0216 * cos(l2 + m1);</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;  ddo = ddo + 0.0183 * cos(d2 - n1) + 0.0113 * cos(d2 + m2);</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  ddo = ddo - 0.0093 * cos(l2 - m1) - 0.0066 * cos(l2 - n1);</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160; </div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;  <span class="keywordflow">return</span> ddo / 3600;</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;}</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160; </div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;} <span class="comment">// namespace pa_macros</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespacepa__macros_html_af269e5ee22ab15cf85a94eabfe75a5b0"><div class="ttname"><a href="namespacepa__macros.html#af269e5ee22ab15cf85a94eabfe75a5b0">pa_macros::horizon_coordinates_to_hour_angle</a></div><div class="ttdeci">double horizon_coordinates_to_hour_angle(double azimuth_degrees, double azimuth_minutes, double azimuth_seconds, double altitude_degrees, double altitude_minutes, double altitude_seconds, double geographical_latitude)</div><div class="ttdoc">Convert Horizon Coordinates to Hour Angle (in decimal degrees)</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00519">pa_macros.cpp:519</a></div></div>
@@ -490,12 +596,15 @@ $(document).ready(function(){initNavTree('pa__macros_8cpp_source.html',''); init
 <div class="ttc" id="anamespacepa__macros_html"><div class="ttname"><a href="namespacepa__macros.html">pa_macros</a></div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00007">pa_macros.cpp:7</a></div></div>
 <div class="ttc" id="anamespacepa__macros_html_ad51d420da53d3f525d5996099353773e"><div class="ttname"><a href="namespacepa__macros.html#ad51d420da53d3f525d5996099353773e">pa_macros::decimal_hours_minute</a></div><div class="ttdeci">int decimal_hours_minute(double decimal_hours)</div><div class="ttdoc">Return the minutes part of a Decimal Hours.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00058">pa_macros.cpp:58</a></div></div>
 <div class="ttc" id="anamespacepa__util_html_a457297701063cbffc976655fcac3d5b1"><div class="ttname"><a href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">pa_util::degrees_to_radians</a></div><div class="ttdeci">double degrees_to_radians(double degrees)</div><div class="ttdoc">Convert degrees to radians.</div><div class="ttdef"><b>Definition:</b> <a href="pa__util_8cpp_source.html#l00049">pa_util.cpp:49</a></div></div>
+<div class="ttc" id="anamespacepa__macros_html_a391122ac795779141fa6e68be12cfc3d"><div class="ttname"><a href="namespacepa__macros.html#a391122ac795779141fa6e68be12cfc3d">pa_macros::nutat_long</a></div><div class="ttdeci">double nutat_long(double gd, int gm, int gy)</div><div class="ttdoc">Nutation amount to be added in ecliptic longitude, in degrees.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00560">pa_macros.cpp:560</a></div></div>
 <div class="ttc" id="anamespacepa__macros_html_aaeaf194b1761d7224708b3825dd3ce00"><div class="ttname"><a href="namespacepa__macros.html#aaeaf194b1761d7224708b3825dd3ce00">pa_macros::decimal_degrees_degrees</a></div><div class="ttdeci">double decimal_degrees_degrees(double decimal_degrees)</div><div class="ttdoc">Return Degrees part of Decimal Degrees.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00438">pa_macros.cpp:438</a></div></div>
 <div class="ttc" id="anamespacepa__macros_html_a70f2e948b06a3d2721208301431384e5"><div class="ttname"><a href="namespacepa__macros.html#a70f2e948b06a3d2721208301431384e5">pa_macros::horizon_coordinates_to_declination</a></div><div class="ttdeci">double horizon_coordinates_to_declination(double azimuth_degrees, double azimuth_minutes, double azimuth_seconds, double altitude_degrees, double altitude_minutes, double altitude_seconds, double geographical_latitude)</div><div class="ttdoc">Convert Horizon Coordinates to Declination (in decimal degrees)</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00498">pa_macros.cpp:498</a></div></div>
 <div class="ttc" id="anamespacepa__macros_html_a6da0729dc235618b10dd680edc75025c"><div class="ttname"><a href="namespacepa__macros.html#a6da0729dc235618b10dd680edc75025c">pa_macros::decimal_degrees_minutes</a></div><div class="ttdeci">double decimal_degrees_minutes(double decimal_degrees)</div><div class="ttdoc">Return Minutes part of Decimal Degrees.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00452">pa_macros.cpp:452</a></div></div>
 <div class="ttc" id="anamespacepa__macros_html_a75f7c7fcf405ed0072dd7c9f85207199"><div class="ttname"><a href="namespacepa__macros.html#a75f7c7fcf405ed0072dd7c9f85207199">pa_macros::local_civil_time_greenwich_month</a></div><div class="ttdeci">double local_civil_time_greenwich_month(double lct_hours, double lct_minutes, double lct_seconds, int daylight_saving, int zone_correction, double local_day, int local_month, int local_year)</div><div class="ttdoc">Determine Greenwich Month for Local Time.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00295">pa_macros.cpp:295</a></div></div>
 <div class="ttc" id="anamespacepa__macros_html_aa8c42cd3facabaa7130faf475a34c166"><div class="ttname"><a href="namespacepa__macros.html#aa8c42cd3facabaa7130faf475a34c166">pa_macros::julian_date_month</a></div><div class="ttdeci">int julian_date_month(double julian_date)</div><div class="ttdoc">Returns the month part of a Julian Date.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00151">pa_macros.cpp:151</a></div></div>
+<div class="ttc" id="anamespacepa__macros_html_a4a412f51e0cfdc7030d5d9295a989c6b"><div class="ttname"><a href="namespacepa__macros.html#a4a412f51e0cfdc7030d5d9295a989c6b">pa_macros::obliq</a></div><div class="ttdeci">double obliq(double greenwich_day, int greenwich_month, int greenwich_year)</div><div class="ttdoc">Obliquity of the Ecliptic for a Greenwich Date.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00543">pa_macros.cpp:543</a></div></div>
 <div class="ttc" id="anamespacepa__macros_html_a58764743980ce2d3a24c0699969773c9"><div class="ttname"><a href="namespacepa__macros.html#a58764743980ce2d3a24c0699969773c9">pa_macros::civil_date_to_julian_date</a></div><div class="ttdeci">double civil_date_to_julian_date(double day, double month, double year)</div><div class="ttdoc">Convert a Greenwich Date/Civil Date (day,month,year) to Julian Date.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00096">pa_macros.cpp:96</a></div></div>
+<div class="ttc" id="anamespacepa__macros_html_a1f4a8335dda7b61e3691c744382bf770"><div class="ttname"><a href="namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770">pa_macros::nutat_obl</a></div><div class="ttdeci">double nutat_obl(double greenwich_day, int greenwich_month, int greenwich_year)</div><div class="ttdoc">Nutation of Obliquity.</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00613">pa_macros.cpp:613</a></div></div>
 <div class="ttc" id="anamespacepa__util_html"><div class="ttname"><a href="namespacepa__util.html">pa_util</a></div><div class="ttdef"><b>Definition:</b> <a href="pa__util_8cpp_source.html#l00005">pa_util.cpp:5</a></div></div>
 <div class="ttc" id="apa__util_8h_html"><div class="ttname"><a href="pa__util_8h.html">pa_util.h</a></div></div>
 <div class="ttc" id="anamespacepa__macros_html_afb31193ed5d5f7cb4a389d702e3e7e44"><div class="ttname"><a href="namespacepa__macros.html#afb31193ed5d5f7cb4a389d702e3e7e44">pa_macros::equatorial_coordinates_to_altitude</a></div><div class="ttdeci">double equatorial_coordinates_to_altitude(double hour_angle_hours, double hour_angle_minutes, double hour_angle_seconds, double declination_degrees, double declination_minutes, double declination_seconds, double geographical_latitude)</div><div class="ttdoc">Convert Equatorial Coordinates to Altitude (in decimal degrees)</div><div class="ttdef"><b>Definition:</b> <a href="pa__macros_8cpp_source.html#l00392">pa_macros.cpp:392</a></div></div>

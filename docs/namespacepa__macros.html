@@ -171,6 +171,15 @@ Functions</h2></td></tr>
 <tr class="memitem:af269e5ee22ab15cf85a94eabfe75a5b0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#af269e5ee22ab15cf85a94eabfe75a5b0">horizon_coordinates_to_hour_angle</a> (double azimuth_degrees, double azimuth_minutes, double azimuth_seconds, double altitude_degrees, double altitude_minutes, double altitude_seconds, double geographical_latitude)</td></tr>
 <tr class="memdesc:af269e5ee22ab15cf85a94eabfe75a5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Horizon Coordinates to Hour Angle (in decimal degrees)  <a href="namespacepa__macros.html#af269e5ee22ab15cf85a94eabfe75a5b0">More...</a><br /></td></tr>
 <tr class="separator:af269e5ee22ab15cf85a94eabfe75a5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a412f51e0cfdc7030d5d9295a989c6b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a4a412f51e0cfdc7030d5d9295a989c6b">obliq</a> (double greenwich_day, int greenwich_month, int greenwich_year)</td></tr>
+<tr class="memdesc:a4a412f51e0cfdc7030d5d9295a989c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obliquity of the Ecliptic for a Greenwich Date.  <a href="namespacepa__macros.html#a4a412f51e0cfdc7030d5d9295a989c6b">More...</a><br /></td></tr>
+<tr class="separator:a4a412f51e0cfdc7030d5d9295a989c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a391122ac795779141fa6e68be12cfc3d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a391122ac795779141fa6e68be12cfc3d">nutat_long</a> (double gd, int gm, int gy)</td></tr>
+<tr class="memdesc:a391122ac795779141fa6e68be12cfc3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nutation amount to be added in ecliptic longitude, in degrees.  <a href="namespacepa__macros.html#a391122ac795779141fa6e68be12cfc3d">More...</a><br /></td></tr>
+<tr class="separator:a391122ac795779141fa6e68be12cfc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4a8335dda7b61e3691c744382bf770"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770">nutat_obl</a> (double greenwich_day, int greenwich_month, int greenwich_year)</td></tr>
+<tr class="memdesc:a1f4a8335dda7b61e3691c744382bf770"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nutation of Obliquity.  <a href="namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770">More...</a><br /></td></tr>
+<tr class="separator:a1f4a8335dda7b61e3691c744382bf770"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a58764743980ce2d3a24c0699969773c9"></a>
@@ -1268,6 +1277,123 @@ Functions</h2></td></tr>
 <p>Original macro name: LctUT </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00257">257</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a391122ac795779141fa6e68be12cfc3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a391122ac795779141fa6e68be12cfc3d">&#9670;&nbsp;</a></span>nutat_long()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double nutat_long </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nutation amount to be added in ecliptic longitude, in degrees. </p>
+<p>Original macro name: NutatLong </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00560">560</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1f4a8335dda7b61e3691c744382bf770"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4a8335dda7b61e3691c744382bf770">&#9670;&nbsp;</a></span>nutat_obl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double nutat_obl </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>greenwich_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nutation of Obliquity. </p>
+<p>Original macro name: NutatObl </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00613">613</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4a412f51e0cfdc7030d5d9295a989c6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a412f51e0cfdc7030d5d9295a989c6b">&#9670;&nbsp;</a></span>obliq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double obliq </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>greenwich_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obliquity of the Ecliptic for a Greenwich Date. </p>
+<p>Original macro name: Obliq </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00543">543</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>

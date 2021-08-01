@@ -113,6 +113,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a19e0beeced5514440c25e334c24df825"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a19e0beeced5514440c25e334c24df825">mean_obliquity_of_the_ecliptic</a> (double greenwich_day, int greenwich_month, int greenwich_year)</td></tr>
 <tr class="memdesc:a19e0beeced5514440c25e334c24df825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Mean Obliquity of the Ecliptic for a Greenwich Date.  <a href="classPACoordinates.html#a19e0beeced5514440c25e334c24df825">More...</a><br /></td></tr>
 <tr class="separator:a19e0beeced5514440c25e334c24df825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad77eb594c62c49645932291e323df3cf"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#ad77eb594c62c49645932291e323df3cf">ecliptic_coordinate_to_equatorial_coordinate</a> (double ecliptic_longitude_degrees, double ecliptic_longitude_minutes, double ecliptic_longitude_seconds, double ecliptic_latitude_degrees, double ecliptic_latitude_minutes, double ecliptic_latitude_seconds, double greenwich_day, int greenwich_month, int greenwich_year)</td></tr>
+<tr class="memdesc:ad77eb594c62c49645932291e323df3cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Ecliptic Coordinates to Equatorial Coordinates.  <a href="classPACoordinates.html#ad77eb594c62c49645932291e323df3cf">More...</a><br /></td></tr>
+<tr class="separator:ad77eb594c62c49645932291e323df3cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3059310fbbb5cc47275c041043f5dc74"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a3059310fbbb5cc47275c041043f5dc74">equatorial_coordinate_to_ecliptic_coordinate</a> (double ra_hours, double ra_minutes, double ra_seconds, double dec_degrees, double dec_minutes, double dec_seconds, double gw_day, int gw_month, int gw_year)</td></tr>
+<tr class="memdesc:a3059310fbbb5cc47275c041043f5dc74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Equatorial Coordinates to Ecliptic Coordinates.  <a href="classPACoordinates.html#a3059310fbbb5cc47275c041043f5dc74">More...</a><br /></td></tr>
+<tr class="separator:a3059310fbbb5cc47275c041043f5dc74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -191,6 +197,156 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;double degrees, double minutes, double seconds&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00038">38</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad77eb594c62c49645932291e323df3cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad77eb594c62c49645932291e323df3cf">&#9670;&nbsp;</a></span>ecliptic_coordinate_to_equatorial_coordinate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; ecliptic_coordinate_to_equatorial_coordinate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ecliptic_longitude_degrees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ecliptic_longitude_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ecliptic_longitude_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ecliptic_latitude_degrees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ecliptic_latitude_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ecliptic_latitude_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>greenwich_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Ecliptic Coordinates to Equatorial Coordinates. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;double outRAHours, double outRAMinutes, double outRASeconds, double outDecDegrees, double outDecMinutes, double outDecSeconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00206">206</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3059310fbbb5cc47275c041043f5dc74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3059310fbbb5cc47275c041043f5dc74">&#9670;&nbsp;</a></span>equatorial_coordinate_to_ecliptic_coordinate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; equatorial_coordinate_to_ecliptic_coordinate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_degrees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gw_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gw_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gw_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Equatorial Coordinates to Ecliptic Coordinates. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;double outEclLongDeg, double outEclLongMin, double outEclLongSec, double outEclLatDeg, double outEclLatMin, double outEclLatSec&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00252">252</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>
