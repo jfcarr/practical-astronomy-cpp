@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ok_37',['ok',['../namespacepa__types.html#abd8e28d1f6cc273e99b3cbaf226bb55aad8b76af209cd7ba83b4ebf33ba1637b2',1,'pa_types']]]
+  ['mean_5fobliquity_5fof_5fthe_5fecliptic_37',['mean_obliquity_of_the_ecliptic',['../classPACoordinates.html#a19e0beeced5514440c25e334c24df825',1,'PACoordinates']]]
 ];

@@ -93,6 +93,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ac7bb760deb727f628b940cedd89156d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__util.html#ac7bb760deb727f628b940cedd89156d4">is_leap_year</a> (int input_year)</td></tr>
 <tr class="separator:ac7bb760deb727f628b940cedd89156d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6aecae204931a8a57e242e8d8c783b2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__util.html#ae6aecae204931a8a57e242e8d8c783b2">round</a> (double input, int places)</td></tr>
+<tr class="memdesc:ae6aecae204931a8a57e242e8d8c783b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Round a value to a set number of decimal places.  <a href="namespacepa__util.html#ae6aecae204931a8a57e242e8d8c783b2">More...</a><br /></td></tr>
 <tr class="separator:ae6aecae204931a8a57e242e8d8c783b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a457297701063cbffc976655fcac3d5b1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">degrees_to_radians</a> (double degrees)</td></tr>
 <tr class="memdesc:a457297701063cbffc976655fcac3d5b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert degrees to radians.  <a href="namespacepa__util.html#a457297701063cbffc976655fcac3d5b1">More...</a><br /></td></tr>
@@ -120,7 +121,7 @@ Functions</h2></td></tr>
 
 <p>Convert degrees to radians. </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__util_8cpp_source.html#l00045">45</a> of file <a class="el" href="pa__util_8cpp_source.html">pa_util.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__util_8cpp_source.html#l00049">49</a> of file <a class="el" href="pa__util_8cpp_source.html">pa_util.cpp</a>.</p>
 
 </div>
 </div>
@@ -164,7 +165,7 @@ Functions</h2></td></tr>
 
 <p>Convert radians to degrees. </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__util_8cpp_source.html#l00050">50</a> of file <a class="el" href="pa__util_8cpp_source.html">pa_util.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__util_8cpp_source.html#l00054">54</a> of file <a class="el" href="pa__util_8cpp_source.html">pa_util.cpp</a>.</p>
 
 </div>
 </div>
@@ -193,7 +194,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Round a value to a set number of decimal places.</p>
+
+<p>Round a value to a set number of decimal places. </p>
+<p>WARNING: accurate to about 7 places, then the result of the pow() operation exceeds what a double can handle.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Input value to be rounded. </td></tr>
@@ -203,7 +206,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Rounded input value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__util_8cpp_source.html#l00033">33</a> of file <a class="el" href="pa__util_8cpp_source.html">pa_util.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__util_8cpp_source.html#l00036">36</a> of file <a class="el" href="pa__util_8cpp_source.html">pa_util.cpp</a>.</p>
 
 </div>
 </div>

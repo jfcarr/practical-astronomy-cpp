@@ -115,6 +115,20 @@ SCENARIO("Convert Equatorial Coordinates to and from Horizon Coordinates") {
     }
   }
 }
-// Assert.Equal((5, 51, 44, 23, 13, 10),
-// _paCoordinates.HorizonCoordinatesToEquatorialCoordinates(283, 16, 15.7, 19,
-// 20, 3.64, 52));
+
+SCENARIO("Calculate Obliquity of the Ecliptic") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Greenwich Date is July 6, 2009") {
+      double result =
+          round(paCoordinates.mean_obliquity_of_the_ecliptic(6, 7, 2009), 8);
+
+      THEN("Obliquity is 23.43805531") {
+        double expected = 23.43805531;
+
+        REQUIRE(result == expected);
+      }
+    }
+  }
+}

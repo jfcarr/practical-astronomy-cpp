@@ -23,7 +23,10 @@ bool is_leap_year(int input_year) {
 }
 
 /**
- * Round a value to a set number of decimal places.
+ * \brief Round a value to a set number of decimal places.
+ *
+ * WARNING: accurate to about 7 places, then the result of the pow() operation
+ * exceeds what a double can handle.
  *
  * @param input Input value to be rounded.
  * @param places Number of decimal places.
@@ -31,12 +34,13 @@ bool is_leap_year(int input_year) {
  * @return Rounded input value.
  */
 double round(double input, int places) {
-  double multiplier = pow(10, places);
+  long double multiplier = pow(10, places);
 
-  double a = input * multiplier;
+  long double a = input * multiplier;
   a = (a >= 0) ? a + 0.5 : a - 0.5;
 
-  return (int)a / multiplier;
+  return floor(a) / multiplier; // floor() gives good results for more places
+                                // (7+) than the original (int) cast.
 }
 
 /**
