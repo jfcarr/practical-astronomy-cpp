@@ -119,6 +119,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3059310fbbb5cc47275c041043f5dc74"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a3059310fbbb5cc47275c041043f5dc74">equatorial_coordinate_to_ecliptic_coordinate</a> (double ra_hours, double ra_minutes, double ra_seconds, double dec_degrees, double dec_minutes, double dec_seconds, double gw_day, int gw_month, int gw_year)</td></tr>
 <tr class="memdesc:a3059310fbbb5cc47275c041043f5dc74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Equatorial Coordinates to Ecliptic Coordinates.  <a href="classPACoordinates.html#a3059310fbbb5cc47275c041043f5dc74">More...</a><br /></td></tr>
 <tr class="separator:a3059310fbbb5cc47275c041043f5dc74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a815e34b1781c274e8ca7b8f73fef5ab8"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a815e34b1781c274e8ca7b8f73fef5ab8">equatorial_coordinate_to_galactic_coordinate</a> (double ra_hours, double ra_minutes, double ra_seconds, double dec_degrees, double dec_minutes, double dec_seconds)</td></tr>
+<tr class="memdesc:a815e34b1781c274e8ca7b8f73fef5ab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Equatorial Coordinates to Galactic Coordinates.  <a href="classPACoordinates.html#a815e34b1781c274e8ca7b8f73fef5ab8">More...</a><br /></td></tr>
+<tr class="separator:a815e34b1781c274e8ca7b8f73fef5ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2bc92721227e20690e14dd13d76f571"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#af2bc92721227e20690e14dd13d76f571">galactic_coordinate_to_equatorial_coordinate</a> (double gal_long_deg, double gal_long_min, double gal_long_sec, double gal_lat_deg, double gal_lat_min, double gal_lat_sec)</td></tr>
+<tr class="memdesc:af2bc92721227e20690e14dd13d76f571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Galactic Coordinates to Equatorial Coordinates.  <a href="classPACoordinates.html#af2bc92721227e20690e14dd13d76f571">More...</a><br /></td></tr>
+<tr class="separator:af2bc92721227e20690e14dd13d76f571"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -350,6 +356,63 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a815e34b1781c274e8ca7b8f73fef5ab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a815e34b1781c274e8ca7b8f73fef5ab8">&#9670;&nbsp;</a></span>equatorial_coordinate_to_galactic_coordinate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; equatorial_coordinate_to_galactic_coordinate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_degrees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_seconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Equatorial Coordinates to Galactic Coordinates. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;double galLongDeg, double galLongMin, double galLongSec, double galLatDeg, double galLatMin, double galLatSec&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00293">293</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
 <a id="abeaa16cf056ccbbccad424cc499154be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abeaa16cf056ccbbccad424cc499154be">&#9670;&nbsp;</a></span>equatorial_coordinates_to_horizon_coordinates()</h2>
 
@@ -410,6 +473,63 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;double azimuthDegrees, double azimuthMinutes, double azimuthSeconds, double altitudeDegrees, double altitudeMinutes, double altitudeSeconds&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00115">115</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af2bc92721227e20690e14dd13d76f571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2bc92721227e20690e14dd13d76f571">&#9670;&nbsp;</a></span>galactic_coordinate_to_equatorial_coordinate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; galactic_coordinate_to_equatorial_coordinate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gal_long_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gal_long_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gal_long_sec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gal_lat_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gal_lat_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gal_lat_sec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Galactic Coordinates to Equatorial Coordinates. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;double raHours, double raMinutes, double raSeconds, double decDegrees, double decMinutes, double decSeconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00332">332</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>
