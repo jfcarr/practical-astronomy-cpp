@@ -282,3 +282,83 @@ PACoordinates::equatorial_coordinate_to_ecliptic_coordinate(
       out_ecl_long_deg, out_ecl_long_min, out_ecl_long_sec,
       out_ecl_lat_deg,  out_ecl_lat_min,  out_ecl_lat_sec};
 }
+
+/**
+ * \brief Convert Equatorial Coordinates to Galactic Coordinates
+ *
+ * @return tuple <double galLongDeg, double galLongMin, double galLongSec,
+ * double galLatDeg, double galLatMin, double galLatSec>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::equatorial_coordinate_to_galactic_coordinate(
+    double ra_hours, double ra_minutes, double ra_seconds, double dec_degrees,
+    double dec_minutes, double dec_seconds) {
+  double ra_deg =
+      degree_hours_to_decimal_degrees(hms_dh(ra_hours, ra_minutes, ra_seconds));
+  double dec_deg = degrees_minutes_seconds_to_decimal_degrees(
+      dec_degrees, dec_minutes, dec_seconds);
+  double ra_rad = degrees_to_radians(ra_deg);
+  double dec_rad = degrees_to_radians(dec_deg);
+  double sin_b = cos(dec_rad) * cos(degrees_to_radians(27.4)) *
+                     cos(ra_rad - degrees_to_radians(192.25)) +
+                 sin(dec_rad) * sin(degrees_to_radians(27.4));
+  double b_radians = asin(sin_b);
+  double b_deg = degrees(b_radians);
+  double y = sin(dec_rad) - sin_b * sin(degrees_to_radians(27.4));
+  double x = cos(dec_rad) * sin(ra_rad - degrees_to_radians(192.25)) *
+             cos(degrees_to_radians(27.4));
+  double long_deg_1 = degrees(atan2(y, x)) + 33;
+  double long_deg_2 = long_deg_1 - 360 * floor(long_deg_1 / 360);
+
+  double gal_long_deg = decimal_degrees_degrees(long_deg_2);
+  double gal_long_min = decimal_degrees_minutes(long_deg_2);
+  double gal_long_sec = decimal_degrees_seconds(long_deg_2);
+  double gal_lat_deg = decimal_degrees_degrees(b_deg);
+  double gal_lat_min = decimal_degrees_minutes(b_deg);
+  double gal_lat_sec = decimal_degrees_seconds(b_deg);
+
+  return std::tuple<double, double, double, double, double, double>{
+      gal_long_deg, gal_long_min, gal_long_sec,
+      gal_lat_deg,  gal_lat_min,  gal_lat_sec};
+}
+
+/**
+ * \brief Convert Galactic Coordinates to Equatorial Coordinates
+ *
+ * @return tuple <double raHours, double raMinutes, double raSeconds, double
+ * decDegrees, double decMinutes, double decSeconds>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::galactic_coordinate_to_equatorial_coordinate(
+    double gal_long_deg, double gal_long_min, double gal_long_sec,
+    double gal_lat_deg, double gal_lat_min, double gal_lat_sec) {
+  double g_long_deg = degrees_minutes_seconds_to_decimal_degrees(
+      gal_long_deg, gal_long_min, gal_long_sec);
+  double g_lat_deg = degrees_minutes_seconds_to_decimal_degrees(
+      gal_lat_deg, gal_lat_min, gal_lat_sec);
+  double g_long_rad = degrees_to_radians(g_long_deg);
+  double g_lat_rad = degrees_to_radians(g_lat_deg);
+  double sin_dec = cos(g_lat_rad) * cos(degrees_to_radians(27.4)) *
+                       sin(g_long_rad - degrees_to_radians(33.0)) +
+                   sin(g_lat_rad) * sin(degrees_to_radians(27.4));
+  double dec_radians = asin(sin_dec);
+  double dec_deg = degrees(dec_radians);
+  double y = cos(g_lat_rad) * cos(g_long_rad - degrees_to_radians(33.0));
+  double x = sin(g_lat_rad) * cos(degrees_to_radians(27.4)) -
+             cos(g_lat_rad) * sin(degrees_to_radians(27.4)) *
+                 sin(g_long_rad - degrees_to_radians(33.0));
+
+  double ra_deg_1 = degrees(atan2(y, x)) + 192.25;
+  double ra_deg_2 = ra_deg_1 - 360 * floor(ra_deg_1 / 360);
+  double ra_hours_1 = decimal_degrees_to_degree_hours(ra_deg_2);
+
+  double ra_hours = decimal_hours_hour(ra_hours_1);
+  double ra_minutes = decimal_hours_minute(ra_hours_1);
+  double ra_seconds = decimal_hours_second(ra_hours_1);
+  double dec_degrees = decimal_degrees_degrees(dec_deg);
+  double dec_minutes = decimal_degrees_minutes(dec_deg);
+  double dec_seconds = decimal_degrees_seconds(dec_deg);
+
+  return std::tuple<double, double, double, double, double, double>{
+      ra_hours, ra_minutes, ra_seconds, dec_degrees, dec_minutes, dec_seconds};
+}

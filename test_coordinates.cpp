@@ -178,3 +178,46 @@ SCENARIO("Convert Ecliptic Coordinates to and from Equatorial Coordinates") {
     }
   }
 }
+SCENARIO("Convert Equatorial Coordinates to and from Galactic Coordinates") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Equatorial coordinates are right ascension 10h 21m 0s and "
+         "declination 10d 3m 11s") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.equatorial_coordinate_to_galactic_coordinate(10, 21, 0,
+                                                                     10, 3, 11);
+      THEN("Galactic coordinates are galactic longitude 232d 14m 52.38s and "
+           "galactic latitude 51d 7m 20.16s") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(232, 14, 52.38, 51, 7, 20.16);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+
+    WHEN("Galactic coordinates are galactic longitude 232d 14m 52.38s and "
+         "galactic latitude 51d 7m 20.16s") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.galactic_coordinate_to_equatorial_coordinate(
+              232, 14, 52.38, 51, 7, 20.16);
+      THEN("Equatorial coordinates are right ascension 10h 21m 0s and "
+           "declination 10d 3m 11s") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(10, 21, 0, 10, 3, 11);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}
