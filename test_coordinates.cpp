@@ -178,6 +178,7 @@ SCENARIO("Convert Ecliptic Coordinates to and from Equatorial Coordinates") {
     }
   }
 }
+
 SCENARIO("Convert Equatorial Coordinates to and from Galactic Coordinates") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
@@ -217,6 +218,27 @@ SCENARIO("Convert Equatorial Coordinates to and from Galactic Coordinates") {
         REQUIRE(std::get<3>(result) == std::get<3>(expected));
         REQUIRE(std::get<4>(result) == std::get<4>(expected));
         REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}
+
+SCENARIO("Calculate angle between two objects") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+    WHEN("Object 1 is Right Ascension 5h 13m 31.7 Declination -8d 13m 30s and "
+         "Object 2 is Right Ascension 6h 44m 13.4s Declination -16h 41m 11s") {
+      std::tuple<double, double, double> result =
+          paCoordinates.angle_between_two_objects(
+              5, 13, 31.7, -8, 13, 30, 6, 44, 13.4, -16, 41, 11,
+              pa_types::angle_measurement_units::hours);
+      THEN("Angular distance is 23d 40m 25.86s") {
+        std::tuple<double, double, double> expected =
+            std::make_tuple(23, 40, 25.86);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
       }
     }
   }

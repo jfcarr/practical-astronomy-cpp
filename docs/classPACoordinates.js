@@ -1,5 +1,6 @@
 var classPACoordinates =
 [
+    [ "angle_between_two_objects", "classPACoordinates.html#ad3bdb68a8e5354c95d33563dd52ab273", null ],
     [ "angle_to_decimal_degrees", "classPACoordinates.html#ac717a3d6b63f30840668ad294e9fa976", null ],
     [ "decimal_degrees_to_angle", "classPACoordinates.html#a16092431a788465f80c4c7e6a17141a3", null ],
     [ "ecliptic_coordinate_to_equatorial_coordinate", "classPACoordinates.html#ad77eb594c62c49645932291e323df3cf", null ],

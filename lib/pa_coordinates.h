@@ -66,5 +66,12 @@ public:
   galactic_coordinate_to_equatorial_coordinate(
       double gal_long_deg, double gal_long_min, double gal_long_sec,
       double gal_lat_deg, double gal_lat_min, double gal_lat_sec);
+
+  std::tuple<double, double, double> angle_between_two_objects(
+      double ra_long_1_hour_deg, double ra_long_1_min, double ra_long_1_sec,
+      double dec_lat_1_deg, double dec_lat_1_min, double dec_lat_1_sec,
+      double ra_long_2_hour_deg, double ra_long_2_min, double ra_long_2_sec,
+      double dec_lat_2_deg, double dec_lat_2_min, double dec_lat_2_sec,
+      pa_types::angle_measurement_units hour_or_degree);
 };
 #endif
