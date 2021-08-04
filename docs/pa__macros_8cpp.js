@@ -9,7 +9,6 @@ var pa__macros_8cpp =
     [ "decimal_hours_minute", "pa__macros_8cpp.html#ad51d420da53d3f525d5996099353773e", null ],
     [ "decimal_hours_second", "pa__macros_8cpp.html#ac32da2203b0d5f1f5a4ebe482c6d4600", null ],
     [ "degree_hours_to_decimal_degrees", "pa__macros_8cpp.html#a703838af5c79e503be137e4bbb32388c", null ],
-    [ "degrees", "pa__macros_8cpp.html#af5667c91a52f6a2631773b18f088379c", null ],
     [ "degrees_minutes_seconds_to_decimal_degrees", "pa__macros_8cpp.html#a5bc3d6bacaf838b18c810ccd433fcca5", null ],
     [ "equatorial_coordinates_to_altitude", "pa__macros_8cpp.html#afb31193ed5d5f7cb4a389d702e3e7e44", null ],
     [ "equatorial_coordinates_to_azimuth", "pa__macros_8cpp.html#a10b2b14a315050a6a959b77ed9540d9a", null ],
@@ -29,5 +28,6 @@ var pa__macros_8cpp =
     [ "nutat_obl", "pa__macros_8cpp.html#a1f4a8335dda7b61e3691c744382bf770", null ],
     [ "obliq", "pa__macros_8cpp.html#a4a412f51e0cfdc7030d5d9295a989c6b", null ],
     [ "right_ascension_to_hour_angle", "pa__macros_8cpp.html#aec9b7e82a4f2267f42f488684c402c01", null ],
-    [ "universal_time_to_greenwich_sidereal_time", "pa__macros_8cpp.html#ae3c090f41754b86e21f4a29b7d3cb464", null ]
+    [ "universal_time_to_greenwich_sidereal_time", "pa__macros_8cpp.html#ae3c090f41754b86e21f4a29b7d3cb464", null ],
+    [ "w_to_degrees", "pa__macros_8cpp.html#a7686d5e038d0f28383361f108f372257", null ]
 ];

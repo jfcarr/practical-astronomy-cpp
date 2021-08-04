@@ -10,7 +10,7 @@ var searchData=
   ['decimal_5fhours_5fsecond_13',['decimal_hours_second',['../namespacepa__macros.html#ac32da2203b0d5f1f5a4ebe482c6d4600',1,'pa_macros']]],
   ['decimal_5fhours_5fto_5fcivil_5ftime_14',['decimal_hours_to_civil_time',['../classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f',1,'PADateTime']]],
   ['degree_5fhours_5fto_5fdecimal_5fdegrees_15',['degree_hours_to_decimal_degrees',['../namespacepa__macros.html#a703838af5c79e503be137e4bbb32388c',1,'pa_macros']]],
-  ['degrees_16',['degrees',['../namespacepa__types.html#ab68946c56cf92482bdebd1c557593b24aeb85e0821c20e303a97a813f3150b5e0',1,'pa_types::degrees()'],['../namespacepa__macros.html#af5667c91a52f6a2631773b18f088379c',1,'pa_macros::degrees()']]],
+  ['degrees_16',['degrees',['../namespacepa__types.html#ab68946c56cf92482bdebd1c557593b24aeb85e0821c20e303a97a813f3150b5e0',1,'pa_types']]],
   ['degrees_5fminutes_5fseconds_5fto_5fdecimal_5fdegrees_17',['degrees_minutes_seconds_to_decimal_degrees',['../namespacepa__macros.html#a5bc3d6bacaf838b18c810ccd433fcca5',1,'pa_macros']]],
   ['degrees_5fto_5fradians_18',['degrees_to_radians',['../namespacepa__util.html#a457297701063cbffc976655fcac3d5b1',1,'pa_util']]]
 ];
