@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ok_132',['ok',['../namespacepa__types.html#abd8e28d1f6cc273e99b3cbaf226bb55aad8b76af209cd7ba83b4ebf33ba1637b2',1,'pa_types']]]
+  ['degrees_137',['degrees',['../namespacepa__types.html#ab68946c56cf92482bdebd1c557593b24aeb85e0821c20e303a97a813f3150b5e0',1,'pa_types']]]
 ];
