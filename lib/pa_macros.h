@@ -59,7 +59,7 @@ double equatorial_coordinates_to_azimuth(double hour_angle_hours,
 double degrees_minutes_seconds_to_decimal_degrees(double degrees,
                                                   double minutes,
                                                   double seconds);
-double degrees(double w);
+double w_to_degrees(double w);
 double equatorial_coordinates_to_altitude(double hour_angle_hours,
                                           double hour_angle_minutes,
                                           double hour_angle_seconds,

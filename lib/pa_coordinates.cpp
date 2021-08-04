@@ -221,12 +221,12 @@ PACoordinates::ecliptic_coordinate_to_equatorial_coordinate(
   double sin_dec = sin(ec_lat_rad) * cos(obliq_rad) +
                    cos(ec_lat_rad) * sin(obliq_rad) * sin(ec_lon_rad);
   double dec_rad = asin(sin_dec);
-  double dec_deg = pa_macros::degrees(dec_rad);
+  double dec_deg = w_to_degrees(dec_rad);
   double y =
       sin(ec_lon_rad) * cos(obliq_rad) - tan(ec_lat_rad) * sin(obliq_rad);
   double x = cos(ec_lon_rad);
   double ra_rad = atan2(y, x);
-  double ra_deg_1 = pa_macros::degrees(ra_rad);
+  double ra_deg_1 = w_to_degrees(ra_rad);
   double ra_deg_2 = ra_deg_1 - 360 * floor(ra_deg_1 / 360);
   double ra_hours = decimal_degrees_to_degree_hours(ra_deg_2);
 
@@ -264,11 +264,11 @@ PACoordinates::equatorial_coordinate_to_ecliptic_coordinate(
   double sin_ecl_lat = sin(dec_rad) * cos(obliq_rad) -
                        cos(dec_rad) * sin(obliq_rad) * sin(ra_rad);
   double ecl_lat_rad = asin(sin_ecl_lat);
-  double ecl_lat_deg = pa_macros::degrees(ecl_lat_rad);
+  double ecl_lat_deg = w_to_degrees(ecl_lat_rad);
   double y = sin(ra_rad) * cos(obliq_rad) + tan(dec_rad) * sin(obliq_rad);
   double x = cos(ra_rad);
   double ecl_long_rad = atan2(y, x);
-  double ecl_long_deg1 = pa_macros::degrees(ecl_long_rad);
+  double ecl_long_deg1 = w_to_degrees(ecl_long_rad);
   double ecl_long_deg2 = ecl_long_deg1 - 360 * floor(ecl_long_deg1 / 360);
 
   double out_ecl_long_deg = decimal_degrees_degrees(ecl_long_deg2);
@@ -303,11 +303,11 @@ PACoordinates::equatorial_coordinate_to_galactic_coordinate(
                      cos(ra_rad - degrees_to_radians(192.25)) +
                  sin(dec_rad) * sin(degrees_to_radians(27.4));
   double b_radians = asin(sin_b);
-  double b_deg = pa_macros::degrees(b_radians);
+  double b_deg = w_to_degrees(b_radians);
   double y = sin(dec_rad) - sin_b * sin(degrees_to_radians(27.4));
   double x = cos(dec_rad) * sin(ra_rad - degrees_to_radians(192.25)) *
              cos(degrees_to_radians(27.4));
-  double long_deg_1 = pa_macros::degrees(atan2(y, x)) + 33;
+  double long_deg_1 = w_to_degrees(atan2(y, x)) + 33;
   double long_deg_2 = long_deg_1 - 360 * floor(long_deg_1 / 360);
 
   double gal_long_deg = decimal_degrees_degrees(long_deg_2);
@@ -342,13 +342,13 @@ PACoordinates::galactic_coordinate_to_equatorial_coordinate(
                        sin(g_long_rad - degrees_to_radians(33.0)) +
                    sin(g_lat_rad) * sin(degrees_to_radians(27.4));
   double dec_radians = asin(sin_dec);
-  double dec_deg = pa_macros::degrees(dec_radians);
+  double dec_deg = w_to_degrees(dec_radians);
   double y = cos(g_lat_rad) * cos(g_long_rad - degrees_to_radians(33.0));
   double x = sin(g_lat_rad) * cos(degrees_to_radians(27.4)) -
              cos(g_lat_rad) * sin(degrees_to_radians(27.4)) *
                  sin(g_long_rad - degrees_to_radians(33.0));
 
-  double ra_deg_1 = pa_macros::degrees(atan2(y, x)) + 192.25;
+  double ra_deg_1 = w_to_degrees(atan2(y, x)) + 192.25;
   double ra_deg_2 = ra_deg_1 - 360 * floor(ra_deg_1 / 360);
   double ra_hours_1 = decimal_degrees_to_degree_hours(ra_deg_2);
 
@@ -407,7 +407,7 @@ std::tuple<double, double, double> PACoordinates::angle_between_two_objects(
                  cos(dec_lat_1_rad) * cos(dec_lat_2_rad) *
                      cos(ra_long_1_rad - ra_long_2_rad);
   double d_rad = acos(cos_d);
-  double d_deg = pa_macros::degrees(d_rad);
+  double d_deg = w_to_degrees(d_rad);
 
   double angle_deg = decimal_degrees_degrees(d_deg);
   double angle_min = decimal_degrees_minutes(d_deg);

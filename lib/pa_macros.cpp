@@ -379,7 +379,7 @@ double equatorial_coordinates_to_azimuth(double hour_angle_hours,
   double g = sin(e) * sin(f) + cos(e) * cos(f) * cos(c);
   double h = -cos(e) * cos(f) * sin(c);
   double i = sin(e) - (sin(f) * g);
-  double j = degrees(atan2(h, i));
+  double j = w_to_degrees(atan2(h, i));
 
   return j - 360.0 * floor(j / 360);
 }
@@ -405,7 +405,7 @@ double equatorial_coordinates_to_altitude(double hour_angle_hours,
   double f = degrees_to_radians(geographical_latitude);
   double g = sin(e) * sin(f) + cos(e) * cos(f) * cos(c);
 
-  return degrees(asin(g));
+  return w_to_degrees(asin(g));
 }
 
 /**
@@ -428,7 +428,7 @@ double degrees_minutes_seconds_to_decimal_degrees(double degrees,
  *
  * Original macro name: Degrees
  */
-double degrees(double w) { return w * 57.29577951; }
+double w_to_degrees(double w) { return w * 57.29577951; }
 
 /**
  * \brief Return Degrees part of Decimal Degrees
@@ -508,7 +508,7 @@ double horizon_coordinates_to_declination(
   double e = degrees_to_radians(geographical_latitude);
   double f = sin(d) * sin(e) + cos(d) * cos(e) * cos(c);
 
-  return degrees(asin(f));
+  return w_to_degrees(asin(f));
 }
 
 /**
@@ -530,7 +530,7 @@ double horizon_coordinates_to_hour_angle(
   double f = sin(d) * sin(e) + cos(d) * cos(e) * cos(c);
   double g = -cos(d) * cos(e) * sin(c);
   double h = sin(d) - sin(e) * f;
-  double i = decimal_degrees_to_degree_hours(degrees(atan2(g, h)));
+  double i = decimal_degrees_to_degree_hours(w_to_degrees(atan2(g, h)));
 
   return i - 24 * floor(i / 24);
 }
