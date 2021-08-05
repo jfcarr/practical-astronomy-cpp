@@ -180,6 +180,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a1f4a8335dda7b61e3691c744382bf770"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770">nutat_obl</a> (double greenwich_day, int greenwich_month, int greenwich_year)</td></tr>
 <tr class="memdesc:a1f4a8335dda7b61e3691c744382bf770"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nutation of Obliquity.  <a href="namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770">More...</a><br /></td></tr>
 <tr class="separator:a1f4a8335dda7b61e3691c744382bf770"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e7f7e978a07da9060d6b933700f9b09"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a6e7f7e978a07da9060d6b933700f9b09">local_sidereal_time_to_greenwich_sidereal_time</a> (double local_hours, double local_minutes, double local_seconds, double longitude)</td></tr>
+<tr class="memdesc:a6e7f7e978a07da9060d6b933700f9b09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Local Sidereal Time to Greenwich Sidereal Time.  <a href="namespacepa__macros.html#a6e7f7e978a07da9060d6b933700f9b09">More...</a><br /></td></tr>
+<tr class="separator:a6e7f7e978a07da9060d6b933700f9b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc159a14cdc6f2c1d31a01fc05f62163"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#acc159a14cdc6f2c1d31a01fc05f62163">greenwich_sidereal_time_to_universal_time</a> (double greenwich_sidereal_hours, double greenwich_sidereal_minutes, double greenwich_sidereal_seconds, double greenwich_day, int greenwich_month, int greenwich_year)</td></tr>
+<tr class="memdesc:acc159a14cdc6f2c1d31a01fc05f62163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert Greenwich Sidereal Time to Universal Time.  <a href="namespacepa__macros.html#acc159a14cdc6f2c1d31a01fc05f62163">More...</a><br /></td></tr>
+<tr class="separator:acc159a14cdc6f2c1d31a01fc05f62163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a58764743980ce2d3a24c0699969773c9"></a>
@@ -642,6 +648,63 @@ Functions</h2></td></tr>
 <p>Original macro name: GSTLST </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00350">350</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acc159a14cdc6f2c1d31a01fc05f62163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc159a14cdc6f2c1d31a01fc05f62163">&#9670;&nbsp;</a></span>greenwich_sidereal_time_to_universal_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double greenwich_sidereal_time_to_universal_time </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>greenwich_sidereal_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>greenwich_sidereal_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>greenwich_sidereal_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>greenwich_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Greenwich Sidereal Time to Universal Time. </p>
+<p>Original macro name: GSTUT </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00680">680</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1254,6 +1317,51 @@ Functions</h2></td></tr>
 <p>Original macro name: LctUT </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00257">257</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6e7f7e978a07da9060d6b933700f9b09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e7f7e978a07da9060d6b933700f9b09">&#9670;&nbsp;</a></span>local_sidereal_time_to_greenwich_sidereal_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double local_sidereal_time_to_greenwich_sidereal_time </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>local_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>local_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>local_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>longitude</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert Local Sidereal Time to Greenwich Sidereal Time. </p>
+<p>Original macro name: LSTGST </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00664">664</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
