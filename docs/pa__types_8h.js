@@ -5,12 +5,12 @@ var pa__types_8h =
       [ "degrees", "pa__types_8h.html#ab68946c56cf92482bdebd1c557593b24aeb85e0821c20e303a97a813f3150b5e0", null ]
     ] ],
     [ "rise_set_status", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69", [
-      [ "rise_set_ok", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69accd93821bdc46f3b988ec228829cbfeb", null ],
-      [ "never_rises", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69a7144a638e63338c18fdb64c63c62bb60", null ],
-      [ "circumpolar", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69ab38db4f0a11a640fda52b2da3f6b06f4", null ]
+      [ "ok", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69a444bcb3a3fcf8389296c49467f27e1d6", null ],
+      [ "never_rises", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69a3d56a280ecf47bf782cddf98870d0760", null ],
+      [ "circumpolar", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69a646d7f174a081c9eb96f87e807d3b06f", null ]
     ] ],
     [ "warning_flags", "pa__types_8h.html#abd8e28d1f6cc273e99b3cbaf226bb55a", [
-      [ "ok", "pa__types_8h.html#abd8e28d1f6cc273e99b3cbaf226bb55aad8b76af209cd7ba83b4ebf33ba1637b2", null ],
-      [ "warning", "pa__types_8h.html#abd8e28d1f6cc273e99b3cbaf226bb55aa8de9aef05fc85e519a0cfce33573f492", null ]
+      [ "ok", "pa__types_8h.html#abd8e28d1f6cc273e99b3cbaf226bb55aa444bcb3a3fcf8389296c49467f27e1d6", null ],
+      [ "warning", "pa__types_8h.html#abd8e28d1f6cc273e99b3cbaf226bb55aa7b83d3f08fa392b79e3f553b585971cd", null ]
     ] ]
 ];
