@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hours_139',['hours',['../namespacepa__types.html#ab68946c56cf92482bdebd1c557593b24a769ea7f63d9d5def80de898a3a10da28',1,'pa_types']]]
+  ['degrees_146',['degrees',['../namespacepa__types.html#ab68946c56cf92482bdebd1c557593b24aeb85e0821c20e303a97a813f3150b5e0',1,'pa_types']]]
 ];

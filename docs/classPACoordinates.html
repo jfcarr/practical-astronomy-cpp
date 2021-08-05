@@ -128,6 +128,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3bdb68a8e5354c95d33563dd52ab273"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#ad3bdb68a8e5354c95d33563dd52ab273">angle_between_two_objects</a> (double ra_long_1_hour_deg, double ra_long_1_min, double ra_long_1_sec, double dec_lat_1_deg, double dec_lat_1_min, double dec_lat_1_sec, double ra_long_2_hour_deg, double ra_long_2_min, double ra_long_2_sec, double dec_lat_2_deg, double dec_lat_2_min, double dec_lat_2_sec, <a class="el" href="namespacepa__types.html#ab68946c56cf92482bdebd1c557593b24">pa_types::angle_measurement_units</a> hour_or_degree)</td></tr>
 <tr class="memdesc:ad3bdb68a8e5354c95d33563dd52ab273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the angle between two celestial objects.  <a href="classPACoordinates.html#ad3bdb68a8e5354c95d33563dd52ab273">More...</a><br /></td></tr>
 <tr class="separator:ad3bdb68a8e5354c95d33563dd52ab273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8105847a6021c465b4faec66770b3dd"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; <a class="el" href="namespacepa__types.html#a57d1662994e884d5eb36e8983f372a69">pa_types::rise_set_status</a>, double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#ab8105847a6021c465b4faec66770b3dd">rising_and_setting</a> (double ra_hours, double ra_minutes, double ra_seconds, double dec_deg, double dec_min, double dec_sec, double gw_date_day, int gw_date_month, int gw_date_year, double geog_long_deg, double geog_lat_deg, double vert_shift_deg)</td></tr>
+<tr class="memdesc:ab8105847a6021c465b4faec66770b3dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate rising and setting times for an object.  <a href="classPACoordinates.html#ab8105847a6021c465b4faec66770b3dd">More...</a><br /></td></tr>
+<tr class="separator:ab8105847a6021c465b4faec66770b3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -919,6 +922,99 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;double hour_angle_hours, double hour_angle_minutes, double hour_angle_seconds&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00060">60</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab8105847a6021c465b4faec66770b3dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8105847a6021c465b4faec66770b3dd">&#9670;&nbsp;</a></span>rising_and_setting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; <a class="el" href="namespacepa__types.html#a57d1662994e884d5eb36e8983f372a69">pa_types::rise_set_status</a>, double, double, double, double, double, double &gt; rising_and_setting </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_sec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gw_date_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gw_date_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gw_date_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geog_long_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geog_lat_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>vert_shift_deg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate rising and setting times for an object. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;rise_set_status riseSetStatus, double utRiseHour, double utRiseMin, double utSetHour, double utSetMin, double azRise, double azSet&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00427">427</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>

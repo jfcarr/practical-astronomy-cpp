@@ -415,3 +415,77 @@ std::tuple<double, double, double> PACoordinates::angle_between_two_objects(
 
   return std::tuple<double, double, double>{angle_deg, angle_min, angle_sec};
 }
+
+/**
+ * \brief Calculate rising and setting times for an object.
+ *
+ * @return tuple <rise_set_status riseSetStatus, double utRiseHour, double
+ * utRiseMin, double utSetHour, double utSetMin, double azRise, double azSet>
+ */
+std::tuple<pa_types::rise_set_status, double, double, double, double, double,
+           double>
+PACoordinates::rising_and_setting(double ra_hours, double ra_minutes,
+                                  double ra_seconds, double dec_deg,
+                                  double dec_min, double dec_sec,
+                                  double gw_date_day, int gw_date_month,
+                                  int gw_date_year, double geog_long_deg,
+                                  double geog_lat_deg, double vert_shift_deg) {
+  double ra_hours_1 = hms_dh(ra_hours, ra_minutes, ra_seconds);
+  double dec_rad = degrees_to_radians(
+      degrees_minutes_seconds_to_decimal_degrees(dec_deg, dec_min, dec_sec));
+  double vertical_displ_radians = degrees_to_radians(vert_shift_deg);
+  double geo_lat_radians = degrees_to_radians(geog_lat_deg);
+  double cos_h =
+      -(sin(vertical_displ_radians) + sin(geo_lat_radians) * sin(dec_rad)) /
+      (cos(geo_lat_radians) * cos(dec_rad));
+  double h_hours = decimal_degrees_to_degree_hours(w_to_degrees(acos(cos_h)));
+  double lst_rise_hours =
+      (ra_hours_1 - h_hours) - 24 * floor((ra_hours_1 - h_hours) / 24);
+  double lst_set_hours =
+      (ra_hours_1 + h_hours) - 24 * floor((ra_hours_1 + h_hours) / 24);
+  double a_deg = w_to_degrees(
+      acos((sin(dec_rad) + sin(vertical_displ_radians) * sin(geo_lat_radians)) /
+           (cos(vertical_displ_radians) * cos(geo_lat_radians))));
+  double az_rise_deg = a_deg - 360 * floor(a_deg / 360);
+  double az_set_deg = (360 - a_deg) - 360 * floor((360 - a_deg) / 360);
+  double ut_rise_hours_1 = pa_macros::greenwich_sidereal_time_to_universal_time(
+      pa_macros::local_sidereal_time_to_greenwich_sidereal_time(
+          lst_rise_hours, 0, 0, geog_long_deg),
+      0, 0, gw_date_day, gw_date_month, gw_date_year);
+  double ut_set_hours_1 = pa_macros::greenwich_sidereal_time_to_universal_time(
+      pa_macros::local_sidereal_time_to_greenwich_sidereal_time(
+          lst_set_hours, 0, 0, geog_long_deg),
+      0, 0, gw_date_day, gw_date_month, gw_date_year);
+  double ut_rise_adjusted_hours = ut_rise_hours_1 + 0.008333;
+  double ut_set_adjusted_hours = ut_set_hours_1 + 0.008333;
+
+  pa_types::rise_set_status rs_status = pa_types::rise_set_status::rise_set_ok;
+  if (cos_h > 1)
+    rs_status = pa_types::rise_set_status::never_rises;
+  if (cos_h < -1)
+    rs_status = pa_types::rise_set_status::circumpolar;
+
+  int ut_rise_hour = (rs_status == pa_types::rise_set_status::rise_set_ok)
+                         ? decimal_hours_hour(ut_rise_adjusted_hours)
+                         : 0;
+  int ut_rise_min = (rs_status == pa_types::rise_set_status::rise_set_ok)
+                        ? decimal_hours_minute(ut_rise_adjusted_hours)
+                        : 0;
+  int ut_set_hour = (rs_status == pa_types::rise_set_status::rise_set_ok)
+                        ? decimal_hours_hour(ut_set_adjusted_hours)
+                        : 0;
+  int ut_set_min = (rs_status == pa_types::rise_set_status::rise_set_ok)
+                       ? decimal_hours_minute(ut_set_adjusted_hours)
+                       : 0;
+  double az_rise = (rs_status == pa_types::rise_set_status::rise_set_ok)
+                       ? pa_util::round(az_rise_deg, 2)
+                       : 0;
+  double az_set = (rs_status == pa_types::rise_set_status::rise_set_ok)
+                      ? pa_util::round(az_set_deg, 2)
+                      : 0;
+
+  return std::tuple<pa_types::rise_set_status, double, double, double, double,
+                    double, double>{rs_status,   ut_rise_hour, ut_rise_min,
+                                    ut_set_hour, ut_set_min,   az_rise,
+                                    az_set};
+}

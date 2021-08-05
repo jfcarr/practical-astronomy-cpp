@@ -83,5 +83,13 @@ double degree_hours_to_decimal_degrees(double degree_hours);
 double obliq(double greenwich_day, int greenwich_month, int greenwich_year);
 double nutat_long(double gd, int gm, int gy);
 double nutat_obl(double greenwich_day, int greenwich_month, int greenwich_year);
+double local_sidereal_time_to_greenwich_sidereal_time(double local_hours,
+                                                      double local_minutes,
+                                                      double local_seconds,
+                                                      double longitude);
+double greenwich_sidereal_time_to_universal_time(
+    double greenwich_sidereal_hours, double greenwich_sidereal_minutes,
+    double greenwich_sidereal_seconds, double greenwich_day,
+    int greenwich_month, int greenwich_year);
 } // namespace pa_macros
 #endif
