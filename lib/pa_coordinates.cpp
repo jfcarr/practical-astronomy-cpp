@@ -459,28 +459,28 @@ PACoordinates::rising_and_setting(double ra_hours, double ra_minutes,
   double ut_rise_adjusted_hours = ut_rise_hours_1 + 0.008333;
   double ut_set_adjusted_hours = ut_set_hours_1 + 0.008333;
 
-  pa_types::rise_set_status rs_status = pa_types::rise_set_status::rise_set_ok;
+  pa_types::rise_set_status rs_status = pa_types::rise_set_status::ok;
   if (cos_h > 1)
     rs_status = pa_types::rise_set_status::never_rises;
   if (cos_h < -1)
     rs_status = pa_types::rise_set_status::circumpolar;
 
-  int ut_rise_hour = (rs_status == pa_types::rise_set_status::rise_set_ok)
+  int ut_rise_hour = (rs_status == pa_types::rise_set_status::ok)
                          ? decimal_hours_hour(ut_rise_adjusted_hours)
                          : 0;
-  int ut_rise_min = (rs_status == pa_types::rise_set_status::rise_set_ok)
+  int ut_rise_min = (rs_status == pa_types::rise_set_status::ok)
                         ? decimal_hours_minute(ut_rise_adjusted_hours)
                         : 0;
-  int ut_set_hour = (rs_status == pa_types::rise_set_status::rise_set_ok)
+  int ut_set_hour = (rs_status == pa_types::rise_set_status::ok)
                         ? decimal_hours_hour(ut_set_adjusted_hours)
                         : 0;
-  int ut_set_min = (rs_status == pa_types::rise_set_status::rise_set_ok)
+  int ut_set_min = (rs_status == pa_types::rise_set_status::ok)
                        ? decimal_hours_minute(ut_set_adjusted_hours)
                        : 0;
-  double az_rise = (rs_status == pa_types::rise_set_status::rise_set_ok)
+  double az_rise = (rs_status == pa_types::rise_set_status::ok)
                        ? pa_util::round(az_rise_deg, 2)
                        : 0;
-  double az_set = (rs_status == pa_types::rise_set_status::rise_set_ok)
+  double az_set = (rs_status == pa_types::rise_set_status::ok)
                       ? pa_util::round(az_set_deg, 2)
                       : 0;
 

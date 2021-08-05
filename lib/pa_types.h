@@ -4,7 +4,7 @@ namespace pa_types {
 /**
  * Warning flags for calculation results.
  */
-enum warning_flags {
+enum class warning_flags {
   ok,     /**< Calculation result is OK. */
   warning /**< Calculation result is invalid/inaccurate. */
 };
@@ -17,8 +17,8 @@ enum angle_measurement_units { hours, degrees };
 /**
  * Rise/Set status of an object.
  */
-enum rise_set_status {
-  rise_set_ok, /**< Object rises and sets */
+enum class rise_set_status {
+  ok,          /**< Object rises and sets */
   never_rises, /**< Object is never visible above the horizon. */
   circumpolar  /**< Object never sets. */
 };

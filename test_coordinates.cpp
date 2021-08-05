@@ -257,8 +257,8 @@ SCENARIO("Calculate rising and setting times") {
            "and azimuth rise/set is 64.36/295.64") {
         std::tuple<pa_types::rise_set_status, double, double, double, double,
                    double, double>
-            expected = std::make_tuple(pa_types::rise_set_status::rise_set_ok,
-                                       14, 16, 4, 10, 64.36, 295.64);
+            expected = std::make_tuple(pa_types::rise_set_status::ok, 14, 16, 4,
+                                       10, 64.36, 295.64);
 
         REQUIRE(std::get<0>(result) == std::get<0>(expected));
         REQUIRE(std::get<1>(result) == std::get<1>(expected));
