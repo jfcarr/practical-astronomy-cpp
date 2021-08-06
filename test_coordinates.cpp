@@ -73,7 +73,8 @@ SCENARIO("Convert Right Ascension to and from Hour Angle", "[coordinates]") {
   }
 }
 
-SCENARIO("Convert Equatorial Coordinates to and from Horizon Coordinates") {
+SCENARIO("Convert Equatorial Coordinates to and from Horizon Coordinates",
+         "[coordinates]") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
 
@@ -116,7 +117,7 @@ SCENARIO("Convert Equatorial Coordinates to and from Horizon Coordinates") {
   }
 }
 
-SCENARIO("Calculate Obliquity of the Ecliptic") {
+SCENARIO("Calculate Obliquity of the Ecliptic", "[coordinates]") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
 
@@ -133,7 +134,8 @@ SCENARIO("Calculate Obliquity of the Ecliptic") {
   }
 }
 
-SCENARIO("Convert Ecliptic Coordinates to and from Equatorial Coordinates") {
+SCENARIO("Convert Ecliptic Coordinates to and from Equatorial Coordinates",
+         "[coordinates]") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
 
@@ -179,7 +181,8 @@ SCENARIO("Convert Ecliptic Coordinates to and from Equatorial Coordinates") {
   }
 }
 
-SCENARIO("Convert Equatorial Coordinates to and from Galactic Coordinates") {
+SCENARIO("Convert Equatorial Coordinates to and from Galactic Coordinates",
+         "[coordinates]") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
 
@@ -223,7 +226,7 @@ SCENARIO("Convert Equatorial Coordinates to and from Galactic Coordinates") {
   }
 }
 
-SCENARIO("Calculate angle between two objects") {
+SCENARIO("Calculate angle between two objects", "[coordinates]") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
     WHEN("Object 1 is Right Ascension 5h 13m 31.7 Declination -8d 13m 30s and "
@@ -244,7 +247,7 @@ SCENARIO("Calculate angle between two objects") {
   }
 }
 
-SCENARIO("Calculate rising and setting times") {
+SCENARIO("Calculate rising and setting times", "[coordinates]") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
 
@@ -273,7 +276,7 @@ SCENARIO("Calculate rising and setting times") {
   }
 }
 
-SCENARIO("Correct coordinates for precession") {
+SCENARIO("Correct coordinates for precession", "[coordinates]") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
 
@@ -299,3 +302,22 @@ SCENARIO("Correct coordinates for precession") {
   }
 }
 
+SCENARIO("Nutation in Ecliptic Longitude and Obliquity", "[coordinates]") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Greenwich date is 9/1/1988") {
+      std::tuple<double, double> result =
+          paCoordinates.nutation_in_ecliptic_longitude_and_obliquity(1, 9,
+                                                                     1988);
+
+      THEN("Ecliptic Longitude is .001525808 and Obliquity is .0025671") {
+        std::tuple<double, double> expected =
+            std::make_tuple(.001525808, .0025671);
+
+        REQUIRE(round(std::get<0>(result), 9) == std::get<0>(expected));
+        REQUIRE(round(std::get<1>(result), 7) == std::get<1>(expected));
+      }
+    }
+  }
+}

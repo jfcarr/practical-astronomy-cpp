@@ -73,6 +73,7 @@ public:
       double ra_long_2_hour_deg, double ra_long_2_min, double ra_long_2_sec,
       double dec_lat_2_deg, double dec_lat_2_min, double dec_lat_2_sec,
       pa_types::angle_measurement_units hour_or_degree);
+
   std::tuple<pa_types::rise_set_status, double, double, double, double, double,
              double>
   rising_and_setting(double ra_hours, double ra_minutes, double ra_seconds,
@@ -80,11 +81,15 @@ public:
                      double gw_date_day, int gw_date_month, int gw_date_year,
                      double geog_long_deg, double geog_lat_deg,
                      double vert_shift_deg);
+
   std::tuple<double, double, double, double, double, double>
   correct_for_precession(double ra_hour, double ra_minutes, double ra_seconds,
                          double dec_deg, double dec_minutes, double dec_seconds,
                          double epoch_1_day, int epoch_1_month,
                          int epoch_1_year, double epoch_2_day,
                          int epoch_2_month, int epoch_2_year);
+
+  std::tuple<double, double> nutation_in_ecliptic_longitude_and_obliquity(
+      double greenwich_day, int greenwich_month, int greenwich_year);
 };
 #endif
