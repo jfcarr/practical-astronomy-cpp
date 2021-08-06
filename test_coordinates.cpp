@@ -247,6 +247,7 @@ SCENARIO("Calculate angle between two objects") {
 SCENARIO("Calculate rising and setting times") {
   GIVEN("A PACoordinates object") {
     PACoordinates paCoordinates;
+
     WHEN("Right Ascension is 23h 39m 20s and Declination is 21d 42m 0s and "
          "Greenwich Date is 8/24/2010 and Geographical Long/Lat is 64/30") {
       std::tuple<pa_types::rise_set_status, double, double, double, double,
@@ -271,3 +272,30 @@ SCENARIO("Calculate rising and setting times") {
     }
   }
 }
+
+SCENARIO("Correct coordinates for precession") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Right Ascension is 9h 10m 43s, Declination is 14d 23m 25s, Epoch 1 "
+         "date is 1/.923/1950, and Epoch 2 date is 6/1/1979") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.correct_for_precession(9, 10, 43, 14, 23, 25, 0.923, 1,
+                                               1950, 1, 6, 1979);
+
+      THEN("Corrected Right Ascension is 9h 12m 20.18s and Corrected "
+           "Declination is 14d 16m 9.12s") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(9, 12, 20.18, 14, 16, 9.12);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}
+

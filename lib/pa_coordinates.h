@@ -80,5 +80,11 @@ public:
                      double gw_date_day, int gw_date_month, int gw_date_year,
                      double geog_long_deg, double geog_lat_deg,
                      double vert_shift_deg);
+  std::tuple<double, double, double, double, double, double>
+  correct_for_precession(double ra_hour, double ra_minutes, double ra_seconds,
+                         double dec_deg, double dec_minutes, double dec_seconds,
+                         double epoch_1_day, int epoch_1_month,
+                         int epoch_1_year, double epoch_2_day,
+                         int epoch_2_month, int epoch_2_year);
 };
 #endif
