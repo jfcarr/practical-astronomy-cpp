@@ -489,3 +489,53 @@ PACoordinates::rising_and_setting(double ra_hours, double ra_minutes,
                                     ut_set_hour, ut_set_min,   az_rise,
                                     az_set};
 }
+
+/**
+ * \brief Calculate precession (corrected coordinates between two epochs)
+ *
+ * @return tuple<double corrected_ra_hour, double corrected_ra_minutes, double
+ * corrected_ra_seconds, double corrected_dec_deg, double corrected_dec_minutes,
+ * double corrected_dec_seconds>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::correct_for_precession(double ra_hour, double ra_minutes,
+                                      double ra_seconds, double dec_deg,
+                                      double dec_minutes, double dec_seconds,
+                                      double epoch_1_day, int epoch_1_month,
+                                      int epoch_1_year, double epoch_2_day,
+                                      int epoch_2_month, int epoch_2_year) {
+  double ra_1_rad = degrees_to_radians(
+      degree_hours_to_decimal_degrees(hms_dh(ra_hour, ra_minutes, ra_seconds)));
+  double dec_1_rad =
+      degrees_to_radians(degrees_minutes_seconds_to_decimal_degrees(
+          dec_deg, dec_minutes, dec_seconds));
+  double t_centuries =
+      (civil_date_to_julian_date(epoch_1_day, epoch_1_month, epoch_1_year) -
+       2415020) /
+      36525;
+  double m_sec = 3.07234 + (0.00186 * t_centuries);
+  double n_arcsec = 20.0468 - (0.0085 * t_centuries);
+  double n_years =
+      (civil_date_to_julian_date(epoch_2_day, epoch_2_month, epoch_2_year) -
+       civil_date_to_julian_date(epoch_1_day, epoch_1_month, epoch_1_year)) /
+      365.25;
+  double s_1_hours =
+      ((m_sec + (n_arcsec * sin(ra_1_rad) * tan(dec_1_rad) / 15)) * n_years) /
+      3600;
+  double ra_2_hours = hms_dh(ra_hour, ra_minutes, ra_seconds) + s_1_hours;
+  double s_2_deg = (n_arcsec * cos(ra_1_rad) * n_years) / 3600;
+  double dec_2_deg = degrees_minutes_seconds_to_decimal_degrees(
+                         dec_deg, dec_minutes, dec_seconds) +
+                     s_2_deg;
+
+  int corrected_ra_hour = decimal_hours_hour(ra_2_hours);
+  int corrected_ra_minutes = decimal_hours_minute(ra_2_hours);
+  double corrected_ra_seconds = decimal_hours_second(ra_2_hours);
+  double corrected_dec_deg = decimal_degrees_degrees(dec_2_deg);
+  double corrected_dec_minutes = decimal_degrees_minutes(dec_2_deg);
+  double corrected_dec_seconds = decimal_degrees_seconds(dec_2_deg);
+
+  return std::tuple<double, double, double, double, double, double>{
+      corrected_ra_hour, corrected_ra_minutes,  corrected_ra_seconds,
+      corrected_dec_deg, corrected_dec_minutes, corrected_dec_seconds};
+}
