@@ -539,3 +539,34 @@ PACoordinates::correct_for_precession(double ra_hour, double ra_minutes,
       corrected_ra_hour, corrected_ra_minutes,  corrected_ra_seconds,
       corrected_dec_deg, corrected_dec_minutes, corrected_dec_seconds};
 }
+
+/**
+ * \brief Calculate nutation for two values: ecliptic longitude and obliquity,
+ * for a Greenwich date.
+ *
+ * @return tuple<nutation in ecliptic longitude (degrees), nutation in obliquity
+ * (degrees)>
+ */
+std::tuple<double, double>
+PACoordinates::nutation_in_ecliptic_longitude_and_obliquity(
+    double greenwich_day, int greenwich_month, int greenwich_year) {
+  double jd_days =
+      civil_date_to_julian_date(greenwich_day, greenwich_month, greenwich_year);
+  double t_centuries = (jd_days - 2415020) / 36525;
+  double a_deg = 100.0021358 * t_centuries;
+  double l_1_deg = 279.6967 + (0.000303 * t_centuries * t_centuries);
+  double l_deg1 = l_1_deg + 360 * (a_deg - floor(a_deg));
+  double l_deg2 = l_deg1 - 360 * floor(l_deg1 / 360);
+  double l_rad = degrees_to_radians(l_deg2);
+  double b_deg = 5.372617 * t_centuries;
+  double n_deg1 = 259.1833 - 360 * (b_deg - floor(b_deg));
+  double n_deg2 = n_deg1 - 360 * (floor(n_deg1 / 360));
+  double n_rad = degrees_to_radians(n_deg2);
+  double nut_in_long_arcsec = -17.2 * sin(n_rad) - 1.3 * sin(2 * l_rad);
+  double nut_in_obl_arcsec = 9.2 * cos(n_rad) + 0.5 * cos(2 * l_rad);
+
+  double nut_in_long_deg = nut_in_long_arcsec / 3600;
+  double nut_in_obl_deg = nut_in_obl_arcsec / 3600;
+
+  return std::tuple<double, double>{nut_in_long_deg, nut_in_obl_deg};
+}
