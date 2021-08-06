@@ -91,5 +91,8 @@ double greenwich_sidereal_time_to_universal_time(
     double greenwich_sidereal_hours, double greenwich_sidereal_minutes,
     double greenwich_sidereal_seconds, double greenwich_day,
     int greenwich_month, int greenwich_year);
+double sun_long(double lch, double lcm, double lcs, int ds, int zc, double ld,
+                int lm, int ly);
+double true_anomaly(double am, double ec);
 } // namespace pa_macros
 #endif

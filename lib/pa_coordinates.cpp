@@ -570,3 +570,42 @@ PACoordinates::nutation_in_ecliptic_longitude_and_obliquity(
 
   return std::tuple<double, double>{nut_in_long_deg, nut_in_obl_deg};
 }
+
+/**
+ * \brief Correct ecliptic coordinates for the effects of aberration.
+ *
+ * @return tuple<apparent ecliptic longitude (degrees, minutes, seconds),
+ * apparent ecliptic latitude (degrees, minutes, seconds)>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::correct_for_aberration(
+    double ut_hour, double ut_minutes, double ut_seconds, double gw_day,
+    int gw_month, int gw_year, double true_ecl_long_deg,
+    double true_ecl_long_min, double true_ecl_long_sec, double true_ecl_lat_deg,
+    double true_ecl_lat_min, double true_ecl_lat_sec) {
+  double true_long_deg = degrees_minutes_seconds_to_decimal_degrees(
+      true_ecl_long_deg, true_ecl_long_min, true_ecl_long_sec);
+  double true_lat_deg = degrees_minutes_seconds_to_decimal_degrees(
+      true_ecl_lat_deg, true_ecl_lat_min, true_ecl_lat_sec);
+  double sun_true_long_deg = sun_long(ut_hour, ut_minutes, ut_seconds, 0, 0,
+                                      gw_day, gw_month, gw_year);
+  double d_long_arcsec =
+      -20.5 * cos(degrees_to_radians(sun_true_long_deg - true_long_deg)) /
+      cos(degrees_to_radians(true_lat_deg));
+  double d_lat_arcsec =
+      -20.5 * sin(degrees_to_radians(sun_true_long_deg - true_long_deg)) *
+      sin(degrees_to_radians(true_lat_deg));
+  double apparent_long_deg = true_long_deg + (d_long_arcsec / 3600);
+  double apparent_lat_deg = true_lat_deg + (d_lat_arcsec / 3600);
+
+  double apparent_ecl_long_deg = decimal_degrees_degrees(apparent_long_deg);
+  double apparent_ecl_long_min = decimal_degrees_minutes(apparent_long_deg);
+  double apparent_ecl_long_sec = decimal_degrees_seconds(apparent_long_deg);
+  double apparent_ecl_lat_deg = decimal_degrees_degrees(apparent_lat_deg);
+  double apparent_ecl_lat_min = decimal_degrees_minutes(apparent_lat_deg);
+  double apparent_ecl_lat_sec = decimal_degrees_seconds(apparent_lat_deg);
+
+  return std::tuple<double, double, double, double, double, double>{
+      apparent_ecl_long_deg, apparent_ecl_long_min, apparent_ecl_long_sec,
+      apparent_ecl_lat_deg,  apparent_ecl_lat_min,  apparent_ecl_lat_sec};
+}
