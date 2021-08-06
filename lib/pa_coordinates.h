@@ -91,5 +91,12 @@ public:
 
   std::tuple<double, double> nutation_in_ecliptic_longitude_and_obliquity(
       double greenwich_day, int greenwich_month, int greenwich_year);
+
+  std::tuple<double, double, double, double, double, double>
+  correct_for_aberration(double ut_hour, double ut_minutes, double ut_seconds,
+                         double gw_day, int gw_month, int gw_year,
+                         double true_ecl_long_deg, double true_ecl_long_min,
+                         double true_ecl_long_sec, double true_ecl_lat_deg,
+                         double true_ecl_lat_min, double true_ecl_lat_sec);
 };
 #endif

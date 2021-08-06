@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['w_5fto_5fdegrees_144',['w_to_degrees',['../namespacepa__macros.html#a7686d5e038d0f28383361f108f372257',1,'pa_macros']]]
+  ['true_5fanomaly_147',['true_anomaly',['../namespacepa__macros.html#a948846c29fce23fac0a944d4a63beb1c',1,'pa_macros']]]
 ];

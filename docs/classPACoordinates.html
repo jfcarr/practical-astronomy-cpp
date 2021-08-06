@@ -137,6 +137,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aba4b9af80fe43e9ff8c09e6d9c9fa721"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#aba4b9af80fe43e9ff8c09e6d9c9fa721">nutation_in_ecliptic_longitude_and_obliquity</a> (double greenwich_day, int greenwich_month, int greenwich_year)</td></tr>
 <tr class="memdesc:aba4b9af80fe43e9ff8c09e6d9c9fa721"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate nutation for two values: ecliptic longitude and obliquity, for a Greenwich date.  <a href="classPACoordinates.html#aba4b9af80fe43e9ff8c09e6d9c9fa721">More...</a><br /></td></tr>
 <tr class="separator:aba4b9af80fe43e9ff8c09e6d9c9fa721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb81f35c90056619c81301394beecd78"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#aeb81f35c90056619c81301394beecd78">correct_for_aberration</a> (double ut_hour, double ut_minutes, double ut_seconds, double gw_day, int gw_month, int gw_year, double true_ecl_long_deg, double true_ecl_long_min, double true_ecl_long_sec, double true_ecl_lat_deg, double true_ecl_lat_min, double true_ecl_lat_sec)</td></tr>
+<tr class="memdesc:aeb81f35c90056619c81301394beecd78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Correct ecliptic coordinates for the effects of aberration.  <a href="classPACoordinates.html#aeb81f35c90056619c81301394beecd78">More...</a><br /></td></tr>
+<tr class="separator:aeb81f35c90056619c81301394beecd78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -285,6 +288,99 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Decimal Degrees </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00020">20</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aeb81f35c90056619c81301394beecd78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb81f35c90056619c81301394beecd78">&#9670;&nbsp;</a></span>correct_for_aberration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; correct_for_aberration </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ut_hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ut_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ut_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gw_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gw_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gw_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ecl_long_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ecl_long_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ecl_long_sec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ecl_lat_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ecl_lat_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ecl_lat_sec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Correct ecliptic coordinates for the effects of aberration. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple&lt;apparent ecliptic longitude (degrees, minutes, seconds), apparent ecliptic latitude (degrees, minutes, seconds)&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00581">581</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>

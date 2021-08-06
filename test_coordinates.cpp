@@ -321,3 +321,29 @@ SCENARIO("Nutation in Ecliptic Longitude and Obliquity", "[coordinates]") {
     }
   }
 }
+
+SCENARIO("Correct ecliptic coordinates for the effects of aberration.") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("UT is 0:0:0 and Greenwich Date is 9/8/1988 and Ecliptic Longitude is "
+         "352d 37m 10.1s and Ecliptic Latitude is -1d 32m 56.4s") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.correct_for_aberration(0, 0, 0, 8, 9, 1988, 352, 37,
+                                               10.1, -1, 32, 56.4);
+
+      THEN("Apparent Ecliptic Longitude is 352d 37m 30.45s and Apparent "
+           "Ecliptic Latitude is -1d 32m 56.33s") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(352, 37, 30.45, -1, 32, 56.33);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}

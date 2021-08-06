@@ -30,6 +30,8 @@ var pa__macros_8cpp =
     [ "nutat_obl", "pa__macros_8cpp.html#a1f4a8335dda7b61e3691c744382bf770", null ],
     [ "obliq", "pa__macros_8cpp.html#a4a412f51e0cfdc7030d5d9295a989c6b", null ],
     [ "right_ascension_to_hour_angle", "pa__macros_8cpp.html#aec9b7e82a4f2267f42f488684c402c01", null ],
+    [ "sun_long", "pa__macros_8cpp.html#a218e70a31f8c438b6bf0333f25c15ea1", null ],
+    [ "true_anomaly", "pa__macros_8cpp.html#a948846c29fce23fac0a944d4a63beb1c", null ],
     [ "universal_time_to_greenwich_sidereal_time", "pa__macros_8cpp.html#ae3c090f41754b86e21f4a29b7d3cb464", null ],
     [ "w_to_degrees", "pa__macros_8cpp.html#a7686d5e038d0f28383361f108f372257", null ]
 ];
