@@ -12,6 +12,7 @@ var classPACoordinates =
     [ "horizon_coordinates_to_equatorial_coordinates", "classPACoordinates.html#a998797a6ddc3eb67c31d9ceca6abde77", null ],
     [ "hour_angle_to_right_ascension", "classPACoordinates.html#a051d7b5cdbfad4470f9013dbb5dccb9d", null ],
     [ "mean_obliquity_of_the_ecliptic", "classPACoordinates.html#a19e0beeced5514440c25e334c24df825", null ],
+    [ "nutation_in_ecliptic_longitude_and_obliquity", "classPACoordinates.html#aba4b9af80fe43e9ff8c09e6d9c9fa721", null ],
     [ "right_ascension_to_hour_angle", "classPACoordinates.html#aae75af9fcb1656b9e6fc7cc9937a8cd0", null ],
     [ "rising_and_setting", "classPACoordinates.html#ab8105847a6021c465b4faec66770b3dd", null ]
 ];

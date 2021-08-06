@@ -134,6 +134,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a56d992c4e1ce08d32d95f0e49ebe7d81"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a56d992c4e1ce08d32d95f0e49ebe7d81">correct_for_precession</a> (double ra_hour, double ra_minutes, double ra_seconds, double dec_deg, double dec_minutes, double dec_seconds, double epoch_1_day, int epoch_1_month, int epoch_1_year, double epoch_2_day, int epoch_2_month, int epoch_2_year)</td></tr>
 <tr class="memdesc:a56d992c4e1ce08d32d95f0e49ebe7d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate precession (corrected coordinates between two epochs)  <a href="classPACoordinates.html#a56d992c4e1ce08d32d95f0e49ebe7d81">More...</a><br /></td></tr>
 <tr class="separator:a56d992c4e1ce08d32d95f0e49ebe7d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba4b9af80fe43e9ff8c09e6d9c9fa721"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#aba4b9af80fe43e9ff8c09e6d9c9fa721">nutation_in_ecliptic_longitude_and_obliquity</a> (double greenwich_day, int greenwich_month, int greenwich_year)</td></tr>
+<tr class="memdesc:aba4b9af80fe43e9ff8c09e6d9c9fa721"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate nutation for two values: ecliptic longitude and obliquity, for a Greenwich date.  <a href="classPACoordinates.html#aba4b9af80fe43e9ff8c09e6d9c9fa721">More...</a><br /></td></tr>
+<tr class="separator:aba4b9af80fe43e9ff8c09e6d9c9fa721"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -925,6 +928,45 @@ Public Member Functions</h2></td></tr>
 <p>Calculate Mean Obliquity of the Ecliptic for a Greenwich Date. </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00186">186</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aba4b9af80fe43e9ff8c09e6d9c9fa721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba4b9af80fe43e9ff8c09e6d9c9fa721">&#9670;&nbsp;</a></span>nutation_in_ecliptic_longitude_and_obliquity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double &gt; nutation_in_ecliptic_longitude_and_obliquity </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>greenwich_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>greenwich_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate nutation for two values: ecliptic longitude and obliquity, for a Greenwich date. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple&lt;nutation in ecliptic longitude (degrees), nutation in obliquity (degrees)&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00551">551</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>
