@@ -5,6 +5,7 @@ var classPACoordinates =
     [ "atmospheric_refraction", "classPACoordinates.html#ab2565a0a915cae5336a4616ee5fb87a6", null ],
     [ "correct_for_aberration", "classPACoordinates.html#aeb81f35c90056619c81301394beecd78", null ],
     [ "correct_for_precession", "classPACoordinates.html#a56d992c4e1ce08d32d95f0e49ebe7d81", null ],
+    [ "corrections_for_geocentric_parallax", "classPACoordinates.html#adfcfff30c66a274f6b84b31ff5d216ac", null ],
     [ "decimal_degrees_to_angle", "classPACoordinates.html#a16092431a788465f80c4c7e6a17141a3", null ],
     [ "ecliptic_coordinate_to_equatorial_coordinate", "classPACoordinates.html#ad77eb594c62c49645932291e323df3cf", null ],
     [ "equatorial_coordinate_to_ecliptic_coordinate", "classPACoordinates.html#a3059310fbbb5cc47275c041043f5dc74", null ],

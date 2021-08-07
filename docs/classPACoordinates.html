@@ -143,6 +143,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab2565a0a915cae5336a4616ee5fb87a6"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#ab2565a0a915cae5336a4616ee5fb87a6">atmospheric_refraction</a> (double true_ra_hour, double true_ra_min, double true_ra_sec, double true_dec_deg, double true_dec_min, double true_dec_sec, <a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a> coordinate_type1, double geog_long_deg, double geog_lat_deg, int daylight_saving_hours, int timezone_hours, double lcd_day, int lcd_month, int lcd_year, double lct_hour, double lct_min, double lct_sec, double atmospheric_pressure_mbar, double atmospheric_temperature_celsius)</td></tr>
 <tr class="memdesc:ab2565a0a915cae5336a4616ee5fb87a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate corrected RA/Dec, accounting for atmospheric refraction.  <a href="classPACoordinates.html#ab2565a0a915cae5336a4616ee5fb87a6">More...</a><br /></td></tr>
 <tr class="separator:ab2565a0a915cae5336a4616ee5fb87a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfcfff30c66a274f6b84b31ff5d216ac"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#adfcfff30c66a274f6b84b31ff5d216ac">corrections_for_geocentric_parallax</a> (double ra_hour, double ra_min, double ra_sec, double dec_deg, double dec_min, double dec_sec, <a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a> <a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">coordinate_type</a>, double equatorial_hor_parallax_deg, double geog_long_deg, double geog_lat_deg, double height_m, int daylight_saving, int timezone_hours, double lcd_day, int lcd_month, int lcd_year, double lct_hour, double lct_min, double lct_sec)</td></tr>
+<tr class="memdesc:adfcfff30c66a274f6b84b31ff5d216ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate corrected RA/Dec, accounting for geocentric parallax.  <a href="classPACoordinates.html#adfcfff30c66a274f6b84b31ff5d216ac">More...</a><br /></td></tr>
+<tr class="separator:adfcfff30c66a274f6b84b31ff5d216ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -613,6 +616,141 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple&lt;double corrected_ra_hour, double corrected_ra_minutes, double corrected_ra_seconds, double corrected_dec_deg, double corrected_dec_minutes, double corrected_dec_seconds&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00501">501</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="adfcfff30c66a274f6b84b31ff5d216ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfcfff30c66a274f6b84b31ff5d216ac">&#9670;&nbsp;</a></span>corrections_for_geocentric_parallax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; corrections_for_geocentric_parallax </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ra_sec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dec_sec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a>&#160;</td>
+          <td class="paramname"><em>coordinate_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>equatorial_hor_parallax_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geog_long_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geog_lat_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>height_m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>daylight_saving</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timezone_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lcd_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lcd_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lcd_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_sec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate corrected RA/Dec, accounting for geocentric parallax. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;corrected RA hours,minutes,seconds and corrected Declination degrees,minutes,seconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00673">673</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['true_5fanomaly_156',['true_anomaly',['../namespacepa__macros.html#a948846c29fce23fac0a944d4a63beb1c',1,'pa_macros']]]
+  ['sun_5flong_165',['sun_long',['../namespacepa__macros.html#a218e70a31f8c438b6bf0333f25c15ea1',1,'pa_macros']]]
 ];
