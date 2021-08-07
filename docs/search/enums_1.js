@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rise_5fset_5fstatus_152',['rise_set_status',['../namespacepa__types.html#a57d1662994e884d5eb36e8983f372a69',1,'pa_types']]]
+  ['coordinate_5ftype_161',['coordinate_type',['../namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4',1,'pa_types']]]
 ];

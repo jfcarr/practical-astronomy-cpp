@@ -140,6 +140,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeb81f35c90056619c81301394beecd78"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#aeb81f35c90056619c81301394beecd78">correct_for_aberration</a> (double ut_hour, double ut_minutes, double ut_seconds, double gw_day, int gw_month, int gw_year, double true_ecl_long_deg, double true_ecl_long_min, double true_ecl_long_sec, double true_ecl_lat_deg, double true_ecl_lat_min, double true_ecl_lat_sec)</td></tr>
 <tr class="memdesc:aeb81f35c90056619c81301394beecd78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Correct ecliptic coordinates for the effects of aberration.  <a href="classPACoordinates.html#aeb81f35c90056619c81301394beecd78">More...</a><br /></td></tr>
 <tr class="separator:aeb81f35c90056619c81301394beecd78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2565a0a915cae5336a4616ee5fb87a6"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#ab2565a0a915cae5336a4616ee5fb87a6">atmospheric_refraction</a> (double true_ra_hour, double true_ra_min, double true_ra_sec, double true_dec_deg, double true_dec_min, double true_dec_sec, <a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a> coordinate_type1, double geog_long_deg, double geog_lat_deg, int daylight_saving_hours, int timezone_hours, double lcd_day, int lcd_month, int lcd_year, double lct_hour, double lct_min, double lct_sec, double atmospheric_pressure_mbar, double atmospheric_temperature_celsius)</td></tr>
+<tr class="memdesc:ab2565a0a915cae5336a4616ee5fb87a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate corrected RA/Dec, accounting for atmospheric refraction.  <a href="classPACoordinates.html#ab2565a0a915cae5336a4616ee5fb87a6">More...</a><br /></td></tr>
+<tr class="separator:ab2565a0a915cae5336a4616ee5fb87a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -288,6 +291,142 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Decimal Degrees </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00020">20</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab2565a0a915cae5336a4616ee5fb87a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2565a0a915cae5336a4616ee5fb87a6">&#9670;&nbsp;</a></span>atmospheric_refraction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, double, double &gt; atmospheric_refraction </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ra_hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ra_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_ra_sec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_dec_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_dec_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>true_dec_sec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a>&#160;</td>
+          <td class="paramname"><em>coordinate_type1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geog_long_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geog_lat_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>daylight_saving_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timezone_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lcd_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lcd_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lcd_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_hour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_sec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>atmospheric_pressure_mbar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>atmospheric_temperature_celsius</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate corrected RA/Dec, accounting for atmospheric refraction. </p>
+<p>NOTE: Valid values for coordinate_type are "TRUE" and "APPARENT".</p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;corrected RA hours,minutes,seconds and corrected Declination degrees,minutes,seconds&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00622">622</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>

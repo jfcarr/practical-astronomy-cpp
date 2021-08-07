@@ -2,6 +2,7 @@ var classPACoordinates =
 [
     [ "angle_between_two_objects", "classPACoordinates.html#ad3bdb68a8e5354c95d33563dd52ab273", null ],
     [ "angle_to_decimal_degrees", "classPACoordinates.html#ac717a3d6b63f30840668ad294e9fa976", null ],
+    [ "atmospheric_refraction", "classPACoordinates.html#ab2565a0a915cae5336a4616ee5fb87a6", null ],
     [ "correct_for_aberration", "classPACoordinates.html#aeb81f35c90056619c81301394beecd78", null ],
     [ "correct_for_precession", "classPACoordinates.html#a56d992c4e1ce08d32d95f0e49ebe7d81", null ],
     [ "decimal_degrees_to_angle", "classPACoordinates.html#a16092431a788465f80c4c7e6a17141a3", null ],
