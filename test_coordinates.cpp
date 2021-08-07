@@ -347,3 +347,34 @@ SCENARIO("Correct ecliptic coordinates for the effects of aberration.") {
     }
   }
 }
+
+SCENARIO("Correct for atmospheric refraction") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("True Right Ascension is 23h 14m 0s and True Declination is 40d 10m "
+         "0s and Coordinate Type is actual and Geographical Longitude is 0.17d "
+         "and Geographical Latitude is 51.2036110d and Daylight Savings offset "
+         "is 0h and Timezone offset is 0h and Local Civil Date is 3/23/1987 "
+         "and Local Civil Time is 01:01:24 and Atmospheric Pressure "
+         "Millibar/Temperature Celsius is 1012/21.7") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.atmospheric_refraction(
+              23, 14, 0, 40, 10, 0, pa_types::coordinate_type::actual, 0.17,
+              51.2036110, 0, 0, 23, 3, 1987, 1, 1, 24, 1012, 21.7);
+
+      THEN("Corrected Right Ascension is 23h 13m 44.74s and Corrected "
+           "Declination is 40d 19m 45.76s") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(23, 13, 44.74, 40, 19, 45.76);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+#include "pa_types.h"
 
 #ifndef _pa_macros
 #define _pa_macros
@@ -94,5 +95,7 @@ double greenwich_sidereal_time_to_universal_time(
 double sun_long(double lch, double lcm, double lcs, int ds, int zc, double ld,
                 int lm, int ly);
 double true_anomaly(double am, double ec);
+double refract(double y2, pa_types::coordinate_type sw, double pr, double tr);
+double refract_l3035(double pr, double tr, double y, double d);
 } // namespace pa_macros
 #endif

@@ -22,5 +22,13 @@ enum class rise_set_status {
   never_rises, /**< Object is never visible above the horizon. */
   circumpolar  /**< Object never sets. */
 };
+
+/**
+ * Coordinate types
+ */
+enum class coordinate_type {
+  actual,  /**< actual/real */
+  apparent /**< apparent (observer) */
+};
 } // namespace pa_types
 #endif

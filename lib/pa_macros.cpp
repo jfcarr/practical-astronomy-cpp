@@ -1,4 +1,5 @@
 #include "pa_macros.h"
+#include "pa_types.h"
 #include "pa_util.h"
 #include <cmath>
 
@@ -780,6 +781,68 @@ double true_anomaly(double am, double ec) {
   double at = 2.0 * atan(a);
 
   return at;
+}
+
+/**
+ * \brief Calculate effects of refraction
+ *
+ * Original macro name: Refract
+ */
+double refract(double y2, pa_types::coordinate_type sw, double pr, double tr) {
+  double y = degrees_to_radians(y2);
+
+  double d = (sw == pa_types::coordinate_type::actual) ? -1.0 : 1.0;
+
+  if (d == -1) {
+    double y3 = y;
+    double y1 = y;
+    double r1 = 0.0;
+
+    while (1 == 1) {
+      double y_new = y1 + r1;
+      double rf_new = refract_l3035(pr, tr, y_new, d);
+
+      if (y < -0.087)
+        return 0;
+
+      double r2 = rf_new;
+
+      if ((r2 == 0) || (std::abs(r2 - r1) < 0.000001)) {
+        double q_new = y3;
+
+        return w_to_degrees(q_new + rf_new);
+      }
+
+      r1 = r2;
+    }
+  }
+
+  double rf = refract_l3035(pr, tr, y, d);
+
+  if (y < -0.087)
+    return 0;
+
+  double q = y;
+
+  return w_to_degrees(q + rf);
+}
+
+/**
+ * \brief Helper function for Refract
+ */
+double refract_l3035(double pr, double tr, double y, double d) {
+  if (y < 0.2617994) {
+    if (y < -0.087)
+      return 0;
+
+    double yd = w_to_degrees(y);
+    double a = ((0.00002 * yd + 0.0196) * yd + 0.1594) * pr;
+    double b = (273.0 + tr) * ((0.0845 * yd + 0.505) * yd + 1);
+
+    return degrees_to_radians(-(a / b) * d);
+  }
+
+  return -d * 0.00007888888 * pr / ((273.0 + tr) * tan(y));
 }
 
 } // namespace pa_macros
