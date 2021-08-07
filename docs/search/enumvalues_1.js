@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['degrees_155',['degrees',['../namespacepa__types.html#ab68946c56cf92482bdebd1c557593b24aeb85e0821c20e303a97a813f3150b5e0',1,'pa_types']]]
+  ['circumpolar_166',['circumpolar',['../namespacepa__types.html#a57d1662994e884d5eb36e8983f372a69a646d7f174a081c9eb96f87e807d3b06f',1,'pa_types']]]
 ];

@@ -29,6 +29,8 @@ var pa__macros_8h =
     [ "nutat_long", "pa__macros_8h.html#a391122ac795779141fa6e68be12cfc3d", null ],
     [ "nutat_obl", "pa__macros_8h.html#a1f4a8335dda7b61e3691c744382bf770", null ],
     [ "obliq", "pa__macros_8h.html#a4a412f51e0cfdc7030d5d9295a989c6b", null ],
+    [ "refract", "pa__macros_8h.html#a7e3f48cff0f574fffc4931beeed13cbc", null ],
+    [ "refract_l3035", "pa__macros_8h.html#a7175b08d441af4732af4ff77e3543076", null ],
     [ "right_ascension_to_hour_angle", "pa__macros_8h.html#aec9b7e82a4f2267f42f488684c402c01", null ],
     [ "sun_long", "pa__macros_8h.html#a218e70a31f8c438b6bf0333f25c15ea1", null ],
     [ "true_anomaly", "pa__macros_8h.html#a948846c29fce23fac0a944d4a63beb1c", null ],

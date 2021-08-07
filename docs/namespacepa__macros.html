@@ -192,6 +192,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a948846c29fce23fac0a944d4a63beb1c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a948846c29fce23fac0a944d4a63beb1c">true_anomaly</a> (double am, double ec)</td></tr>
 <tr class="memdesc:a948846c29fce23fac0a944d4a63beb1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve Kepler's equation, and return value of the true anomaly in radians.  <a href="namespacepa__macros.html#a948846c29fce23fac0a944d4a63beb1c">More...</a><br /></td></tr>
 <tr class="separator:a948846c29fce23fac0a944d4a63beb1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e3f48cff0f574fffc4931beeed13cbc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a7e3f48cff0f574fffc4931beeed13cbc">refract</a> (double y2, <a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a> sw, double pr, double tr)</td></tr>
+<tr class="memdesc:a7e3f48cff0f574fffc4931beeed13cbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate effects of refraction.  <a href="namespacepa__macros.html#a7e3f48cff0f574fffc4931beeed13cbc">More...</a><br /></td></tr>
+<tr class="separator:a7e3f48cff0f574fffc4931beeed13cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7175b08d441af4732af4ff77e3543076"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a7175b08d441af4732af4ff77e3543076">refract_l3035</a> (double pr, double tr, double y, double d)</td></tr>
+<tr class="memdesc:a7175b08d441af4732af4ff77e3543076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function for Refract.  <a href="namespacepa__macros.html#a7175b08d441af4732af4ff77e3543076">More...</a><br /></td></tr>
+<tr class="separator:a7175b08d441af4732af4ff77e3543076"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a58764743980ce2d3a24c0699969773c9"></a>
@@ -238,7 +244,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Julian date </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00096">96</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00097">97</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,7 +267,7 @@ Functions</h2></td></tr>
 <p>Return Degrees part of Decimal Degrees. </p>
 <p>Original macro name: DDDeg </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00438">438</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00439">439</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -284,7 +290,7 @@ Functions</h2></td></tr>
 <p>Return Minutes part of Decimal Degrees. </p>
 <p>Original macro name: DDMin </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00452">452</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00453">453</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -307,7 +313,7 @@ Functions</h2></td></tr>
 <p>Return Seconds part of Decimal Degrees. </p>
 <p>Original macro name: DDSec </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00466">466</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00467">467</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -330,7 +336,7 @@ Functions</h2></td></tr>
 <p>Convert Decimal Degrees to Degree-Hours. </p>
 <p>Original macro name: DDDH </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00480">480</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00481">481</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -360,7 +366,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Hour part of time. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00040">40</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00041">41</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -390,7 +396,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Minutes part of time. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00058">58</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00059">59</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -420,7 +426,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Seconds part of time. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00076">76</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00077">77</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -443,7 +449,7 @@ Functions</h2></td></tr>
 <p>Convert Degree-Hours to Decimal Degrees. </p>
 <p>Original macro name: DHDD </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00489">489</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00490">490</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -482,7 +488,7 @@ Functions</h2></td></tr>
 <p>Convert Degrees Minutes Seconds to Decimal Degrees. </p>
 <p>Original macro name: DMSDD </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00416">416</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00417">417</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -545,7 +551,7 @@ Functions</h2></td></tr>
 <p>Convert Equatorial Coordinates to Altitude (in decimal degrees) </p>
 <p>Original macro name: EQAlt </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00392">392</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00393">393</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -608,7 +614,7 @@ Functions</h2></td></tr>
 <p>Convert Equatorial Coordinates to Azimuth (in decimal degrees) </p>
 <p>Original macro name: EQAz </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00365">365</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00366">366</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -653,7 +659,7 @@ Functions</h2></td></tr>
 <p>Convert Greenwich Sidereal Time to Local Sidereal Time. </p>
 <p>Original macro name: GSTLST </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00350">350</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00351">351</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -710,7 +716,7 @@ Functions</h2></td></tr>
 <p>Convert Greenwich Sidereal Time to Universal Time. </p>
 <p>Original macro name: GSTUT </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00680">680</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00681">681</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -758,7 +764,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Time as a decimal value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00019">19</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00020">20</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -821,7 +827,7 @@ Functions</h2></td></tr>
 <p>Convert Horizon Coordinates to Declination (in decimal degrees) </p>
 <p>Original macro name: HORDec </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00498">498</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00499">499</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -884,7 +890,7 @@ Functions</h2></td></tr>
 <p>Convert Horizon Coordinates to Hour Angle (in decimal degrees) </p>
 <p>Original macro name: HORHa </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00519">519</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00520">520</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -977,7 +983,7 @@ Functions</h2></td></tr>
 <p>Convert Hour Angle to Right Ascension. </p>
 <p>Original macro name: HARA </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00223">223</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00224">224</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1000,7 +1006,7 @@ Functions</h2></td></tr>
 <p>Returns the day part of a Julian Date. </p>
 <p>Original macro name: JDCDay </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00133">133</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00134">134</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1029,7 @@ Functions</h2></td></tr>
 <p>Returns the month part of a Julian Date. </p>
 <p>Original macro name: JDCMonth </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00151">151</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00152">152</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1046,7 +1052,7 @@ Functions</h2></td></tr>
 <p>Returns the year part of a Julian Date. </p>
 <p>Original macro name: JDCYear </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00170">170</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00171">171</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1121,7 @@ Functions</h2></td></tr>
 <p>Determine Greenwich Day for Local Time. </p>
 <p>Original macro name: LctGDay </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00277">277</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00278">278</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1184,7 +1190,7 @@ Functions</h2></td></tr>
 <p>Determine Greenwich Month for Local Time. </p>
 <p>Original macro name: LctGMonth </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00295">295</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00296">296</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1253,7 +1259,7 @@ Functions</h2></td></tr>
 <p>Determine Greenwich Year for Local Time. </p>
 <p>Original macro name: LctGYear </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00312">312</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00313">313</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1322,7 +1328,7 @@ Functions</h2></td></tr>
 <p>Convert Local Civil Time to Universal Time. </p>
 <p>Original macro name: LctUT </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00257">257</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00258">258</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1367,7 +1373,7 @@ Functions</h2></td></tr>
 <p>Convert Local Sidereal Time to Greenwich Sidereal Time. </p>
 <p>Original macro name: LSTGST </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00664">664</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00665">665</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1406,7 +1412,7 @@ Functions</h2></td></tr>
 <p>Nutation amount to be added in ecliptic longitude, in degrees. </p>
 <p>Original macro name: NutatLong </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00560">560</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00561">561</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1445,7 +1451,7 @@ Functions</h2></td></tr>
 <p>Nutation of Obliquity. </p>
 <p>Original macro name: NutatObl </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00613">613</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00614">614</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1484,7 +1490,96 @@ Functions</h2></td></tr>
 <p>Obliquity of the Ecliptic for a Greenwich Date. </p>
 <p>Original macro name: Obliq </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00543">543</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00544">544</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7e3f48cff0f574fffc4931beeed13cbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e3f48cff0f574fffc4931beeed13cbc">&#9670;&nbsp;</a></span>refract()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double refract </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a>&#160;</td>
+          <td class="paramname"><em>sw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>pr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>tr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate effects of refraction. </p>
+<p>Original macro name: Refract </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00791">791</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7175b08d441af4732af4ff77e3543076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7175b08d441af4732af4ff77e3543076">&#9670;&nbsp;</a></span>refract_l3035()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double refract_l3035 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>pr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>tr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Helper function for Refract. </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00833">833</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1577,7 +1672,7 @@ Functions</h2></td></tr>
 <p>Convert Right Ascension to Hour Angle. </p>
 <p>Original macro name: RAHA </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00190">190</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00191">191</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1646,7 +1741,7 @@ Functions</h2></td></tr>
 <p>Calculate Sun's ecliptic longitude. </p>
 <p>Original macro name: SunLong </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00703">703</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00704">704</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1679,7 +1774,7 @@ Functions</h2></td></tr>
 <p>Solve Kepler's equation, and return value of the true anomaly in radians. </p>
 <p>Original macro name: TrueAnomaly </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00766">766</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00767">767</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1736,7 +1831,7 @@ Functions</h2></td></tr>
 <p>Convert Universal Time to Greenwich Sidereal Time. </p>
 <p>Original macro name: UTGST </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00329">329</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00330">330</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1759,7 +1854,7 @@ Functions</h2></td></tr>
 <p>Convert W to Degrees. </p>
 <p>Original macro name: Degrees </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00431">431</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00432">432</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['circumpolar_154',['circumpolar',['../namespacepa__types.html#a57d1662994e884d5eb36e8983f372a69a646d7f174a081c9eb96f87e807d3b06f',1,'pa_types']]]
+  ['actual_164',['actual',['../namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4a5157e3c765af93679ea07052f30f0a6e',1,'pa_types']]],
+  ['apparent_165',['apparent',['../namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4a2215c6b995cebd1eef65a2d52df7dc99',1,'pa_types']]]
 ];
