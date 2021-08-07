@@ -378,3 +378,31 @@ SCENARIO("Correct for atmospheric refraction") {
     }
   }
 }
+
+SCENARIO("Corrections for geocentric parallax") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Right Ascension is 22h 35m 19s and Declination is -7d 41m 13s and "
+         "Geographical Longitude/Latitude is -100/50 and Local Civil Date is "
+         "2/26/1979 and Local Civil Time is 10:45:00") {
+      std::tuple<double, double, double, double, double, double> result =
+          paCoordinates.corrections_for_geocentric_parallax(
+              22, 35, 19, -7, 41, 13, pa_types::coordinate_type::actual,
+              1.019167, -100, 50, 60, 0, -6, 26, 2, 1979, 10, 45, 0);
+
+      THEN("Corrected Right Ascension is 22h 36m 43.22s and Corrected "
+           "Declination is -8d 32m 17.4s") {
+        std::tuple<double, double, double, double, double, double> expected =
+            std::make_tuple(22, 36, 43.22, -8, 32, 17.4);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}

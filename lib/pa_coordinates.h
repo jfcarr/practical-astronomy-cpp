@@ -110,5 +110,14 @@ public:
                          double lct_hour, double lct_min, double lct_sec,
                          double atmospheric_pressure_mbar,
                          double atmospheric_temperature_celsius);
+
+  std::tuple<double, double, double, double, double, double>
+  corrections_for_geocentric_parallax(
+      double ra_hour, double ra_min, double ra_sec, double dec_deg,
+      double dec_min, double dec_sec, pa_types::coordinate_type coordinate_type,
+      double equatorial_hor_parallax_deg, double geog_long_deg,
+      double geog_lat_deg, double height_m, int daylight_saving,
+      int timezone_hours, double lcd_day, int lcd_month, int lcd_year,
+      double lct_hour, double lct_min, double lct_sec);
 };
 #endif

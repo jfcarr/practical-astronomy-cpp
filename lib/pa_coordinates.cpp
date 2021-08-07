@@ -662,3 +662,48 @@ PACoordinates::atmospheric_refraction(
       corrected_ra_hour, corrected_ra_min,  corrected_ra_sec,
       corrected_dec_deg, corrected_dec_min, corrected_dec_sec};
 }
+
+/**
+ * \brief Calculate corrected RA/Dec, accounting for geocentric parallax.
+ *
+ * @return tuple <corrected RA hours,minutes,seconds and corrected Declination
+ * degrees,minutes,seconds>
+ */
+std::tuple<double, double, double, double, double, double>
+PACoordinates::corrections_for_geocentric_parallax(
+    double ra_hour, double ra_min, double ra_sec, double dec_deg,
+    double dec_min, double dec_sec, pa_types::coordinate_type coordinate_type,
+    double equatorial_hor_parallax_deg, double geog_long_deg,
+    double geog_lat_deg, double height_m, int daylight_saving,
+    int timezone_hours, double lcd_day, int lcd_month, int lcd_year,
+    double lct_hour, double lct_min, double lct_sec) {
+  double ha_hours = pa_macros::right_ascension_to_hour_angle(
+      ra_hour, ra_min, ra_sec, lct_hour, lct_min, lct_sec, daylight_saving,
+      timezone_hours, lcd_day, lcd_month, lcd_year, geog_long_deg);
+
+  double corrected_ha_hours = pa_macros::parallax_ha(
+      ha_hours, 0, 0, dec_deg, dec_min, dec_sec, coordinate_type, geog_lat_deg,
+      height_m, equatorial_hor_parallax_deg);
+
+  double corrected_ra_hours = pa_macros::hour_angle_to_right_ascension(
+      corrected_ha_hours, 0, 0, lct_hour, lct_min, lct_sec, daylight_saving,
+      timezone_hours, lcd_day, lcd_month, lcd_year, geog_long_deg);
+
+  double corrected_dec_deg1 = pa_macros::parallax_dec(
+      ha_hours, 0, 0, dec_deg, dec_min, dec_sec, coordinate_type, geog_lat_deg,
+      height_m, equatorial_hor_parallax_deg);
+
+  int corrected_ra_hour = pa_macros::decimal_hours_hour(corrected_ra_hours);
+  int corrected_ra_min = pa_macros::decimal_hours_minute(corrected_ra_hours);
+  double corrected_ra_sec = pa_macros::decimal_hours_second(corrected_ra_hours);
+  double corrected_dec_deg =
+      pa_macros::decimal_degrees_degrees(corrected_dec_deg1);
+  double corrected_dec_min =
+      pa_macros::decimal_degrees_minutes(corrected_dec_deg1);
+  double corrected_dec_sec =
+      pa_macros::decimal_degrees_seconds(corrected_dec_deg1);
+
+  return std::tuple<double, double, double, double, double, double>{
+      corrected_ra_hour, corrected_ra_min,  corrected_ra_sec,
+      corrected_dec_deg, corrected_dec_min, corrected_dec_sec};
+}
