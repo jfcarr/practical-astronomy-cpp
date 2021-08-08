@@ -146,6 +146,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adfcfff30c66a274f6b84b31ff5d216ac"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#adfcfff30c66a274f6b84b31ff5d216ac">corrections_for_geocentric_parallax</a> (double ra_hour, double ra_min, double ra_sec, double dec_deg, double dec_min, double dec_sec, <a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a> <a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">coordinate_type</a>, double equatorial_hor_parallax_deg, double geog_long_deg, double geog_lat_deg, double height_m, int daylight_saving, int timezone_hours, double lcd_day, int lcd_month, int lcd_year, double lct_hour, double lct_min, double lct_sec)</td></tr>
 <tr class="memdesc:adfcfff30c66a274f6b84b31ff5d216ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate corrected RA/Dec, accounting for geocentric parallax.  <a href="classPACoordinates.html#adfcfff30c66a274f6b84b31ff5d216ac">More...</a><br /></td></tr>
 <tr class="separator:adfcfff30c66a274f6b84b31ff5d216ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a295f7aaed430ee25484e428e8163a1f5"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a295f7aaed430ee25484e428e8163a1f5">heliographic_coordinates</a> (double helio_position_angle_deg, double helio_displacement_arcmin, double gwdate_day, int gwdate_month, int gwdate_year)</td></tr>
+<tr class="memdesc:a295f7aaed430ee25484e428e8163a1f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate heliographic coordinates for a given Greenwich date, with a given heliographic position angle and heliographic displacement in arc minutes.  <a href="classPACoordinates.html#a295f7aaed430ee25484e428e8163a1f5">More...</a><br /></td></tr>
+<tr class="separator:a295f7aaed430ee25484e428e8163a1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -1107,6 +1110,57 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;double raHours, double raMinutes, double raSeconds, double decDegrees, double decMinutes, double decSeconds&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00332">332</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a295f7aaed430ee25484e428e8163a1f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a295f7aaed430ee25484e428e8163a1f5">&#9670;&nbsp;</a></span>heliographic_coordinates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double &gt; heliographic_coordinates </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>helio_position_angle_deg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>helio_displacement_arcmin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gwdate_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gwdate_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gwdate_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate heliographic coordinates for a given Greenwich date, with a given heliographic position angle and heliographic displacement in arc minutes. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple &lt;heliographic longitude and heliographic latitude, in degrees&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00718">718</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>

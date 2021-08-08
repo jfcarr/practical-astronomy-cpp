@@ -12,6 +12,7 @@ var classPACoordinates =
     [ "equatorial_coordinate_to_galactic_coordinate", "classPACoordinates.html#a815e34b1781c274e8ca7b8f73fef5ab8", null ],
     [ "equatorial_coordinates_to_horizon_coordinates", "classPACoordinates.html#abeaa16cf056ccbbccad424cc499154be", null ],
     [ "galactic_coordinate_to_equatorial_coordinate", "classPACoordinates.html#af2bc92721227e20690e14dd13d76f571", null ],
+    [ "heliographic_coordinates", "classPACoordinates.html#a295f7aaed430ee25484e428e8163a1f5", null ],
     [ "horizon_coordinates_to_equatorial_coordinates", "classPACoordinates.html#a998797a6ddc3eb67c31d9ceca6abde77", null ],
     [ "hour_angle_to_right_ascension", "classPACoordinates.html#a051d7b5cdbfad4470f9013dbb5dccb9d", null ],
     [ "mean_obliquity_of_the_ecliptic", "classPACoordinates.html#a19e0beeced5514440c25e334c24df825", null ],

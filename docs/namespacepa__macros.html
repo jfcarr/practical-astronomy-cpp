@@ -189,9 +189,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a218e70a31f8c438b6bf0333f25c15ea1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a218e70a31f8c438b6bf0333f25c15ea1">sun_long</a> (double lch, double lcm, double lcs, int ds, int zc, double ld, int lm, int ly)</td></tr>
 <tr class="memdesc:a218e70a31f8c438b6bf0333f25c15ea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Sun's ecliptic longitude.  <a href="namespacepa__macros.html#a218e70a31f8c438b6bf0333f25c15ea1">More...</a><br /></td></tr>
 <tr class="separator:a218e70a31f8c438b6bf0333f25c15ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a437a12a80e60d52196052fd9f8dafde7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a437a12a80e60d52196052fd9f8dafde7">sun_dia</a> (double lch, double lcm, double lcs, int ds, int zc, double ld, int lm, int ly)</td></tr>
+<tr class="memdesc:a437a12a80e60d52196052fd9f8dafde7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Sun's angular diameter in decimal degrees.  <a href="namespacepa__macros.html#a437a12a80e60d52196052fd9f8dafde7">More...</a><br /></td></tr>
+<tr class="separator:a437a12a80e60d52196052fd9f8dafde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aa1e921c73f820a847d9f3da58f0e14"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a6aa1e921c73f820a847d9f3da58f0e14">sun_dist</a> (double lch, double lcm, double lcs, int ds, int zc, double ld, int lm, int ly)</td></tr>
+<tr class="memdesc:a6aa1e921c73f820a847d9f3da58f0e14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Sun's distance from the Earth in astronomical units.  <a href="namespacepa__macros.html#a6aa1e921c73f820a847d9f3da58f0e14">More...</a><br /></td></tr>
+<tr class="separator:a6aa1e921c73f820a847d9f3da58f0e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948846c29fce23fac0a944d4a63beb1c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a948846c29fce23fac0a944d4a63beb1c">true_anomaly</a> (double am, double ec)</td></tr>
 <tr class="memdesc:a948846c29fce23fac0a944d4a63beb1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve Kepler's equation, and return value of the true anomaly in radians.  <a href="namespacepa__macros.html#a948846c29fce23fac0a944d4a63beb1c">More...</a><br /></td></tr>
 <tr class="separator:a948846c29fce23fac0a944d4a63beb1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceded8c94c42a0d299941d80c1b6487f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#aceded8c94c42a0d299941d80c1b6487f">eccentric_anomaly</a> (double am, double ec)</td></tr>
+<tr class="memdesc:aceded8c94c42a0d299941d80c1b6487f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve Kepler's equation, and return value of the eccentric anomaly in radians.  <a href="namespacepa__macros.html#aceded8c94c42a0d299941d80c1b6487f">More...</a><br /></td></tr>
+<tr class="separator:aceded8c94c42a0d299941d80c1b6487f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e3f48cff0f574fffc4931beeed13cbc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a7e3f48cff0f574fffc4931beeed13cbc">refract</a> (double y2, <a class="el" href="namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4">pa_types::coordinate_type</a> sw, double pr, double tr)</td></tr>
 <tr class="memdesc:a7e3f48cff0f574fffc4931beeed13cbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate effects of refraction.  <a href="namespacepa__macros.html#a7e3f48cff0f574fffc4931beeed13cbc">More...</a><br /></td></tr>
 <tr class="separator:a7e3f48cff0f574fffc4931beeed13cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -501,6 +510,39 @@ Functions</h2></td></tr>
 <p>Original macro name: DMSDD </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00418">418</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aceded8c94c42a0d299941d80c1b6487f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceded8c94c42a0d299941d80c1b6487f">&#9670;&nbsp;</a></span>eccentric_anomaly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double eccentric_anomaly </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>am</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solve Kepler's equation, and return value of the eccentric anomaly in radians. </p>
+<p>Original macro name: EccentricAnomaly </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00856">856</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1583,7 +1625,7 @@ Functions</h2></td></tr>
 <p>Calculate corrected declination in decimal degrees. </p>
 <p>Original macro name: ParallaxDec </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00944">944</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01032">1032</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1640,7 +1682,7 @@ Functions</h2></td></tr>
 <p>Helper function for parallax_dec. </p>
 <dl class="section return"><dt>Returns</dt><dd>tuple&lt;double p, double q&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01010">1010</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01098">1098</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1721,7 +1763,7 @@ Functions</h2></td></tr>
 <p>Calculate corrected hour angle in decimal hours. </p>
 <p>Original macro name: ParallaxHA </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00854">854</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00942">942</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1778,7 +1820,7 @@ Functions</h2></td></tr>
 <p>Helper function for parallax_ha. </p>
 <dl class="section return"><dt>Returns</dt><dd>tuple&lt;double p, double q&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00921">921</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01009">1009</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1823,7 +1865,7 @@ Functions</h2></td></tr>
 <p>Calculate effects of refraction. </p>
 <p>Original macro name: Refract </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00792">792</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00880">880</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1867,7 +1909,7 @@ Functions</h2></td></tr>
 
 <p>Helper function for Refract. </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00834">834</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00922">922</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -1961,6 +2003,144 @@ Functions</h2></td></tr>
 <p>Original macro name: RAHA </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00192">192</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a437a12a80e60d52196052fd9f8dafde7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a437a12a80e60d52196052fd9f8dafde7">&#9670;&nbsp;</a></span>sun_dia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double sun_dia </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lcm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lcs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ly</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate Sun's angular diameter in decimal degrees. </p>
+<p>Original macro name: SunDia </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00767">767</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6aa1e921c73f820a847d9f3da58f0e14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aa1e921c73f820a847d9f3da58f0e14">&#9670;&nbsp;</a></span>sun_dist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double sun_dist </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lcm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lcs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ly</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate Sun's distance from the Earth in astronomical units. </p>
+<p>Original macro name: SunDist </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00779">779</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -2062,7 +2242,7 @@ Functions</h2></td></tr>
 <p>Solve Kepler's equation, and return value of the true anomaly in radians. </p>
 <p>Original macro name: TrueAnomaly </p>
 
-<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00768">768</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00831">831</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
