@@ -441,3 +441,45 @@ SCENARIO("Calculate carrington rotation number") {
     }
   }
 }
+
+SCENARIO("Selenographic Coordinates (1)") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Greenwich Date is 5/1/1988") {
+      std::tuple<double, double, double> result =
+          paCoordinates.selenographic_coordinates_1(1, 5, 1988);
+
+      THEN("Sub-Earth Longitude/Latitude is -4.88d/4.04d and Position Angle of "
+           "Pole is 19.78d") {
+        std::tuple<double, double, double> expected =
+            std::make_tuple(-4.88, 4.04, 19.78);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+      }
+    }
+  }
+}
+
+SCENARIO("Selenographic Coordinates (2)") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Greenwich Date is 5/1/1988") {
+      std::tuple<double, double, double> result =
+          paCoordinates.selenographic_coordinates_2(1, 5, 1988);
+
+      THEN("Sub-Solar Longitude, Colongitude, and Latitude is 6.81d, 83.19d, "
+           "and 1.19d, respectively") {
+        std::tuple<double, double, double> expected =
+            std::make_tuple(6.81, 83.19, 1.19);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+      }
+    }
+  }
+}

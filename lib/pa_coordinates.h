@@ -127,5 +127,13 @@ public:
 
   int carrington_rotation_number(double gwdate_day, int gwdate_month,
                                  int gwdate_year);
+
+  std::tuple<double, double, double>
+  selenographic_coordinates_1(double gwdate_day, int gwdate_month,
+                              int gwdate_year);
+
+  std::tuple<double, double, double>
+  selenographic_coordinates_2(double gwdate_day, int gwdate_month,
+                              int gwdate_year);
 };
 #endif

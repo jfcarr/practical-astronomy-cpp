@@ -785,3 +785,126 @@ int PACoordinates::carrington_rotation_number(double gwdate_day,
 
   return crn;
 }
+
+/**
+ * \brief Calculate selenographic (lunar) coordinates (sub-Earth)
+ *
+ * @return tuple<sub-earth longitude, sub-earth latitude, and position angle of
+ * pole>
+ */
+std::tuple<double, double, double>
+PACoordinates::selenographic_coordinates_1(double gwdate_day, int gwdate_month,
+                                           int gwdate_year) {
+  double julian_date_days =
+      civil_date_to_julian_date(gwdate_day, gwdate_month, gwdate_year);
+  double t_centuries = (julian_date_days - 2451545) / 36525;
+  double long_asc_node_deg = 125.044522 - 1934.136261 * t_centuries;
+  double f1 = 93.27191 + 483202.0175 * t_centuries;
+  double f2 = f1 - 360 * floor(f1 / 360);
+  double geocentric_moon_long_deg = pa_macros::moon_long(
+      0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
+  double geocentric_moon_lat_rad = degrees_to_radians(pa_macros::moon_lat(
+      0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year));
+  double inclination_rad = degrees_to_radians(
+      degrees_minutes_seconds_to_decimal_degrees(1, 32, 32.7));
+  double node_long_rad =
+      degrees_to_radians(long_asc_node_deg - geocentric_moon_long_deg);
+  double sin_be =
+      -cos(inclination_rad) * sin(geocentric_moon_lat_rad) +
+      sin(inclination_rad) * cos(geocentric_moon_lat_rad) * sin(node_long_rad);
+  double sub_earth_lat_deg = w_to_degrees(asin(sin_be));
+  double a_rad = atan2(-sin(geocentric_moon_lat_rad) * sin(inclination_rad) -
+                           cos(geocentric_moon_lat_rad) * cos(inclination_rad) *
+                               sin(node_long_rad),
+                       cos(geocentric_moon_lat_rad) * cos(node_long_rad));
+  double a_deg = w_to_degrees(a_rad);
+  double sub_earth_long_deg1 = a_deg - f2;
+  double sub_earth_long_deg2 =
+      sub_earth_long_deg1 - 360 * floor(sub_earth_long_deg1 / 360);
+  double sub_earth_long_deg3 = (sub_earth_long_deg2 > 180)
+                                   ? (sub_earth_long_deg2 - 360)
+                                   : sub_earth_long_deg2;
+  double c1_rad = atan(cos(node_long_rad) * sin(inclination_rad) /
+                       (cos(geocentric_moon_lat_rad) * cos(inclination_rad) +
+                        sin(geocentric_moon_lat_rad) * sin(inclination_rad) *
+                            sin(node_long_rad)));
+  double obliquity_rad =
+      degrees_to_radians(obliq(gwdate_day, gwdate_month, gwdate_year));
+  double c2_rad = atan(sin(obliquity_rad) *
+                       cos(degrees_to_radians(geocentric_moon_long_deg)) /
+                       (sin(obliquity_rad) * sin(geocentric_moon_lat_rad) *
+                            sin(degrees_to_radians(geocentric_moon_long_deg)) -
+                        cos(obliquity_rad) * cos(geocentric_moon_lat_rad)));
+  double c_deg = w_to_degrees(c1_rad + c2_rad);
+
+  double sub_earth_longitude = round(sub_earth_long_deg3, 2);
+  double sub_earth_latitude = round(sub_earth_lat_deg, 2);
+  double position_angle_of_pole = round(c_deg, 2);
+
+  return std::tuple<double, double, double>{
+      sub_earth_longitude, sub_earth_latitude, position_angle_of_pole};
+}
+
+/**
+ * \brief Calculate selenographic (lunar) coordinates (sub-Solar)
+ *
+ * @return tuple<sub-solar longitude, sub-solar colongitude, and sub-solar
+ * latitude>
+ */
+std::tuple<double, double, double>
+PACoordinates::selenographic_coordinates_2(double gwdate_day, int gwdate_month,
+                                           int gwdate_year) {
+  double julian_date_days =
+      civil_date_to_julian_date(gwdate_day, gwdate_month, gwdate_year);
+  double t_centuries = (julian_date_days - 2451545) / 36525;
+  double long_asc_node_deg = 125.044522 - 1934.136261 * t_centuries;
+  double f1 = 93.27191 + 483202.0175 * t_centuries;
+  double f2 = f1 - 360 * floor(f1 / 360);
+  double sun_geocentric_long_deg =
+      sun_long(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
+  double moon_equ_hor_parallax_arc_min =
+      pa_macros::moon_hp(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year) *
+      60;
+  double sun_earth_dist_au =
+      sun_dist(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
+  double geocentric_moon_lat_rad = degrees_to_radians(
+      moon_lat(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year));
+  double geocentric_moon_long_deg =
+      moon_long(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
+  double adjusted_moon_long_deg =
+      sun_geocentric_long_deg + 180 +
+      (26.4 * cos(geocentric_moon_lat_rad) *
+       sin(degrees_to_radians(sun_geocentric_long_deg -
+                              geocentric_moon_long_deg)) /
+       (moon_equ_hor_parallax_arc_min * sun_earth_dist_au));
+  double adjusted_moon_lat_rad =
+      0.14666 * geocentric_moon_lat_rad /
+      (moon_equ_hor_parallax_arc_min * sun_earth_dist_au);
+  double inclination_rad = degrees_to_radians(
+      degrees_minutes_seconds_to_decimal_degrees(1, 32, 32.7));
+  double node_long_rad =
+      degrees_to_radians(long_asc_node_deg - adjusted_moon_long_deg);
+  double sin_bs =
+      -cos(inclination_rad) * sin(adjusted_moon_lat_rad) +
+      sin(inclination_rad) * cos(adjusted_moon_lat_rad) * sin(node_long_rad);
+  double sub_solar_lat_deg = w_to_degrees(asin(sin_bs));
+  double a_rad = atan2(-sin(adjusted_moon_lat_rad) * sin(inclination_rad) -
+                           cos(adjusted_moon_lat_rad) * cos(inclination_rad) *
+                               sin(node_long_rad),
+                       cos(adjusted_moon_lat_rad) * cos(node_long_rad));
+  double a_deg = w_to_degrees(a_rad);
+  double sub_solar_long_deg1 = a_deg - f2;
+  double sub_solar_long_deg2 =
+      sub_solar_long_deg1 - 360 * floor(sub_solar_long_deg1 / 360);
+  double sub_solar_long_deg3 = (sub_solar_long_deg2 > 180)
+                                   ? sub_solar_long_deg2 - 360
+                                   : sub_solar_long_deg2;
+  double sub_solar_colong_deg = 90 - sub_solar_long_deg3;
+
+  double sub_solar_longitude = round(sub_solar_long_deg3, 2);
+  double sub_solar_colongitude = round(sub_solar_colong_deg, 2);
+  double sub_solar_latitude = round(sub_solar_lat_deg, 2);
+
+  return std::tuple<double, double, double>{
+      sub_solar_longitude, sub_solar_colongitude, sub_solar_latitude};
+}
