@@ -27,6 +27,9 @@ var pa__macros_8cpp =
     [ "local_civil_time_greenwich_year", "pa__macros_8cpp.html#a5b5a7641aa96923b29e9d4405bb25956", null ],
     [ "local_civil_time_to_universal_time", "pa__macros_8cpp.html#a6728ae3e47e31616752f31031cce1bd0", null ],
     [ "local_sidereal_time_to_greenwich_sidereal_time", "pa__macros_8cpp.html#a6e7f7e978a07da9060d6b933700f9b09", null ],
+    [ "moon_hp", "pa__macros_8cpp.html#a7aba5ad895c86d45667274fb3dd8a5c0", null ],
+    [ "moon_lat", "pa__macros_8cpp.html#a43e629b5ce0d83b0c335cd2f5cf3d60e", null ],
+    [ "moon_long", "pa__macros_8cpp.html#af24c7dc3de55e112882cd7391aad4a52", null ],
     [ "nutat_long", "pa__macros_8cpp.html#a391122ac795779141fa6e68be12cfc3d", null ],
     [ "nutat_obl", "pa__macros_8cpp.html#a1f4a8335dda7b61e3691c744382bf770", null ],
     [ "obliq", "pa__macros_8cpp.html#a4a412f51e0cfdc7030d5d9295a989c6b", null ],
@@ -42,5 +45,6 @@ var pa__macros_8cpp =
     [ "sun_long", "pa__macros_8cpp.html#a218e70a31f8c438b6bf0333f25c15ea1", null ],
     [ "true_anomaly", "pa__macros_8cpp.html#a948846c29fce23fac0a944d4a63beb1c", null ],
     [ "universal_time_to_greenwich_sidereal_time", "pa__macros_8cpp.html#ae3c090f41754b86e21f4a29b7d3cb464", null ],
+    [ "unwind", "pa__macros_8cpp.html#ada5be5bcf773196d7074fd279f00b7d8", null ],
     [ "w_to_degrees", "pa__macros_8cpp.html#a7686d5e038d0f28383361f108f372257", null ]
 ];

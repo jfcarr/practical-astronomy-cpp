@@ -113,5 +113,12 @@ double sun_dia(double lch, double lcm, double lcs, int ds, int zc, double ld,
                int lm, int ly);
 double sun_dist(double lch, double lcm, double lcs, int ds, int zc, double ld,
                 int lm, int ly);
+double moon_long(double lh, double lm, double ls, int ds, int zc, double dy,
+                 int mn, int yr);
+double moon_lat(double lh, double lm, double ls, int ds, int zc, double dy,
+                int mn, int yr);
+double moon_hp(double lh, double lm, double ls, int ds, int zc, double dy,
+               int mn, int yr);
+double unwind(double w);
 } // namespace pa_macros
 #endif

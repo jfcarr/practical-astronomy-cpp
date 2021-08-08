@@ -219,6 +219,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a63d6b7521d9e0ef3b374c3393e80b288"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a63d6b7521d9e0ef3b374c3393e80b288">parallax_dec_l2870</a> (double x, double y, double rc, double rp, double rs, double tp)</td></tr>
 <tr class="memdesc:a63d6b7521d9e0ef3b374c3393e80b288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function for parallax_dec.  <a href="namespacepa__macros.html#a63d6b7521d9e0ef3b374c3393e80b288">More...</a><br /></td></tr>
 <tr class="separator:a63d6b7521d9e0ef3b374c3393e80b288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24c7dc3de55e112882cd7391aad4a52"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#af24c7dc3de55e112882cd7391aad4a52">moon_long</a> (double lh, double lm, double ls, int ds, int zc, double dy, int mn, int yr)</td></tr>
+<tr class="memdesc:af24c7dc3de55e112882cd7391aad4a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate geocentric ecliptic longitude for the Moon.  <a href="namespacepa__macros.html#af24c7dc3de55e112882cd7391aad4a52">More...</a><br /></td></tr>
+<tr class="separator:af24c7dc3de55e112882cd7391aad4a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43e629b5ce0d83b0c335cd2f5cf3d60e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a43e629b5ce0d83b0c335cd2f5cf3d60e">moon_lat</a> (double lh, double lm, double ls, int ds, int zc, double dy, int mn, int yr)</td></tr>
+<tr class="memdesc:a43e629b5ce0d83b0c335cd2f5cf3d60e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate geocentric ecliptic latitude for the Moon.  <a href="namespacepa__macros.html#a43e629b5ce0d83b0c335cd2f5cf3d60e">More...</a><br /></td></tr>
+<tr class="separator:a43e629b5ce0d83b0c335cd2f5cf3d60e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aba5ad895c86d45667274fb3dd8a5c0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a7aba5ad895c86d45667274fb3dd8a5c0">moon_hp</a> (double lh, double lm, double ls, int ds, int zc, double dy, int mn, int yr)</td></tr>
+<tr class="memdesc:a7aba5ad895c86d45667274fb3dd8a5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate horizontal parallax for the Moon.  <a href="namespacepa__macros.html#a7aba5ad895c86d45667274fb3dd8a5c0">More...</a><br /></td></tr>
+<tr class="separator:a7aba5ad895c86d45667274fb3dd8a5c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5be5bcf773196d7074fd279f00b7d8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#ada5be5bcf773196d7074fd279f00b7d8">unwind</a> (double w)</td></tr>
+<tr class="memdesc:ada5be5bcf773196d7074fd279f00b7d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert angle in radians to equivalent angle in degrees.  <a href="namespacepa__macros.html#ada5be5bcf773196d7074fd279f00b7d8">More...</a><br /></td></tr>
+<tr class="separator:ada5be5bcf773196d7074fd279f00b7d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a58764743980ce2d3a24c0699969773c9"></a>
@@ -1431,6 +1443,213 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a7aba5ad895c86d45667274fb3dd8a5c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aba5ad895c86d45667274fb3dd8a5c0">&#9670;&nbsp;</a></span>moon_hp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double moon_hp </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>yr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate horizontal parallax for the Moon. </p>
+<p>Original macro name: MoonHP </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01319">1319</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a43e629b5ce0d83b0c335cd2f5cf3d60e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43e629b5ce0d83b0c335cd2f5cf3d60e">&#9670;&nbsp;</a></span>moon_lat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double moon_lat </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>yr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate geocentric ecliptic latitude for the Moon. </p>
+<p>Original macro name: MoonLat </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01218">1218</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af24c7dc3de55e112882cd7391aad4a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af24c7dc3de55e112882cd7391aad4a52">&#9670;&nbsp;</a></span>moon_long()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double moon_long </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>yr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate geocentric ecliptic longitude for the Moon. </p>
+<p>Original macro name: MoonLong </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01120">1120</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a391122ac795779141fa6e68be12cfc3d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a391122ac795779141fa6e68be12cfc3d">&#9670;&nbsp;</a></span>nutat_long()</h2>
 
@@ -2300,6 +2519,29 @@ Functions</h2></td></tr>
 <p>Original macro name: UTGST </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00331">331</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ada5be5bcf773196d7074fd279f00b7d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada5be5bcf773196d7074fd279f00b7d8">&#9670;&nbsp;</a></span>unwind()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double unwind </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert angle in radians to equivalent angle in degrees. </p>
+<p>Original macro name: Unwind </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01402">1402</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
