@@ -769,3 +769,19 @@ std::tuple<double, double> PACoordinates::heliographic_coordinates(
 
   return std::tuple<double, double>{helio_long_deg, helio_lat_deg};
 }
+
+/**
+ * \brief Calculate carrington rotation number for a Greenwich date
+ *
+ * @return carrington rotation number
+ */
+int PACoordinates::carrington_rotation_number(double gwdate_day,
+                                              int gwdate_month,
+                                              int gwdate_year) {
+  double julian_date_days =
+      civil_date_to_julian_date(gwdate_day, gwdate_month, gwdate_year);
+
+  int crn = 1690 + (int)round((julian_date_days - 2444235.34) / 27.2753, 0);
+
+  return crn;
+}

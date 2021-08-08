@@ -425,3 +425,19 @@ SCENARIO("Calculate heliographic coordinates") {
     }
   }
 }
+
+SCENARIO("Calculate carrington rotation number") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Greenwich Date is 1/27/1975") {
+      int result = paCoordinates.carrington_rotation_number(27, 1, 1975);
+
+      THEN("Carrington Rotation Number is 1624") {
+        int expected = 1624;
+
+        REQUIRE(result == expected);
+      }
+    }
+  }
+}

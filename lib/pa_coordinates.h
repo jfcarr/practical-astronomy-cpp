@@ -124,5 +124,8 @@ public:
   heliographic_coordinates(double helio_position_angle_deg,
                            double helio_displacement_arcmin, double gwdate_day,
                            int gwdate_month, int gwdate_year);
+
+  int carrington_rotation_number(double gwdate_day, int gwdate_month,
+                                 int gwdate_year);
 };
 #endif
