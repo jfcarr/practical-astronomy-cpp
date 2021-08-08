@@ -152,6 +152,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afef202e3af8432ee32c98f2c48660c22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#afef202e3af8432ee32c98f2c48660c22">carrington_rotation_number</a> (double gwdate_day, int gwdate_month, int gwdate_year)</td></tr>
 <tr class="memdesc:afef202e3af8432ee32c98f2c48660c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate carrington rotation number for a Greenwich date.  <a href="classPACoordinates.html#afef202e3af8432ee32c98f2c48660c22">More...</a><br /></td></tr>
 <tr class="separator:afef202e3af8432ee32c98f2c48660c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0257a7d9bc7ad2c6015cba34e635dac"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#ad0257a7d9bc7ad2c6015cba34e635dac">selenographic_coordinates_1</a> (double gwdate_day, int gwdate_month, int gwdate_year)</td></tr>
+<tr class="memdesc:ad0257a7d9bc7ad2c6015cba34e635dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate selenographic (lunar) coordinates (sub-Earth)  <a href="classPACoordinates.html#ad0257a7d9bc7ad2c6015cba34e635dac">More...</a><br /></td></tr>
+<tr class="separator:ad0257a7d9bc7ad2c6015cba34e635dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b23a0214cf1c6e20441ece67998c44e"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPACoordinates.html#a4b23a0214cf1c6e20441ece67998c44e">selenographic_coordinates_2</a> (double gwdate_day, int gwdate_month, int gwdate_year)</td></tr>
+<tr class="memdesc:a4b23a0214cf1c6e20441ece67998c44e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate selenographic (lunar) coordinates (sub-Solar)  <a href="classPACoordinates.html#a4b23a0214cf1c6e20441ece67998c44e">More...</a><br /></td></tr>
+<tr class="separator:a4b23a0214cf1c6e20441ece67998c44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -1622,6 +1628,84 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;rise_set_status riseSetStatus, double utRiseHour, double utRiseMin, double utSetHour, double utSetMin, double azRise, double azSet&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00427">427</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad0257a7d9bc7ad2c6015cba34e635dac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0257a7d9bc7ad2c6015cba34e635dac">&#9670;&nbsp;</a></span>selenographic_coordinates_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double &gt; selenographic_coordinates_1 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gwdate_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gwdate_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gwdate_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate selenographic (lunar) coordinates (sub-Earth) </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple&lt;sub-earth longitude, sub-earth latitude, and position angle of pole&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00796">796</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4b23a0214cf1c6e20441ece67998c44e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b23a0214cf1c6e20441ece67998c44e">&#9670;&nbsp;</a></span>selenographic_coordinates_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double &gt; selenographic_coordinates_2 </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gwdate_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gwdate_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gwdate_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate selenographic (lunar) coordinates (sub-Solar) </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple&lt;sub-solar longitude, sub-solar colongitude, and sub-solar latitude&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__coordinates_8cpp_source.html#l00855">855</a> of file <a class="el" href="pa__coordinates_8cpp_source.html">pa_coordinates.cpp</a>.</p>
 
 </div>
 </div>
