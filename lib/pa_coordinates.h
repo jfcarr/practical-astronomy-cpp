@@ -119,5 +119,10 @@ public:
       double geog_lat_deg, double height_m, int daylight_saving,
       int timezone_hours, double lcd_day, int lcd_month, int lcd_year,
       double lct_hour, double lct_min, double lct_sec);
+
+  std::tuple<double, double>
+  heliographic_coordinates(double helio_position_angle_deg,
+                           double helio_displacement_arcmin, double gwdate_day,
+                           int gwdate_month, int gwdate_year);
 };
 #endif

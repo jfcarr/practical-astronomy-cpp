@@ -760,6 +760,69 @@ double sun_long(double lch, double lcm, double lcs, int ds, int zc, double ld,
 }
 
 /**
+ * \brief Calculate Sun's angular diameter in decimal degrees
+ *
+ * Original macro name: SunDia
+ */
+double sun_dia(double lch, double lcm, double lcs, int ds, int zc, double ld,
+               int lm, int ly) {
+  double a = sun_dist(lch, lcm, lcs, ds, zc, ld, lm, ly);
+
+  return 0.533128 / a;
+}
+
+/**
+ * \brief Calculate Sun's distance from the Earth in astronomical units
+ *
+ * Original macro name: SunDist
+ */
+double sun_dist(double lch, double lcm, double lcs, int ds, int zc, double ld,
+                int lm, int ly) {
+  double aa = local_civil_time_greenwich_day(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int bb = local_civil_time_greenwich_month(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int cc = local_civil_time_greenwich_year(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double ut =
+      local_civil_time_to_universal_time(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double dj = civil_date_to_julian_date(aa, bb, cc) - 2415020;
+
+  double t = (dj / 36525) + (ut / 876600);
+  double t2 = t * t;
+
+  double a = 100.0021359 * t;
+  double b = 360 * (a - floor(a));
+  a = 99.99736042 * t;
+  b = 360 * (a - floor(a));
+  double m1 = 358.47583 - (0.00015 + 0.0000033 * t) * t2 + b;
+  double ec = 0.01675104 - 0.0000418 * t - 0.000000126 * t2;
+
+  double am = degrees_to_radians(m1);
+  double ae = eccentric_anomaly(am, ec);
+
+  a = 62.55209472 * t;
+  b = 360 * (a - floor(a));
+  double a1 = degrees_to_radians(153.23 + b);
+  a = 125.1041894 * t;
+  b = 360 * (a - floor(a));
+  double b1 = degrees_to_radians(216.57 + b);
+  a = 91.56766028 * t;
+  b = 360 * (a - floor(a));
+  double c1 = degrees_to_radians(312.69 + b);
+  a = 1236.853095 * t;
+  b = 360 * (a - floor(a));
+  double d1 = degrees_to_radians(350.74 - 0.00144 * t2 + b);
+  double e1 = degrees_to_radians(231.19 + 20.2 * t);
+  a = 183.1353208 * t;
+  b = 360 * (a - floor(a));
+  double h1 = degrees_to_radians(353.4 + b);
+
+  double d3 = (0.00000543 * sin(a1) + 0.00001575 * sin(b1)) +
+              (0.00001627 * sin(c1) + 0.00003076 * cos(d1)) +
+              (0.00000927 * sin(h1));
+
+  return 1.0000002 * (1 - ec * cos(ae)) + d3;
+}
+
+/**
  * \brief Solve Kepler's equation, and return value of the true anomaly in
  * radians
  *
@@ -782,6 +845,31 @@ double true_anomaly(double am, double ec) {
   double at = 2.0 * atan(a);
 
   return at;
+}
+
+/**
+ * \brief Solve Kepler's equation, and return value of the eccentric anomaly in
+ * radians
+ *
+ * Original macro name: EccentricAnomaly
+ */
+double eccentric_anomaly(double am, double ec) {
+  double tp = 6.283185308;
+  double m = am - tp * floor(am / tp);
+  double ae = m;
+
+  while (1 == 1) {
+    double d = ae - (ec * sin(ae)) - m;
+
+    if (std::abs(d) < 0.000001) {
+      break;
+    }
+
+    d = d / (1 - (ec * cos(ae)));
+    ae = ae - d;
+  }
+
+  return ae;
 }
 
 /**

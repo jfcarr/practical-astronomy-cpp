@@ -707,3 +707,65 @@ PACoordinates::corrections_for_geocentric_parallax(
       corrected_ra_hour, corrected_ra_min,  corrected_ra_sec,
       corrected_dec_deg, corrected_dec_min, corrected_dec_sec};
 }
+
+/**
+ * \brief Calculate heliographic coordinates for a given Greenwich date, with a
+ * given heliographic position angle and heliographic displacement in arc
+ * minutes.
+ *
+ * @return tuple <heliographic longitude and heliographic latitude, in degrees>
+ */
+std::tuple<double, double> PACoordinates::heliographic_coordinates(
+    double helio_position_angle_deg, double helio_displacement_arcmin,
+    double gwdate_day, int gwdate_month, int gwdate_year) {
+  double julian_date_days =
+      civil_date_to_julian_date(gwdate_day, gwdate_month, gwdate_year);
+  double t_centuries = (julian_date_days - 2415020) / 36525;
+  double long_asc_node_deg =
+      degrees_minutes_seconds_to_decimal_degrees(74, 22, 0) +
+      (84 * t_centuries / 60);
+  double sun_long_deg =
+      sun_long(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
+  double y = sin(degrees_to_radians(long_asc_node_deg - sun_long_deg)) *
+             cos(degrees_to_radians(
+                 degrees_minutes_seconds_to_decimal_degrees(7, 15, 0)));
+  double x = -cos(degrees_to_radians(long_asc_node_deg - sun_long_deg));
+  double a_deg = w_to_degrees(atan2(y, x));
+  double m_deg1 = 360 - (360 * (julian_date_days - 2398220) / 25.38);
+  double m_deg2 = m_deg1 - 360 * floor(m_deg1 / 360);
+  double l0_deg1 = m_deg2 + a_deg;
+  double b0_rad =
+      asin(sin(degrees_to_radians(sun_long_deg - long_asc_node_deg)) *
+           sin(degrees_to_radians(
+               degrees_minutes_seconds_to_decimal_degrees(7, 15, 0))));
+  double theta1_rad = atan(-cos(degrees_to_radians(sun_long_deg)) *
+                           tan(degrees_to_radians(pa_macros::obliq(
+                               gwdate_day, gwdate_month, gwdate_year))));
+  double theta2_rad =
+      atan(-cos(degrees_to_radians(long_asc_node_deg - sun_long_deg)) *
+           tan(degrees_to_radians(
+               degrees_minutes_seconds_to_decimal_degrees(7, 15, 0))));
+  double p_deg = w_to_degrees(theta1_rad + theta2_rad);
+  double rho1_deg = helio_displacement_arcmin / 60;
+  double rho_rad =
+      asin(2 * rho1_deg /
+           sun_dia(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year)) -
+      degrees_to_radians(rho1_deg);
+  double b_rad =
+      asin(sin(b0_rad) * cos(rho_rad) +
+           cos(b0_rad) * sin(rho_rad) *
+               cos(degrees_to_radians(p_deg - helio_position_angle_deg)));
+  double b_deg = w_to_degrees(b_rad);
+  double l_deg1 =
+      w_to_degrees(
+          asin(sin(rho_rad) *
+               sin(degrees_to_radians(p_deg - helio_position_angle_deg)) /
+               cos(b_rad))) +
+      l0_deg1;
+  double l_deg2 = l_deg1 - 360 * floor(l_deg1 / 360);
+
+  double helio_long_deg = round(l_deg2, 2);
+  double helio_lat_deg = round(b_deg, 2);
+
+  return std::tuple<double, double>{helio_long_deg, helio_lat_deg};
+}

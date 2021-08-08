@@ -34,13 +34,22 @@ bool is_leap_year(int input_year) {
  * @return Rounded input value.
  */
 double round(double input, int places) {
+  bool is_negative = (input < 0) ? true : false;
+
   long double multiplier = pow(10, places);
+
+  if (is_negative) {
+    input = std::abs(input);
+  };
 
   long double a = input * multiplier;
   a = (a >= 0) ? a + 0.5 : a - 0.5;
 
-  return floor(a) / multiplier; // floor() gives good results for more places
-                                // (7+) than the original (int) cast.
+  double return_value =
+      floor(a) / multiplier; // floor() gives good results for more places (7+)
+                             // than the original (int) cast.
+
+  return (is_negative) ? -(return_value) : return_value;
 }
 
 /**

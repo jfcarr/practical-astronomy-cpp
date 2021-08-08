@@ -406,3 +406,22 @@ SCENARIO("Corrections for geocentric parallax") {
     }
   }
 }
+
+SCENARIO("Calculate heliographic coordinates") {
+  GIVEN("A PACoordinates object") {
+    PACoordinates paCoordinates;
+
+    WHEN("Position angle is 220d and Displacement is 10.5 arcmin and Greenwich "
+         "Date is 5/1/1988") {
+      std::tuple<double, double> result =
+          paCoordinates.heliographic_coordinates(220, 10.5, 1, 5, 1988);
+
+      THEN("Heliographic Longitude/Latitude is 142.59d/-19.94d") {
+        std::tuple<double, double> expected = std::make_tuple(142.59, -19.94);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+      }
+    }
+  }
+}
