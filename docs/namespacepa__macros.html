@@ -231,6 +231,21 @@ Functions</h2></td></tr>
 <tr class="memitem:ada5be5bcf773196d7074fd279f00b7d8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#ada5be5bcf773196d7074fd279f00b7d8">unwind</a> (double w)</td></tr>
 <tr class="memdesc:ada5be5bcf773196d7074fd279f00b7d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert angle in radians to equivalent angle in degrees.  <a href="namespacepa__macros.html#ada5be5bcf773196d7074fd279f00b7d8">More...</a><br /></td></tr>
 <tr class="separator:ada5be5bcf773196d7074fd279f00b7d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20bebf935220d742e209adbf04963b0e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a20bebf935220d742e209adbf04963b0e">sun_e_long</a> (double gd, int gm, int gy)</td></tr>
+<tr class="memdesc:a20bebf935220d742e209adbf04963b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mean ecliptic longitude of the Sun at the epoch.  <a href="namespacepa__macros.html#a20bebf935220d742e209adbf04963b0e">More...</a><br /></td></tr>
+<tr class="separator:a20bebf935220d742e209adbf04963b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9390389ad6fb85c257b4cc8add158072"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a9390389ad6fb85c257b4cc8add158072">sun_peri</a> (double gd, int gm, int gy)</td></tr>
+<tr class="memdesc:a9390389ad6fb85c257b4cc8add158072"><td class="mdescLeft">&#160;</td><td class="mdescRight">Longitude of the Sun at perigee.  <a href="namespacepa__macros.html#a9390389ad6fb85c257b4cc8add158072">More...</a><br /></td></tr>
+<tr class="separator:a9390389ad6fb85c257b4cc8add158072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd42cdcbc132fe13c2424d11c38eb781"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#acd42cdcbc132fe13c2424d11c38eb781">sun_ecc</a> (double gd, int gm, int gy)</td></tr>
+<tr class="memdesc:acd42cdcbc132fe13c2424d11c38eb781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eccentricity of the Sun-Earth orbit.  <a href="namespacepa__macros.html#acd42cdcbc132fe13c2424d11c38eb781">More...</a><br /></td></tr>
+<tr class="separator:acd42cdcbc132fe13c2424d11c38eb781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f7d6a55423f384ffd6a002fba7b6e0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a25f7d6a55423f384ffd6a002fba7b6e0">ec_dec</a> (double eld, double elm, double els, double bd, double bm, double bs, double gd, int gm, int gy)</td></tr>
+<tr class="memdesc:a25f7d6a55423f384ffd6a002fba7b6e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecliptic - Declination (degrees)  <a href="namespacepa__macros.html#a25f7d6a55423f384ffd6a002fba7b6e0">More...</a><br /></td></tr>
+<tr class="separator:a25f7d6a55423f384ffd6a002fba7b6e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a921c5c5439da80aff0e47cb7155e3335"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepa__macros.html#a921c5c5439da80aff0e47cb7155e3335">ec_ra</a> (double eld, double elm, double els, double bd, double bm, double bs, double gd, int gm, int gy)</td></tr>
+<tr class="memdesc:a921c5c5439da80aff0e47cb7155e3335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecliptic - Right Ascension (degrees)  <a href="namespacepa__macros.html#a921c5c5439da80aff0e47cb7155e3335">More...</a><br /></td></tr>
+<tr class="separator:a921c5c5439da80aff0e47cb7155e3335"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a58764743980ce2d3a24c0699969773c9"></a>
@@ -522,6 +537,156 @@ Functions</h2></td></tr>
 <p>Original macro name: DMSDD </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00418">418</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a25f7d6a55423f384ffd6a002fba7b6e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25f7d6a55423f384ffd6a002fba7b6e0">&#9670;&nbsp;</a></span>ec_dec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ec_dec </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>elm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>els</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>bd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>bm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>bs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ecliptic - Declination (degrees) </p>
+<p>Original macro name: ECDec </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01447">1447</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a921c5c5439da80aff0e47cb7155e3335"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a921c5c5439da80aff0e47cb7155e3335">&#9670;&nbsp;</a></span>ec_ra()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ec_ra </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>eld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>elm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>els</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>bd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>bm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>bs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ecliptic - Right Ascension (degrees) </p>
+<p>Original macro name: ECRA </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01464">1464</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>
@@ -2363,6 +2528,84 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a20bebf935220d742e209adbf04963b0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20bebf935220d742e209adbf04963b0e">&#9670;&nbsp;</a></span>sun_e_long()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double sun_e_long </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mean ecliptic longitude of the Sun at the epoch. </p>
+<p>Original macro name: SunElong </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01409">1409</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acd42cdcbc132fe13c2424d11c38eb781"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd42cdcbc132fe13c2424d11c38eb781">&#9670;&nbsp;</a></span>sun_ecc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double sun_ecc </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Eccentricity of the Sun-Earth orbit. </p>
+<p>Original macro name: SunEcc </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01435">1435</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a218e70a31f8c438b6bf0333f25c15ea1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a218e70a31f8c438b6bf0333f25c15ea1">&#9670;&nbsp;</a></span>sun_long()</h2>
 
@@ -2429,6 +2672,45 @@ Functions</h2></td></tr>
 <p>Original macro name: SunLong </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l00705">705</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9390389ad6fb85c257b4cc8add158072"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9390389ad6fb85c257b4cc8add158072">&#9670;&nbsp;</a></span>sun_peri()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double sun_peri </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Longitude of the Sun at perigee. </p>
+<p>Original macro name: SunPeri </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__macros_8cpp_source.html#l01422">1422</a> of file <a class="el" href="pa__macros_8cpp_source.html">pa_macros.cpp</a>.</p>
 
 </div>
 </div>

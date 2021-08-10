@@ -1401,4 +1401,78 @@ double moon_hp(double lh, double lm, double ls, int ds, int zc, double dy,
  */
 double unwind(double w) { return w - 6.283185308 * floor(w / 6.283185308); }
 
+/**
+ * \brief Mean ecliptic longitude of the Sun at the epoch
+ *
+ * Original macro name: SunElong
+ */
+double sun_e_long(double gd, int gm, int gy) {
+  double t = (civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525;
+  double t2 = t * t;
+  double x = 279.6966778 + 36000.76892 * t + 0.0003025 * t2;
+
+  return x - 360 * floor(x / 360);
+}
+
+/**
+ * \brief Longitude of the Sun at perigee
+ *
+ * Original macro name: SunPeri
+ */
+double sun_peri(double gd, int gm, int gy) {
+  double t = (civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525;
+  double t2 = t * t;
+  double x = 281.2208444 + 1.719175 * t + 0.000452778 * t2;
+
+  return x - 360 * floor(x / 360);
+}
+
+/**
+ * \brief Eccentricity of the Sun-Earth orbit
+ *
+ * Original macro name: SunEcc
+ */
+double sun_ecc(double gd, int gm, int gy) {
+  double t = (civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525;
+  double t2 = t * t;
+
+  return 0.01675104 - 0.0000418 * t - 0.000000126 * t2;
+}
+
+/**
+ * \brief Ecliptic - Declination (degrees)
+ *
+ * Original macro name: ECDec
+ */
+double ec_dec(double eld, double elm, double els, double bd, double bm,
+              double bs, double gd, int gm, int gy) {
+  double a = degrees_to_radians(
+      degrees_minutes_seconds_to_decimal_degrees(eld, elm, els));
+  double b = degrees_to_radians(
+      degrees_minutes_seconds_to_decimal_degrees(bd, bm, bs));
+  double c = degrees_to_radians(obliq(gd, gm, gy));
+  double d = sin(b) * cos(c) + cos(b) * sin(c) * sin(a);
+
+  return w_to_degrees(asin(d));
+}
+
+/**
+ * \brief Ecliptic - Right Ascension (degrees)
+ *
+ * Original macro name: ECRA
+ */
+double ec_ra(double eld, double elm, double els, double bd, double bm,
+             double bs, double gd, int gm, int gy) {
+  double a = degrees_to_radians(
+      degrees_minutes_seconds_to_decimal_degrees(eld, elm, els));
+  double b = degrees_to_radians(
+      degrees_minutes_seconds_to_decimal_degrees(bd, bm, bs));
+  double c = degrees_to_radians(obliq(gd, gm, gy));
+  double d = sin(a) * cos(c) - tan(b) * sin(c);
+  double e = cos(a);
+  double f = w_to_degrees(atan2(d, e));
+
+  return f - 360 * floor(f / 360);
+}
+
 } // namespace pa_macros

@@ -120,5 +120,12 @@ double moon_lat(double lh, double lm, double ls, int ds, int zc, double dy,
 double moon_hp(double lh, double lm, double ls, int ds, int zc, double dy,
                int mn, int yr);
 double unwind(double w);
+double sun_e_long(double gd, int gm, int gy);
+double sun_peri(double gd, int gm, int gy);
+double sun_ecc(double gd, int gm, int gy);
+double ec_dec(double eld, double elm, double els, double bd, double bm,
+              double bs, double gd, int gm, int gy);
+double ec_ra(double eld, double elm, double els, double bd, double bm,
+             double bs, double gd, int gm, int gy);
 } // namespace pa_macros
 #endif
