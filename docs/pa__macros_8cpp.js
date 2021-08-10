@@ -48,6 +48,7 @@ var pa__macros_8cpp =
     [ "sun_ecc", "pa__macros_8cpp.html#acd42cdcbc132fe13c2424d11c38eb781", null ],
     [ "sun_long", "pa__macros_8cpp.html#a218e70a31f8c438b6bf0333f25c15ea1", null ],
     [ "sun_peri", "pa__macros_8cpp.html#a9390389ad6fb85c257b4cc8add158072", null ],
+    [ "sun_true_anomaly", "pa__macros_8cpp.html#ae50fa7b5213d1ee20d59c459a54fa916", null ],
     [ "true_anomaly", "pa__macros_8cpp.html#a948846c29fce23fac0a944d4a63beb1c", null ],
     [ "universal_time_to_greenwich_sidereal_time", "pa__macros_8cpp.html#ae3c090f41754b86e21f4a29b7d3cb464", null ],
     [ "unwind", "pa__macros_8cpp.html#ada5be5bcf773196d7074fd279f00b7d8", null ],
