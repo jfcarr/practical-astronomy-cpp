@@ -98,6 +98,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab231d841e97a565a43d664b330bae39c"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPASun.html#ab231d841e97a565a43d664b330bae39c">precise_position_of_sun</a> (double lct_hours, double lct_minutes, double lct_seconds, double local_day, int local_month, int local_year, bool is_daylight_saving, int zone_correction)</td></tr>
 <tr class="memdesc:ab231d841e97a565a43d664b330bae39c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate precise position of the sun for a local date and time.  <a href="classPASun.html#ab231d841e97a565a43d664b330bae39c">More...</a><br /></td></tr>
 <tr class="separator:ab231d841e97a565a43d664b330bae39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f60c05ce6debdb1de92514f28b38c7"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPASun.html#a92f60c05ce6debdb1de92514f28b38c7">sun_distance_and_angular_size</a> (double lct_hours, double lct_minutes, double lct_seconds, double local_day, int local_month, int local_year, bool is_daylight_saving, int zone_correction)</td></tr>
+<tr class="memdesc:a92f60c05ce6debdb1de92514f28b38c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate distance to the Sun (in km), and angular size.  <a href="classPASun.html#a92f60c05ce6debdb1de92514f28b38c7">More...</a><br /></td></tr>
+<tr class="separator:a92f60c05ce6debdb1de92514f28b38c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -237,6 +240,75 @@ Public Member Functions</h2></td></tr>
 <p>Calculate precise position of the sun for a local date and time. </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__sun_8cpp_source.html#l00073">73</a> of file <a class="el" href="pa__sun_8cpp_source.html">pa_sun.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a92f60c05ce6debdb1de92514f28b38c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92f60c05ce6debdb1de92514f28b38c7">&#9670;&nbsp;</a></span>sun_distance_and_angular_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double &gt; sun_distance_and_angular_size </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_hours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_minutes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>lct_seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>local_day</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>local_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>local_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_daylight_saving</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zone_correction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate distance to the Sun (in km), and angular size. </p>
+<dl class="section return"><dt>Returns</dt><dd>tuple&lt;double sun_dist_km, double sun_ang_size_deg, double sun_ang_size_min, double sun_ang_size_sec&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__sun_8cpp_source.html#l00115">115</a> of file <a class="el" href="pa__sun_8cpp_source.html">pa_sun.cpp</a>.</p>
 
 </div>
 </div>

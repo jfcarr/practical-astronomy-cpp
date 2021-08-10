@@ -36,10 +36,12 @@ SCENARIO("Approximate Position of Sun") {
 SCENARIO("Precise Position of Sun") {
   GIVEN("A PASun object") {
     PASun paSun;
+
     WHEN("Local Civil Time is 00:00:00 and Local Date is 7/27/1988 and "
          "Daylight Savings is false and Zone Correction is 0") {
       std::tuple<double, double, double, double, double, double> result =
           paSun.precise_position_of_sun(0, 0, 0, 27, 7, 1988, false, 0);
+
       THEN(
           "Right Ascension is 8h 26m 3.83s and Declination is 19d 12m 49.72s") {
         std::tuple<double, double, double, double, double, double> expected =
@@ -51,6 +53,29 @@ SCENARIO("Precise Position of Sun") {
         REQUIRE(std::get<3>(result) == std::get<3>(expected));
         REQUIRE(std::get<4>(result) == std::get<4>(expected));
         REQUIRE(std::get<5>(result) == std::get<5>(expected));
+      }
+    }
+  }
+}
+
+SCENARIO("Sun Distance and Angular Size") {
+  GIVEN("A PASun object") {
+    PASun paSun;
+
+    WHEN("Local Civil Time is 00:00:00 and Local Date is 7/27/1988 and "
+         "Daylight Savings is false and Zone Correction is 0") {
+      std::tuple<double, double, double, double> result =
+          paSun.sun_distance_and_angular_size(0, 0, 0, 27, 7, 1988, false, 0);
+
+      THEN("Sun Distance (km) is 151920130 and Sun Angular Size is 0h 31m "
+           "29.93s") {
+        std::tuple<double, double, double, double> expected =
+            std::make_tuple(151920130, 0, 31, 29.93);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
       }
     }
   }
