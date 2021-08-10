@@ -127,5 +127,7 @@ double ec_dec(double eld, double elm, double els, double bd, double bm,
               double bs, double gd, int gm, int gy);
 double ec_ra(double eld, double elm, double els, double bd, double bm,
              double bs, double gd, int gm, int gy);
+double sun_true_anomaly(double lch, double lcm, double lcs, int ds, int zc,
+                        double ld, int lm, int ly);
 } // namespace pa_macros
 #endif

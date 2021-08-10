@@ -105,3 +105,43 @@ PASun::precise_position_of_sun(double lct_hours, double lct_minutes,
       sun_ra_hour, sun_ra_min,  sun_ra_sec,
       sun_dec_deg, sun_dec_min, sun_dec_sec};
 }
+
+/**
+ * \brief Calculate distance to the Sun (in km), and angular size.
+ *
+ * @return tuple<double sun_dist_km, double sun_ang_size_deg, double
+ * sun_ang_size_min, double sun_ang_size_sec>
+ */
+std::tuple<double, double, double, double> PASun::sun_distance_and_angular_size(
+    double lct_hours, double lct_minutes, double lct_seconds, double local_day,
+    int local_month, int local_year, bool is_daylight_saving,
+    int zone_correction) {
+  int daylight_saving = (is_daylight_saving) ? 1 : 0;
+
+  double g_day = local_civil_time_greenwich_day(
+      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
+      local_day, local_month, local_year);
+  int g_month = local_civil_time_greenwich_month(
+      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
+      local_day, local_month, local_year);
+  int g_year = local_civil_time_greenwich_year(
+      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
+      local_day, local_month, local_year);
+  double true_anomaly_deg =
+      sun_true_anomaly(lct_hours, lct_minutes, lct_seconds, daylight_saving,
+                       zone_correction, local_day, local_month, local_year);
+  double true_anomaly_rad = degrees_to_radians(true_anomaly_deg);
+  double eccentricity = sun_ecc(g_day, g_month, g_year);
+  double f = (1 + eccentricity * cos(true_anomaly_rad)) /
+             (1 - eccentricity * eccentricity);
+  double r_km = 149598500 / f;
+  double theta_deg = f * 0.533128;
+
+  double sun_dist_km = round(r_km, 0);
+  double sun_ang_size_deg = decimal_degrees_degrees(theta_deg);
+  double sun_ang_size_min = decimal_degrees_minutes(theta_deg);
+  double sun_ang_size_sec = decimal_degrees_seconds(theta_deg);
+
+  return std::tuple<double, double, double, double>{
+      sun_dist_km, sun_ang_size_deg, sun_ang_size_min, sun_ang_size_sec};
+}

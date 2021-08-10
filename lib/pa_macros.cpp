@@ -1475,4 +1475,33 @@ double ec_ra(double eld, double elm, double els, double bd, double bm,
   return f - 360 * floor(f / 360);
 }
 
+/**
+ * \brief Calculate Sun's true anomaly, i.e., how much its orbit deviates from a
+ * true circle to an ellipse.
+ *
+ * Original macro name: SunTrueAnomaly
+ */
+double sun_true_anomaly(double lch, double lcm, double lcs, int ds, int zc,
+                        double ld, int lm, int ly) {
+  double aa = local_civil_time_greenwich_day(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int bb = local_civil_time_greenwich_month(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int cc = local_civil_time_greenwich_year(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double ut =
+      local_civil_time_to_universal_time(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double dj = civil_date_to_julian_date(aa, bb, cc) - 2415020;
+
+  double t = (dj / 36525) + (ut / 876600);
+  double t2 = t * t;
+
+  double a = 99.99736042 * t;
+  double b = 360 * (a - floor(a));
+
+  double m1 = 358.47583 - (0.00015 + 0.0000033 * t) * t2 + b;
+  double ec = 0.01675104 - 0.0000418 * t - 0.000000126 * t2;
+
+  double am = degrees_to_radians(m1);
+
+  return w_to_degrees(true_anomaly(am, ec));
+}
+
 } // namespace pa_macros

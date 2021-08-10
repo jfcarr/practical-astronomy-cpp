@@ -17,5 +17,11 @@ public:
                           double lct_seconds, double local_day, int local_month,
                           int local_year, bool is_daylight_saving,
                           int zone_correction);
+
+  std::tuple<double, double, double, double>
+  sun_distance_and_angular_size(double lct_hours, double lct_minutes,
+                                double lct_seconds, double local_day,
+                                int local_month, int local_year,
+                                bool is_daylight_saving, int zone_correction);
 };
 #endif
