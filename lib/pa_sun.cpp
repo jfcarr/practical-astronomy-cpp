@@ -15,95 +15,92 @@ using namespace pa_macros;
  * double sun_dec_deg, double sun_dec_min, double sun_dec_sec>
  */
 std::tuple<double, double, double, double, double, double>
-PASun::approximate_position_of_sun(double lct_hours, double lct_minutes,
-                                   double lct_seconds, double local_day,
-                                   int local_month, int local_year,
-                                   bool is_daylight_saving,
-                                   int zone_correction) {
-  int daylight_saving = (is_daylight_saving == true) ? 1 : 0;
+PASun::ApproximatePositionOfSun(double lctHours, double lctMinutes,
+                                double lctSeconds, double localDay,
+                                int localMonth, int localYear,
+                                bool isDaylightSaving, int zoneCorrection) {
+  int daylightSaving = (isDaylightSaving == true) ? 1 : 0;
 
-  double greenwich_date_day = local_civil_time_greenwich_day(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  int greenwich_date_month = local_civil_time_greenwich_month(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  int greenwich_date_year = local_civil_time_greenwich_year(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  double ut_hours = local_civil_time_to_universal_time(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  double ut_days = ut_hours / 24;
-  double jd_days =
-      civil_date_to_julian_date(greenwich_date_day, greenwich_date_month,
-                                greenwich_date_year) +
-      ut_days;
-  double d_days = jd_days - civil_date_to_julian_date(0, 1, 2010);
-  double n_deg = 360 * d_days / 365.242191;
-  double m_deg1 = n_deg + sun_e_long(0, 1, 2010) - sun_peri(0, 1, 2010);
-  double m_deg2 = m_deg1 - 360 * floor(m_deg1 / 360);
-  double e_c_deg =
-      360 * sun_ecc(0, 1, 2010) * sin(degrees_to_radians(m_deg2)) / M_PI;
-  double l_s_deg1 = n_deg + e_c_deg + sun_e_long(0, 1, 2010);
-  double l_s_deg2 = l_s_deg1 - 360 * floor(l_s_deg1 / 360);
-  double ra_deg = pa_macros::ec_ra(l_s_deg2, 0, 0, 0, 0, 0, greenwich_date_day,
-                                   greenwich_date_month, greenwich_date_year);
-  double ra_hours = decimal_degrees_to_degree_hours(ra_deg);
-  double dec_deg =
-      pa_macros::ec_dec(l_s_deg2, 0, 0, 0, 0, 0, greenwich_date_day,
-                        greenwich_date_month, greenwich_date_year);
+  double greenwichDateDay = LocalCivilTimeGreenwichDay(
+      lctHours, lctMinutes, lctSeconds, daylightSaving, zoneCorrection,
+      localDay, localMonth, localYear);
+  int greenwichDateMonth = LocalCivilTimeGreenwichMonth(
+      lctHours, lctMinutes, lctSeconds, daylightSaving, zoneCorrection,
+      localDay, localMonth, localYear);
+  int greenwichDateYear = LocalCivilTimeGreenwichYear(
+      lctHours, lctMinutes, lctSeconds, daylightSaving, zoneCorrection,
+      localDay, localMonth, localYear);
+  double utHours = LocalCivilTimeToUniversalTime(
+      lctHours, lctMinutes, lctSeconds, daylightSaving, zoneCorrection,
+      localDay, localMonth, localYear);
+  double utDays = utHours / 24;
+  double jdDays = CivilDateToJulianDate(greenwichDateDay, greenwichDateMonth,
+                                        greenwichDateYear) +
+                  utDays;
+  double dDays = jdDays - CivilDateToJulianDate(0, 1, 2010);
+  double nDeg = 360 * dDays / 365.242191;
+  double mDeg1 = nDeg + SunELong(0, 1, 2010) - SunPerigee(0, 1, 2010);
+  double mDeg2 = mDeg1 - 360 * floor(mDeg1 / 360);
+  double eCDeg =
+      360 * SunEccentricity(0, 1, 2010) * sin(DegreesToRadians(mDeg2)) / M_PI;
+  double lSDeg1 = nDeg + eCDeg + SunELong(0, 1, 2010);
+  double lSDeg2 = lSDeg1 - 360 * floor(lSDeg1 / 360);
+  double raDeg =
+      pa_macros::EclipticRightAscension(lSDeg2, 0, 0, 0, 0, 0, greenwichDateDay,
+                                        greenwichDateMonth, greenwichDateYear);
+  double raHours = DecimalDegreesToDegreeHours(raDeg);
+  double decDeg =
+      pa_macros::EclipticDeclination(lSDeg2, 0, 0, 0, 0, 0, greenwichDateDay,
+                                     greenwichDateMonth, greenwichDateYear);
 
-  int sun_ra_hour = decimal_hours_hour(ra_hours);
-  int sun_ra_min = decimal_hours_minute(ra_hours);
-  double sun_ra_sec = decimal_hours_second(ra_hours);
-  double sun_dec_deg = decimal_degrees_degrees(dec_deg);
-  double sun_dec_min = decimal_degrees_minutes(dec_deg);
-  double sun_dec_sec = decimal_degrees_seconds(dec_deg);
+  int sunRaHour = DecimalHoursHour(raHours);
+  int sunRaMin = DecimalHoursMinute(raHours);
+  double sunRaSec = DecimalHoursSecond(raHours);
+  double sunDecDeg = DecimalDegreesDegrees(decDeg);
+  double sunDecMin = DecimalDegreesMinutes(decDeg);
+  double sunDecSec = DecimalDegreesSeconds(decDeg);
 
   return std::tuple<double, double, double, double, double, double>{
-      sun_ra_hour, sun_ra_min,  sun_ra_sec,
-      sun_dec_deg, sun_dec_min, sun_dec_sec};
+      sunRaHour, sunRaMin, sunRaSec, sunDecDeg, sunDecMin, sunDecSec};
 }
 
 /**
  * \brief Calculate precise position of the sun for a local date and time.
  */
 std::tuple<double, double, double, double, double, double>
-PASun::precise_position_of_sun(double lct_hours, double lct_minutes,
-                               double lct_seconds, double local_day,
-                               int local_month, int local_year,
-                               bool is_daylight_saving, int zone_correction) {
-  int daylight_saving = (is_daylight_saving == true) ? 1 : 0;
+PASun::PrecisePositionOfSun(double lctHours, double lctMinutes,
+                            double lctSeconds, double localDay, int localMonth,
+                            int localYear, bool isDaylightSaving,
+                            int zoneCorrection) {
+  int daylightSaving = (isDaylightSaving == true) ? 1 : 0;
 
-  double g_day = local_civil_time_greenwich_day(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  int g_month = local_civil_time_greenwich_month(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  int g_year = local_civil_time_greenwich_year(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  double sun_ecliptic_longitude_deg =
-      sun_long(lct_hours, lct_minutes, lct_seconds, daylight_saving,
-               zone_correction, local_day, local_month, local_year);
-  double ra_deg =
-      ec_ra(sun_ecliptic_longitude_deg, 0, 0, 0, 0, 0, g_day, g_month, g_year);
-  double ra_hours = decimal_degrees_to_degree_hours(ra_deg);
-  double dec_deg =
-      ec_dec(sun_ecliptic_longitude_deg, 0, 0, 0, 0, 0, g_day, g_month, g_year);
+  double gDay = LocalCivilTimeGreenwichDay(lctHours, lctMinutes, lctSeconds,
+                                           daylightSaving, zoneCorrection,
+                                           localDay, localMonth, localYear);
+  int gMonth = LocalCivilTimeGreenwichMonth(lctHours, lctMinutes, lctSeconds,
+                                            daylightSaving, zoneCorrection,
+                                            localDay, localMonth, localYear);
+  int gYear = LocalCivilTimeGreenwichYear(lctHours, lctMinutes, lctSeconds,
+                                          daylightSaving, zoneCorrection,
+                                          localDay, localMonth, localYear);
+  double sunEclipticLongitudeDeg =
+      SunLong(lctHours, lctMinutes, lctSeconds, daylightSaving, zoneCorrection,
+              localDay, localMonth, localYear);
+  double raDeg = EclipticRightAscension(sunEclipticLongitudeDeg, 0, 0, 0, 0, 0,
+                                        gDay, gMonth, gYear);
+  double raHours = DecimalDegreesToDegreeHours(raDeg);
+  double decDeg = EclipticDeclination(sunEclipticLongitudeDeg, 0, 0, 0, 0, 0,
+                                      gDay, gMonth, gYear);
 
-  int sun_ra_hour = decimal_hours_hour(ra_hours);
-  int sun_ra_min = decimal_hours_minute(ra_hours);
-  double sun_ra_sec = decimal_hours_second(ra_hours);
-  double sun_dec_deg = decimal_degrees_degrees(dec_deg);
-  double sun_dec_min = decimal_degrees_minutes(dec_deg);
-  double sun_dec_sec = decimal_degrees_seconds(dec_deg);
+  int sunRaHour = DecimalHoursHour(raHours);
+  int sunRaMin = DecimalHoursMinute(raHours);
+  double sunRaSec = DecimalHoursSecond(raHours);
+  double sunDecDeg = DecimalDegreesDegrees(decDeg);
+  double sunDecMin = DecimalDegreesMinutes(decDeg);
+  double sunDecSec = DecimalDegreesSeconds(decDeg);
 
   return std::tuple<double, double, double, double, double, double>{
-      sun_ra_hour, sun_ra_min,  sun_ra_sec,
-      sun_dec_deg, sun_dec_min, sun_dec_sec};
+      sunRaHour, sunRaMin, sunRaSec, sunDecDeg, sunDecMin, sunDecSec};
 }
 
 /**
@@ -112,36 +109,103 @@ PASun::precise_position_of_sun(double lct_hours, double lct_minutes,
  * @return tuple<double sun_dist_km, double sun_ang_size_deg, double
  * sun_ang_size_min, double sun_ang_size_sec>
  */
-std::tuple<double, double, double, double> PASun::sun_distance_and_angular_size(
-    double lct_hours, double lct_minutes, double lct_seconds, double local_day,
-    int local_month, int local_year, bool is_daylight_saving,
-    int zone_correction) {
-  int daylight_saving = (is_daylight_saving) ? 1 : 0;
+std::tuple<double, double, double, double> PASun::SunDistanceAndAngularSize(
+    double lctHours, double lctMinutes, double lctSeconds, double localDay,
+    int localMonth, int localYear, bool isDaylightSaving, int zoneCorrection) {
+  int daylightSaving = (isDaylightSaving) ? 1 : 0;
 
-  double g_day = local_civil_time_greenwich_day(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  int g_month = local_civil_time_greenwich_month(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  int g_year = local_civil_time_greenwich_year(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  double true_anomaly_deg =
-      sun_true_anomaly(lct_hours, lct_minutes, lct_seconds, daylight_saving,
-                       zone_correction, local_day, local_month, local_year);
-  double true_anomaly_rad = degrees_to_radians(true_anomaly_deg);
-  double eccentricity = sun_ecc(g_day, g_month, g_year);
-  double f = (1 + eccentricity * cos(true_anomaly_rad)) /
+  double gDay = LocalCivilTimeGreenwichDay(lctHours, lctMinutes, lctSeconds,
+                                           daylightSaving, zoneCorrection,
+                                           localDay, localMonth, localYear);
+  int gMonth = LocalCivilTimeGreenwichMonth(lctHours, lctMinutes, lctSeconds,
+                                            daylightSaving, zoneCorrection,
+                                            localDay, localMonth, localYear);
+  int gYear = LocalCivilTimeGreenwichYear(lctHours, lctMinutes, lctSeconds,
+                                          daylightSaving, zoneCorrection,
+                                          localDay, localMonth, localYear);
+  double trueAnomalyDeg =
+      SunTrueAnomaly(lctHours, lctMinutes, lctSeconds, daylightSaving,
+                     zoneCorrection, localDay, localMonth, localYear);
+  double trueAnomalyRad = DegreesToRadians(trueAnomalyDeg);
+  double eccentricity = SunEccentricity(gDay, gMonth, gYear);
+  double f = (1 + eccentricity * cos(trueAnomalyRad)) /
              (1 - eccentricity * eccentricity);
-  double r_km = 149598500 / f;
-  double theta_deg = f * 0.533128;
+  double rKm = 149598500 / f;
+  double thetaDeg = f * 0.533128;
 
-  double sun_dist_km = round(r_km, 0);
-  double sun_ang_size_deg = decimal_degrees_degrees(theta_deg);
-  double sun_ang_size_min = decimal_degrees_minutes(theta_deg);
-  double sun_ang_size_sec = decimal_degrees_seconds(theta_deg);
+  double sunDistKm = Round(rKm, 0);
+  double sunAngSizeDeg = DecimalDegreesDegrees(thetaDeg);
+  double sunAngSizeMin = DecimalDegreesMinutes(thetaDeg);
+  double sunAngSizeSec = DecimalDegreesSeconds(thetaDeg);
 
   return std::tuple<double, double, double, double>{
-      sun_dist_km, sun_ang_size_deg, sun_ang_size_min, sun_ang_size_sec};
+      sunDistKm, sunAngSizeDeg, sunAngSizeMin, sunAngSizeSec};
+}
+
+/**
+ * \brief Calculate local sunrise and sunset.
+ *
+ * tuple <double local_sunrise_hour, double local_sunrise_minute, double
+ * local_sunset_hour, double local_sunset_minute, double azimuth_of_sunrise_deg,
+ * double azimuth_of_sunset_deg, pa_types::sun_rise_set_status>
+ */
+std::tuple<double, double, double, double, double, double,
+           pa_types::RiseSetStatus>
+PASun::SunriseAndSunset(double localDay, int localMonth, int localYear,
+                        bool isDaylightSaving, int zoneCorrection,
+                        double geographicalLongDeg, double geographicalLatDeg) {
+  int daylightSaving = (isDaylightSaving) ? 1 : 0;
+
+  double localSunriseHours = SunriseLocalCivilTime(
+      localDay, localMonth, localYear, daylightSaving, zoneCorrection,
+      geographicalLongDeg, geographicalLatDeg);
+  double localSunsetHours = SunsetLocalCivilTime(
+      localDay, localMonth, localYear, daylightSaving, zoneCorrection,
+      geographicalLongDeg, geographicalLatDeg);
+
+  pa_types::RiseSetStatus sunRiseSetStatus = ESunRiseSetCalcStatus(
+      localDay, localMonth, localYear, daylightSaving, zoneCorrection,
+      geographicalLongDeg, geographicalLatDeg);
+
+  double adjustedSunriseHours = localSunriseHours + 0.008333;
+  double adjustedSunsetHours = localSunsetHours + 0.008333;
+
+  double azimuthOfSunriseDeg1 =
+      SunriseAzimuth(localDay, localMonth, localYear, daylightSaving,
+                     zoneCorrection, geographicalLongDeg, geographicalLatDeg);
+  double azimuthOfSunsetDeg1 =
+      SunsetAzimuth(localDay, localMonth, localYear, daylightSaving,
+                    zoneCorrection, geographicalLongDeg, geographicalLatDeg);
+
+  int localSunriseHour = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+                             ? DecimalHoursHour(adjustedSunriseHours)
+                             : 0;
+  int localSunriseMinute = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+                               ? DecimalHoursMinute(adjustedSunriseHours)
+                               : 0;
+
+  int localSunsetHour = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+                            ? DecimalHoursHour(adjustedSunsetHours)
+                            : 0;
+  int localSunsetMinute = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+                              ? DecimalHoursMinute(adjustedSunsetHours)
+                              : 0;
+
+  double azimuthOfSunriseDeg = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+                                   ? pa_util::Round(azimuthOfSunriseDeg1, 2)
+                                   : 0;
+  double azimuthOfSunsetDeg = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+                                  ? pa_util::Round(azimuthOfSunsetDeg1, 2)
+                                  : 0;
+
+  pa_types::RiseSetStatus status = sunRiseSetStatus;
+
+  return std::tuple<double, double, double, double, double, double,
+                    pa_types::RiseSetStatus>{localSunriseHour,
+                                             localSunriseMinute,
+                                             localSunsetHour,
+                                             localSunsetMinute,
+                                             azimuthOfSunriseDeg,
+                                             azimuthOfSunsetDeg,
+                                             status};
 }

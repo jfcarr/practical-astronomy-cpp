@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['heliographic_5fcoordinates_167',['heliographic_coordinates',['../classPACoordinates.html#a295f7aaed430ee25484e428e8163a1f5',1,'PACoordinates']]],
-  ['hms_5fdh_168',['hms_dh',['../namespacepa__macros.html#a345aa06a6dcf26eff9dd54dc5f212d96',1,'pa_macros']]],
-  ['horizon_5fcoordinates_5fto_5fdeclination_169',['horizon_coordinates_to_declination',['../namespacepa__macros.html#a70f2e948b06a3d2721208301431384e5',1,'pa_macros']]],
-  ['horizon_5fcoordinates_5fto_5fequatorial_5fcoordinates_170',['horizon_coordinates_to_equatorial_coordinates',['../classPACoordinates.html#a998797a6ddc3eb67c31d9ceca6abde77',1,'PACoordinates']]],
-  ['horizon_5fcoordinates_5fto_5fhour_5fangle_171',['horizon_coordinates_to_hour_angle',['../namespacepa__macros.html#af269e5ee22ab15cf85a94eabfe75a5b0',1,'pa_macros']]],
-  ['hour_5fangle_5fto_5fright_5fascension_172',['hour_angle_to_right_ascension',['../classPACoordinates.html#a051d7b5cdbfad4470f9013dbb5dccb9d',1,'PACoordinates::hour_angle_to_right_ascension()'],['../namespacepa__macros.html#a42ad5ff506f4d66135b3b5357b88f229',1,'pa_macros::hour_angle_to_right_ascension()']]]
+  ['heliographiccoordinates_191',['HeliographicCoordinates',['../classPACoordinates.html#a96dcc1de04338de40bf3e5a39b306e22',1,'PACoordinates']]],
+  ['hmstodh_192',['HmsToDh',['../namespacepa__macros.html#ad2cb1284366af7a0eab04880559d0081',1,'pa_macros']]],
+  ['horizoncoordinatestodeclination_193',['HorizonCoordinatesToDeclination',['../namespacepa__macros.html#adf292eb326877faabf2178ebe46f3398',1,'pa_macros']]],
+  ['horizoncoordinatestoequatorialcoordinates_194',['HorizonCoordinatesToEquatorialCoordinates',['../classPACoordinates.html#a39efd6446f62dd72ec9375241fbe5c4f',1,'PACoordinates']]],
+  ['horizoncoordinatestohourangle_195',['HorizonCoordinatesToHourAngle',['../namespacepa__macros.html#acbcb291f7a7efacb385b477a3b31fece',1,'pa_macros']]],
+  ['hourangletorightascension_196',['HourAngleToRightAscension',['../classPACoordinates.html#a020c577f183a4f4f431941b19eb58caa',1,'PACoordinates::HourAngleToRightAscension()'],['../namespacepa__macros.html#a0e0c0563e894d508555c8b2afca7b0b2',1,'pa_macros::HourAngleToRightAscension()']]]
 ];

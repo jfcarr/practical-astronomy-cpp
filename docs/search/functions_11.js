@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['w_5fto_5fdegrees_215',['w_to_degrees',['../namespacepa__macros.html#a7686d5e038d0f28383361f108f372257',1,'pa_macros']]]
+  ['wtodegrees_252',['WToDegrees',['../namespacepa__macros.html#a9068027321816d1d7eb53d80efcf350c',1,'pa_macros']]]
 ];

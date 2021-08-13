@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['never_5frises_62',['never_rises',['../namespacepa__types.html#a57d1662994e884d5eb36e8983f372a69a3d56a280ecf47bf782cddf98870d0760',1,'pa_types']]],
-  ['nutat_5flong_63',['nutat_long',['../namespacepa__macros.html#a391122ac795779141fa6e68be12cfc3d',1,'pa_macros']]],
-  ['nutat_5fobl_64',['nutat_obl',['../namespacepa__macros.html#a1f4a8335dda7b61e3691c744382bf770',1,'pa_macros']]],
-  ['nutation_5fin_5fecliptic_5flongitude_5fand_5fobliquity_65',['nutation_in_ecliptic_longitude_and_obliquity',['../classPACoordinates.html#aba4b9af80fe43e9ff8c09e6d9c9fa721',1,'PACoordinates']]]
+  ['neverrises_68',['NeverRises',['../namespacepa__types.html#a941b09de880d465b1f7e49ea9f420214a448c26a93f4364a2a05bcf836cee0370',1,'pa_types']]],
+  ['nutationineclipticlongitudeandobliquity_69',['NutationInEclipticLongitudeAndObliquity',['../classPACoordinates.html#a818a258bca08aa1f4fa091aa569cf195',1,'PACoordinates']]],
+  ['nutatlong_70',['NutatLong',['../namespacepa__macros.html#a3fdd50bcda8c29ef59f7c834c2dba1d4',1,'pa_macros']]],
+  ['nutatobl_71',['NutatObl',['../namespacepa__macros.html#aacb18548390e65ce1a2920611d404dee',1,'pa_macros']]]
 ];

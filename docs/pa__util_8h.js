@@ -1,7 +1,7 @@
 var pa__util_8h =
 [
-    [ "degrees_to_radians", "pa__util_8h.html#a457297701063cbffc976655fcac3d5b1", null ],
-    [ "is_leap_year", "pa__util_8h.html#ac7bb760deb727f628b940cedd89156d4", null ],
-    [ "radians_to_degrees", "pa__util_8h.html#a6a7a727552b98b43cd1893c96b30b939", null ],
-    [ "round", "pa__util_8h.html#ae6aecae204931a8a57e242e8d8c783b2", null ]
+    [ "DegreesToRadians", "pa__util_8h.html#ae236118880978d3673639bcb94abf04d", null ],
+    [ "IsLeapYear", "pa__util_8h.html#afe1abc97c311bcddcdbab6665dcb2899", null ],
+    [ "RadiansToDegrees", "pa__util_8h.html#a7584eaf459f597ee2c28e27e32e16edc", null ],
+    [ "Round", "pa__util_8h.html#aa4995ee0c16bd591c7c11d13455847a3", null ]
 ];

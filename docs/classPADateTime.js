@@ -1,13 +1,13 @@
 var classPADateTime =
 [
-    [ "civil_date_to_day_number", "classPADateTime.html#ae084b1b15cffe775de69593724f2ed16", null ],
-    [ "civil_time_to_decimal_hours", "classPADateTime.html#a5273aa19e338a4fabb8310c8962af79e", null ],
-    [ "decimal_hours_to_civil_time", "classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f", null ],
-    [ "get_date_of_easter", "classPADateTime.html#a124ab2cc4fffb68b4721fa529c7c8847", null ],
-    [ "greenwich_sidereal_time_to_local_sidereal_time", "classPADateTime.html#a2489f5858285a2156de0a615626d2e59", null ],
-    [ "greenwich_sidereal_time_to_universal_time", "classPADateTime.html#af3f40d20f805f077de75a4448cb27957", null ],
-    [ "local_civil_time_to_universal_time", "classPADateTime.html#ad1379a2a6e6af91037149815b469438e", null ],
-    [ "local_sidereal_time_to_greenwich_sidereal_time", "classPADateTime.html#a98498c80bfdb4c169697a1b5e43ece5a", null ],
-    [ "universal_time_to_greenwich_sidereal_time", "classPADateTime.html#ac83527c60b03732822ac09b95f4b2369", null ],
-    [ "universal_time_to_local_civil_time", "classPADateTime.html#af6cf7cad2d01fb3cff89c026690021f7", null ]
+    [ "CivilDateToDayNumber", "classPADateTime.html#afa71a8d30d9b4eb716f6eb0d92a6530e", null ],
+    [ "CivilTimeToDecimalHours", "classPADateTime.html#a22534e086eb1590c67b9577d51f4b2b5", null ],
+    [ "DecimalHoursToCivilTime", "classPADateTime.html#ac48a7d6948d467cb953c5c39d03e9e24", null ],
+    [ "GetDateOfEaster", "classPADateTime.html#ae971d71f20cf6e9ab9d106d57abd7108", null ],
+    [ "GreenwichSiderealTimeToLocalSiderealTime", "classPADateTime.html#ab94ef13f18084ae659016decd00aaad5", null ],
+    [ "GreenwichSiderealTimeToUniversalTime", "classPADateTime.html#aaecee0349ca64dd7e08ae40bc9a68fab", null ],
+    [ "LocalCivilTimeToUniversalTime", "classPADateTime.html#a604840ea5a93280fe1c336f1f1042129", null ],
+    [ "LocalSiderealTimeToGreenwichSiderealTime", "classPADateTime.html#a07f2a20263966e39b727c7ec561d7d3e", null ],
+    [ "UniversalTimeToGreenwichSiderealTime", "classPADateTime.html#ac73575bf848cffa3c888d0e630dbd635", null ],
+    [ "UniversalTimeToLocalCivilTime", "classPADateTime.html#a65209542571166688838e970b25c6244", null ]
 ];

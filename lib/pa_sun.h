@@ -7,21 +7,26 @@
 class PASun {
 public:
   std::tuple<double, double, double, double, double, double>
-  approximate_position_of_sun(double lct_hours, double lct_minutes,
-                              double lct_seconds, double local_day,
-                              int local_month, int local_year,
-                              bool is_daylight_saving, int zone_correction);
+  ApproximatePositionOfSun(double lct_hours, double lct_minutes,
+                           double lct_seconds, double local_day,
+                           int local_month, int local_year,
+                           bool is_daylight_saving, int zone_correction);
 
   std::tuple<double, double, double, double, double, double>
-  precise_position_of_sun(double lct_hours, double lct_minutes,
-                          double lct_seconds, double local_day, int local_month,
-                          int local_year, bool is_daylight_saving,
-                          int zone_correction);
+  PrecisePositionOfSun(double lct_hours, double lct_minutes, double lct_seconds,
+                       double local_day, int local_month, int local_year,
+                       bool is_daylight_saving, int zone_correction);
 
   std::tuple<double, double, double, double>
-  sun_distance_and_angular_size(double lct_hours, double lct_minutes,
-                                double lct_seconds, double local_day,
-                                int local_month, int local_year,
-                                bool is_daylight_saving, int zone_correction);
+  SunDistanceAndAngularSize(double lct_hours, double lct_minutes,
+                            double lct_seconds, double local_day,
+                            int local_month, int local_year,
+                            bool is_daylight_saving, int zone_correction);
+
+  std::tuple<double, double, double, double, double, double,
+             pa_types::RiseSetStatus>
+  SunriseAndSunset(double local_day, int local_month, int local_year,
+                   bool is_daylight_saving, int zone_correction,
+                   double geographical_long_deg, double geographical_lat_deg);
 };
 #endif
