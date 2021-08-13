@@ -8,8 +8,8 @@ namespace pa_util {
  *
  * @return Is a leap year? (true/false)
  */
-bool is_leap_year(int input_year) {
-  double year = (double)input_year;
+bool IsLeapYear(int inputYear) {
+  double year = (double)inputYear;
 
   if ((int)year % 4 == 0) {
     if ((int)year % 100 == 0) {
@@ -33,32 +33,32 @@ bool is_leap_year(int input_year) {
  *
  * @return Rounded input value.
  */
-double round(double input, int places) {
-  bool is_negative = (input < 0) ? true : false;
+double Round(double input, int places) {
+  bool isNegative = (input < 0) ? true : false;
 
   long double multiplier = pow(10, places);
 
-  if (is_negative) {
+  if (isNegative) {
     input = std::abs(input);
   };
 
   long double a = input * multiplier;
   a = (a >= 0) ? a + 0.5 : a - 0.5;
 
-  double return_value =
+  double returnValue =
       floor(a) / multiplier; // floor() gives good results for more places (7+)
                              // than the original (int) cast.
 
-  return (is_negative) ? -(return_value) : return_value;
+  return (isNegative) ? -(returnValue) : returnValue;
 }
 
 /**
  * \brief Convert degrees to radians
  */
-double degrees_to_radians(double degrees) { return (degrees * M_PI) / 180; }
+double DegreesToRadians(double degrees) { return (degrees * M_PI) / 180; }
 
 /**
  * \brief Convert radians to degrees
  */
-double radians_to_degrees(double radians) { return (radians * 180) / M_PI; }
+double RadiansToDegrees(double radians) { return (radians * 180) / M_PI; }
 } // namespace pa_util

@@ -18,16 +18,16 @@ namespace pa_macros {
  *
  * @return Time as a decimal value.
  */
-double hms_dh(double hours, double minutes, double seconds) {
-  double f_hours = hours;
-  double f_minutes = minutes;
-  double f_seconds = seconds;
+double HmsToDh(double hours, double minutes, double seconds) {
+  double fHours = hours;
+  double fMinutes = minutes;
+  double fSeconds = seconds;
 
-  double a = std::abs(f_seconds) / 60;
-  double b = (std::abs(f_minutes) + a) / 60;
-  double c = std::abs(f_hours) + b;
+  double a = std::abs(fSeconds) / 60;
+  double b = (std::abs(fMinutes) + a) / 60;
+  double c = std::abs(fHours) + b;
 
-  return (f_hours < 0 || f_minutes < 0 || f_seconds < 0) ? -c : c;
+  return (fHours < 0 || fMinutes < 0 || fSeconds < 0) ? -c : c;
 }
 
 /**
@@ -39,13 +39,13 @@ double hms_dh(double hours, double minutes, double seconds) {
  *
  * @return Hour part of time.
  */
-int decimal_hours_hour(double decimal_hours) {
-  double a = std::abs(decimal_hours);
+int DecimalHoursHour(double decimalHours) {
+  double a = std::abs(decimalHours);
   double b = a * 3600;
-  double c = round(b - 60 * floor(b / 60), 2);
+  double c = Round(b - 60 * floor(b / 60), 2);
   double e = (c == 60) ? b + 60 : b;
 
-  return (decimal_hours < 0) ? (int)-(floor(e / 3600)) : (int)floor(e / 3600);
+  return (decimalHours < 0) ? (int)-(floor(e / 3600)) : (int)floor(e / 3600);
 }
 
 /**
@@ -57,10 +57,10 @@ int decimal_hours_hour(double decimal_hours) {
  *
  * @return Minutes part of time.
  */
-int decimal_hours_minute(double decimal_hours) {
-  double a = std::abs(decimal_hours);
+int DecimalHoursMinute(double decimalHours) {
+  double a = std::abs(decimalHours);
   double b = a * 3600;
-  double c = round(b - 60 * floor(b / 60), 2);
+  double c = Round(b - 60 * floor(b / 60), 2);
   double e = (c == 60) ? b + 60 : b;
 
   return (int)floor(e / 60) % 60;
@@ -75,10 +75,10 @@ int decimal_hours_minute(double decimal_hours) {
  *
  * @return Seconds part of time.
  */
-double decimal_hours_second(double decimal_hours) {
-  double a = std::abs(decimal_hours);
+double DecimalHoursSecond(double decimalHours) {
+  double a = std::abs(decimalHours);
   double b = a * 3600;
-  double c = round(b - 60 * floor(b / 60), 2);
+  double c = Round(b - 60 * floor(b / 60), 2);
   double d = (c == 60) ? 0 : c;
 
   return d;
@@ -95,25 +95,25 @@ double decimal_hours_second(double decimal_hours) {
  *
  * @return Julian date
  */
-double civil_date_to_julian_date(double day, double month, double year) {
-  double f_day = (double)day;
-  double f_month = (double)month;
-  double f_year = (double)year;
+double CivilDateToJulianDate(double day, double month, double year) {
+  double fDay = (double)day;
+  double fMonth = (double)month;
+  double fYear = (double)year;
 
-  double y = (f_month < 3) ? f_year - 1 : f_year;
-  double m = (f_month < 3) ? f_month + 12 : f_month;
+  double y = (fMonth < 3) ? fYear - 1 : fYear;
+  double m = (fMonth < 3) ? fMonth + 12 : fMonth;
 
   double b;
 
-  if (f_year > 1582) {
+  if (fYear > 1582) {
     double a = floor(y / 100);
     b = 2 - a + floor(a / 4);
   } else {
-    if (f_year == 1582 && f_month > 10) {
+    if (fYear == 1582 && fMonth > 10) {
       double a = floor(y / 100);
       b = 2 - a + floor(a / 4);
     } else {
-      if (f_year == 1582 && f_month == 10 && f_day >= 15) {
+      if (fYear == 1582 && fMonth == 10 && fDay >= 15) {
         double a = floor(y / 100);
         b = 2 - a + floor(a / 4);
       } else
@@ -124,7 +124,7 @@ double civil_date_to_julian_date(double day, double month, double year) {
   double c = (y < 0) ? floor(((365.25 * y) - 0.75)) : floor(365.25 * y);
   double d = floor(30.6001 * (m + 1.0));
 
-  return b + c + d + f_day + 1720994.5;
+  return b + c + d + fDay + 1720994.5;
 }
 
 /**
@@ -132,9 +132,9 @@ double civil_date_to_julian_date(double day, double month, double year) {
  *
  * Original macro name: JDCDay
  */
-double julian_date_day(double julian_date) {
-  double i = floor(julian_date + 0.5);
-  double f = julian_date + 0.5 - i;
+double JulianDateDay(double julianDate) {
+  double i = floor(julianDate + 0.5);
+  double f = julianDate + 0.5 - i;
   double a = floor((i - 1867216.25) / 36524.25);
   double b = (i > 2299160) ? i + 1 + a - floor(a / 4) : i;
   double c = b + 1524;
@@ -150,8 +150,8 @@ double julian_date_day(double julian_date) {
  *
  * Original macro name: JDCMonth
  */
-int julian_date_month(double julian_date) {
-  double i = floor(julian_date + 0.5);
+int JulianDateMonth(double julianDate) {
+  double i = floor(julianDate + 0.5);
   double a = floor((i - 1867216.25) / 36524.25);
   double b = (i > 2299160) ? i + 1 + a - floor(a / 4) : i;
   double c = b + 1524;
@@ -169,8 +169,8 @@ int julian_date_month(double julian_date) {
  *
  * Original macro name: JDCYear
  */
-int julian_date_year(double julian_date) {
-  double i = floor(julian_date + 0.5);
+int JulianDateYear(double julianDate) {
+  double i = floor(julianDate + 0.5);
   double a = floor((i - 1867216.25) / 36524.25);
   double b = (i > 2299160) ? i + 1.0 + a - floor(a / 4.0) : i;
   double c = b + 1524;
@@ -189,29 +189,28 @@ int julian_date_year(double julian_date) {
  *
  * Original macro name: RAHA
  */
-double right_ascension_to_hour_angle(double ra_hours, double ra_minutes,
-                                     double ra_seconds, double lct_hours,
-                                     double lct_minutes, double lct_seconds,
-                                     int daylight_saving, int zone_correction,
-                                     double local_day, int local_month,
-                                     int local_year,
-                                     double geographical_longitude) {
-  double a = local_civil_time_to_universal_time(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  double b = local_civil_time_greenwich_day(lct_hours, lct_minutes, lct_seconds,
-                                            daylight_saving, zone_correction,
-                                            local_day, local_month, local_year);
-  int c = local_civil_time_greenwich_month(lct_hours, lct_minutes, lct_seconds,
-                                           daylight_saving, zone_correction,
-                                           local_day, local_month, local_year);
-  int d = local_civil_time_greenwich_year(lct_hours, lct_minutes, lct_seconds,
-                                          daylight_saving, zone_correction,
-                                          local_day, local_month, local_year);
-  double e = universal_time_to_greenwich_sidereal_time(a, 0, 0, b, c, d);
-  double f = greenwich_sidereal_time_to_local_sidereal_time(
-      e, 0, 0, geographical_longitude);
-  double g = hms_dh(ra_hours, ra_minutes, ra_seconds);
+double RightAscensionToHourAngle(double raHours, double raMinutes,
+                                 double raSeconds, double lctHours,
+                                 double lctMinutes, double lctSeconds,
+                                 int daylightSaving, int zoneCorrection,
+                                 double localDay, int localMonth, int localYear,
+                                 double geographicalLongitude) {
+  double a = LocalCivilTimeToUniversalTime(lctHours, lctMinutes, lctSeconds,
+                                           daylightSaving, zoneCorrection,
+                                           localDay, localMonth, localYear);
+  double b = LocalCivilTimeGreenwichDay(lctHours, lctMinutes, lctSeconds,
+                                        daylightSaving, zoneCorrection,
+                                        localDay, localMonth, localYear);
+  int c = LocalCivilTimeGreenwichMonth(lctHours, lctMinutes, lctSeconds,
+                                       daylightSaving, zoneCorrection, localDay,
+                                       localMonth, localYear);
+  int d = LocalCivilTimeGreenwichYear(lctHours, lctMinutes, lctSeconds,
+                                      daylightSaving, zoneCorrection, localDay,
+                                      localMonth, localYear);
+  double e = UniversalTimeToGreenwichSiderealTime(a, 0, 0, b, c, d);
+  double f =
+      GreenwichSiderealTimeToLocalSiderealTime(e, 0, 0, geographicalLongitude);
+  double g = HmsToDh(raHours, raMinutes, raSeconds);
   double h = f - g;
 
   return (h < 0) ? 24 + h : h;
@@ -222,30 +221,28 @@ double right_ascension_to_hour_angle(double ra_hours, double ra_minutes,
  *
  * Original macro name: HARA
  */
-double hour_angle_to_right_ascension(double hour_angle_hours,
-                                     double hour_angle_minutes,
-                                     double hour_angle_seconds,
-                                     double lct_hours, double lct_minutes,
-                                     double lct_seconds, int daylight_saving,
-                                     int zone_correction, double local_day,
-                                     int local_month, int local_year,
-                                     double geographical_longitude) {
-  double a = local_civil_time_to_universal_time(
-      lct_hours, lct_minutes, lct_seconds, daylight_saving, zone_correction,
-      local_day, local_month, local_year);
-  double b = local_civil_time_greenwich_day(lct_hours, lct_minutes, lct_seconds,
-                                            daylight_saving, zone_correction,
-                                            local_day, local_month, local_year);
-  int c = local_civil_time_greenwich_month(lct_hours, lct_minutes, lct_seconds,
-                                           daylight_saving, zone_correction,
-                                           local_day, local_month, local_year);
-  int d = local_civil_time_greenwich_year(lct_hours, lct_minutes, lct_seconds,
-                                          daylight_saving, zone_correction,
-                                          local_day, local_month, local_year);
-  double e = universal_time_to_greenwich_sidereal_time(a, 0, 0, b, c, d);
-  double f = greenwich_sidereal_time_to_local_sidereal_time(
-      e, 0, 00, geographical_longitude);
-  double g = hms_dh(hour_angle_hours, hour_angle_minutes, hour_angle_seconds);
+double HourAngleToRightAscension(double hourAngleHours, double hourAngleMinutes,
+                                 double hourAngleSeconds, double lctHours,
+                                 double lctMinutes, double lctSeconds,
+                                 int daylightSaving, int zoneCorrection,
+                                 double localDay, int localMonth, int localYear,
+                                 double geographicalLongitude) {
+  double a = LocalCivilTimeToUniversalTime(lctHours, lctMinutes, lctSeconds,
+                                           daylightSaving, zoneCorrection,
+                                           localDay, localMonth, localYear);
+  double b = LocalCivilTimeGreenwichDay(lctHours, lctMinutes, lctSeconds,
+                                        daylightSaving, zoneCorrection,
+                                        localDay, localMonth, localYear);
+  int c = LocalCivilTimeGreenwichMonth(lctHours, lctMinutes, lctSeconds,
+                                       daylightSaving, zoneCorrection, localDay,
+                                       localMonth, localYear);
+  int d = LocalCivilTimeGreenwichYear(lctHours, lctMinutes, lctSeconds,
+                                      daylightSaving, zoneCorrection, localDay,
+                                      localMonth, localYear);
+  double e = UniversalTimeToGreenwichSiderealTime(a, 0, 0, b, c, d);
+  double f =
+      GreenwichSiderealTimeToLocalSiderealTime(e, 0, 00, geographicalLongitude);
+  double g = HmsToDh(hourAngleHours, hourAngleMinutes, hourAngleSeconds);
   double h = f - g;
 
   return (h < 0) ? 24 + h : h;
@@ -256,16 +253,36 @@ double hour_angle_to_right_ascension(double hour_angle_hours,
  *
  * Original macro name: LctUT
  */
-double local_civil_time_to_universal_time(double lct_hours, double lct_minutes,
-                                          double lct_seconds,
-                                          int daylight_saving,
-                                          int zone_correction, double local_day,
-                                          int local_month, int local_year) {
-  double a = hms_dh(lct_hours, lct_minutes, lct_seconds);
-  double b = a - daylight_saving - zone_correction;
-  double c = local_day + (b / 24);
-  double d = civil_date_to_julian_date(c, local_month, local_year);
-  double e = julian_date_day(d);
+double LocalCivilTimeToUniversalTime(double lctHours, double lctMinutes,
+                                     double lctSeconds, int daylightSaving,
+                                     int zoneCorrection, double localDay,
+                                     int localMonth, int localYear) {
+  double a = HmsToDh(lctHours, lctMinutes, lctSeconds);
+  double b = a - daylightSaving - zoneCorrection;
+  double c = localDay + (b / 24);
+  double d = CivilDateToJulianDate(c, localMonth, localYear);
+  double e = JulianDateDay(d);
+  double e1 = floor(e);
+
+  return 24 * (e - e1);
+}
+
+/**
+ * \brief Convert Universal Time to Local Civil Time
+ *
+ * Original macro name: UTLct
+ */
+double UniversalTimeToLocalCivilTime(double uHours, double uMinutes,
+                                     double uSeconds, int daylightSaving,
+                                     int zoneCorrection, double greenwichDay,
+                                     int greenwichMonth, int greenwichYear) {
+  double a = HmsToDh(uHours, uMinutes, uSeconds);
+  double b = a + zoneCorrection;
+  double c = b + daylightSaving;
+  double d =
+      CivilDateToJulianDate(greenwichDay, greenwichMonth, greenwichYear) +
+      (c / 24);
+  double e = JulianDateDay(d);
   double e1 = floor(e);
 
   return 24 * (e - e1);
@@ -276,15 +293,15 @@ double local_civil_time_to_universal_time(double lct_hours, double lct_minutes,
  *
  * Original macro name: LctGDay
  */
-double local_civil_time_greenwich_day(double lct_hours, double lct_minutes,
-                                      double lct_seconds, int daylight_saving,
-                                      int zone_correction, double local_day,
-                                      int local_month, int local_year) {
-  double a = hms_dh(lct_hours, lct_minutes, lct_seconds);
-  double b = a - daylight_saving - zone_correction;
-  double c = local_day + (b / 24);
-  double d = civil_date_to_julian_date(c, local_month, local_year);
-  double e = julian_date_day(d);
+double LocalCivilTimeGreenwichDay(double lctHours, double lctMinutes,
+                                  double lctSeconds, int daylightSaving,
+                                  int zoneCorrection, double localDay,
+                                  int localMonth, int localYear) {
+  double a = HmsToDh(lctHours, lctMinutes, lctSeconds);
+  double b = a - daylightSaving - zoneCorrection;
+  double c = localDay + (b / 24);
+  double d = CivilDateToJulianDate(c, localMonth, localYear);
+  double e = JulianDateDay(d);
 
   return floor(e);
 }
@@ -294,16 +311,16 @@ double local_civil_time_greenwich_day(double lct_hours, double lct_minutes,
  *
  * Original macro name: LctGMonth
  */
-double local_civil_time_greenwich_month(double lct_hours, double lct_minutes,
-                                        double lct_seconds, int daylight_saving,
-                                        int zone_correction, double local_day,
-                                        int local_month, int local_year) {
-  double a = hms_dh(lct_hours, lct_minutes, lct_seconds);
-  double b = a - daylight_saving - zone_correction;
-  double c = local_day + (b / 24);
-  double d = civil_date_to_julian_date(c, local_month, local_year);
+double LocalCivilTimeGreenwichMonth(double lctHours, double lctMinutes,
+                                    double lctSeconds, int daylightSaving,
+                                    int zoneCorrection, double localDay,
+                                    int localMonth, int localYear) {
+  double a = HmsToDh(lctHours, lctMinutes, lctSeconds);
+  double b = a - daylightSaving - zoneCorrection;
+  double c = localDay + (b / 24);
+  double d = CivilDateToJulianDate(c, localMonth, localYear);
 
-  return julian_date_month(d);
+  return JulianDateMonth(d);
 }
 
 /**
@@ -311,16 +328,16 @@ double local_civil_time_greenwich_month(double lct_hours, double lct_minutes,
  *
  * Original macro name: LctGYear
  */
-double local_civil_time_greenwich_year(double lct_hours, double lct_minutes,
-                                       double lct_seconds, int daylight_saving,
-                                       int zone_correction, double local_day,
-                                       int local_month, int local_year) {
-  double a = hms_dh(lct_hours, lct_minutes, lct_seconds);
-  double b = a - daylight_saving - zone_correction;
-  double c = local_day + (b / 24);
-  double d = civil_date_to_julian_date(c, local_month, local_year);
+double LocalCivilTimeGreenwichYear(double lctHours, double lctMinutes,
+                                   double lctSeconds, int daylightSaving,
+                                   int zoneCorrection, double localDay,
+                                   int localMonth, int localYear) {
+  double a = HmsToDh(lctHours, lctMinutes, lctSeconds);
+  double b = a - daylightSaving - zoneCorrection;
+  double c = localDay + (b / 24);
+  double d = CivilDateToJulianDate(c, localMonth, localYear);
 
-  return julian_date_year(d);
+  return JulianDateYear(d);
 }
 
 /**
@@ -328,16 +345,17 @@ double local_civil_time_greenwich_year(double lct_hours, double lct_minutes,
  *
  * Original macro name: UTGST
  */
-double universal_time_to_greenwich_sidereal_time(
-    double u_hours, double u_minutes, double u_seconds, double greenwich_day,
-    int greenwich_month, int greenwich_year) {
-  double a =
-      civil_date_to_julian_date(greenwich_day, greenwich_month, greenwich_year);
+double UniversalTimeToGreenwichSiderealTime(double uHours, double uMinutes,
+                                            double uSeconds,
+                                            double greenwichDay,
+                                            int greenwichMonth,
+                                            int greenwichYear) {
+  double a = CivilDateToJulianDate(greenwichDay, greenwichMonth, greenwichYear);
   double b = a - 2451545;
   double c = b / 36525;
   double d = 6.697374558 + (2400.051336 * c) + (0.000025862 * c * c);
   double e = d - (24 * floor(d / 24));
-  double f = hms_dh(u_hours, u_minutes, u_seconds);
+  double f = HmsToDh(uHours, uMinutes, uSeconds);
   double g = f * 1.002737909;
   double h = e + g;
 
@@ -349,11 +367,12 @@ double universal_time_to_greenwich_sidereal_time(
  *
  * Original macro name: GSTLST
  */
-double greenwich_sidereal_time_to_local_sidereal_time(
-    double greenwich_hours, double greenwich_minutes, double greenwich_seconds,
-    double geographical_longitude) {
-  double a = hms_dh(greenwich_hours, greenwich_minutes, greenwich_seconds);
-  double b = geographical_longitude / 15;
+double GreenwichSiderealTimeToLocalSiderealTime(double greenwichHours,
+                                                double greenwichMinutes,
+                                                double greenwichSeconds,
+                                                double geographicalLongitude) {
+  double a = HmsToDh(greenwichHours, greenwichMinutes, greenwichSeconds);
+  double b = geographicalLongitude / 15;
   double c = a + b;
 
   return c - (24 * floor(c / 24));
@@ -364,24 +383,21 @@ double greenwich_sidereal_time_to_local_sidereal_time(
  *
  * Original macro name: EQAz
  */
-double equatorial_coordinates_to_azimuth(double hour_angle_hours,
-                                         double hour_angle_minutes,
-                                         double hour_angle_seconds,
-                                         double declination_degrees,
-                                         double declination_minutes,
-                                         double declination_seconds,
-                                         double geographical_latitude) {
-  double a = hms_dh(hour_angle_hours, hour_angle_minutes, hour_angle_seconds);
+double EquatorialCoordinatesToAzimuth(
+    double hourAngleHours, double hourAngleMinutes, double hourAngleSeconds,
+    double declinationDegrees, double declinationMinutes,
+    double declinationSeconds, double geographicalLatitude) {
+  double a = HmsToDh(hourAngleHours, hourAngleMinutes, hourAngleSeconds);
   double b = a * 15;
-  double c = degrees_to_radians(b);
-  double d = degrees_minutes_seconds_to_decimal_degrees(
-      declination_degrees, declination_minutes, declination_seconds);
-  double e = degrees_to_radians(d);
-  double f = degrees_to_radians(geographical_latitude);
+  double c = DegreesToRadians(b);
+  double d = DegreesMinutesSecondsToDecimalDegrees(
+      declinationDegrees, declinationMinutes, declinationSeconds);
+  double e = DegreesToRadians(d);
+  double f = DegreesToRadians(geographicalLatitude);
   double g = sin(e) * sin(f) + cos(e) * cos(f) * cos(c);
   double h = -cos(e) * cos(f) * sin(c);
   double i = sin(e) - (sin(f) * g);
-  double j = w_to_degrees(atan2(h, i));
+  double j = WToDegrees(atan2(h, i));
 
   return j - 360.0 * floor(j / 360);
 }
@@ -391,23 +407,20 @@ double equatorial_coordinates_to_azimuth(double hour_angle_hours,
  *
  * Original macro name: EQAlt
  */
-double equatorial_coordinates_to_altitude(double hour_angle_hours,
-                                          double hour_angle_minutes,
-                                          double hour_angle_seconds,
-                                          double declination_degrees,
-                                          double declination_minutes,
-                                          double declination_seconds,
-                                          double geographical_latitude) {
-  double a = hms_dh(hour_angle_hours, hour_angle_minutes, hour_angle_seconds);
+double EquatorialCoordinatesToAltitude(
+    double hourAngleHours, double hourAngleMinutes, double hourAngleSeconds,
+    double declinationDegrees, double declinationMinutes,
+    double declinationSeconds, double geographicalLatitude) {
+  double a = HmsToDh(hourAngleHours, hourAngleMinutes, hourAngleSeconds);
   double b = a * 15;
-  double c = degrees_to_radians(b);
-  double d = degrees_minutes_seconds_to_decimal_degrees(
-      declination_degrees, declination_minutes, declination_seconds);
-  double e = degrees_to_radians(d);
-  double f = degrees_to_radians(geographical_latitude);
+  double c = DegreesToRadians(b);
+  double d = DegreesMinutesSecondsToDecimalDegrees(
+      declinationDegrees, declinationMinutes, declinationSeconds);
+  double e = DegreesToRadians(d);
+  double f = DegreesToRadians(geographicalLatitude);
   double g = sin(e) * sin(f) + cos(e) * cos(f) * cos(c);
 
-  return w_to_degrees(asin(g));
+  return WToDegrees(asin(g));
 }
 
 /**
@@ -415,9 +428,8 @@ double equatorial_coordinates_to_altitude(double hour_angle_hours,
  *
  * Original macro name: DMSDD
  */
-double degrees_minutes_seconds_to_decimal_degrees(double degrees,
-                                                  double minutes,
-                                                  double seconds) {
+double DegreesMinutesSecondsToDecimalDegrees(double degrees, double minutes,
+                                             double seconds) {
   double a = std::abs(seconds) / 60;
   double b = (std::abs(minutes) + a) / 60;
   double c = std::abs(degrees) + b;
@@ -430,20 +442,20 @@ double degrees_minutes_seconds_to_decimal_degrees(double degrees,
  *
  * Original macro name: Degrees
  */
-double w_to_degrees(double w) { return w * 57.29577951; }
+double WToDegrees(double w) { return w * 57.29577951; }
 
 /**
  * \brief Return Degrees part of Decimal Degrees
  *
  * Original macro name: DDDeg
  */
-double decimal_degrees_degrees(double decimal_degrees) {
-  double a = std::abs(decimal_degrees);
+double DecimalDegreesDegrees(double decimalDegrees) {
+  double a = std::abs(decimalDegrees);
   double b = a * 3600;
-  double c = round(b - 60 * floor(b / 60), 2);
+  double c = Round(b - 60 * floor(b / 60), 2);
   double e = (c == 60) ? 60 : b;
 
-  return (decimal_degrees < 0) ? -(floor(e / 3600)) : floor(e / 3600);
+  return (decimalDegrees < 0) ? -(floor(e / 3600)) : floor(e / 3600);
 }
 
 /**
@@ -451,10 +463,10 @@ double decimal_degrees_degrees(double decimal_degrees) {
  *
  * Original macro name: DDMin
  */
-double decimal_degrees_minutes(double decimal_degrees) {
-  double a = std::abs(decimal_degrees);
+double DecimalDegreesMinutes(double decimalDegrees) {
+  double a = std::abs(decimalDegrees);
   double b = a * 3600;
-  double c = round(b - 60 * floor(b / 60), 2);
+  double c = Round(b - 60 * floor(b / 60), 2);
   double e = (c == 60) ? b + 60 : b;
 
   return (int)floor(e / 60) % 60;
@@ -465,10 +477,10 @@ double decimal_degrees_minutes(double decimal_degrees) {
  *
  * Original macro name: DDSec
  */
-double decimal_degrees_seconds(double decimal_degrees) {
-  double a = std::abs(decimal_degrees);
+double DecimalDegreesSeconds(double decimalDegrees) {
+  double a = std::abs(decimalDegrees);
   double b = a * 3600;
-  double c = round(b - 60 * floor(b / 60), 2);
+  double c = Round(b - 60 * floor(b / 60), 2);
   double d = (c == 60) ? 0 : c;
 
   return d;
@@ -479,8 +491,8 @@ double decimal_degrees_seconds(double decimal_degrees) {
  *
  * Original macro name: DDDH
  */
-double decimal_degrees_to_degree_hours(double decimal_degrees) {
-  return decimal_degrees / 15;
+double DecimalDegreesToDegreeHours(double decimalDegrees) {
+  return decimalDegrees / 15;
 }
 
 /**
@@ -488,8 +500,8 @@ double decimal_degrees_to_degree_hours(double decimal_degrees) {
  *
  * Original macro name: DHDD
  */
-double degree_hours_to_decimal_degrees(double degree_hours) {
-  return degree_hours * 15;
+double DegreeHoursToDecimalDegrees(double degreeHours) {
+  return degreeHours * 15;
 }
 
 /**
@@ -497,20 +509,21 @@ double degree_hours_to_decimal_degrees(double degree_hours) {
  *
  * Original macro name: HORDec
  */
-double horizon_coordinates_to_declination(
-    double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
-    double altitude_degrees, double altitude_minutes, double altitude_seconds,
-    double geographical_latitude) {
-  double a = degrees_minutes_seconds_to_decimal_degrees(
-      azimuth_degrees, azimuth_minutes, azimuth_seconds);
-  double b = degrees_minutes_seconds_to_decimal_degrees(
-      altitude_degrees, altitude_minutes, altitude_seconds);
-  double c = degrees_to_radians(a);
-  double d = degrees_to_radians(b);
-  double e = degrees_to_radians(geographical_latitude);
+double
+HorizonCoordinatesToDeclination(double azimuthDegrees, double azimuthMinutes,
+                                double azimuthSeconds, double altitudeDegrees,
+                                double altitudeMinutes, double altitudeSeconds,
+                                double geographicalLatitude) {
+  double a = DegreesMinutesSecondsToDecimalDegrees(
+      azimuthDegrees, azimuthMinutes, azimuthSeconds);
+  double b = DegreesMinutesSecondsToDecimalDegrees(
+      altitudeDegrees, altitudeMinutes, altitudeSeconds);
+  double c = DegreesToRadians(a);
+  double d = DegreesToRadians(b);
+  double e = DegreesToRadians(geographicalLatitude);
   double f = sin(d) * sin(e) + cos(d) * cos(e) * cos(c);
 
-  return w_to_degrees(asin(f));
+  return WToDegrees(asin(f));
 }
 
 /**
@@ -518,21 +531,22 @@ double horizon_coordinates_to_declination(
  *
  * Original macro name: HORHa
  */
-double horizon_coordinates_to_hour_angle(
-    double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
-    double altitude_degrees, double altitude_minutes, double altitude_seconds,
-    double geographical_latitude) {
-  double a = degrees_minutes_seconds_to_decimal_degrees(
-      azimuth_degrees, azimuth_minutes, azimuth_seconds);
-  double b = degrees_minutes_seconds_to_decimal_degrees(
-      altitude_degrees, altitude_minutes, altitude_seconds);
-  double c = degrees_to_radians(a);
-  double d = degrees_to_radians(b);
-  double e = degrees_to_radians(geographical_latitude);
+double
+HorizonCoordinatesToHourAngle(double azimuthDegrees, double azimuthMinutes,
+                              double azimuthSeconds, double altitudeDegrees,
+                              double altitudeMinutes, double altitudeSeconds,
+                              double geographicalLatitude) {
+  double a = DegreesMinutesSecondsToDecimalDegrees(
+      azimuthDegrees, azimuthMinutes, azimuthSeconds);
+  double b = DegreesMinutesSecondsToDecimalDegrees(
+      altitudeDegrees, altitudeMinutes, altitudeSeconds);
+  double c = DegreesToRadians(a);
+  double d = DegreesToRadians(b);
+  double e = DegreesToRadians(geographicalLatitude);
   double f = sin(d) * sin(e) + cos(d) * cos(e) * cos(c);
   double g = -cos(d) * cos(e) * sin(c);
   double h = sin(d) - sin(e) * f;
-  double i = decimal_degrees_to_degree_hours(w_to_degrees(atan2(g, h)));
+  double i = DecimalDegreesToDegreeHours(WToDegrees(atan2(g, h)));
 
   return i - 24 * floor(i / 24);
 }
@@ -542,16 +556,15 @@ double horizon_coordinates_to_hour_angle(
  *
  * Original macro name: Obliq
  */
-double obliq(double greenwich_day, int greenwich_month, int greenwich_year) {
-  double a =
-      civil_date_to_julian_date(greenwich_day, greenwich_month, greenwich_year);
+double Obliq(double greenwichDay, int greenwichMonth, int greenwichYear) {
+  double a = CivilDateToJulianDate(greenwichDay, greenwichMonth, greenwichYear);
   double b = a - 2415020;
   double c = (b / 36525) - 1;
   double d = c * (46.815 + c * (0.0006 - (c * 0.00181)));
   double e = d / 3600;
 
   return 23.43929167 - e +
-         nutat_obl(greenwich_day, greenwich_month, greenwich_year);
+         NutatObl(greenwichDay, greenwichMonth, greenwichYear);
 }
 
 /**
@@ -559,8 +572,8 @@ double obliq(double greenwich_day, int greenwich_month, int greenwich_year) {
  *
  * Original macro name: NutatLong
  */
-double nutat_long(double gd, int gm, int gy) {
-  double dj = civil_date_to_julian_date(gd, gm, gy) - 2415020;
+double NutatLong(double gd, int gm, int gy) {
+  double dj = CivilDateToJulianDate(gd, gm, gy) - 2415020;
   double t = dj / 36525;
   double t2 = t * t;
 
@@ -568,31 +581,31 @@ double nutat_long(double gd, int gm, int gy) {
   double b = 360 * (a - floor(a));
 
   double l1 = 279.6967 + 0.000303 * t2 + b;
-  double l2 = 2 * degrees_to_radians(l1);
+  double l2 = 2 * DegreesToRadians(l1);
 
   a = 1336.855231 * t;
   b = 360 * (a - floor(a));
 
   double d1 = 270.4342 - 0.001133 * t2 + b;
-  double d2 = 2 * degrees_to_radians(d1);
+  double d2 = 2 * DegreesToRadians(d1);
 
   a = 99.99736056 * t;
   b = 360 * (a - floor(a));
 
   double m1 = 358.4758 - 0.00015 * t2 + b;
-  m1 = degrees_to_radians(m1);
+  m1 = DegreesToRadians(m1);
 
   a = 1325.552359 * t;
   b = 360 * (a - floor(a));
 
   double m2 = 296.1046 + 0.009192 * t2 + b;
-  m2 = degrees_to_radians(m2);
+  m2 = DegreesToRadians(m2);
 
   a = 5.372616667 * t;
   b = 360 * (a - floor(a));
 
   double n1 = 259.1833 + 0.002078 * t2 - b;
-  n1 = degrees_to_radians(n1);
+  n1 = DegreesToRadians(n1);
 
   double n2 = 2.0 * n1;
 
@@ -612,11 +625,10 @@ double nutat_long(double gd, int gm, int gy) {
  *
  * Original macro name: NutatObl
  */
-double nutat_obl(double greenwich_day, int greenwich_month,
-                 int greenwich_year) {
-  double dj = civil_date_to_julian_date(greenwich_day, greenwich_month,
-                                        greenwich_year) -
-              2415020;
+double NutatObl(double greenwichDay, int greenwichMonth, int greenwichYear) {
+  double dj =
+      CivilDateToJulianDate(greenwichDay, greenwichMonth, greenwichYear) -
+      2415020;
   double t = dj / 36525;
   double t2 = t * t;
 
@@ -624,28 +636,28 @@ double nutat_obl(double greenwich_day, int greenwich_month,
   double b = 360 * (a - floor(a));
 
   double l1 = 279.6967 + 0.000303 * t2 + b;
-  double l2 = 2 * degrees_to_radians(l1);
+  double l2 = 2 * DegreesToRadians(l1);
 
   a = 1336.855231 * t;
   b = 360 * (a - floor(a));
 
   double d1 = 270.4342 - 0.001133 * t2 + b;
-  double d2 = 2 * degrees_to_radians(d1);
+  double d2 = 2 * DegreesToRadians(d1);
 
   a = 99.99736056 * t;
   b = 360 * (a - floor(a));
 
-  double m1 = degrees_to_radians(358.4758 - 0.00015 * t2 + b);
+  double m1 = DegreesToRadians(358.4758 - 0.00015 * t2 + b);
 
   a = 1325.552359 * t;
   b = 360 * (a - floor(a));
 
-  double m2 = degrees_to_radians(296.1046 + 0.009192 * t2 + b);
+  double m2 = DegreesToRadians(296.1046 + 0.009192 * t2 + b);
 
   a = 5.372616667 * t;
   b = 360 * (a - floor(a));
 
-  double n1 = degrees_to_radians(259.1833 + 0.002078 * t2 - b);
+  double n1 = DegreesToRadians(259.1833 + 0.002078 * t2 - b);
 
   double n2 = 2 * n1;
 
@@ -663,11 +675,11 @@ double nutat_obl(double greenwich_day, int greenwich_month,
  *
  * Original macro name: LSTGST
  */
-double local_sidereal_time_to_greenwich_sidereal_time(double local_hours,
-                                                      double local_minutes,
-                                                      double local_seconds,
-                                                      double longitude) {
-  double a = hms_dh(local_hours, local_minutes, local_seconds);
+double LocalSiderealTimeToGreenwichSiderealTime(double localHours,
+                                                double localMinutes,
+                                                double localSeconds,
+                                                double longitude) {
+  double a = HmsToDh(localHours, localMinutes, localSeconds);
   double b = longitude / 15;
   double c = a - b;
 
@@ -679,18 +691,19 @@ double local_sidereal_time_to_greenwich_sidereal_time(double local_hours,
  *
  * Original macro name: GSTUT
  */
-double greenwich_sidereal_time_to_universal_time(
-    double greenwich_sidereal_hours, double greenwich_sidereal_minutes,
-    double greenwich_sidereal_seconds, double greenwich_day,
-    int greenwich_month, int greenwich_year) {
-  double a =
-      civil_date_to_julian_date(greenwich_day, greenwich_month, greenwich_year);
+double GreenwichSiderealTimeToUniversalTime(double greenwichSiderealHours,
+                                            double greenwichSiderealMinutes,
+                                            double greenwichSiderealSeconds,
+                                            double greenwichDay,
+                                            int greenwichMonth,
+                                            int greenwichYear) {
+  double a = CivilDateToJulianDate(greenwichDay, greenwichMonth, greenwichYear);
   double b = a - 2451545;
   double c = b / 36525;
   double d = 6.697374558 + (2400.051336 * c) + (0.000025862 * c * c);
   double e = d - (24 * floor(d / 24));
-  double f = hms_dh(greenwich_sidereal_hours, greenwich_sidereal_minutes,
-                    greenwich_sidereal_seconds);
+  double f = HmsToDh(greenwichSiderealHours, greenwichSiderealMinutes,
+                     greenwichSiderealSeconds);
   double g = f - e;
   double h = g - (24 * floor(g / 24));
 
@@ -702,14 +715,13 @@ double greenwich_sidereal_time_to_universal_time(
  *
  * Original macro name: SunLong
  */
-double sun_long(double lch, double lcm, double lcs, int ds, int zc, double ld,
-                int lm, int ly) {
-  double aa = local_civil_time_greenwich_day(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  int bb = local_civil_time_greenwich_month(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  int cc = local_civil_time_greenwich_year(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  double ut =
-      local_civil_time_to_universal_time(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  double dj = civil_date_to_julian_date(aa, bb, cc) - 2415020;
+double SunLong(double lch, double lcm, double lcs, int ds, int zc, double ld,
+               int lm, int ly) {
+  double aa = LocalCivilTimeGreenwichDay(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int bb = LocalCivilTimeGreenwichMonth(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int cc = LocalCivilTimeGreenwichYear(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double ut = LocalCivilTimeToUniversalTime(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double dj = CivilDateToJulianDate(aa, bb, cc) - 2415020;
   double t = (dj / 36525) + (ut / 876600);
   double t2 = t * t;
   double a = 100.0021359 * t;
@@ -722,41 +734,41 @@ double sun_long(double lch, double lcm, double lcs, int ds, int zc, double ld,
   double m1 = 358.47583 - (0.00015 + 0.0000033 * t) * t2 + b;
   double ec = 0.01675104 - 0.0000418 * t - 0.000000126 * t2;
 
-  double am = degrees_to_radians(m1);
-  double at = true_anomaly(am, ec);
+  double am = DegreesToRadians(m1);
+  double at = TrueAnomaly(am, ec);
 
   a = 62.55209472 * t;
   b = 360 * (a - floor(a));
 
-  double a1 = degrees_to_radians(153.23 + b);
+  double a1 = DegreesToRadians(153.23 + b);
   a = 125.1041894 * t;
   b = 360 * (a - floor(a));
 
-  double b1 = degrees_to_radians(216.57 + b);
+  double b1 = DegreesToRadians(216.57 + b);
   a = 91.56766028 * t;
   b = 360 * (a - floor(a));
 
-  double c1 = degrees_to_radians(312.69 + b);
+  double c1 = DegreesToRadians(312.69 + b);
   a = 1236.853095 * t;
   b = 360 * (a - floor(a));
 
-  double d1 = degrees_to_radians(350.74 - 0.00144 * t2 + b);
-  double e1 = degrees_to_radians(231.19 + 20.2 * t);
+  double d1 = DegreesToRadians(350.74 - 0.00144 * t2 + b);
+  double e1 = DegreesToRadians(231.19 + 20.2 * t);
   a = 183.1353208 * t;
   b = 360 * (a - floor(a));
-  double h1 = degrees_to_radians(353.4 + b);
+  double h1 = DegreesToRadians(353.4 + b);
 
   double d2 = 0.00134 * cos(a1) + 0.00154 * cos(b1) + 0.002 * cos(c1);
   d2 = d2 + 0.00179 * sin(d1) + 0.00178 * sin(e1);
   double d3 = 0.00000543 * sin(a1) + 0.00001575 * sin(b1);
   d3 = d3 + 0.00001627 * sin(c1) + 0.00003076 * cos(d1);
 
-  double sr = at + degrees_to_radians(l - m1 + d2);
+  double sr = at + DegreesToRadians(l - m1 + d2);
   double tp = 6.283185308;
 
   sr = sr - tp * floor(sr / tp);
 
-  return w_to_degrees(sr);
+  return WToDegrees(sr);
 }
 
 /**
@@ -764,9 +776,9 @@ double sun_long(double lch, double lcm, double lcs, int ds, int zc, double ld,
  *
  * Original macro name: SunDia
  */
-double sun_dia(double lch, double lcm, double lcs, int ds, int zc, double ld,
-               int lm, int ly) {
-  double a = sun_dist(lch, lcm, lcs, ds, zc, ld, lm, ly);
+double SunDia(double lch, double lcm, double lcs, int ds, int zc, double ld,
+              int lm, int ly) {
+  double a = SunDist(lch, lcm, lcs, ds, zc, ld, lm, ly);
 
   return 0.533128 / a;
 }
@@ -776,14 +788,13 @@ double sun_dia(double lch, double lcm, double lcs, int ds, int zc, double ld,
  *
  * Original macro name: SunDist
  */
-double sun_dist(double lch, double lcm, double lcs, int ds, int zc, double ld,
-                int lm, int ly) {
-  double aa = local_civil_time_greenwich_day(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  int bb = local_civil_time_greenwich_month(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  int cc = local_civil_time_greenwich_year(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  double ut =
-      local_civil_time_to_universal_time(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  double dj = civil_date_to_julian_date(aa, bb, cc) - 2415020;
+double SunDist(double lch, double lcm, double lcs, int ds, int zc, double ld,
+               int lm, int ly) {
+  double aa = LocalCivilTimeGreenwichDay(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int bb = LocalCivilTimeGreenwichMonth(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int cc = LocalCivilTimeGreenwichYear(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double ut = LocalCivilTimeToUniversalTime(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double dj = CivilDateToJulianDate(aa, bb, cc) - 2415020;
 
   double t = (dj / 36525) + (ut / 876600);
   double t2 = t * t;
@@ -795,25 +806,25 @@ double sun_dist(double lch, double lcm, double lcs, int ds, int zc, double ld,
   double m1 = 358.47583 - (0.00015 + 0.0000033 * t) * t2 + b;
   double ec = 0.01675104 - 0.0000418 * t - 0.000000126 * t2;
 
-  double am = degrees_to_radians(m1);
-  double ae = eccentric_anomaly(am, ec);
+  double am = DegreesToRadians(m1);
+  double ae = EccentricAnomaly(am, ec);
 
   a = 62.55209472 * t;
   b = 360 * (a - floor(a));
-  double a1 = degrees_to_radians(153.23 + b);
+  double a1 = DegreesToRadians(153.23 + b);
   a = 125.1041894 * t;
   b = 360 * (a - floor(a));
-  double b1 = degrees_to_radians(216.57 + b);
+  double b1 = DegreesToRadians(216.57 + b);
   a = 91.56766028 * t;
   b = 360 * (a - floor(a));
-  double c1 = degrees_to_radians(312.69 + b);
+  double c1 = DegreesToRadians(312.69 + b);
   a = 1236.853095 * t;
   b = 360 * (a - floor(a));
-  double d1 = degrees_to_radians(350.74 - 0.00144 * t2 + b);
-  double e1 = degrees_to_radians(231.19 + 20.2 * t);
+  double d1 = DegreesToRadians(350.74 - 0.00144 * t2 + b);
+  double e1 = DegreesToRadians(231.19 + 20.2 * t);
   a = 183.1353208 * t;
   b = 360 * (a - floor(a));
-  double h1 = degrees_to_radians(353.4 + b);
+  double h1 = DegreesToRadians(353.4 + b);
 
   double d3 = (0.00000543 * sin(a1) + 0.00001575 * sin(b1)) +
               (0.00001627 * sin(c1) + 0.00003076 * cos(d1)) +
@@ -828,7 +839,7 @@ double sun_dist(double lch, double lcm, double lcs, int ds, int zc, double ld,
  *
  * Original macro name: TrueAnomaly
  */
-double true_anomaly(double am, double ec) {
+double TrueAnomaly(double am, double ec) {
   double tp = 6.283185308;
   double m = am - tp * floor(am / tp);
   double ae = m;
@@ -853,7 +864,7 @@ double true_anomaly(double am, double ec) {
  *
  * Original macro name: EccentricAnomaly
  */
-double eccentric_anomaly(double am, double ec) {
+double EccentricAnomaly(double am, double ec) {
   double tp = 6.283185308;
   double m = am - tp * floor(am / tp);
   double ae = m;
@@ -877,10 +888,10 @@ double eccentric_anomaly(double am, double ec) {
  *
  * Original macro name: Refract
  */
-double refract(double y2, pa_types::coordinate_type sw, double pr, double tr) {
-  double y = degrees_to_radians(y2);
+double Refract(double y2, pa_types::CoordinateType sw, double pr, double tr) {
+  double y = DegreesToRadians(y2);
 
-  double d = (sw == pa_types::coordinate_type::actual) ? -1.0 : 1.0;
+  double d = (sw == pa_types::CoordinateType::Actual) ? -1.0 : 1.0;
 
   if (d == -1) {
     double y3 = y;
@@ -888,47 +899,47 @@ double refract(double y2, pa_types::coordinate_type sw, double pr, double tr) {
     double r1 = 0.0;
 
     while (1 == 1) {
-      double y_new = y1 + r1;
-      double rf_new = refract_l3035(pr, tr, y_new, d);
+      double yNew = y1 + r1;
+      double rfNew = RefractL3035(pr, tr, yNew, d);
 
       if (y < -0.087)
         return 0;
 
-      double r2 = rf_new;
+      double r2 = rfNew;
 
       if ((r2 == 0) || (std::abs(r2 - r1) < 0.000001)) {
-        double q_new = y3;
+        double qNew = y3;
 
-        return w_to_degrees(q_new + rf_new);
+        return WToDegrees(qNew + rfNew);
       }
 
       r1 = r2;
     }
   }
 
-  double rf = refract_l3035(pr, tr, y, d);
+  double rf = RefractL3035(pr, tr, y, d);
 
   if (y < -0.087)
     return 0;
 
   double q = y;
 
-  return w_to_degrees(q + rf);
+  return WToDegrees(q + rf);
 }
 
 /**
  * \brief Helper function for Refract
  */
-double refract_l3035(double pr, double tr, double y, double d) {
+double RefractL3035(double pr, double tr, double y, double d) {
   if (y < 0.2617994) {
     if (y < -0.087)
       return 0;
 
-    double yd = w_to_degrees(y);
+    double yd = WToDegrees(y);
     double a = ((0.00002 * yd + 0.0196) * yd + 0.1594) * pr;
     double b = (273.0 + tr) * ((0.0845 * yd + 0.505) * yd + 1);
 
-    return degrees_to_radians(-(a / b) * d);
+    return DegreesToRadians(-(a / b) * d);
   }
 
   return -d * 0.00007888888 * pr / ((273.0 + tr) * tan(y));
@@ -939,10 +950,10 @@ double refract_l3035(double pr, double tr, double y, double d) {
  *
  * Original macro name: ParallaxHA
  */
-double parallax_ha(double hh, double hm, double hs, double dd, double dm,
-                   double ds, pa_types::coordinate_type sw, double gp,
-                   double ht, double hp) {
-  double a = degrees_to_radians(gp);
+double ParallaxHa(double hh, double hm, double hs, double dd, double dm,
+                  double ds, pa_types::CoordinateType sw, double gp, double ht,
+                  double hp) {
+  double a = DegreesToRadians(gp);
   double c1 = cos(a);
   double s1 = sin(a);
 
@@ -956,34 +967,33 @@ double parallax_ha(double hh, double hm, double hs, double dd, double dm,
   double rc = c2 + (b * c1);
   double tp = 6.283185308;
 
-  double rp = 1.0 / sin(degrees_to_radians(hp));
+  double rp = 1.0 / sin(DegreesToRadians(hp));
 
-  double x =
-      degrees_to_radians(degree_hours_to_decimal_degrees(hms_dh(hh, hm, hs)));
+  double x = DegreesToRadians(DegreeHoursToDecimalDegrees(HmsToDh(hh, hm, hs)));
   double x1 = x;
-  double y = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(dd, dm, ds));
+  double y =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
   double y1 = y;
 
-  double d = (sw == pa_types::coordinate_type::actual) ? 1.0 : -1.0;
+  double d = (sw == pa_types::CoordinateType::Actual) ? 1.0 : -1.0;
 
   if (d == 1) {
-    std::tuple<double, double> result = parallax_ha_l2870(x, y, rc, rp, rs, tp);
+    std::tuple<double, double> result = ParallaxHaL2870(x, y, rc, rp, rs, tp);
 
-    return decimal_degrees_to_degree_hours(w_to_degrees(std::get<0>(result)));
+    return DecimalDegreesToDegreeHours(WToDegrees(std::get<0>(result)));
   }
 
   double p1 = 0.0;
   double q1 = 0.0;
-  double x_loop = x;
-  double y_loop = y;
+  double xLoop = x;
+  double yLoop = y;
 
   while (1 == 1) {
     std::tuple<double, double> result =
-        parallax_ha_l2870(x_loop, y_loop, rc, rp, rs, tp);
+        ParallaxHaL2870(xLoop, yLoop, rc, rp, rs, tp);
 
-    double p2 = std::get<0>(result) - x_loop;
-    double q2 = std::get<1>(result) - y_loop;
+    double p2 = std::get<0>(result) - xLoop;
+    double q2 = std::get<1>(result) - yLoop;
 
     double aa = std::abs(p2 - p1);
     double bb = std::abs(q2 - q1);
@@ -991,11 +1001,11 @@ double parallax_ha(double hh, double hm, double hs, double dd, double dm,
     if ((aa < 0.000001) && (bb < 0.000001)) {
       double p = x1 - p2;
 
-      return decimal_degrees_to_degree_hours(w_to_degrees(p));
+      return DecimalDegreesToDegreeHours(WToDegrees(p));
     }
 
-    x_loop = x1 - p2;
-    y_loop = y1 - q2;
+    xLoop = x1 - p2;
+    yLoop = y1 - q2;
     p1 = p2;
     q1 = q2;
   }
@@ -1006,8 +1016,8 @@ double parallax_ha(double hh, double hm, double hs, double dd, double dm,
  *
  * @return tuple<double p, double q>
  */
-std::tuple<double, double> parallax_ha_l2870(double x, double y, double rc,
-                                             double rp, double rs, double tp) {
+std::tuple<double, double> ParallaxHaL2870(double x, double y, double rc,
+                                           double rp, double rs, double tp) {
   double cx = cos(x);
   double sy = sin(y);
   double cy = cos(y);
@@ -1029,10 +1039,10 @@ std::tuple<double, double> parallax_ha_l2870(double x, double y, double rc,
  *
  * Original macro name: ParallaxDec
  */
-double parallax_dec(double hh, double hm, double hs, double dd, double dm,
-                    double ds, pa_types::coordinate_type sw, double gp,
-                    double ht, double hp) {
-  double a = degrees_to_radians(gp);
+double ParallaxDec(double hh, double hm, double hs, double dd, double dm,
+                   double ds, pa_types::CoordinateType sw, double gp, double ht,
+                   double hp) {
+  double a = DegreesToRadians(gp);
   double c1 = cos(a);
   double s1 = sin(a);
 
@@ -1046,45 +1056,43 @@ double parallax_dec(double hh, double hm, double hs, double dd, double dm,
   double rc = c2 + (b * c1);
   double tp = 6.283185308;
 
-  double rp = 1.0 / sin(degrees_to_radians(hp));
+  double rp = 1.0 / sin(DegreesToRadians(hp));
 
-  double x =
-      degrees_to_radians(degree_hours_to_decimal_degrees(hms_dh(hh, hm, hs)));
+  double x = DegreesToRadians(DegreeHoursToDecimalDegrees(HmsToDh(hh, hm, hs)));
   double x1 = x;
 
-  double y = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(dd, dm, ds));
+  double y =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
   double y1 = y;
 
-  double d = (sw == pa_types::coordinate_type::actual) ? 1.0 : -1.0;
+  double d = (sw == pa_types::CoordinateType::Actual) ? 1.0 : -1.0;
 
   if (d == 1) {
-    std::tuple<double, double> result =
-        parallax_dec_l2870(x, y, rc, rp, rs, tp);
+    std::tuple<double, double> result = ParallaxDecL2870(x, y, rc, rp, rs, tp);
 
-    return w_to_degrees(std::get<1>(result));
+    return WToDegrees(std::get<1>(result));
   }
 
   double p1 = 0.0;
   double q1 = 0.0;
 
-  double x_loop = x;
-  double y_loop = y;
+  double xLoop = x;
+  double yLoop = y;
 
   while (1 == 1) {
     std::tuple<double, double> result =
-        parallax_dec_l2870(x_loop, y_loop, rc, rp, rs, tp);
-    double p2 = std::get<0>(result) - x_loop;
-    double q2 = std::get<1>(result) - y_loop;
+        ParallaxDecL2870(xLoop, yLoop, rc, rp, rs, tp);
+    double p2 = std::get<0>(result) - xLoop;
+    double q2 = std::get<1>(result) - yLoop;
     double aa = std::abs(p2 - p1);
 
     if ((aa < 0.000001) && (b < 0.000001)) {
       double q = y1 - q2;
 
-      return w_to_degrees(q);
+      return WToDegrees(q);
     }
-    x_loop = x1 - p2;
-    y_loop = y1 - q2;
+    xLoop = x1 - p2;
+    yLoop = y1 - q2;
     p1 = p2;
     q1 = q2;
   }
@@ -1095,8 +1103,8 @@ double parallax_dec(double hh, double hm, double hs, double dd, double dm,
  *
  * @return tuple<double p, double q>
  */
-std::tuple<double, double> parallax_dec_l2870(double x, double y, double rc,
-                                              double rp, double rs, double tp) {
+std::tuple<double, double> ParallaxDecL2870(double x, double y, double rc,
+                                            double rp, double rs, double tp) {
   double cx = cos(x);
   double sy = sin(y);
   double cy = cos(y);
@@ -1117,15 +1125,14 @@ std::tuple<double, double> parallax_dec_l2870(double x, double y, double rc,
  *
  * Original macro name: MoonLong
  */
-double moon_long(double lh, double lm, double ls, int ds, int zc, double dy,
-                 int mn, int yr) {
-  double ut =
-      local_civil_time_to_universal_time(lh, lm, ls, ds, zc, dy, mn, yr);
-  double gd = local_civil_time_greenwich_day(lh, lm, ls, ds, zc, dy, mn, yr);
-  int gm = local_civil_time_greenwich_month(lh, lm, ls, ds, zc, dy, mn, yr);
-  int gy = local_civil_time_greenwich_year(lh, lm, ls, ds, zc, dy, mn, yr);
-  double t = ((civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525) +
-             (ut / 876600);
+double MoonLongitude(double lh, double lm, double ls, int ds, int zc, double dy,
+                     int mn, int yr) {
+  double ut = LocalCivilTimeToUniversalTime(lh, lm, ls, ds, zc, dy, mn, yr);
+  double gd = LocalCivilTimeGreenwichDay(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gm = LocalCivilTimeGreenwichMonth(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gy = LocalCivilTimeGreenwichYear(lh, lm, ls, ds, zc, dy, mn, yr);
+  double t =
+      ((CivilDateToJulianDate(gd, gm, gy) - 2415020) / 36525) + (ut / 876600);
   double t2 = t * t;
 
   double m1 = 27.32158213;
@@ -1134,7 +1141,7 @@ double moon_long(double lh, double lm, double ls, int ds, int zc, double dy,
   double m4 = 29.53058868;
   double m5 = 27.21222039;
   double m6 = 6798.363307;
-  double q = civil_date_to_julian_date(gd, gm, gy) - 2415020 + (ut / 24);
+  double q = CivilDateToJulianDate(gd, gm, gy) - 2415020 + (ut / 24);
   m1 = q / m1;
   m2 = q / m2;
   m3 = q / m3;
@@ -1154,12 +1161,12 @@ double moon_long(double lh, double lm, double ls, int ds, int zc, double dy,
   double me1 = 350.737486 + m4 - (0.001436 - 0.0000019 * t) * t2;
   double mf = 11.250889 + m5 - (0.003211 + 0.0000003 * t) * t2;
   double na = 259.183275 - m6 + (0.002078 + 0.0000022 * t) * t2;
-  double a = degrees_to_radians(51.2 + 20.2 * t);
+  double a = DegreesToRadians(51.2 + 20.2 * t);
   double s1 = sin(a);
-  double s2 = sin(degrees_to_radians(na));
+  double s2 = sin(DegreesToRadians(na));
   double b = 346.56 + (132.87 - 0.0091731 * t) * t;
-  double s3 = 0.003964 * sin(degrees_to_radians(b));
-  double c = degrees_to_radians(na + 275.05 - 2.3 * t);
+  double s3 = 0.003964 * sin(DegreesToRadians(b));
+  double c = DegreesToRadians(na + 275.05 - 2.3 * t);
   double s4 = sin(c);
   ml = ml + 0.000233 * s1 + s3 + 0.001964 * s2;
   ms = ms - 0.001778 * s1;
@@ -1168,11 +1175,11 @@ double moon_long(double lh, double lm, double ls, int ds, int zc, double dy,
   me1 = me1 + 0.002011 * s1 + s3 + 0.001964 * s2;
   double e = 1.0 - (0.002495 + 0.00000752 * t) * t;
   double e2 = e * e;
-  ml = degrees_to_radians(ml);
-  ms = degrees_to_radians(ms);
-  me1 = degrees_to_radians(me1);
-  mf = degrees_to_radians(mf);
-  md = degrees_to_radians(md);
+  ml = DegreesToRadians(ml);
+  ms = DegreesToRadians(ms);
+  me1 = DegreesToRadians(me1);
+  mf = DegreesToRadians(mf);
+  md = DegreesToRadians(md);
 
   double l = 6.28875 * sin(md) + 1.274018 * sin(2 * me1 - md);
   l = l + 0.658309 * sin(2 * me1) + 0.213616 * sin(2 * md);
@@ -1205,9 +1212,9 @@ double moon_long(double lh, double lm, double ls, int ds, int zc, double dy,
   l = l + e * 0.000521 * sin(4 * me1 - ms) + 0.000486 * sin(2 * md - me1);
   l = l + e2 * 0.000717 * sin(md - 2 * ms);
 
-  double mm = unwind(ml + degrees_to_radians(l));
+  double mm = Unwind(ml + DegreesToRadians(l));
 
-  return w_to_degrees(mm);
+  return WToDegrees(mm);
 }
 
 /**
@@ -1215,15 +1222,14 @@ double moon_long(double lh, double lm, double ls, int ds, int zc, double dy,
  *
  * Original macro name: MoonLat
  */
-double moon_lat(double lh, double lm, double ls, int ds, int zc, double dy,
-                int mn, int yr) {
-  double ut =
-      local_civil_time_to_universal_time(lh, lm, ls, ds, zc, dy, mn, yr);
-  double gd = local_civil_time_greenwich_day(lh, lm, ls, ds, zc, dy, mn, yr);
-  int gm = local_civil_time_greenwich_month(lh, lm, ls, ds, zc, dy, mn, yr);
-  int gy = local_civil_time_greenwich_year(lh, lm, ls, ds, zc, dy, mn, yr);
-  double t = ((civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525) +
-             (ut / 876600);
+double MoonLatitude(double lh, double lm, double ls, int ds, int zc, double dy,
+                    int mn, int yr) {
+  double ut = LocalCivilTimeToUniversalTime(lh, lm, ls, ds, zc, dy, mn, yr);
+  double gd = LocalCivilTimeGreenwichDay(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gm = LocalCivilTimeGreenwichMonth(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gy = LocalCivilTimeGreenwichYear(lh, lm, ls, ds, zc, dy, mn, yr);
+  double t =
+      ((CivilDateToJulianDate(gd, gm, gy) - 2415020) / 36525) + (ut / 876600);
   double t2 = t * t;
 
   double m1 = 27.32158213;
@@ -1232,7 +1238,7 @@ double moon_lat(double lh, double lm, double ls, int ds, int zc, double dy,
   double m4 = 29.53058868;
   double m5 = 27.21222039;
   double m6 = 6798.363307;
-  double q = civil_date_to_julian_date(gd, gm, gy) - 2415020 + (ut / 24);
+  double q = CivilDateToJulianDate(gd, gm, gy) - 2415020 + (ut / 24);
   m1 = q / m1;
   m2 = q / m2;
   m3 = q / m3;
@@ -1252,12 +1258,12 @@ double moon_lat(double lh, double lm, double ls, int ds, int zc, double dy,
   double me1 = 350.737486 + m4 - (0.001436 - 0.0000019 * t) * t2;
   double mf = 11.250889 + m5 - (0.003211 + 0.0000003 * t) * t2;
   double na = 259.183275 - m6 + (0.002078 + 0.0000022 * t) * t2;
-  double a = degrees_to_radians(51.2 + 20.2 * t);
+  double a = DegreesToRadians(51.2 + 20.2 * t);
   double s1 = sin(a);
-  double s2 = sin(degrees_to_radians(na));
+  double s2 = sin(DegreesToRadians(na));
   double b = 346.56 + (132.87 - 0.0091731 * t) * t;
-  double s3 = 0.003964 * sin(degrees_to_radians(b));
-  double c = degrees_to_radians(na + 275.05 - 2.3 * t);
+  double s3 = 0.003964 * sin(DegreesToRadians(b));
+  double c = DegreesToRadians(na + 275.05 - 2.3 * t);
   double s4 = sin(c);
   ml = ml + 0.000233 * s1 + s3 + 0.001964 * s2;
   ms = ms - 0.001778 * s1;
@@ -1266,11 +1272,11 @@ double moon_lat(double lh, double lm, double ls, int ds, int zc, double dy,
   me1 = me1 + 0.002011 * s1 + s3 + 0.001964 * s2;
   double e = 1.0 - (0.002495 + 0.00000752 * t) * t;
   double e2 = e * e;
-  ms = degrees_to_radians(ms);
-  na = degrees_to_radians(na);
-  me1 = degrees_to_radians(me1);
-  mf = degrees_to_radians(mf);
-  md = degrees_to_radians(md);
+  ms = DegreesToRadians(ms);
+  na = DegreesToRadians(na);
+  me1 = DegreesToRadians(me1);
+  mf = DegreesToRadians(mf);
+  md = DegreesToRadians(md);
 
   double g = 5.128189 * sin(mf) + 0.280606 * sin(md + mf);
   g = g + 0.277693 * sin(md - mf) + 0.173238 * sin(2 * me1 - mf);
@@ -1306,9 +1312,9 @@ double moon_lat(double lh, double lm, double ls, int ds, int zc, double dy,
 
   double w1 = 0.0004664 * cos(na);
   double w2 = 0.0000754 * cos(c);
-  double bm = degrees_to_radians(g) * (1.0 - w1 - w2);
+  double bm = DegreesToRadians(g) * (1.0 - w1 - w2);
 
-  return w_to_degrees(bm);
+  return WToDegrees(bm);
 }
 
 /**
@@ -1316,15 +1322,14 @@ double moon_lat(double lh, double lm, double ls, int ds, int zc, double dy,
  *
  * Original macro name: MoonHP
  */
-double moon_hp(double lh, double lm, double ls, int ds, int zc, double dy,
-               int mn, int yr) {
-  double ut =
-      local_civil_time_to_universal_time(lh, lm, ls, ds, zc, dy, mn, yr);
-  double gd = local_civil_time_greenwich_day(lh, lm, ls, ds, zc, dy, mn, yr);
-  int gm = local_civil_time_greenwich_month(lh, lm, ls, ds, zc, dy, mn, yr);
-  int gy = local_civil_time_greenwich_year(lh, lm, ls, ds, zc, dy, mn, yr);
-  double t = ((civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525) +
-             (ut / 876600);
+double MoonHorizontalParallax(double lh, double lm, double ls, int ds, int zc,
+                              double dy, int mn, int yr) {
+  double ut = LocalCivilTimeToUniversalTime(lh, lm, ls, ds, zc, dy, mn, yr);
+  double gd = LocalCivilTimeGreenwichDay(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gm = LocalCivilTimeGreenwichMonth(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gy = LocalCivilTimeGreenwichYear(lh, lm, ls, ds, zc, dy, mn, yr);
+  double t =
+      ((CivilDateToJulianDate(gd, gm, gy) - 2415020) / 36525) + (ut / 876600);
   double t2 = t * t;
 
   double m1 = 27.32158213;
@@ -1333,7 +1338,7 @@ double moon_hp(double lh, double lm, double ls, int ds, int zc, double dy,
   double m4 = 29.53058868;
   double m5 = 27.21222039;
   double m6 = 6798.363307;
-  double q = civil_date_to_julian_date(gd, gm, gy) - 2415020 + (ut / 24);
+  double q = CivilDateToJulianDate(gd, gm, gy) - 2415020 + (ut / 24);
   m1 = q / m1;
   m2 = q / m2;
   m3 = q / m3;
@@ -1353,12 +1358,12 @@ double moon_hp(double lh, double lm, double ls, int ds, int zc, double dy,
   double me1 = 350.737486 + m4 - (0.001436 - 0.0000019 * t) * t2;
   double mf = 11.250889 + m5 - (0.003211 + 0.0000003 * t) * t2;
   double na = 259.183275 - m6 + (0.002078 + 0.0000022 * t) * t2;
-  double a = degrees_to_radians(51.2 + 20.2 * t);
+  double a = DegreesToRadians(51.2 + 20.2 * t);
   double s1 = sin(a);
-  double s2 = sin(degrees_to_radians(na));
+  double s2 = sin(DegreesToRadians(na));
   double b = 346.56 + (132.87 - 0.0091731 * t) * t;
-  double s3 = 0.003964 * sin(degrees_to_radians(b));
-  double c = degrees_to_radians(na + 275.05 - 2.3 * t);
+  double s3 = 0.003964 * sin(DegreesToRadians(b));
+  double c = DegreesToRadians(na + 275.05 - 2.3 * t);
   double s4 = sin(c);
   ml = ml + 0.000233 * s1 + s3 + 0.001964 * s2;
   ms = ms - 0.001778 * s1;
@@ -1367,10 +1372,10 @@ double moon_hp(double lh, double lm, double ls, int ds, int zc, double dy,
   me1 = me1 + 0.002011 * s1 + s3 + 0.001964 * s2;
   double e = 1.0 - (0.002495 + 0.00000752 * t) * t;
   double e2 = e * e;
-  ms = degrees_to_radians(ms);
-  me1 = degrees_to_radians(me1);
-  mf = degrees_to_radians(mf);
-  md = degrees_to_radians(md);
+  ms = DegreesToRadians(ms);
+  me1 = DegreesToRadians(me1);
+  mf = DegreesToRadians(mf);
+  md = DegreesToRadians(md);
 
   double pm = 0.950724 + 0.051818 * cos(md) + 0.009531 * cos(2 * me1 - md);
   pm = pm + 0.007843 * cos(2 * me1) + 0.002824 * cos(2 * md);
@@ -1399,15 +1404,15 @@ double moon_hp(double lh, double lm, double ls, int ds, int zc, double dy,
  *
  * Original macro name: Unwind
  */
-double unwind(double w) { return w - 6.283185308 * floor(w / 6.283185308); }
+double Unwind(double w) { return w - 6.283185308 * floor(w / 6.283185308); }
 
 /**
  * \brief Mean ecliptic longitude of the Sun at the epoch
  *
  * Original macro name: SunElong
  */
-double sun_e_long(double gd, int gm, int gy) {
-  double t = (civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525;
+double SunELong(double gd, int gm, int gy) {
+  double t = (CivilDateToJulianDate(gd, gm, gy) - 2415020) / 36525;
   double t2 = t * t;
   double x = 279.6966778 + 36000.76892 * t + 0.0003025 * t2;
 
@@ -1419,8 +1424,8 @@ double sun_e_long(double gd, int gm, int gy) {
  *
  * Original macro name: SunPeri
  */
-double sun_peri(double gd, int gm, int gy) {
-  double t = (civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525;
+double SunPerigee(double gd, int gm, int gy) {
+  double t = (CivilDateToJulianDate(gd, gm, gy) - 2415020) / 36525;
   double t2 = t * t;
   double x = 281.2208444 + 1.719175 * t + 0.000452778 * t2;
 
@@ -1432,8 +1437,8 @@ double sun_peri(double gd, int gm, int gy) {
  *
  * Original macro name: SunEcc
  */
-double sun_ecc(double gd, int gm, int gy) {
-  double t = (civil_date_to_julian_date(gd, gm, gy) - 2415020) / 36525;
+double SunEccentricity(double gd, int gm, int gy) {
+  double t = (CivilDateToJulianDate(gd, gm, gy) - 2415020) / 36525;
   double t2 = t * t;
 
   return 0.01675104 - 0.0000418 * t - 0.000000126 * t2;
@@ -1444,16 +1449,16 @@ double sun_ecc(double gd, int gm, int gy) {
  *
  * Original macro name: ECDec
  */
-double ec_dec(double eld, double elm, double els, double bd, double bm,
-              double bs, double gd, int gm, int gy) {
-  double a = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(eld, elm, els));
-  double b = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(bd, bm, bs));
-  double c = degrees_to_radians(obliq(gd, gm, gy));
+double EclipticDeclination(double eld, double elm, double els, double bd,
+                           double bm, double bs, double gd, int gm, int gy) {
+  double a =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(eld, elm, els));
+  double b =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(bd, bm, bs));
+  double c = DegreesToRadians(Obliq(gd, gm, gy));
   double d = sin(b) * cos(c) + cos(b) * sin(c) * sin(a);
 
-  return w_to_degrees(asin(d));
+  return WToDegrees(asin(d));
 }
 
 /**
@@ -1461,16 +1466,16 @@ double ec_dec(double eld, double elm, double els, double bd, double bm,
  *
  * Original macro name: ECRA
  */
-double ec_ra(double eld, double elm, double els, double bd, double bm,
-             double bs, double gd, int gm, int gy) {
-  double a = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(eld, elm, els));
-  double b = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(bd, bm, bs));
-  double c = degrees_to_radians(obliq(gd, gm, gy));
+double EclipticRightAscension(double eld, double elm, double els, double bd,
+                              double bm, double bs, double gd, int gm, int gy) {
+  double a =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(eld, elm, els));
+  double b =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(bd, bm, bs));
+  double c = DegreesToRadians(Obliq(gd, gm, gy));
   double d = sin(a) * cos(c) - tan(b) * sin(c);
   double e = cos(a);
-  double f = w_to_degrees(atan2(d, e));
+  double f = WToDegrees(atan2(d, e));
 
   return f - 360 * floor(f / 360);
 }
@@ -1481,14 +1486,13 @@ double ec_ra(double eld, double elm, double els, double bd, double bm,
  *
  * Original macro name: SunTrueAnomaly
  */
-double sun_true_anomaly(double lch, double lcm, double lcs, int ds, int zc,
-                        double ld, int lm, int ly) {
-  double aa = local_civil_time_greenwich_day(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  int bb = local_civil_time_greenwich_month(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  int cc = local_civil_time_greenwich_year(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  double ut =
-      local_civil_time_to_universal_time(lch, lcm, lcs, ds, zc, ld, lm, ly);
-  double dj = civil_date_to_julian_date(aa, bb, cc) - 2415020;
+double SunTrueAnomaly(double lch, double lcm, double lcs, int ds, int zc,
+                      double ld, int lm, int ly) {
+  double aa = LocalCivilTimeGreenwichDay(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int bb = LocalCivilTimeGreenwichMonth(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  int cc = LocalCivilTimeGreenwichYear(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double ut = LocalCivilTimeToUniversalTime(lch, lcm, lcs, ds, zc, ld, lm, ly);
+  double dj = CivilDateToJulianDate(aa, bb, cc) - 2415020;
 
   double t = (dj / 36525) + (ut / 876600);
   double t2 = t * t;
@@ -1499,9 +1503,445 @@ double sun_true_anomaly(double lch, double lcm, double lcs, int ds, int zc,
   double m1 = 358.47583 - (0.00015 + 0.0000033 * t) * t2 + b;
   double ec = 0.01675104 - 0.0000418 * t - 0.000000126 * t2;
 
-  double am = degrees_to_radians(m1);
+  double am = DegreesToRadians(m1);
 
-  return w_to_degrees(true_anomaly(am, ec));
+  return WToDegrees(TrueAnomaly(am, ec));
+}
+
+/**
+ * \brief Calculate local civil time of sunrise.
+ *
+ * Original macro name: SunriseLCT
+ */
+double SunriseLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
+                             double gl, double gp) {
+  double di = 0.8333333;
+  double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
+  int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
+  int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
+  double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+      SunriseLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
+
+  double xx;
+  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+    xx = -99.0;
+  } else {
+    double x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0,
+                                                        0, gl);
+    double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+
+    if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+      xx = -99.0;
+    } else {
+      sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
+      std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+          result2 = SunriseLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
+
+      if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+        xx = -99.0;
+      } else {
+        x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0,
+                                                     gl);
+        ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+        xx = UniversalTimeToLocalCivilTime(ut, 0, 0, ds, zc, gd, gm, gy);
+      }
+    }
+  }
+
+  return xx;
+}
+
+/**
+ * \brief Calculate local civil time of sunset.
+ *
+ * Original macro name: SunsetLCT
+ */
+double SunsetLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
+                            double gl, double gp) {
+  double di = 0.8333333;
+  double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
+  int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
+  int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
+  double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+      SunsetLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
+
+  double xx;
+  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+    xx = -99.0;
+  } else {
+    double x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0,
+                                                        0, gl);
+    double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+
+    if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+      xx = -99.0;
+    } else {
+      sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
+      std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+          result2 = SunsetLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
+
+      if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+        xx = -99;
+      } else {
+        x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0,
+                                                     gl);
+        ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+        xx = UniversalTimeToLocalCivilTime(ut, 0, 0, ds, zc, gd, gm, gy);
+      }
+    }
+  }
+
+  return xx;
+}
+
+/**
+ * \brief Helper function for sunrise_lct()
+ *
+ * @return tuple<double a, double x, double y, double la,
+ * pa_types::rise_set_status s>
+ */
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+SunriseLocalCivilTimeL3710(double gd, int gm, int gy, double sr, double di,
+                           double gp) {
+  double a = sr + NutatLong(gd, gm, gy) - 0.005694;
+  double x = EclipticRightAscension(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
+                                           y, 0, 0, di, gp);
+  pa_types::RiseSetStatus s =
+      ERiseSet(DecimalDegreesToDegreeHours(x), 0.0, 0.0, y, 0.0, 0.0, di, gp);
+
+  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
+      a, x, y, la, s};
+}
+
+/**
+ * \brief Helper function for sunset_lct().
+ *
+ * @return tuple<double a, double x, double y, double la,
+ * pa_types::rise_set_status s>
+ */
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+SunsetLocalCivilTimeL3710(double gd, int gm, int gy, double sr, double di,
+                          double gp) {
+  double a = sr + NutatLong(gd, gm, gy) - 0.005694;
+  double x = EclipticRightAscension(a, 0.0, 0.0, 0.0, 0.0, 0.0, gd, gm, gy);
+  double y = EclipticDeclination(a, 0.0, 0.0, 0.0, 0.0, 0.0, gd, gm, gy);
+  double la = RiseSetLocalSiderealTimeSet(DecimalDegreesToDegreeHours(x), 0, 0,
+                                          y, 0, 0, di, gp);
+  pa_types::RiseSetStatus s =
+      ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
+
+  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
+      a, x, y, la, s};
+}
+
+/**
+ * \brief Local sidereal time of rise, in hours.
+ *
+ * Original macro name: RSLSTR
+ */
+double RiseSetLocalSiderealTimeRise(double rah, double ram, double ras,
+                                    double dd, double dm, double ds, double vd,
+                                    double g) {
+  double a = HmsToDh(rah, ram, ras);
+  double b = DegreesToRadians(DegreeHoursToDecimalDegrees(a));
+  double c =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
+  double d = DegreesToRadians(vd);
+  double e = DegreesToRadians(g);
+  double f = -(sin(d) + sin(e) * sin(c)) / (cos(e) * cos(c));
+  double h = (std::abs(f) < 1) ? acos(f) : 0;
+  double i = DecimalDegreesToDegreeHours(WToDegrees(b - h));
+
+  return i - 24 * floor(i / 24);
+}
+
+/**
+ * \brief Local sidereal time of setting, in hours.
+ *
+ * Original macro name: RSLSTS
+ */
+double RiseSetLocalSiderealTimeSet(double rah, double ram, double ras,
+                                   double dd, double dm, double ds, double vd,
+                                   double g) {
+  double a = HmsToDh(rah, ram, ras);
+  double b = DegreesToRadians(DegreeHoursToDecimalDegrees(a));
+  double c =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
+  double d = DegreesToRadians(vd);
+  double e = DegreesToRadians(g);
+  double f = -(sin(d) + sin(e) * sin(c)) / (cos(e) * cos(c));
+  double h = (std::abs(f) < 1) ? acos(f) : 0;
+  double i = DecimalDegreesToDegreeHours(WToDegrees(b + h));
+
+  return i - 24 * floor(i / 24);
+}
+
+/**
+ * \brief Rise/Set status
+ */
+pa_types::RiseSetStatus ERiseSet(double rah, double ram, double ras, double dd,
+                                 double dm, double ds, double vd, double g) {
+  double a = HmsToDh(rah, ram, ras);
+  double c =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
+  double d = DegreesToRadians(vd);
+  double e = DegreesToRadians(g);
+  double f = -(sin(d) + sin(e) * sin(c)) / (cos(e) * cos(c));
+
+  pa_types::RiseSetStatus return_value = pa_types::RiseSetStatus::Ok;
+  if (f >= 1)
+    return_value = pa_types::RiseSetStatus::NeverRises;
+  if (f <= -1)
+    return_value = pa_types::RiseSetStatus::Circumpolar;
+
+  return return_value;
+}
+
+/**
+ * \brief Status of conversion of Greenwich Sidereal Time to Universal Time.
+ *
+ * Original macro name: eGSTUT
+ */
+pa_types::WarningFlags EGstUt(double gsh, double gsm, double gss, double gd,
+                              int gm, int gy) {
+  double a = CivilDateToJulianDate(gd, gm, gy);
+  double b = a - 2451545;
+  double c = b / 36525;
+  double d = 6.697374558 + (2400.051336 * c) + (0.000025862 * c * c);
+  double e = d - (24 * floor(d / 24));
+  double f = HmsToDh(gsh, gsm, gss);
+  double g = f - e;
+  double h = g - (24 * floor(g / 24));
+
+  return ((h * 0.9972695663) < (4.0 / 60.0)) ? pa_types::WarningFlags::Warning
+                                             : pa_types::WarningFlags::Ok;
+}
+
+/**
+ * \brief Sunrise/Sunset calculation status.
+ *
+ * Original macro name: eSunRS
+ */
+pa_types::RiseSetStatus ESunRiseSetCalcStatus(double ld, int lm, int ly, int ds,
+                                              int zc, double gl, double gp) {
+  double di = 0.8333333;
+  double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
+  int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
+  int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
+  double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+      ESunRiseSetCalcStatusL3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+    return std::get<4>(result1);
+  } else {
+    double x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0,
+                                                        0, gl);
+    double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+    sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
+    std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+        result2 = ESunRiseSetCalcStatusL3710(gd, gm, gy, sr, di, gp);
+    if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+      return std::get<4>(result2);
+    } else {
+      x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0,
+                                                   gl);
+
+      if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok)
+
+        return pa_types::RiseSetStatus::GstToUtConversionWarning;
+    }
+
+    return std::get<4>(result2);
+  }
+}
+
+/// <summary>
+/// Helper function for e_sun_rs()
+/// </summary>
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+ESunRiseSetCalcStatusL3710(double gd, int gm, int gy, double sr, double di,
+                           double gp) {
+  double a = sr + NutatLong(gd, gm, gy) - 0.005694;
+  double x = EclipticRightAscension(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
+                                           y, 0, 0, di, gp);
+  pa_types::RiseSetStatus s =
+      ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
+
+  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
+      a, x, y, la, s};
+}
+
+/**
+ * \brief Calculate azimuth of sunrise.
+ *
+ * Original macro name: SunriseAz
+ */
+double SunriseAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
+                      double gp) {
+  double di = 0.8333333;
+  double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
+  int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
+  int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
+  double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+      SunriseAzimuthL3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+    return -99.0;
+  }
+
+  double x =
+      LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
+  double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+
+  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+    return -99.0;
+  }
+
+  sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result2 =
+      SunriseAzimuthL3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+    return -99.0;
+  }
+
+  return RiseSetAzimuthRise(DecimalDegreesToDegreeHours(x), 0, 0,
+                            std::get<2>(result2), 0.0, 0.0, di, gp);
+}
+
+/**
+ * \brief Helper function for sunrise_az()
+ */
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+SunriseAzimuthL3710(double gd, int gm, int gy, double sr, double di,
+                    double gp) {
+  double a = sr + NutatLong(gd, gm, gy) - 0.005694;
+  double x = EclipticRightAscension(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
+                                           y, 0, 0, di, gp);
+  pa_types::RiseSetStatus s =
+      ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
+
+  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
+      a, x, y, la, s};
+}
+
+/**
+ * \brief Calculate azimuth of sunset.
+ *
+ * Original macro name: SunsetAz
+ */
+double SunsetAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
+                     double gp) {
+  double di = 0.8333333;
+  double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
+  int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
+  int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
+  double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+      SunsetAzimuthL3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+    return -99.0;
+  }
+
+  double x =
+      LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
+  double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+
+  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+    return -99.0;
+  }
+
+  sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result2 =
+      SunsetAzimuthL3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+    return -99.0;
+  }
+
+  return RiseSetAzimuthSet(DecimalDegreesToDegreeHours(x), 0, 0,
+                           std::get<2>(result2), 0, 0, di, gp);
+}
+
+/**
+ * \brief Helper function for sunset_az()
+ *
+ * @return tuple<double a, double x, double y, double la,
+ * pa_types::RiseSetStatus s>
+ */
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+SunsetAzimuthL3710(double gd, int gm, int gy, double sr, double di, double gp) {
+  double a = sr + NutatLong(gd, gm, gy) - 0.005694;
+  double x = EclipticRightAscension(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double la = RiseSetLocalSiderealTimeSet(DecimalDegreesToDegreeHours(x), 0, 0,
+                                          y, 0, 0, di, gp);
+  pa_types::RiseSetStatus s =
+      ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
+
+  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
+      a, x, y, la, s};
+}
+
+/**
+ * \brief Azimuth of rising, in degrees.
+ *
+ * Original macro name: RSAZR
+ */
+double RiseSetAzimuthRise(double rah, double ram, double ras, double dd,
+                          double dm, double ds, double vd, double g) {
+  double a = HmsToDh(rah, ram, ras);
+  double c =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
+  double d = DegreesToRadians(vd);
+  double e = DegreesToRadians(g);
+  double f = (sin(c) + sin(d) * sin(e)) / (cos(d) * cos(e));
+  double h = (ERiseSet(rah, ram, ras, dd, dm, ds, vd, g) ==
+              pa_types::RiseSetStatus::Ok)
+                 ? acos(f)
+                 : 0;
+  double i = WToDegrees(h);
+
+  return i - 360 * floor(i / 360);
+}
+
+/**
+ * \brief Azimuth of setting, in degrees.
+ *
+ * Original macro name: RSAZS
+ */
+double RiseSetAzimuthSet(double rah, double ram, double ras, double dd,
+                         double dm, double ds, double vd, double g) {
+  double a = HmsToDh(rah, ram, ras);
+  double c =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
+  double d = DegreesToRadians(vd);
+  double e = DegreesToRadians(g);
+  double f = (sin(c) + sin(d) * sin(e)) / (cos(d) * cos(e));
+  double h = (ERiseSet(rah, ram, ras, dd, dm, ds, vd, g) ==
+              pa_types::RiseSetStatus::Ok)
+                 ? acos(f)
+                 : 0;
+  double i = 360 - WToDegrees(h);
+
+  return i - 360 * floor(i / 360);
 }
 
 } // namespace pa_macros

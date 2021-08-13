@@ -17,8 +17,8 @@ using namespace pa_macros;
  *
  * @return Decimal Degrees
  */
-double PACoordinates::angle_to_decimal_degrees(double degrees, double minutes,
-                                               double seconds) {
+double PACoordinates::AngleToDecimalDegrees(double degrees, double minutes,
+                                            double seconds) {
   double a = std::abs(seconds) / 60;
   double b = (std::abs(minutes) + a) / 60;
   double c = std::abs(degrees) + b;
@@ -30,25 +30,25 @@ double PACoordinates::angle_to_decimal_degrees(double degrees, double minutes,
 /**
  * \brief Convert Decimal Degrees to an Angle (degrees, minutes, and seconds)
  *
- * @param decimal_degrees
+ * @param decimalDegrees
  *
  * @return tuple <double degrees, double minutes, double seconds>
  */
 std::tuple<double, double, double>
-PACoordinates::decimal_degrees_to_angle(double decimal_degrees) {
-  double unsigned_decimal = std::abs(decimal_degrees);
-  double total_seconds = unsigned_decimal * 3600;
-  double seconds_2_dp = round(std::fmod(total_seconds, 60), 2);
-  double corrected_seconds = (seconds_2_dp == 60) ? 0 : seconds_2_dp;
-  double corrected_remainder =
-      (seconds_2_dp == 60) ? total_seconds + 60 : total_seconds;
-  double minutes = std::fmod(floor(corrected_remainder / 60), 60);
-  double unsigned_degrees = floor(corrected_remainder / 3600);
-  double signed_degrees =
-      (decimal_degrees < 0) ? -1 * unsigned_degrees : unsigned_degrees;
+PACoordinates::DecimalDegreesToAngle(double decimalDegrees) {
+  double unsignedDecimal = std::abs(decimalDegrees);
+  double totalSeconds = unsignedDecimal * 3600;
+  double seconds2dp = Round(std::fmod(totalSeconds, 60), 2);
+  double correctedSeconds = (seconds2dp == 60) ? 0 : seconds2dp;
+  double correctedRemainder =
+      (seconds2dp == 60) ? totalSeconds + 60 : totalSeconds;
+  double minutes = std::fmod(floor(correctedRemainder / 60), 60);
+  double unsignedDegrees = floor(correctedRemainder / 3600);
+  double signedDegrees =
+      (decimalDegrees < 0) ? -1 * unsignedDegrees : unsignedDegrees;
 
-  return std::tuple<double, double, double>{signed_degrees, minutes,
-                                            floor(corrected_seconds)};
+  return std::tuple<double, double, double>{signedDegrees, minutes,
+                                            floor(correctedSeconds)};
 }
 
 /**
@@ -57,24 +57,24 @@ PACoordinates::decimal_degrees_to_angle(double decimal_degrees) {
  * @return tuple <double hour_angle_hours, double hour_angle_minutes, double
  * hour_angle_seconds>
  */
-std::tuple<double, double, double> PACoordinates::right_ascension_to_hour_angle(
-    double ra_hours, double ra_minutes, double ra_seconds, double lct_hours,
-    double lct_minutes, double lct_seconds, bool is_daylight_savings,
-    int zone_correction, double local_day, int local_month, int local_year,
-    double geographical_longitude) {
-  int daylight_saving = (is_daylight_savings) ? 1 : 0;
+std::tuple<double, double, double> PACoordinates::RightAscensionToHourAngle(
+    double raHours, double raMinutes, double raSeconds, double lctHours,
+    double lctMinutes, double lctSeconds, bool isDaylightSavings,
+    int zoneCorrection, double localDay, int localMonth, int localYear,
+    double geographicalLongitude) {
+  int daylightSaving = (isDaylightSavings) ? 1 : 0;
 
-  double hour_angle = pa_macros::right_ascension_to_hour_angle(
-      ra_hours, ra_minutes, ra_seconds, lct_hours, lct_minutes, lct_seconds,
-      daylight_saving, zone_correction, local_day, local_month, local_year,
-      geographical_longitude);
+  double hourAngle = pa_macros::RightAscensionToHourAngle(
+      raHours, raMinutes, raSeconds, lctHours, lctMinutes, lctSeconds,
+      daylightSaving, zoneCorrection, localDay, localMonth, localYear,
+      geographicalLongitude);
 
-  int hour_angle_hours = decimal_hours_hour(hour_angle);
-  int hour_angle_minutes = decimal_hours_minute(hour_angle);
-  double hour_angle_seconds = decimal_hours_second(hour_angle);
+  int hourAngleHours = DecimalHoursHour(hourAngle);
+  int hourAngleMinutes = DecimalHoursMinute(hourAngle);
+  double hourAngleSeconds = DecimalHoursSecond(hourAngle);
 
-  return std::tuple<double, double, double>{
-      hour_angle_hours, hour_angle_minutes, hour_angle_seconds};
+  return std::tuple<double, double, double>{hourAngleHours, hourAngleMinutes,
+                                            hourAngleSeconds};
 }
 
 /**
@@ -83,25 +83,24 @@ std::tuple<double, double, double> PACoordinates::right_ascension_to_hour_angle(
  * @return tuple <double right_ascension_hours, double right_ascension_minutes,
  * double right_ascension_seconds>
  */
-std::tuple<double, double, double> PACoordinates::hour_angle_to_right_ascension(
-    double hour_angle_hours, double hour_angle_minutes,
-    double hour_angle_seconds, double lct_hours, double lct_minutes,
-    double lct_seconds, bool is_daylight_savings, int zone_correction,
-    double local_day, int local_month, int local_year,
-    double geographical_longitude) {
-  int daylight_saving = (is_daylight_savings) ? 1 : 0;
+std::tuple<double, double, double> PACoordinates::HourAngleToRightAscension(
+    double hourAngleHours, double hourAngleMinutes, double hourAngleSeconds,
+    double lctHours, double lctMinutes, double lctSeconds,
+    bool isDaylightSavings, int zoneCorrection, double localDay, int localMonth,
+    int localYear, double geographicalLongitude) {
+  int daylightSaving = (isDaylightSavings) ? 1 : 0;
 
-  double right_ascension = pa_macros::hour_angle_to_right_ascension(
-      hour_angle_hours, hour_angle_minutes, hour_angle_seconds, lct_hours,
-      lct_minutes, lct_seconds, daylight_saving, zone_correction, local_day,
-      local_month, local_year, geographical_longitude);
+  double rightAscension = pa_macros::HourAngleToRightAscension(
+      hourAngleHours, hourAngleMinutes, hourAngleSeconds, lctHours, lctMinutes,
+      lctSeconds, daylightSaving, zoneCorrection, localDay, localMonth,
+      localYear, geographicalLongitude);
 
-  int right_ascension_hours = decimal_hours_hour(right_ascension);
-  int right_ascension_minutes = decimal_hours_minute(right_ascension);
-  int right_ascension_seconds = decimal_hours_second(right_ascension);
+  int rightAscensionHours = DecimalHoursHour(rightAscension);
+  int rightAscensionMinutes = DecimalHoursMinute(rightAscension);
+  int rightAscensionSeconds = DecimalHoursSecond(rightAscension);
 
   return std::tuple<double, double, double>{
-      right_ascension_hours, right_ascension_minutes, right_ascension_seconds};
+      rightAscensionHours, rightAscensionMinutes, rightAscensionSeconds};
 }
 
 /**
@@ -112,35 +111,29 @@ std::tuple<double, double, double> PACoordinates::hour_angle_to_right_ascension(
  * altitudeSeconds>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::equatorial_coordinates_to_horizon_coordinates(
-    double hour_angle_hours, double hour_angle_minutes,
-    double hour_angle_seconds, double declination_degrees,
-    double declination_minutes, double declination_seconds,
-    double geographical_latitude) {
-  double azimuth_in_decimal_degrees = equatorial_coordinates_to_azimuth(
-      hour_angle_hours, hour_angle_minutes, hour_angle_seconds,
-      declination_degrees, declination_minutes, declination_seconds,
-      geographical_latitude);
+PACoordinates::EquatorialCoordinatesToHorizonCoordinates(
+    double hourAngleHours, double hourAngleMinutes, double hourAngleSeconds,
+    double declinationDegrees, double declinationMinutes,
+    double declinationSeconds, double geographicalLatitude) {
+  double azimuthInDecimalDegrees = EquatorialCoordinatesToAzimuth(
+      hourAngleHours, hourAngleMinutes, hourAngleSeconds, declinationDegrees,
+      declinationMinutes, declinationSeconds, geographicalLatitude);
 
-  double altitude_in_decimal_degrees = equatorial_coordinates_to_altitude(
-      hour_angle_hours, hour_angle_minutes, hour_angle_seconds,
-      declination_degrees, declination_minutes, declination_seconds,
-      geographical_latitude);
+  double altitudeInDecimalDegrees = EquatorialCoordinatesToAltitude(
+      hourAngleHours, hourAngleMinutes, hourAngleSeconds, declinationDegrees,
+      declinationMinutes, declinationSeconds, geographicalLatitude);
 
-  double azimuth_degrees = decimal_degrees_degrees(azimuth_in_decimal_degrees);
-  double azimuth_minutes = decimal_degrees_minutes(azimuth_in_decimal_degrees);
-  double azimuth_seconds = decimal_degrees_seconds(azimuth_in_decimal_degrees);
+  double azimuthDegrees = DecimalDegreesDegrees(azimuthInDecimalDegrees);
+  double azimuthMinutes = DecimalDegreesMinutes(azimuthInDecimalDegrees);
+  double azimuthSeconds = DecimalDegreesSeconds(azimuthInDecimalDegrees);
 
-  double altitude_degrees =
-      decimal_degrees_degrees(altitude_in_decimal_degrees);
-  double altitude_minutes =
-      decimal_degrees_minutes(altitude_in_decimal_degrees);
-  double altitude_seconds =
-      decimal_degrees_seconds(altitude_in_decimal_degrees);
+  double altitudeDegrees = DecimalDegreesDegrees(altitudeInDecimalDegrees);
+  double altitudeMinutes = DecimalDegreesMinutes(altitudeInDecimalDegrees);
+  double altitudeSeconds = DecimalDegreesSeconds(altitudeInDecimalDegrees);
 
   return std::tuple<double, double, double, double, double, double>{
-      azimuth_degrees,  azimuth_minutes,  azimuth_seconds,
-      altitude_degrees, altitude_minutes, altitude_seconds};
+      azimuthDegrees,  azimuthMinutes,  azimuthSeconds,
+      altitudeDegrees, altitudeMinutes, altitudeSeconds};
 }
 
 /**
@@ -151,43 +144,42 @@ PACoordinates::equatorial_coordinates_to_horizon_coordinates(
  * double declination_seconds>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::horizon_coordinates_to_equatorial_coordinates(
-    double azimuth_degrees, double azimuth_minutes, double azimuth_seconds,
-    double altitude_degrees, double altitude_minutes, double altitude_seconds,
-    double geographical_latitude) {
-  double hour_angle_in_decimal_degrees = horizon_coordinates_to_hour_angle(
-      azimuth_degrees, azimuth_minutes, azimuth_seconds, altitude_degrees,
-      altitude_minutes, altitude_seconds, geographical_latitude);
+PACoordinates::HorizonCoordinatesToEquatorialCoordinates(
+    double azimuthDegrees, double azimuthMinutes, double azimuthSeconds,
+    double altitudeDegrees, double altitudeMinutes, double altitudeSeconds,
+    double geographicalLatitude) {
+  double hourAngleInDecimalDegrees = HorizonCoordinatesToHourAngle(
+      azimuthDegrees, azimuthMinutes, azimuthSeconds, altitudeDegrees,
+      altitudeMinutes, altitudeSeconds, geographicalLatitude);
 
-  double declination_in_decimal_degrees = horizon_coordinates_to_declination(
-      azimuth_degrees, azimuth_minutes, azimuth_seconds, altitude_degrees,
-      altitude_minutes, altitude_seconds, geographical_latitude);
+  double declinationInDecimalDegrees = HorizonCoordinatesToDeclination(
+      azimuthDegrees, azimuthMinutes, azimuthSeconds, altitudeDegrees,
+      altitudeMinutes, altitudeSeconds, geographicalLatitude);
 
-  int hour_angle_hours = decimal_hours_hour(hour_angle_in_decimal_degrees);
-  int hour_angle_minutes = decimal_hours_minute(hour_angle_in_decimal_degrees);
-  double hour_angle_seconds =
-      decimal_hours_second(hour_angle_in_decimal_degrees);
+  int hourAngleHours = DecimalHoursHour(hourAngleInDecimalDegrees);
+  int hourAngleMinutes = DecimalHoursMinute(hourAngleInDecimalDegrees);
+  double hourAngleSeconds = DecimalHoursSecond(hourAngleInDecimalDegrees);
 
-  double declination_degrees =
-      decimal_degrees_degrees(declination_in_decimal_degrees);
-  double declination_minutes =
-      decimal_degrees_minutes(declination_in_decimal_degrees);
-  double declination_seconds =
-      decimal_degrees_seconds(declination_in_decimal_degrees);
+  double declinationDegrees =
+      DecimalDegreesDegrees(declinationInDecimalDegrees);
+  double declinationMinutes =
+      DecimalDegreesMinutes(declinationInDecimalDegrees);
+  double declinationSeconds =
+      DecimalDegreesSeconds(declinationInDecimalDegrees);
 
   return std::tuple<double, double, double, double, double, double>{
-      hour_angle_hours,    hour_angle_minutes,  hour_angle_seconds,
-      declination_degrees, declination_minutes, declination_seconds};
+      hourAngleHours,     hourAngleMinutes,   hourAngleSeconds,
+      declinationDegrees, declinationMinutes, declinationSeconds};
 }
 
 /**
  * \brief Calculate Mean Obliquity of the Ecliptic for a Greenwich Date
  */
-double PACoordinates::mean_obliquity_of_the_ecliptic(double greenwich_day,
-                                                     int greenwich_month,
-                                                     int greenwich_year) {
+double PACoordinates::MeanObliquityOfTheEcliptic(double greenwichDay,
+                                                 int greenwichMonth,
+                                                 int greenwichYear) {
   double jd =
-      civil_date_to_julian_date(greenwich_day, greenwich_month, greenwich_year);
+      CivilDateToJulianDate(greenwichDay, greenwichMonth, greenwichYear);
   double mjd = jd - 2451545;
   double t = mjd / 36525;
   double de1 = t * (46.815 + t * (0.0006 - (t * 0.00181)));
@@ -203,43 +195,42 @@ double PACoordinates::mean_obliquity_of_the_ecliptic(double greenwich_day,
  * double outDecDegrees, double outDecMinutes, double outDecSeconds>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::ecliptic_coordinate_to_equatorial_coordinate(
-    double ecliptic_longitude_degrees, double ecliptic_longitude_minutes,
-    double ecliptic_longitude_seconds, double ecliptic_latitude_degrees,
-    double ecliptic_latitude_minutes, double ecliptic_latitude_seconds,
-    double greenwich_day, int greenwich_month, int greenwich_year) {
-  double ec_lon_deg = degrees_minutes_seconds_to_decimal_degrees(
-      ecliptic_longitude_degrees, ecliptic_longitude_minutes,
-      ecliptic_longitude_seconds);
-  double ec_lat_deg = degrees_minutes_seconds_to_decimal_degrees(
-      ecliptic_latitude_degrees, ecliptic_latitude_minutes,
-      ecliptic_latitude_seconds);
-  double ec_lon_rad = degrees_to_radians(ec_lon_deg);
-  double ec_lat_rad = degrees_to_radians(ec_lat_deg);
-  double obliq_deg = obliq(greenwich_day, greenwich_month, greenwich_year);
-  double obliq_rad = degrees_to_radians(obliq_deg);
-  double sin_dec = sin(ec_lat_rad) * cos(obliq_rad) +
-                   cos(ec_lat_rad) * sin(obliq_rad) * sin(ec_lon_rad);
-  double dec_rad = asin(sin_dec);
-  double dec_deg = w_to_degrees(dec_rad);
-  double y =
-      sin(ec_lon_rad) * cos(obliq_rad) - tan(ec_lat_rad) * sin(obliq_rad);
-  double x = cos(ec_lon_rad);
-  double ra_rad = atan2(y, x);
-  double ra_deg_1 = w_to_degrees(ra_rad);
-  double ra_deg_2 = ra_deg_1 - 360 * floor(ra_deg_1 / 360);
-  double ra_hours = decimal_degrees_to_degree_hours(ra_deg_2);
+PACoordinates::EclipticCoordinateToEquatorialCoordinate(
+    double eclipticLongitudeDegrees, double eclipticLongitudeMinutes,
+    double eclipticLongitudeSeconds, double eclipticLatitudeDegrees,
+    double eclipticLatitudeMinutes, double eclipticLatitudeSeconds,
+    double greenwichDay, int greenwichMonth, int greenwichYear) {
+  double ecLonDeg = DegreesMinutesSecondsToDecimalDegrees(
+      eclipticLongitudeDegrees, eclipticLongitudeMinutes,
+      eclipticLongitudeSeconds);
+  double ecLatDeg = DegreesMinutesSecondsToDecimalDegrees(
+      eclipticLatitudeDegrees, eclipticLatitudeMinutes,
+      eclipticLatitudeSeconds);
+  double ecLonRad = DegreesToRadians(ecLonDeg);
+  double ecLatRad = DegreesToRadians(ecLatDeg);
+  double obliqDeg = Obliq(greenwichDay, greenwichMonth, greenwichYear);
+  double obliqRad = DegreesToRadians(obliqDeg);
+  double sinDec = sin(ecLatRad) * cos(obliqRad) +
+                  cos(ecLatRad) * sin(obliqRad) * sin(ecLonRad);
+  double decRad = asin(sinDec);
+  double decDeg = WToDegrees(decRad);
+  double y = sin(ecLonRad) * cos(obliqRad) - tan(ecLatRad) * sin(obliqRad);
+  double x = cos(ecLonRad);
+  double raRad = atan2(y, x);
+  double raDeg1 = WToDegrees(raRad);
+  double raDeg2 = raDeg1 - 360 * floor(raDeg1 / 360);
+  double raHours = DecimalDegreesToDegreeHours(raDeg2);
 
-  int out_ra_hours = decimal_hours_hour(ra_hours);
-  int out_ra_minutes = decimal_hours_minute(ra_hours);
-  double out_ra_seconds = decimal_hours_second(ra_hours);
-  double out_dec_degrees = decimal_degrees_degrees(dec_deg);
-  double out_dec_minutes = decimal_degrees_minutes(dec_deg);
-  double out_dec_seconds = decimal_degrees_seconds(dec_deg);
+  int outRaHours = DecimalHoursHour(raHours);
+  int outRaMinutes = DecimalHoursMinute(raHours);
+  double outRaSeconds = DecimalHoursSecond(raHours);
+  double outDecDegrees = DecimalDegreesDegrees(decDeg);
+  double outDecMinutes = DecimalDegreesMinutes(decDeg);
+  double outDecSeconds = DecimalDegreesSeconds(decDeg);
 
   return std::tuple<double, double, double, double, double, double>{
-      out_ra_hours,    out_ra_minutes,  out_ra_seconds,
-      out_dec_degrees, out_dec_minutes, out_dec_seconds};
+      outRaHours,    outRaMinutes,  outRaSeconds,
+      outDecDegrees, outDecMinutes, outDecSeconds};
 }
 
 /**
@@ -249,38 +240,38 @@ PACoordinates::ecliptic_coordinate_to_equatorial_coordinate(
  * outEclLongSec, double outEclLatDeg, double outEclLatMin, double outEclLatSec>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::equatorial_coordinate_to_ecliptic_coordinate(
-    double ra_hours, double ra_minutes, double ra_seconds, double dec_degrees,
-    double dec_minutes, double dec_seconds, double gw_day, int gw_month,
-    int gw_year) {
-  double ra_deg =
-      degree_hours_to_decimal_degrees(hms_dh(ra_hours, ra_minutes, ra_seconds));
-  double dec_deg = degrees_minutes_seconds_to_decimal_degrees(
-      dec_degrees, dec_minutes, dec_seconds);
-  double ra_rad = degrees_to_radians(ra_deg);
-  double dec_rad = degrees_to_radians(dec_deg);
-  double obliq_deg = obliq(gw_day, gw_month, gw_year);
-  double obliq_rad = degrees_to_radians(obliq_deg);
-  double sin_ecl_lat = sin(dec_rad) * cos(obliq_rad) -
-                       cos(dec_rad) * sin(obliq_rad) * sin(ra_rad);
-  double ecl_lat_rad = asin(sin_ecl_lat);
-  double ecl_lat_deg = w_to_degrees(ecl_lat_rad);
-  double y = sin(ra_rad) * cos(obliq_rad) + tan(dec_rad) * sin(obliq_rad);
-  double x = cos(ra_rad);
-  double ecl_long_rad = atan2(y, x);
-  double ecl_long_deg1 = w_to_degrees(ecl_long_rad);
-  double ecl_long_deg2 = ecl_long_deg1 - 360 * floor(ecl_long_deg1 / 360);
+PACoordinates::EquatorialCoordinateToEclipticCoordinate(
+    double raHours, double raMinutes, double raSeconds, double decDegrees,
+    double decMinutes, double decSeconds, double gwDay, int gwMonth,
+    int gwYear) {
+  double raDeg =
+      DegreeHoursToDecimalDegrees(HmsToDh(raHours, raMinutes, raSeconds));
+  double decDeg =
+      DegreesMinutesSecondsToDecimalDegrees(decDegrees, decMinutes, decSeconds);
+  double raRad = DegreesToRadians(raDeg);
+  double decRad = DegreesToRadians(decDeg);
+  double obliqDeg = Obliq(gwDay, gwMonth, gwYear);
+  double obliqRad = DegreesToRadians(obliqDeg);
+  double sinEclRad =
+      sin(decRad) * cos(obliqRad) - cos(decRad) * sin(obliqRad) * sin(raRad);
+  double eclLatRad = asin(sinEclRad);
+  double eclLatDeg = WToDegrees(eclLatRad);
+  double y = sin(raRad) * cos(obliqRad) + tan(decRad) * sin(obliqRad);
+  double x = cos(raRad);
+  double eclLongRad = atan2(y, x);
+  double eclLongDeg1 = WToDegrees(eclLongRad);
+  double eclLongDeg2 = eclLongDeg1 - 360 * floor(eclLongDeg1 / 360);
 
-  double out_ecl_long_deg = decimal_degrees_degrees(ecl_long_deg2);
-  double out_ecl_long_min = decimal_degrees_minutes(ecl_long_deg2);
-  double out_ecl_long_sec = decimal_degrees_seconds(ecl_long_deg2);
-  double out_ecl_lat_deg = decimal_degrees_degrees(ecl_lat_deg);
-  double out_ecl_lat_min = decimal_degrees_minutes(ecl_lat_deg);
-  double out_ecl_lat_sec = decimal_degrees_seconds(ecl_lat_deg);
+  double outEclLongDeg = DecimalDegreesDegrees(eclLongDeg2);
+  double outEclLongMin = DecimalDegreesMinutes(eclLongDeg2);
+  double outEclLongSec = DecimalDegreesSeconds(eclLongDeg2);
+  double outEclLatDeg = DecimalDegreesDegrees(eclLatDeg);
+  double outEclLatMin = DecimalDegreesMinutes(eclLatDeg);
+  double outEclLatSec = DecimalDegreesSeconds(eclLatDeg);
 
   return std::tuple<double, double, double, double, double, double>{
-      out_ecl_long_deg, out_ecl_long_min, out_ecl_long_sec,
-      out_ecl_lat_deg,  out_ecl_lat_min,  out_ecl_lat_sec};
+      outEclLongDeg, outEclLongMin, outEclLongSec,
+      outEclLatDeg,  outEclLatMin,  outEclLatSec};
 }
 
 /**
@@ -290,36 +281,35 @@ PACoordinates::equatorial_coordinate_to_ecliptic_coordinate(
  * double galLatDeg, double galLatMin, double galLatSec>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::equatorial_coordinate_to_galactic_coordinate(
-    double ra_hours, double ra_minutes, double ra_seconds, double dec_degrees,
-    double dec_minutes, double dec_seconds) {
-  double ra_deg =
-      degree_hours_to_decimal_degrees(hms_dh(ra_hours, ra_minutes, ra_seconds));
-  double dec_deg = degrees_minutes_seconds_to_decimal_degrees(
-      dec_degrees, dec_minutes, dec_seconds);
-  double ra_rad = degrees_to_radians(ra_deg);
-  double dec_rad = degrees_to_radians(dec_deg);
-  double sin_b = cos(dec_rad) * cos(degrees_to_radians(27.4)) *
-                     cos(ra_rad - degrees_to_radians(192.25)) +
-                 sin(dec_rad) * sin(degrees_to_radians(27.4));
-  double b_radians = asin(sin_b);
-  double b_deg = w_to_degrees(b_radians);
-  double y = sin(dec_rad) - sin_b * sin(degrees_to_radians(27.4));
-  double x = cos(dec_rad) * sin(ra_rad - degrees_to_radians(192.25)) *
-             cos(degrees_to_radians(27.4));
-  double long_deg_1 = w_to_degrees(atan2(y, x)) + 33;
-  double long_deg_2 = long_deg_1 - 360 * floor(long_deg_1 / 360);
+PACoordinates::EquatorialCoordinateToGalacticCoordinate(
+    double raHours, double raMinutes, double raSeconds, double decDegrees,
+    double decMinutes, double decSeconds) {
+  double raDeg =
+      DegreeHoursToDecimalDegrees(HmsToDh(raHours, raMinutes, raSeconds));
+  double decDeg =
+      DegreesMinutesSecondsToDecimalDegrees(decDegrees, decMinutes, decSeconds);
+  double raRad = DegreesToRadians(raDeg);
+  double decRad = DegreesToRadians(decDeg);
+  double sinB = cos(decRad) * cos(DegreesToRadians(27.4)) *
+                    cos(raRad - DegreesToRadians(192.25)) +
+                sin(decRad) * sin(DegreesToRadians(27.4));
+  double bRadians = asin(sinB);
+  double bDeg = WToDegrees(bRadians);
+  double y = sin(decRad) - sinB * sin(DegreesToRadians(27.4));
+  double x = cos(decRad) * sin(raRad - DegreesToRadians(192.25)) *
+             cos(DegreesToRadians(27.4));
+  double longDeg1 = WToDegrees(atan2(y, x)) + 33;
+  double longDeg2 = longDeg1 - 360 * floor(longDeg1 / 360);
 
-  double gal_long_deg = decimal_degrees_degrees(long_deg_2);
-  double gal_long_min = decimal_degrees_minutes(long_deg_2);
-  double gal_long_sec = decimal_degrees_seconds(long_deg_2);
-  double gal_lat_deg = decimal_degrees_degrees(b_deg);
-  double gal_lat_min = decimal_degrees_minutes(b_deg);
-  double gal_lat_sec = decimal_degrees_seconds(b_deg);
+  double galLongDeg = DecimalDegreesDegrees(longDeg2);
+  double galLongMin = DecimalDegreesMinutes(longDeg2);
+  double galLongSec = DecimalDegreesSeconds(longDeg2);
+  double galLatDeg = DecimalDegreesDegrees(bDeg);
+  double galLatMin = DecimalDegreesMinutes(bDeg);
+  double galLatSec = DecimalDegreesSeconds(bDeg);
 
   return std::tuple<double, double, double, double, double, double>{
-      gal_long_deg, gal_long_min, gal_long_sec,
-      gal_lat_deg,  gal_lat_min,  gal_lat_sec};
+      galLongDeg, galLongMin, galLongSec, galLatDeg, galLatMin, galLatSec};
 }
 
 /**
@@ -329,38 +319,38 @@ PACoordinates::equatorial_coordinate_to_galactic_coordinate(
  * decDegrees, double decMinutes, double decSeconds>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::galactic_coordinate_to_equatorial_coordinate(
-    double gal_long_deg, double gal_long_min, double gal_long_sec,
-    double gal_lat_deg, double gal_lat_min, double gal_lat_sec) {
-  double g_long_deg = degrees_minutes_seconds_to_decimal_degrees(
-      gal_long_deg, gal_long_min, gal_long_sec);
-  double g_lat_deg = degrees_minutes_seconds_to_decimal_degrees(
-      gal_lat_deg, gal_lat_min, gal_lat_sec);
-  double g_long_rad = degrees_to_radians(g_long_deg);
-  double g_lat_rad = degrees_to_radians(g_lat_deg);
-  double sin_dec = cos(g_lat_rad) * cos(degrees_to_radians(27.4)) *
-                       sin(g_long_rad - degrees_to_radians(33.0)) +
-                   sin(g_lat_rad) * sin(degrees_to_radians(27.4));
-  double dec_radians = asin(sin_dec);
-  double dec_deg = w_to_degrees(dec_radians);
-  double y = cos(g_lat_rad) * cos(g_long_rad - degrees_to_radians(33.0));
-  double x = sin(g_lat_rad) * cos(degrees_to_radians(27.4)) -
-             cos(g_lat_rad) * sin(degrees_to_radians(27.4)) *
-                 sin(g_long_rad - degrees_to_radians(33.0));
+PACoordinates::GalacticCoordinateToEquatorialCoordinate(
+    double galLongDeg, double galLongMin, double galLongSec, double galLatDeg,
+    double galLatMin, double galLatSec) {
+  double gLongDeg =
+      DegreesMinutesSecondsToDecimalDegrees(galLongDeg, galLongMin, galLongSec);
+  double gLatDeg =
+      DegreesMinutesSecondsToDecimalDegrees(galLatDeg, galLatMin, galLatSec);
+  double gLongRad = DegreesToRadians(gLongDeg);
+  double gLatRad = DegreesToRadians(gLatDeg);
+  double sinDec = cos(gLatRad) * cos(DegreesToRadians(27.4)) *
+                      sin(gLongRad - DegreesToRadians(33.0)) +
+                  sin(gLatRad) * sin(DegreesToRadians(27.4));
+  double decRadians = asin(sinDec);
+  double decDeg = WToDegrees(decRadians);
+  double y = cos(gLatRad) * cos(gLongRad - DegreesToRadians(33.0));
+  double x = sin(gLatRad) * cos(DegreesToRadians(27.4)) -
+             cos(gLatRad) * sin(DegreesToRadians(27.4)) *
+                 sin(gLongRad - DegreesToRadians(33.0));
 
-  double ra_deg_1 = w_to_degrees(atan2(y, x)) + 192.25;
-  double ra_deg_2 = ra_deg_1 - 360 * floor(ra_deg_1 / 360);
-  double ra_hours_1 = decimal_degrees_to_degree_hours(ra_deg_2);
+  double raDeg1 = WToDegrees(atan2(y, x)) + 192.25;
+  double raDeg2 = raDeg1 - 360 * floor(raDeg1 / 360);
+  double raHours1 = DecimalDegreesToDegreeHours(raDeg2);
 
-  double ra_hours = decimal_hours_hour(ra_hours_1);
-  double ra_minutes = decimal_hours_minute(ra_hours_1);
-  double ra_seconds = decimal_hours_second(ra_hours_1);
-  double dec_degrees = decimal_degrees_degrees(dec_deg);
-  double dec_minutes = decimal_degrees_minutes(dec_deg);
-  double dec_seconds = decimal_degrees_seconds(dec_deg);
+  double raHours = DecimalHoursHour(raHours1);
+  double raMinutes = DecimalHoursMinute(raHours1);
+  double raSeconds = DecimalHoursSecond(raHours1);
+  double decDegrees = DecimalDegreesDegrees(decDeg);
+  double decMinutes = DecimalDegreesMinutes(decDeg);
+  double decSeconds = DecimalDegreesSeconds(decDeg);
 
   return std::tuple<double, double, double, double, double, double>{
-      ra_hours, ra_minutes, ra_seconds, dec_degrees, dec_minutes, dec_seconds};
+      raHours, raMinutes, raSeconds, decDegrees, decMinutes, decSeconds};
 }
 
 /**
@@ -368,52 +358,50 @@ PACoordinates::galactic_coordinate_to_equatorial_coordinate(
  *
  * @return tuple <double angleDeg, double angleMin, double angleSec>
  */
-std::tuple<double, double, double> PACoordinates::angle_between_two_objects(
-    double ra_long_1_hour_deg, double ra_long_1_min, double ra_long_1_sec,
-    double dec_lat_1_deg, double dec_lat_1_min, double dec_lat_1_sec,
-    double ra_long_2_hour_deg, double ra_long_2_min, double ra_long_2_sec,
-    double dec_lat_2_deg, double dec_lat_2_min, double dec_lat_2_sec,
-    pa_types::angle_measurement_units hour_or_degree) {
-  double ra_long_1_decimal =
-      (hour_or_degree == pa_types::angle_measurement_units::hours)
-          ? hms_dh(ra_long_1_hour_deg, ra_long_1_min, ra_long_1_sec)
-          : degrees_minutes_seconds_to_decimal_degrees(
-                ra_long_1_hour_deg, ra_long_1_min, ra_long_1_sec);
-  double ra_long_1_deg =
-      (hour_or_degree == pa_types::angle_measurement_units::hours)
-          ? degree_hours_to_decimal_degrees(ra_long_1_decimal)
-          : ra_long_1_decimal;
+std::tuple<double, double, double> PACoordinates::AngleBetweenTwoObjects(
+    double raLong1HourDeg, double raLong1Min, double raLong1Sec,
+    double decLat1Deg, double decLat1Min, double decLat1Sec,
+    double raLong2HourDeg, double raLong2Min, double raLong2Sec,
+    double decLat2Deg, double decLat2Min, double decLat2Sec,
+    pa_types::AngleMeasurementUnits hourOrDegree) {
+  double raLong1Decimal =
+      (hourOrDegree == pa_types::AngleMeasurementUnits::Hours)
+          ? HmsToDh(raLong1HourDeg, raLong1Min, raLong1Sec)
+          : DegreesMinutesSecondsToDecimalDegrees(raLong1HourDeg, raLong1Min,
+                                                  raLong1Sec);
+  double raLong1Deg = (hourOrDegree == pa_types::AngleMeasurementUnits::Hours)
+                          ? DegreeHoursToDecimalDegrees(raLong1Decimal)
+                          : raLong1Decimal;
 
-  double ra_long_1_rad = degrees_to_radians(ra_long_1_deg);
-  double dec_lat_1_deg_1 = degrees_minutes_seconds_to_decimal_degrees(
-      dec_lat_1_deg, dec_lat_1_min, dec_lat_1_sec);
-  double dec_lat_1_rad = degrees_to_radians(dec_lat_1_deg_1);
+  double raLong1Rad = DegreesToRadians(raLong1Deg);
+  double decLat1Deg1 =
+      DegreesMinutesSecondsToDecimalDegrees(decLat1Deg, decLat1Min, decLat1Sec);
+  double decLat1Rad = DegreesToRadians(decLat1Deg1);
 
-  double ra_long_2_decimal =
-      (hour_or_degree == pa_types::angle_measurement_units::hours)
-          ? hms_dh(ra_long_2_hour_deg, ra_long_2_min, ra_long_2_sec)
-          : degrees_minutes_seconds_to_decimal_degrees(
-                ra_long_2_hour_deg, ra_long_2_min, ra_long_2_sec);
-  double ra_long_2_deg =
-      (hour_or_degree == pa_types::angle_measurement_units::hours)
-          ? degree_hours_to_decimal_degrees(ra_long_2_decimal)
-          : ra_long_2_decimal;
-  double ra_long_2_rad = degrees_to_radians(ra_long_2_deg);
-  double dec_lat_2_deg_1 = degrees_minutes_seconds_to_decimal_degrees(
-      dec_lat_2_deg, dec_lat_2_min, dec_lat_2_sec);
-  double dec_lat_2_rad = degrees_to_radians(dec_lat_2_deg_1);
+  double raLong2Decimal =
+      (hourOrDegree == pa_types::AngleMeasurementUnits::Hours)
+          ? HmsToDh(raLong2HourDeg, raLong2Min, raLong2Sec)
+          : DegreesMinutesSecondsToDecimalDegrees(raLong2HourDeg, raLong2Min,
+                                                  raLong2Sec);
+  double raLong2Deg = (hourOrDegree == pa_types::AngleMeasurementUnits::Hours)
+                          ? DegreeHoursToDecimalDegrees(raLong2Decimal)
+                          : raLong2Decimal;
+  double raLong2Rad = DegreesToRadians(raLong2Deg);
+  double decLat2Deg1 =
+      DegreesMinutesSecondsToDecimalDegrees(decLat2Deg, decLat2Min, decLat2Sec);
+  double decLat2Rad = DegreesToRadians(decLat2Deg1);
 
-  double cos_d = sin(dec_lat_1_rad) * sin(dec_lat_2_rad) +
-                 cos(dec_lat_1_rad) * cos(dec_lat_2_rad) *
-                     cos(ra_long_1_rad - ra_long_2_rad);
-  double d_rad = acos(cos_d);
-  double d_deg = w_to_degrees(d_rad);
+  double cosD =
+      sin(decLat1Rad) * sin(decLat2Rad) +
+      cos(decLat1Rad) * cos(decLat2Rad) * cos(raLong1Rad - raLong2Rad);
+  double dRad = acos(cosD);
+  double dDeg = WToDegrees(dRad);
 
-  double angle_deg = decimal_degrees_degrees(d_deg);
-  double angle_min = decimal_degrees_minutes(d_deg);
-  double angle_sec = decimal_degrees_seconds(d_deg);
+  double angleDeg = DecimalDegreesDegrees(dDeg);
+  double angleMin = DecimalDegreesMinutes(dDeg);
+  double angleSec = DecimalDegreesSeconds(dDeg);
 
-  return std::tuple<double, double, double>{angle_deg, angle_min, angle_sec};
+  return std::tuple<double, double, double>{angleDeg, angleMin, angleSec};
 }
 
 /**
@@ -422,72 +410,71 @@ std::tuple<double, double, double> PACoordinates::angle_between_two_objects(
  * @return tuple <rise_set_status riseSetStatus, double utRiseHour, double
  * utRiseMin, double utSetHour, double utSetMin, double azRise, double azSet>
  */
-std::tuple<pa_types::rise_set_status, double, double, double, double, double,
+std::tuple<pa_types::RiseSetStatus, double, double, double, double, double,
            double>
-PACoordinates::rising_and_setting(double ra_hours, double ra_minutes,
-                                  double ra_seconds, double dec_deg,
-                                  double dec_min, double dec_sec,
-                                  double gw_date_day, int gw_date_month,
-                                  int gw_date_year, double geog_long_deg,
-                                  double geog_lat_deg, double vert_shift_deg) {
-  double ra_hours_1 = hms_dh(ra_hours, ra_minutes, ra_seconds);
-  double dec_rad = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(dec_deg, dec_min, dec_sec));
-  double vertical_displ_radians = degrees_to_radians(vert_shift_deg);
-  double geo_lat_radians = degrees_to_radians(geog_lat_deg);
-  double cos_h =
-      -(sin(vertical_displ_radians) + sin(geo_lat_radians) * sin(dec_rad)) /
-      (cos(geo_lat_radians) * cos(dec_rad));
-  double h_hours = decimal_degrees_to_degree_hours(w_to_degrees(acos(cos_h)));
-  double lst_rise_hours =
-      (ra_hours_1 - h_hours) - 24 * floor((ra_hours_1 - h_hours) / 24);
-  double lst_set_hours =
-      (ra_hours_1 + h_hours) - 24 * floor((ra_hours_1 + h_hours) / 24);
-  double a_deg = w_to_degrees(
-      acos((sin(dec_rad) + sin(vertical_displ_radians) * sin(geo_lat_radians)) /
-           (cos(vertical_displ_radians) * cos(geo_lat_radians))));
-  double az_rise_deg = a_deg - 360 * floor(a_deg / 360);
-  double az_set_deg = (360 - a_deg) - 360 * floor((360 - a_deg) / 360);
-  double ut_rise_hours_1 = pa_macros::greenwich_sidereal_time_to_universal_time(
-      pa_macros::local_sidereal_time_to_greenwich_sidereal_time(
-          lst_rise_hours, 0, 0, geog_long_deg),
-      0, 0, gw_date_day, gw_date_month, gw_date_year);
-  double ut_set_hours_1 = pa_macros::greenwich_sidereal_time_to_universal_time(
-      pa_macros::local_sidereal_time_to_greenwich_sidereal_time(
-          lst_set_hours, 0, 0, geog_long_deg),
-      0, 0, gw_date_day, gw_date_month, gw_date_year);
-  double ut_rise_adjusted_hours = ut_rise_hours_1 + 0.008333;
-  double ut_set_adjusted_hours = ut_set_hours_1 + 0.008333;
+PACoordinates::RisingAndSetting(double raHours, double raMinutes,
+                                double raSeconds, double decDeg, double decMin,
+                                double decSec, double gwDateDay,
+                                int gwDateMonth, int gwDateYear,
+                                double geogLongDeg, double geogLatDeg,
+                                double vertShiftDeg) {
+  double raHours1 = HmsToDh(raHours, raMinutes, raSeconds);
+  double decRad = DegreesToRadians(
+      DegreesMinutesSecondsToDecimalDegrees(decDeg, decMin, decSec));
+  double verticalDisplRadians = DegreesToRadians(vertShiftDeg);
+  double geoLatRadians = DegreesToRadians(geogLatDeg);
+  double cosH =
+      -(sin(verticalDisplRadians) + sin(geoLatRadians) * sin(decRad)) /
+      (cos(geoLatRadians) * cos(decRad));
+  double hHours = DecimalDegreesToDegreeHours(WToDegrees(acos(cosH)));
+  double lstRiseHours =
+      (raHours1 - hHours) - 24 * floor((raHours1 - hHours) / 24);
+  double lstSetHours =
+      (raHours1 + hHours) - 24 * floor((raHours1 + hHours) / 24);
+  double aDeg = WToDegrees(
+      acos((sin(decRad) + sin(verticalDisplRadians) * sin(geoLatRadians)) /
+           (cos(verticalDisplRadians) * cos(geoLatRadians))));
+  double azRiseDeg = aDeg - 360 * floor(aDeg / 360);
+  double azSetDeg = (360 - aDeg) - 360 * floor((360 - aDeg) / 360);
+  double utRiseHours1 = pa_macros::GreenwichSiderealTimeToUniversalTime(
+      pa_macros::LocalSiderealTimeToGreenwichSiderealTime(lstRiseHours, 0, 0,
+                                                          geogLongDeg),
+      0, 0, gwDateDay, gwDateMonth, gwDateYear);
+  double utSetHours1 = pa_macros::GreenwichSiderealTimeToUniversalTime(
+      pa_macros::LocalSiderealTimeToGreenwichSiderealTime(lstSetHours, 0, 0,
+                                                          geogLongDeg),
+      0, 0, gwDateDay, gwDateMonth, gwDateYear);
+  double utRiseAdjustedHours = utRiseHours1 + 0.008333;
+  double utSetAdjustedHours = utSetHours1 + 0.008333;
 
-  pa_types::rise_set_status rs_status = pa_types::rise_set_status::ok;
-  if (cos_h > 1)
-    rs_status = pa_types::rise_set_status::never_rises;
-  if (cos_h < -1)
-    rs_status = pa_types::rise_set_status::circumpolar;
+  pa_types::RiseSetStatus rsStatus = pa_types::RiseSetStatus::Ok;
+  if (cosH > 1)
+    rsStatus = pa_types::RiseSetStatus::NeverRises;
+  if (cosH < -1)
+    rsStatus = pa_types::RiseSetStatus::Circumpolar;
 
-  int ut_rise_hour = (rs_status == pa_types::rise_set_status::ok)
-                         ? decimal_hours_hour(ut_rise_adjusted_hours)
-                         : 0;
-  int ut_rise_min = (rs_status == pa_types::rise_set_status::ok)
-                        ? decimal_hours_minute(ut_rise_adjusted_hours)
-                        : 0;
-  int ut_set_hour = (rs_status == pa_types::rise_set_status::ok)
-                        ? decimal_hours_hour(ut_set_adjusted_hours)
-                        : 0;
-  int ut_set_min = (rs_status == pa_types::rise_set_status::ok)
-                       ? decimal_hours_minute(ut_set_adjusted_hours)
+  int utRiseHour = (rsStatus == pa_types::RiseSetStatus::Ok)
+                       ? DecimalHoursHour(utRiseAdjustedHours)
                        : 0;
-  double az_rise = (rs_status == pa_types::rise_set_status::ok)
-                       ? pa_util::round(az_rise_deg, 2)
-                       : 0;
-  double az_set = (rs_status == pa_types::rise_set_status::ok)
-                      ? pa_util::round(az_set_deg, 2)
+  int utRiseMin = (rsStatus == pa_types::RiseSetStatus::Ok)
+                      ? DecimalHoursMinute(utRiseAdjustedHours)
                       : 0;
+  int utSetHour = (rsStatus == pa_types::RiseSetStatus::Ok)
+                      ? DecimalHoursHour(utSetAdjustedHours)
+                      : 0;
+  int utSetMin = (rsStatus == pa_types::RiseSetStatus::Ok)
+                     ? DecimalHoursMinute(utSetAdjustedHours)
+                     : 0;
+  double azRise = (rsStatus == pa_types::RiseSetStatus::Ok)
+                      ? pa_util::Round(azRiseDeg, 2)
+                      : 0;
+  double azSet = (rsStatus == pa_types::RiseSetStatus::Ok)
+                     ? pa_util::Round(azSetDeg, 2)
+                     : 0;
 
-  return std::tuple<pa_types::rise_set_status, double, double, double, double,
-                    double, double>{rs_status,   ut_rise_hour, ut_rise_min,
-                                    ut_set_hour, ut_set_min,   az_rise,
-                                    az_set};
+  return std::tuple<pa_types::RiseSetStatus, double, double, double, double,
+                    double, double>{rsStatus, utRiseHour, utRiseMin, utSetHour,
+                                    utSetMin, azRise,     azSet};
 }
 
 /**
@@ -498,46 +485,42 @@ PACoordinates::rising_and_setting(double ra_hours, double ra_minutes,
  * double corrected_dec_seconds>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::correct_for_precession(double ra_hour, double ra_minutes,
-                                      double ra_seconds, double dec_deg,
-                                      double dec_minutes, double dec_seconds,
-                                      double epoch_1_day, int epoch_1_month,
-                                      int epoch_1_year, double epoch_2_day,
-                                      int epoch_2_month, int epoch_2_year) {
-  double ra_1_rad = degrees_to_radians(
-      degree_hours_to_decimal_degrees(hms_dh(ra_hour, ra_minutes, ra_seconds)));
-  double dec_1_rad =
-      degrees_to_radians(degrees_minutes_seconds_to_decimal_degrees(
-          dec_deg, dec_minutes, dec_seconds));
-  double t_centuries =
-      (civil_date_to_julian_date(epoch_1_day, epoch_1_month, epoch_1_year) -
-       2415020) /
+PACoordinates::CorrectForPrecession(double raHour, double raMinutes,
+                                    double raSeconds, double decDeg,
+                                    double decMinutes, double decSeconds,
+                                    double epoch1Day, int epoch1Month,
+                                    int epoch1Year, double epoch2Day,
+                                    int epoch2Month, int epoch2Year) {
+  double ra1Rad = DegreesToRadians(
+      DegreeHoursToDecimalDegrees(HmsToDh(raHour, raMinutes, raSeconds)));
+  double dec1Rad = DegreesToRadians(
+      DegreesMinutesSecondsToDecimalDegrees(decDeg, decMinutes, decSeconds));
+  double tCenturies =
+      (CivilDateToJulianDate(epoch1Day, epoch1Month, epoch1Year) - 2415020) /
       36525;
-  double m_sec = 3.07234 + (0.00186 * t_centuries);
-  double n_arcsec = 20.0468 - (0.0085 * t_centuries);
-  double n_years =
-      (civil_date_to_julian_date(epoch_2_day, epoch_2_month, epoch_2_year) -
-       civil_date_to_julian_date(epoch_1_day, epoch_1_month, epoch_1_year)) /
-      365.25;
-  double s_1_hours =
-      ((m_sec + (n_arcsec * sin(ra_1_rad) * tan(dec_1_rad) / 15)) * n_years) /
-      3600;
-  double ra_2_hours = hms_dh(ra_hour, ra_minutes, ra_seconds) + s_1_hours;
-  double s_2_deg = (n_arcsec * cos(ra_1_rad) * n_years) / 3600;
-  double dec_2_deg = degrees_minutes_seconds_to_decimal_degrees(
-                         dec_deg, dec_minutes, dec_seconds) +
-                     s_2_deg;
+  double mSec = 3.07234 + (0.00186 * tCenturies);
+  double nArcsec = 20.0468 - (0.0085 * tCenturies);
+  double nYears = (CivilDateToJulianDate(epoch2Day, epoch2Month, epoch2Year) -
+                   CivilDateToJulianDate(epoch1Day, epoch1Month, epoch1Year)) /
+                  365.25;
+  double s1Hours =
+      ((mSec + (nArcsec * sin(ra1Rad) * tan(dec1Rad) / 15)) * nYears) / 3600;
+  double ra2Hours = HmsToDh(raHour, raMinutes, raSeconds) + s1Hours;
+  double s2Deg = (nArcsec * cos(ra1Rad) * nYears) / 3600;
+  double dec2Deg =
+      DegreesMinutesSecondsToDecimalDegrees(decDeg, decMinutes, decSeconds) +
+      s2Deg;
 
-  int corrected_ra_hour = decimal_hours_hour(ra_2_hours);
-  int corrected_ra_minutes = decimal_hours_minute(ra_2_hours);
-  double corrected_ra_seconds = decimal_hours_second(ra_2_hours);
-  double corrected_dec_deg = decimal_degrees_degrees(dec_2_deg);
-  double corrected_dec_minutes = decimal_degrees_minutes(dec_2_deg);
-  double corrected_dec_seconds = decimal_degrees_seconds(dec_2_deg);
+  int correctedRaHour = DecimalHoursHour(ra2Hours);
+  int correctedRaMinutes = DecimalHoursMinute(ra2Hours);
+  double correctedRaSeconds = DecimalHoursSecond(ra2Hours);
+  double correctedDecDeg = DecimalDegreesDegrees(dec2Deg);
+  double correctedDecMinutes = DecimalDegreesMinutes(dec2Deg);
+  double correctedDecSeconds = DecimalDegreesSeconds(dec2Deg);
 
   return std::tuple<double, double, double, double, double, double>{
-      corrected_ra_hour, corrected_ra_minutes,  corrected_ra_seconds,
-      corrected_dec_deg, corrected_dec_minutes, corrected_dec_seconds};
+      correctedRaHour, correctedRaMinutes,  correctedRaSeconds,
+      correctedDecDeg, correctedDecMinutes, correctedDecSeconds};
 }
 
 /**
@@ -548,27 +531,28 @@ PACoordinates::correct_for_precession(double ra_hour, double ra_minutes,
  * (degrees)>
  */
 std::tuple<double, double>
-PACoordinates::nutation_in_ecliptic_longitude_and_obliquity(
-    double greenwich_day, int greenwich_month, int greenwich_year) {
-  double jd_days =
-      civil_date_to_julian_date(greenwich_day, greenwich_month, greenwich_year);
-  double t_centuries = (jd_days - 2415020) / 36525;
-  double a_deg = 100.0021358 * t_centuries;
-  double l_1_deg = 279.6967 + (0.000303 * t_centuries * t_centuries);
-  double l_deg1 = l_1_deg + 360 * (a_deg - floor(a_deg));
-  double l_deg2 = l_deg1 - 360 * floor(l_deg1 / 360);
-  double l_rad = degrees_to_radians(l_deg2);
-  double b_deg = 5.372617 * t_centuries;
-  double n_deg1 = 259.1833 - 360 * (b_deg - floor(b_deg));
-  double n_deg2 = n_deg1 - 360 * (floor(n_deg1 / 360));
-  double n_rad = degrees_to_radians(n_deg2);
-  double nut_in_long_arcsec = -17.2 * sin(n_rad) - 1.3 * sin(2 * l_rad);
-  double nut_in_obl_arcsec = 9.2 * cos(n_rad) + 0.5 * cos(2 * l_rad);
+PACoordinates::NutationInEclipticLongitudeAndObliquity(double greenwichDay,
+                                                       int greenwichMonth,
+                                                       int greenwichYear) {
+  double jdDays =
+      CivilDateToJulianDate(greenwichDay, greenwichMonth, greenwichYear);
+  double tCenturies = (jdDays - 2415020) / 36525;
+  double aDeg = 100.0021358 * tCenturies;
+  double l1Deg = 279.6967 + (0.000303 * tCenturies * tCenturies);
+  double lDeg1 = l1Deg + 360 * (aDeg - floor(aDeg));
+  double lDeg2 = lDeg1 - 360 * floor(lDeg1 / 360);
+  double lRad = DegreesToRadians(lDeg2);
+  double bDeg = 5.372617 * tCenturies;
+  double nDeg1 = 259.1833 - 360 * (bDeg - floor(bDeg));
+  double nDeg2 = nDeg1 - 360 * (floor(nDeg1 / 360));
+  double nRad = DegreesToRadians(nDeg2);
+  double nutInLongArcsec = -17.2 * sin(nRad) - 1.3 * sin(2 * lRad);
+  double nutInOblArcsec = 9.2 * cos(nRad) + 0.5 * cos(2 * lRad);
 
-  double nut_in_long_deg = nut_in_long_arcsec / 3600;
-  double nut_in_obl_deg = nut_in_obl_arcsec / 3600;
+  double nutInLongDeg = nutInLongArcsec / 3600;
+  double nutInOblDeg = nutInOblArcsec / 3600;
 
-  return std::tuple<double, double>{nut_in_long_deg, nut_in_obl_deg};
+  return std::tuple<double, double>{nutInLongDeg, nutInOblDeg};
 }
 
 /**
@@ -578,36 +562,38 @@ PACoordinates::nutation_in_ecliptic_longitude_and_obliquity(
  * apparent ecliptic latitude (degrees, minutes, seconds)>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::correct_for_aberration(
-    double ut_hour, double ut_minutes, double ut_seconds, double gw_day,
-    int gw_month, int gw_year, double true_ecl_long_deg,
-    double true_ecl_long_min, double true_ecl_long_sec, double true_ecl_lat_deg,
-    double true_ecl_lat_min, double true_ecl_lat_sec) {
-  double true_long_deg = degrees_minutes_seconds_to_decimal_degrees(
-      true_ecl_long_deg, true_ecl_long_min, true_ecl_long_sec);
-  double true_lat_deg = degrees_minutes_seconds_to_decimal_degrees(
-      true_ecl_lat_deg, true_ecl_lat_min, true_ecl_lat_sec);
-  double sun_true_long_deg = sun_long(ut_hour, ut_minutes, ut_seconds, 0, 0,
-                                      gw_day, gw_month, gw_year);
-  double d_long_arcsec =
-      -20.5 * cos(degrees_to_radians(sun_true_long_deg - true_long_deg)) /
-      cos(degrees_to_radians(true_lat_deg));
-  double d_lat_arcsec =
-      -20.5 * sin(degrees_to_radians(sun_true_long_deg - true_long_deg)) *
-      sin(degrees_to_radians(true_lat_deg));
-  double apparent_long_deg = true_long_deg + (d_long_arcsec / 3600);
-  double apparent_lat_deg = true_lat_deg + (d_lat_arcsec / 3600);
+PACoordinates::CorrectForAberration(double utHour, double utMinutes,
+                                    double utSeconds, double gwDay, int gwMonth,
+                                    int gw_year, double trueEclLongDeg,
+                                    double trueEclLongMin,
+                                    double trueEclLongSec, double trueEclLatDeg,
+                                    double trueEclLatMin,
+                                    double trueEclLatSec) {
+  double trueLongDeg = DegreesMinutesSecondsToDecimalDegrees(
+      trueEclLongDeg, trueEclLongMin, trueEclLongSec);
+  double trueLatDeg = DegreesMinutesSecondsToDecimalDegrees(
+      trueEclLatDeg, trueEclLatMin, trueEclLatSec);
+  double sunTrueLongDeg =
+      SunLong(utHour, utMinutes, utSeconds, 0, 0, gwDay, gwMonth, gw_year);
+  double dLongArcsec = -20.5 *
+                       cos(DegreesToRadians(sunTrueLongDeg - trueLongDeg)) /
+                       cos(DegreesToRadians(trueLatDeg));
+  double dLatArcsec = -20.5 *
+                      sin(DegreesToRadians(sunTrueLongDeg - trueLongDeg)) *
+                      sin(DegreesToRadians(trueLatDeg));
+  double apparentLongDeg = trueLongDeg + (dLongArcsec / 3600);
+  double apparentLatDeg = trueLatDeg + (dLatArcsec / 3600);
 
-  double apparent_ecl_long_deg = decimal_degrees_degrees(apparent_long_deg);
-  double apparent_ecl_long_min = decimal_degrees_minutes(apparent_long_deg);
-  double apparent_ecl_long_sec = decimal_degrees_seconds(apparent_long_deg);
-  double apparent_ecl_lat_deg = decimal_degrees_degrees(apparent_lat_deg);
-  double apparent_ecl_lat_min = decimal_degrees_minutes(apparent_lat_deg);
-  double apparent_ecl_lat_sec = decimal_degrees_seconds(apparent_lat_deg);
+  double apparentEclLongDeg = DecimalDegreesDegrees(apparentLongDeg);
+  double apparentEclLongMin = DecimalDegreesMinutes(apparentLongDeg);
+  double apparentEclLongSec = DecimalDegreesSeconds(apparentLongDeg);
+  double apparentEclLatDeg = DecimalDegreesDegrees(apparentLatDeg);
+  double apparentEclLatMin = DecimalDegreesMinutes(apparentLatDeg);
+  double apparentEclLatSec = DecimalDegreesSeconds(apparentLatDeg);
 
   return std::tuple<double, double, double, double, double, double>{
-      apparent_ecl_long_deg, apparent_ecl_long_min, apparent_ecl_long_sec,
-      apparent_ecl_lat_deg,  apparent_ecl_lat_min,  apparent_ecl_lat_sec};
+      apparentEclLongDeg, apparentEclLongMin, apparentEclLongSec,
+      apparentEclLatDeg,  apparentEclLatMin,  apparentEclLatSec};
 }
 
 /**
@@ -619,48 +605,44 @@ PACoordinates::correct_for_aberration(
  * degrees,minutes,seconds>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::atmospheric_refraction(
-    double true_ra_hour, double true_ra_min, double true_ra_sec,
-    double true_dec_deg, double true_dec_min, double true_dec_sec,
-    pa_types::coordinate_type coordinate_type1, double geog_long_deg,
-    double geog_lat_deg, int daylight_saving_hours, int timezone_hours,
-    double lcd_day, int lcd_month, int lcd_year, double lct_hour,
-    double lct_min, double lct_sec, double atmospheric_pressure_mbar,
-    double atmospheric_temperature_celsius) {
-  double ha_hour = pa_macros::right_ascension_to_hour_angle(
-      true_ra_hour, true_ra_min, true_ra_sec, lct_hour, lct_min, lct_sec,
-      daylight_saving_hours, timezone_hours, lcd_day, lcd_month, lcd_year,
-      geog_long_deg);
-  double azimuth_deg = pa_macros::equatorial_coordinates_to_azimuth(
-      ha_hour, 0, 0, true_dec_deg, true_dec_min, true_dec_sec, geog_lat_deg);
-  double altitude_deg = pa_macros::equatorial_coordinates_to_altitude(
-      ha_hour, 0, 0, true_dec_deg, true_dec_min, true_dec_sec, geog_lat_deg);
-  double corrected_altitude_deg = pa_macros::refract(
-      altitude_deg, coordinate_type1, atmospheric_pressure_mbar,
-      atmospheric_temperature_celsius);
+PACoordinates::AtmosphericRefraction(
+    double trueRaHour, double trueRaMin, double trueRaSec, double trueDecDeg,
+    double trueDecMin, double trueDecSec,
+    pa_types::CoordinateType coordinateType1, double geogLongDeg,
+    double geogLatDeg, int daylightSavingHours, int timezoneHours,
+    double lcdDay, int lcdMonth, int lcdYear, double lctHour, double lctMin,
+    double lctSec, double atmosphericPressureMbar,
+    double atmosphericTemperatureCelsius) {
+  double haHour = pa_macros::RightAscensionToHourAngle(
+      trueRaHour, trueRaMin, trueRaSec, lctHour, lctMin, lctSec,
+      daylightSavingHours, timezoneHours, lcdDay, lcdMonth, lcdYear,
+      geogLongDeg);
+  double azimuthDeg = pa_macros::EquatorialCoordinatesToAzimuth(
+      haHour, 0, 0, trueDecDeg, trueDecMin, trueDecSec, geogLatDeg);
+  double altitudeDeg = pa_macros::EquatorialCoordinatesToAltitude(
+      haHour, 0, 0, trueDecDeg, trueDecMin, trueDecSec, geogLatDeg);
+  double correctedAltitudeDeg =
+      pa_macros::Refract(altitudeDeg, coordinateType1, atmosphericPressureMbar,
+                         atmosphericTemperatureCelsius);
 
-  double corrected_ha_hour = pa_macros::horizon_coordinates_to_hour_angle(
-      azimuth_deg, 0, 0, corrected_altitude_deg, 0, 0, geog_lat_deg);
-  double corrected_ra_hour1 = pa_macros::hour_angle_to_right_ascension(
-      corrected_ha_hour, 0, 0, lct_hour, lct_min, lct_sec,
-      daylight_saving_hours, timezone_hours, lcd_day, lcd_month, lcd_year,
-      geog_long_deg);
-  double corrected_dec_deg1 = pa_macros::horizon_coordinates_to_declination(
-      azimuth_deg, 0, 0, corrected_altitude_deg, 0, 0, geog_lat_deg);
+  double correctedHaHour = pa_macros::HorizonCoordinatesToHourAngle(
+      azimuthDeg, 0, 0, correctedAltitudeDeg, 0, 0, geogLatDeg);
+  double correctedRaHour1 = pa_macros::HourAngleToRightAscension(
+      correctedHaHour, 0, 0, lctHour, lctMin, lctSec, daylightSavingHours,
+      timezoneHours, lcdDay, lcdMonth, lcdYear, geogLongDeg);
+  double correctedDecDeg1 = pa_macros::HorizonCoordinatesToDeclination(
+      azimuthDeg, 0, 0, correctedAltitudeDeg, 0, 0, geogLatDeg);
 
-  int corrected_ra_hour = pa_macros::decimal_hours_hour(corrected_ra_hour1);
-  int corrected_ra_min = pa_macros::decimal_hours_minute(corrected_ra_hour1);
-  double corrected_ra_sec = pa_macros::decimal_hours_second(corrected_ra_hour1);
-  double corrected_dec_deg =
-      pa_macros::decimal_degrees_degrees(corrected_dec_deg1);
-  double corrected_dec_min =
-      pa_macros::decimal_degrees_minutes(corrected_dec_deg1);
-  double corrected_dec_sec =
-      pa_macros::decimal_degrees_seconds(corrected_dec_deg1);
+  int correctedRaHour = pa_macros::DecimalHoursHour(correctedRaHour1);
+  int correctedRaMin = pa_macros::DecimalHoursMinute(correctedRaHour1);
+  double correctedRaSec = pa_macros::DecimalHoursSecond(correctedRaHour1);
+  double correctedDecDeg = pa_macros::DecimalDegreesDegrees(correctedDecDeg1);
+  double correctedDecMin = pa_macros::DecimalDegreesMinutes(correctedDecDeg1);
+  double correctedDecSec = pa_macros::DecimalDegreesSeconds(correctedDecDeg1);
 
   return std::tuple<double, double, double, double, double, double>{
-      corrected_ra_hour, corrected_ra_min,  corrected_ra_sec,
-      corrected_dec_deg, corrected_dec_min, corrected_dec_sec};
+      correctedRaHour, correctedRaMin,  correctedRaSec,
+      correctedDecDeg, correctedDecMin, correctedDecSec};
 }
 
 /**
@@ -670,42 +652,38 @@ PACoordinates::atmospheric_refraction(
  * degrees,minutes,seconds>
  */
 std::tuple<double, double, double, double, double, double>
-PACoordinates::corrections_for_geocentric_parallax(
-    double ra_hour, double ra_min, double ra_sec, double dec_deg,
-    double dec_min, double dec_sec, pa_types::coordinate_type coordinate_type,
-    double equatorial_hor_parallax_deg, double geog_long_deg,
-    double geog_lat_deg, double height_m, int daylight_saving,
-    int timezone_hours, double lcd_day, int lcd_month, int lcd_year,
-    double lct_hour, double lct_min, double lct_sec) {
-  double ha_hours = pa_macros::right_ascension_to_hour_angle(
-      ra_hour, ra_min, ra_sec, lct_hour, lct_min, lct_sec, daylight_saving,
-      timezone_hours, lcd_day, lcd_month, lcd_year, geog_long_deg);
+PACoordinates::CorrectionsForGeocentricParallax(
+    double raHour, double raMin, double raSec, double decDeg, double decMin,
+    double decSec, pa_types::CoordinateType coordinateType,
+    double equatorialHorParallaxDeg, double geogLongDeg, double geogLatDeg,
+    double heightM, int daylightSaving, int timezoneHours, double lcdDay,
+    int lcdMonth, int lcdYear, double lctHour, double lctMin, double lctSec) {
+  double haHours = pa_macros::RightAscensionToHourAngle(
+      raHour, raMin, raSec, lctHour, lctMin, lctSec, daylightSaving,
+      timezoneHours, lcdDay, lcdMonth, lcdYear, geogLongDeg);
 
-  double corrected_ha_hours = pa_macros::parallax_ha(
-      ha_hours, 0, 0, dec_deg, dec_min, dec_sec, coordinate_type, geog_lat_deg,
-      height_m, equatorial_hor_parallax_deg);
+  double correctedHaHours = pa_macros::ParallaxHa(
+      haHours, 0, 0, decDeg, decMin, decSec, coordinateType, geogLatDeg,
+      heightM, equatorialHorParallaxDeg);
 
-  double corrected_ra_hours = pa_macros::hour_angle_to_right_ascension(
-      corrected_ha_hours, 0, 0, lct_hour, lct_min, lct_sec, daylight_saving,
-      timezone_hours, lcd_day, lcd_month, lcd_year, geog_long_deg);
+  double correctedRaHours = pa_macros::HourAngleToRightAscension(
+      correctedHaHours, 0, 0, lctHour, lctMin, lctSec, daylightSaving,
+      timezoneHours, lcdDay, lcdMonth, lcdYear, geogLongDeg);
 
-  double corrected_dec_deg1 = pa_macros::parallax_dec(
-      ha_hours, 0, 0, dec_deg, dec_min, dec_sec, coordinate_type, geog_lat_deg,
-      height_m, equatorial_hor_parallax_deg);
+  double correctedDecDeg1 = pa_macros::ParallaxDec(
+      haHours, 0, 0, decDeg, decMin, decSec, coordinateType, geogLatDeg,
+      heightM, equatorialHorParallaxDeg);
 
-  int corrected_ra_hour = pa_macros::decimal_hours_hour(corrected_ra_hours);
-  int corrected_ra_min = pa_macros::decimal_hours_minute(corrected_ra_hours);
-  double corrected_ra_sec = pa_macros::decimal_hours_second(corrected_ra_hours);
-  double corrected_dec_deg =
-      pa_macros::decimal_degrees_degrees(corrected_dec_deg1);
-  double corrected_dec_min =
-      pa_macros::decimal_degrees_minutes(corrected_dec_deg1);
-  double corrected_dec_sec =
-      pa_macros::decimal_degrees_seconds(corrected_dec_deg1);
+  int correctedRaHour = pa_macros::DecimalHoursHour(correctedRaHours);
+  int correctedRaMin = pa_macros::DecimalHoursMinute(correctedRaHours);
+  double correctedRaSec = pa_macros::DecimalHoursSecond(correctedRaHours);
+  double correctedDecDeg = pa_macros::DecimalDegreesDegrees(correctedDecDeg1);
+  double correctedDecMin = pa_macros::DecimalDegreesMinutes(correctedDecDeg1);
+  double correctedDecSec = pa_macros::DecimalDegreesSeconds(correctedDecDeg1);
 
   return std::tuple<double, double, double, double, double, double>{
-      corrected_ra_hour, corrected_ra_min,  corrected_ra_sec,
-      corrected_dec_deg, corrected_dec_min, corrected_dec_sec};
+      correctedRaHour, correctedRaMin,  correctedRaSec,
+      correctedDecDeg, correctedDecMin, correctedDecSec};
 }
 
 /**
@@ -715,59 +693,54 @@ PACoordinates::corrections_for_geocentric_parallax(
  *
  * @return tuple <heliographic longitude and heliographic latitude, in degrees>
  */
-std::tuple<double, double> PACoordinates::heliographic_coordinates(
-    double helio_position_angle_deg, double helio_displacement_arcmin,
-    double gwdate_day, int gwdate_month, int gwdate_year) {
-  double julian_date_days =
-      civil_date_to_julian_date(gwdate_day, gwdate_month, gwdate_year);
-  double t_centuries = (julian_date_days - 2415020) / 36525;
-  double long_asc_node_deg =
-      degrees_minutes_seconds_to_decimal_degrees(74, 22, 0) +
-      (84 * t_centuries / 60);
-  double sun_long_deg =
-      sun_long(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
-  double y = sin(degrees_to_radians(long_asc_node_deg - sun_long_deg)) *
-             cos(degrees_to_radians(
-                 degrees_minutes_seconds_to_decimal_degrees(7, 15, 0)));
-  double x = -cos(degrees_to_radians(long_asc_node_deg - sun_long_deg));
-  double a_deg = w_to_degrees(atan2(y, x));
-  double m_deg1 = 360 - (360 * (julian_date_days - 2398220) / 25.38);
-  double m_deg2 = m_deg1 - 360 * floor(m_deg1 / 360);
-  double l0_deg1 = m_deg2 + a_deg;
-  double b0_rad =
-      asin(sin(degrees_to_radians(sun_long_deg - long_asc_node_deg)) *
-           sin(degrees_to_radians(
-               degrees_minutes_seconds_to_decimal_degrees(7, 15, 0))));
-  double theta1_rad = atan(-cos(degrees_to_radians(sun_long_deg)) *
-                           tan(degrees_to_radians(pa_macros::obliq(
-                               gwdate_day, gwdate_month, gwdate_year))));
-  double theta2_rad =
-      atan(-cos(degrees_to_radians(long_asc_node_deg - sun_long_deg)) *
-           tan(degrees_to_radians(
-               degrees_minutes_seconds_to_decimal_degrees(7, 15, 0))));
-  double p_deg = w_to_degrees(theta1_rad + theta2_rad);
-  double rho1_deg = helio_displacement_arcmin / 60;
-  double rho_rad =
-      asin(2 * rho1_deg /
-           sun_dia(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year)) -
-      degrees_to_radians(rho1_deg);
-  double b_rad =
-      asin(sin(b0_rad) * cos(rho_rad) +
-           cos(b0_rad) * sin(rho_rad) *
-               cos(degrees_to_radians(p_deg - helio_position_angle_deg)));
-  double b_deg = w_to_degrees(b_rad);
-  double l_deg1 =
-      w_to_degrees(
-          asin(sin(rho_rad) *
-               sin(degrees_to_radians(p_deg - helio_position_angle_deg)) /
-               cos(b_rad))) +
-      l0_deg1;
-  double l_deg2 = l_deg1 - 360 * floor(l_deg1 / 360);
+std::tuple<double, double> PACoordinates::HeliographicCoordinates(
+    double helioPositionAngleDeg, double helioDisplacementArcmin,
+    double gwdateDay, int gwdateMonth, int gwdate_year) {
+  double julianDateDays =
+      CivilDateToJulianDate(gwdateDay, gwdateMonth, gwdate_year);
+  double tCenturies = (julianDateDays - 2415020) / 36525;
+  double longAscNodeDeg =
+      DegreesMinutesSecondsToDecimalDegrees(74, 22, 0) + (84 * tCenturies / 60);
+  double sunLongDeg =
+      SunLong(0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdate_year);
+  double y =
+      sin(DegreesToRadians(longAscNodeDeg - sunLongDeg)) *
+      cos(DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(7, 15, 0)));
+  double x = -cos(DegreesToRadians(longAscNodeDeg - sunLongDeg));
+  double aDeg = WToDegrees(atan2(y, x));
+  double mDeg1 = 360 - (360 * (julianDateDays - 2398220) / 25.38);
+  double mDeg2 = mDeg1 - 360 * floor(mDeg1 / 360);
+  double l0Deg1 = mDeg2 + aDeg;
+  double b0Rad = asin(
+      sin(DegreesToRadians(sunLongDeg - longAscNodeDeg)) *
+      sin(DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(7, 15, 0))));
+  double theta1Rad = atan(-cos(DegreesToRadians(sunLongDeg)) *
+                          tan(DegreesToRadians(pa_macros::Obliq(
+                              gwdateDay, gwdateMonth, gwdate_year))));
+  double theta2Rad = atan(
+      -cos(DegreesToRadians(longAscNodeDeg - sunLongDeg)) *
+      tan(DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(7, 15, 0))));
+  double pDeg = WToDegrees(theta1Rad + theta2Rad);
+  double rho1Deg = helioDisplacementArcmin / 60;
+  double rhoRad =
+      asin(2 * rho1Deg /
+           SunDia(0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdate_year)) -
+      DegreesToRadians(rho1Deg);
+  double bRad = asin(sin(b0Rad) * cos(rhoRad) +
+                     cos(b0Rad) * sin(rhoRad) *
+                         cos(DegreesToRadians(pDeg - helioPositionAngleDeg)));
+  double bDeg = WToDegrees(bRad);
+  double lDeg1 =
+      WToDegrees(asin(sin(rhoRad) *
+                      sin(DegreesToRadians(pDeg - helioPositionAngleDeg)) /
+                      cos(bRad))) +
+      l0Deg1;
+  double lDeg2 = lDeg1 - 360 * floor(lDeg1 / 360);
 
-  double helio_long_deg = round(l_deg2, 2);
-  double helio_lat_deg = round(b_deg, 2);
+  double helioLongDeg = Round(lDeg2, 2);
+  double helioLatDeg = Round(bDeg, 2);
 
-  return std::tuple<double, double>{helio_long_deg, helio_lat_deg};
+  return std::tuple<double, double>{helioLongDeg, helioLatDeg};
 }
 
 /**
@@ -775,13 +748,12 @@ std::tuple<double, double> PACoordinates::heliographic_coordinates(
  *
  * @return carrington rotation number
  */
-int PACoordinates::carrington_rotation_number(double gwdate_day,
-                                              int gwdate_month,
-                                              int gwdate_year) {
-  double julian_date_days =
-      civil_date_to_julian_date(gwdate_day, gwdate_month, gwdate_year);
+int PACoordinates::CarringtonRotationNumber(double gwdateDay, int gwdateMonth,
+                                            int gwdateYear) {
+  double julianDateDays =
+      CivilDateToJulianDate(gwdateDay, gwdateMonth, gwdateYear);
 
-  int crn = 1690 + (int)round((julian_date_days - 2444235.34) / 27.2753, 0);
+  int crn = 1690 + (int)Round((julianDateDays - 2444235.34) / 27.2753, 0);
 
   return crn;
 }
@@ -793,56 +765,54 @@ int PACoordinates::carrington_rotation_number(double gwdate_day,
  * pole>
  */
 std::tuple<double, double, double>
-PACoordinates::selenographic_coordinates_1(double gwdate_day, int gwdate_month,
-                                           int gwdate_year) {
-  double julian_date_days =
-      civil_date_to_julian_date(gwdate_day, gwdate_month, gwdate_year);
-  double t_centuries = (julian_date_days - 2451545) / 36525;
-  double long_asc_node_deg = 125.044522 - 1934.136261 * t_centuries;
-  double f1 = 93.27191 + 483202.0175 * t_centuries;
+PACoordinates::SelenographicCoordinates1(double gwdateDay, int gwdateMonth,
+                                         int gwdateYear) {
+  double julianDateDays =
+      CivilDateToJulianDate(gwdateDay, gwdateMonth, gwdateYear);
+  double tCenturies = (julianDateDays - 2451545) / 36525;
+  double longAscNodeDeg = 125.044522 - 1934.136261 * tCenturies;
+  double f1 = 93.27191 + 483202.0175 * tCenturies;
   double f2 = f1 - 360 * floor(f1 / 360);
-  double geocentric_moon_long_deg = pa_macros::moon_long(
-      0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
-  double geocentric_moon_lat_rad = degrees_to_radians(pa_macros::moon_lat(
-      0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year));
-  double inclination_rad = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(1, 32, 32.7));
-  double node_long_rad =
-      degrees_to_radians(long_asc_node_deg - geocentric_moon_long_deg);
-  double sin_be =
-      -cos(inclination_rad) * sin(geocentric_moon_lat_rad) +
-      sin(inclination_rad) * cos(geocentric_moon_lat_rad) * sin(node_long_rad);
-  double sub_earth_lat_deg = w_to_degrees(asin(sin_be));
-  double a_rad = atan2(-sin(geocentric_moon_lat_rad) * sin(inclination_rad) -
-                           cos(geocentric_moon_lat_rad) * cos(inclination_rad) *
-                               sin(node_long_rad),
-                       cos(geocentric_moon_lat_rad) * cos(node_long_rad));
-  double a_deg = w_to_degrees(a_rad);
-  double sub_earth_long_deg1 = a_deg - f2;
-  double sub_earth_long_deg2 =
-      sub_earth_long_deg1 - 360 * floor(sub_earth_long_deg1 / 360);
-  double sub_earth_long_deg3 = (sub_earth_long_deg2 > 180)
-                                   ? (sub_earth_long_deg2 - 360)
-                                   : sub_earth_long_deg2;
-  double c1_rad = atan(cos(node_long_rad) * sin(inclination_rad) /
-                       (cos(geocentric_moon_lat_rad) * cos(inclination_rad) +
-                        sin(geocentric_moon_lat_rad) * sin(inclination_rad) *
-                            sin(node_long_rad)));
-  double obliquity_rad =
-      degrees_to_radians(obliq(gwdate_day, gwdate_month, gwdate_year));
-  double c2_rad = atan(sin(obliquity_rad) *
-                       cos(degrees_to_radians(geocentric_moon_long_deg)) /
-                       (sin(obliquity_rad) * sin(geocentric_moon_lat_rad) *
-                            sin(degrees_to_radians(geocentric_moon_long_deg)) -
-                        cos(obliquity_rad) * cos(geocentric_moon_lat_rad)));
-  double c_deg = w_to_degrees(c1_rad + c2_rad);
+  double geocentricMoonLongDeg = pa_macros::MoonLongitude(
+      0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear);
+  double geocentricMoonLatRad = DegreesToRadians(pa_macros::MoonLatitude(
+      0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear));
+  double inclinationRad =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(1, 32, 32.7));
+  double nodeLongRad = DegreesToRadians(longAscNodeDeg - geocentricMoonLongDeg);
+  double sinBe =
+      -cos(inclinationRad) * sin(geocentricMoonLatRad) +
+      sin(inclinationRad) * cos(geocentricMoonLatRad) * sin(nodeLongRad);
+  double subEarthLatDeg = WToDegrees(asin(sinBe));
+  double aRad = atan2(-sin(geocentricMoonLatRad) * sin(inclinationRad) -
+                          cos(geocentricMoonLatRad) * cos(inclinationRad) *
+                              sin(nodeLongRad),
+                      cos(geocentricMoonLatRad) * cos(nodeLongRad));
+  double aDeg = WToDegrees(aRad);
+  double subEarthLongDeg1 = aDeg - f2;
+  double subEarthLongDeg2 =
+      subEarthLongDeg1 - 360 * floor(subEarthLongDeg1 / 360);
+  double subEarthLongDeg3 =
+      (subEarthLongDeg2 > 180) ? (subEarthLongDeg2 - 360) : subEarthLongDeg2;
+  double c1Rad = atan(
+      cos(nodeLongRad) * sin(inclinationRad) /
+      (cos(geocentricMoonLatRad) * cos(inclinationRad) +
+       sin(geocentricMoonLatRad) * sin(inclinationRad) * sin(nodeLongRad)));
+  double obliquityRad =
+      DegreesToRadians(Obliq(gwdateDay, gwdateMonth, gwdateYear));
+  double c2Rad =
+      atan(sin(obliquityRad) * cos(DegreesToRadians(geocentricMoonLongDeg)) /
+           (sin(obliquityRad) * sin(geocentricMoonLatRad) *
+                sin(DegreesToRadians(geocentricMoonLongDeg)) -
+            cos(obliquityRad) * cos(geocentricMoonLatRad)));
+  double cDeg = WToDegrees(c1Rad + c2Rad);
 
-  double sub_earth_longitude = round(sub_earth_long_deg3, 2);
-  double sub_earth_latitude = round(sub_earth_lat_deg, 2);
-  double position_angle_of_pole = round(c_deg, 2);
+  double subEarthLongitude = Round(subEarthLongDeg3, 2);
+  double subEarthLatitude = Round(subEarthLatDeg, 2);
+  double positionAngleOfPole = Round(cDeg, 2);
 
-  return std::tuple<double, double, double>{
-      sub_earth_longitude, sub_earth_latitude, position_angle_of_pole};
+  return std::tuple<double, double, double>{subEarthLongitude, subEarthLatitude,
+                                            positionAngleOfPole};
 }
 
 /**
@@ -852,59 +822,57 @@ PACoordinates::selenographic_coordinates_1(double gwdate_day, int gwdate_month,
  * latitude>
  */
 std::tuple<double, double, double>
-PACoordinates::selenographic_coordinates_2(double gwdate_day, int gwdate_month,
-                                           int gwdate_year) {
-  double julian_date_days =
-      civil_date_to_julian_date(gwdate_day, gwdate_month, gwdate_year);
-  double t_centuries = (julian_date_days - 2451545) / 36525;
-  double long_asc_node_deg = 125.044522 - 1934.136261 * t_centuries;
-  double f1 = 93.27191 + 483202.0175 * t_centuries;
+PACoordinates::SelenographicCoordinates2(double gwdateDay, int gwdateMonth,
+                                         int gwdateYear) {
+  double julianDateDays =
+      CivilDateToJulianDate(gwdateDay, gwdateMonth, gwdateYear);
+  double tCenturies = (julianDateDays - 2451545) / 36525;
+  double longAscNodeDeg = 125.044522 - 1934.136261 * tCenturies;
+  double f1 = 93.27191 + 483202.0175 * tCenturies;
   double f2 = f1 - 360 * floor(f1 / 360);
-  double sun_geocentric_long_deg =
-      sun_long(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
-  double moon_equ_hor_parallax_arc_min =
-      pa_macros::moon_hp(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year) *
+  double sunGeocentricLongDeg =
+      SunLong(0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear);
+  double moonEquHorParallaxArcMin =
+      pa_macros::MoonHorizontalParallax(0, 0, 0, 0, 0, gwdateDay, gwdateMonth,
+                                        gwdateYear) *
       60;
-  double sun_earth_dist_au =
-      sun_dist(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
-  double geocentric_moon_lat_rad = degrees_to_radians(
-      moon_lat(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year));
-  double geocentric_moon_long_deg =
-      moon_long(0, 0, 0, 0, 0, gwdate_day, gwdate_month, gwdate_year);
-  double adjusted_moon_long_deg =
-      sun_geocentric_long_deg + 180 +
-      (26.4 * cos(geocentric_moon_lat_rad) *
-       sin(degrees_to_radians(sun_geocentric_long_deg -
-                              geocentric_moon_long_deg)) /
-       (moon_equ_hor_parallax_arc_min * sun_earth_dist_au));
-  double adjusted_moon_lat_rad =
-      0.14666 * geocentric_moon_lat_rad /
-      (moon_equ_hor_parallax_arc_min * sun_earth_dist_au);
-  double inclination_rad = degrees_to_radians(
-      degrees_minutes_seconds_to_decimal_degrees(1, 32, 32.7));
-  double node_long_rad =
-      degrees_to_radians(long_asc_node_deg - adjusted_moon_long_deg);
-  double sin_bs =
-      -cos(inclination_rad) * sin(adjusted_moon_lat_rad) +
-      sin(inclination_rad) * cos(adjusted_moon_lat_rad) * sin(node_long_rad);
-  double sub_solar_lat_deg = w_to_degrees(asin(sin_bs));
-  double a_rad = atan2(-sin(adjusted_moon_lat_rad) * sin(inclination_rad) -
-                           cos(adjusted_moon_lat_rad) * cos(inclination_rad) *
-                               sin(node_long_rad),
-                       cos(adjusted_moon_lat_rad) * cos(node_long_rad));
-  double a_deg = w_to_degrees(a_rad);
-  double sub_solar_long_deg1 = a_deg - f2;
+  double sunEarthDistAu =
+      SunDist(0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear);
+  double geocentricMoonLatRad = DegreesToRadians(
+      MoonLatitude(0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear));
+  double geocentricMoonLongDeg =
+      MoonLongitude(0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear);
+  double adjustedMoonLongDeg =
+      sunGeocentricLongDeg + 180 +
+      (26.4 * cos(geocentricMoonLatRad) *
+       sin(DegreesToRadians(sunGeocentricLongDeg - geocentricMoonLongDeg)) /
+       (moonEquHorParallaxArcMin * sunEarthDistAu));
+  double adjustedMoonLatRad = 0.14666 * geocentricMoonLatRad /
+                              (moonEquHorParallaxArcMin * sunEarthDistAu);
+  double inclinationRad =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(1, 32, 32.7));
+  double nodeLongRad = DegreesToRadians(longAscNodeDeg - adjustedMoonLongDeg);
+  double sinBs =
+      -cos(inclinationRad) * sin(adjustedMoonLatRad) +
+      sin(inclinationRad) * cos(adjustedMoonLatRad) * sin(nodeLongRad);
+  double subSolarLatDeg = WToDegrees(asin(sinBs));
+  double aRad = atan2(-sin(adjustedMoonLatRad) * sin(inclinationRad) -
+                          cos(adjustedMoonLatRad) * cos(inclinationRad) *
+                              sin(nodeLongRad),
+                      cos(adjustedMoonLatRad) * cos(nodeLongRad));
+  double aDeg = WToDegrees(aRad);
+  double subSolarLongDeg1 = aDeg - f2;
   double sub_solar_long_deg2 =
-      sub_solar_long_deg1 - 360 * floor(sub_solar_long_deg1 / 360);
-  double sub_solar_long_deg3 = (sub_solar_long_deg2 > 180)
-                                   ? sub_solar_long_deg2 - 360
-                                   : sub_solar_long_deg2;
-  double sub_solar_colong_deg = 90 - sub_solar_long_deg3;
+      subSolarLongDeg1 - 360 * floor(subSolarLongDeg1 / 360);
+  double subSolarLongDeg3 = (sub_solar_long_deg2 > 180)
+                                ? sub_solar_long_deg2 - 360
+                                : sub_solar_long_deg2;
+  double subSolarColongDeg = 90 - subSolarLongDeg3;
 
-  double sub_solar_longitude = round(sub_solar_long_deg3, 2);
-  double sub_solar_colongitude = round(sub_solar_colong_deg, 2);
-  double sub_solar_latitude = round(sub_solar_lat_deg, 2);
+  double subSolarLongitude = Round(subSolarLongDeg3, 2);
+  double subSolarColongitude = Round(subSolarColongDeg, 2);
+  double subSolarLatitude = Round(subSolarLatDeg, 2);
 
   return std::tuple<double, double, double>{
-      sub_solar_longitude, sub_solar_colongitude, sub_solar_latitude};
+      subSolarLongitude, subSolarColongitude, subSolarLatitude};
 }

@@ -55,6 +55,7 @@ format:
 	clang-format -i test.cpp test_datetime.cpp test_coordinates.cpp
 	clang-format -i lib/pa_datetime.cpp lib/pa_datetime.h
 	clang-format -i lib/pa_coordinates.cpp lib/pa_coordinates.h
+	clang-format -i lib/pa_sun.cpp lib/pa_sun.h
 	clang-format -i lib/pa_macros.cpp lib/pa_macros.h
 	clang-format -i lib/pa_util.cpp lib/pa_util.h
 
