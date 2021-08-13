@@ -1,20 +1,25 @@
 var pa__types_8h =
 [
-    [ "angle_measurement_units", "pa__types_8h.html#ab68946c56cf92482bdebd1c557593b24", [
-      [ "hours", "pa__types_8h.html#ab68946c56cf92482bdebd1c557593b24a769ea7f63d9d5def80de898a3a10da28", null ],
-      [ "degrees", "pa__types_8h.html#ab68946c56cf92482bdebd1c557593b24aeb85e0821c20e303a97a813f3150b5e0", null ]
+    [ "AngleMeasurementUnits", "pa__types_8h.html#a371bca826285ce04d6372c4568ed03ee", [
+      [ "Hours", "pa__types_8h.html#a371bca826285ce04d6372c4568ed03eeac40e622aca7d8e0e8eb260d83ba14fcc", null ],
+      [ "Degrees", "pa__types_8h.html#a371bca826285ce04d6372c4568ed03eeab28ef12cbe7643cb9eb5bc1151006013", null ]
     ] ],
-    [ "coordinate_type", "pa__types_8h.html#acb3e7df63501f28e0e051764d5f290d4", [
-      [ "actual", "pa__types_8h.html#acb3e7df63501f28e0e051764d5f290d4a5157e3c765af93679ea07052f30f0a6e", null ],
-      [ "apparent", "pa__types_8h.html#acb3e7df63501f28e0e051764d5f290d4a2215c6b995cebd1eef65a2d52df7dc99", null ]
+    [ "CoordinateType", "pa__types_8h.html#af532ebccf30da4696c48ec61f6b4d663", [
+      [ "Actual", "pa__types_8h.html#af532ebccf30da4696c48ec61f6b4d663ad57ceb4533b61b9746f4fc10d958f5c5", null ],
+      [ "Apparent", "pa__types_8h.html#af532ebccf30da4696c48ec61f6b4d663a49a24e1e94b9d8ab152beaf7cc6bb7c7", null ]
     ] ],
-    [ "rise_set_status", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69", [
-      [ "ok", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69a444bcb3a3fcf8389296c49467f27e1d6", null ],
-      [ "never_rises", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69a3d56a280ecf47bf782cddf98870d0760", null ],
-      [ "circumpolar", "pa__types_8h.html#a57d1662994e884d5eb36e8983f372a69a646d7f174a081c9eb96f87e807d3b06f", null ]
+    [ "RiseSetStatus", "pa__types_8h.html#a941b09de880d465b1f7e49ea9f420214", [
+      [ "Ok", "pa__types_8h.html#a941b09de880d465b1f7e49ea9f420214aa60852f204ed8028c1c58808b746d115", null ],
+      [ "NeverRises", "pa__types_8h.html#a941b09de880d465b1f7e49ea9f420214a448c26a93f4364a2a05bcf836cee0370", null ],
+      [ "Circumpolar", "pa__types_8h.html#a941b09de880d465b1f7e49ea9f420214ac634c35809215d6c4b402cf365e57126", null ],
+      [ "GstToUtConversionWarning", "pa__types_8h.html#a941b09de880d465b1f7e49ea9f420214aa10bd0205c5cd4975c44256a626d2fc0", null ]
     ] ],
-    [ "warning_flags", "pa__types_8h.html#abd8e28d1f6cc273e99b3cbaf226bb55a", [
-      [ "ok", "pa__types_8h.html#abd8e28d1f6cc273e99b3cbaf226bb55aa444bcb3a3fcf8389296c49467f27e1d6", null ],
-      [ "warning", "pa__types_8h.html#abd8e28d1f6cc273e99b3cbaf226bb55aa7b83d3f08fa392b79e3f553b585971cd", null ]
+    [ "SunRiseSetStatus", "pa__types_8h.html#a10349431b456a3d7d2b08ef68cd828cf", [
+      [ "Ok", "pa__types_8h.html#a10349431b456a3d7d2b08ef68cd828cfaa60852f204ed8028c1c58808b746d115", null ],
+      [ "ConversionError", "pa__types_8h.html#a10349431b456a3d7d2b08ef68cd828cfa33f8a28d3c790e00d94cc848895dfb51", null ]
+    ] ],
+    [ "WarningFlags", "pa__types_8h.html#a7e386b27dc854f314a7ba760a1cf5343", [
+      [ "Ok", "pa__types_8h.html#a7e386b27dc854f314a7ba760a1cf5343aa60852f204ed8028c1c58808b746d115", null ],
+      [ "Warning", "pa__types_8h.html#a7e386b27dc854f314a7ba760a1cf5343a0eaadb4fcb48a0a0ed7bc9868be9fbaa", null ]
     ] ]
 ];

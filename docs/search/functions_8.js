@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['local_5fcivil_5ftime_5fgreenwich_5fday_177',['local_civil_time_greenwich_day',['../namespacepa__macros.html#a836f1c31c4249f37050e25cc94369dfa',1,'pa_macros']]],
-  ['local_5fcivil_5ftime_5fgreenwich_5fmonth_178',['local_civil_time_greenwich_month',['../namespacepa__macros.html#a75f7c7fcf405ed0072dd7c9f85207199',1,'pa_macros']]],
-  ['local_5fcivil_5ftime_5fgreenwich_5fyear_179',['local_civil_time_greenwich_year',['../namespacepa__macros.html#a5b5a7641aa96923b29e9d4405bb25956',1,'pa_macros']]],
-  ['local_5fcivil_5ftime_5fto_5funiversal_5ftime_180',['local_civil_time_to_universal_time',['../classPADateTime.html#ad1379a2a6e6af91037149815b469438e',1,'PADateTime::local_civil_time_to_universal_time()'],['../namespacepa__macros.html#a6728ae3e47e31616752f31031cce1bd0',1,'pa_macros::local_civil_time_to_universal_time()']]],
-  ['local_5fsidereal_5ftime_5fto_5fgreenwich_5fsidereal_5ftime_181',['local_sidereal_time_to_greenwich_sidereal_time',['../classPADateTime.html#a98498c80bfdb4c169697a1b5e43ece5a',1,'PADateTime::local_sidereal_time_to_greenwich_sidereal_time()'],['../namespacepa__macros.html#a6e7f7e978a07da9060d6b933700f9b09',1,'pa_macros::local_sidereal_time_to_greenwich_sidereal_time()']]]
+  ['localciviltimegreenwichday_201',['LocalCivilTimeGreenwichDay',['../namespacepa__macros.html#ae40f65305890e6aec6ecdd43964d783c',1,'pa_macros']]],
+  ['localciviltimegreenwichmonth_202',['LocalCivilTimeGreenwichMonth',['../namespacepa__macros.html#a7e3da48ae3fe563c506e9f608af96cae',1,'pa_macros']]],
+  ['localciviltimegreenwichyear_203',['LocalCivilTimeGreenwichYear',['../namespacepa__macros.html#a78078a93903220a765fc484414b21886',1,'pa_macros']]],
+  ['localciviltimetouniversaltime_204',['LocalCivilTimeToUniversalTime',['../classPADateTime.html#a604840ea5a93280fe1c336f1f1042129',1,'PADateTime::LocalCivilTimeToUniversalTime()'],['../namespacepa__macros.html#a7843630ca60f7248657aadb06a8c3a49',1,'pa_macros::LocalCivilTimeToUniversalTime()']]],
+  ['localsiderealtimetogreenwichsiderealtime_205',['LocalSiderealTimeToGreenwichSiderealTime',['../classPADateTime.html#a07f2a20263966e39b727c7ec561d7d3e',1,'PADateTime::LocalSiderealTimeToGreenwichSiderealTime()'],['../namespacepa__macros.html#a9916483f585b8631c9b0d75f16699d0c',1,'pa_macros::LocalSiderealTimeToGreenwichSiderealTime()']]]
 ];

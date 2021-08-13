@@ -1,12 +1,16 @@
 var searchData=
 [
-  ['ec_5fdec_29',['ec_dec',['../namespacepa__macros.html#a25f7d6a55423f384ffd6a002fba7b6e0',1,'pa_macros']]],
-  ['ec_5fra_30',['ec_ra',['../namespacepa__macros.html#a921c5c5439da80aff0e47cb7155e3335',1,'pa_macros']]],
-  ['eccentric_5fanomaly_31',['eccentric_anomaly',['../namespacepa__macros.html#aceded8c94c42a0d299941d80c1b6487f',1,'pa_macros']]],
-  ['ecliptic_5fcoordinate_5fto_5fequatorial_5fcoordinate_32',['ecliptic_coordinate_to_equatorial_coordinate',['../classPACoordinates.html#ad77eb594c62c49645932291e323df3cf',1,'PACoordinates']]],
-  ['equatorial_5fcoordinate_5fto_5fecliptic_5fcoordinate_33',['equatorial_coordinate_to_ecliptic_coordinate',['../classPACoordinates.html#a3059310fbbb5cc47275c041043f5dc74',1,'PACoordinates']]],
-  ['equatorial_5fcoordinate_5fto_5fgalactic_5fcoordinate_34',['equatorial_coordinate_to_galactic_coordinate',['../classPACoordinates.html#a815e34b1781c274e8ca7b8f73fef5ab8',1,'PACoordinates']]],
-  ['equatorial_5fcoordinates_5fto_5faltitude_35',['equatorial_coordinates_to_altitude',['../namespacepa__macros.html#afb31193ed5d5f7cb4a389d702e3e7e44',1,'pa_macros']]],
-  ['equatorial_5fcoordinates_5fto_5fazimuth_36',['equatorial_coordinates_to_azimuth',['../namespacepa__macros.html#a10b2b14a315050a6a959b77ed9540d9a',1,'pa_macros']]],
-  ['equatorial_5fcoordinates_5fto_5fhorizon_5fcoordinates_37',['equatorial_coordinates_to_horizon_coordinates',['../classPACoordinates.html#abeaa16cf056ccbbccad424cc499154be',1,'PACoordinates']]]
+  ['eccentricanomaly_30',['EccentricAnomaly',['../namespacepa__macros.html#ab9ec7af3d9f3be93d0a99ca677a11f23',1,'pa_macros']]],
+  ['eclipticcoordinatetoequatorialcoordinate_31',['EclipticCoordinateToEquatorialCoordinate',['../classPACoordinates.html#a281f3eaa11c711db5c271e2ed8243664',1,'PACoordinates']]],
+  ['eclipticdeclination_32',['EclipticDeclination',['../namespacepa__macros.html#a2f9cfe6d663a797a768e1fa9badd6369',1,'pa_macros']]],
+  ['eclipticrightascension_33',['EclipticRightAscension',['../namespacepa__macros.html#a495b684a1813eef15dfc26c99204cde6',1,'pa_macros']]],
+  ['egstut_34',['EGstUt',['../namespacepa__macros.html#ab7743e7ae01e7f12e4f8147a7d23f866',1,'pa_macros']]],
+  ['equatorialcoordinatestoaltitude_35',['EquatorialCoordinatesToAltitude',['../namespacepa__macros.html#ad0ec2cdd27489fbec1b7ac73fa5fcccf',1,'pa_macros']]],
+  ['equatorialcoordinatestoazimuth_36',['EquatorialCoordinatesToAzimuth',['../namespacepa__macros.html#ae6c7619a64602983be251999db4ec1df',1,'pa_macros']]],
+  ['equatorialcoordinatestohorizoncoordinates_37',['EquatorialCoordinatesToHorizonCoordinates',['../classPACoordinates.html#a73ae3c782986f279c58484e53171cf95',1,'PACoordinates']]],
+  ['equatorialcoordinatetoeclipticcoordinate_38',['EquatorialCoordinateToEclipticCoordinate',['../classPACoordinates.html#a9bf90d56c18a54b26b2f35ab30daf7aa',1,'PACoordinates']]],
+  ['equatorialcoordinatetogalacticcoordinate_39',['EquatorialCoordinateToGalacticCoordinate',['../classPACoordinates.html#a31aa2cc0a55c569a1ba74d2edb8cac07',1,'PACoordinates']]],
+  ['eriseset_40',['ERiseSet',['../namespacepa__macros.html#a61b97dc4902f15bfbfce176efbc82087',1,'pa_macros']]],
+  ['esunrisesetcalcstatus_41',['ESunRiseSetCalcStatus',['../namespacepa__macros.html#acbb661bc6a85a9db431525c1121dcbea',1,'pa_macros']]],
+  ['esunrisesetcalcstatusl3710_42',['ESunRiseSetCalcStatusL3710',['../namespacepa__macros.html#a926258c553b41b9b9dcae7d5f1524443',1,'pa_macros']]]
 ];

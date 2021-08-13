@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ok_226',['ok',['../namespacepa__types.html#abd8e28d1f6cc273e99b3cbaf226bb55aa444bcb3a3fcf8389296c49467f27e1d6',1,'pa_types::ok()'],['../namespacepa__types.html#a57d1662994e884d5eb36e8983f372a69a444bcb3a3fcf8389296c49467f27e1d6',1,'pa_types::ok()']]]
+  ['neverrises_265',['NeverRises',['../namespacepa__types.html#a941b09de880d465b1f7e49ea9f420214a448c26a93f4364a2a05bcf836cee0370',1,'pa_types']]]
 ];

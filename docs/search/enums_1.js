@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['coordinate_5ftype_217',['coordinate_type',['../namespacepa__types.html#acb3e7df63501f28e0e051764d5f290d4',1,'pa_types']]]
+  ['coordinatetype_254',['CoordinateType',['../namespacepa__types.html#af532ebccf30da4696c48ec61f6b4d663',1,'pa_types']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['warning_5fflags_219',['warning_flags',['../namespacepa__types.html#abd8e28d1f6cc273e99b3cbaf226bb55a',1,'pa_types']]]
+  ['sunrisesetstatus_256',['SunRiseSetStatus',['../namespacepa__types.html#a10349431b456a3d7d2b08ef68cd828cf',1,'pa_types']]]
 ];

@@ -1,16 +1,16 @@
 var searchData=
 [
-  ['decimal_5fdegrees_5fdegrees_16',['decimal_degrees_degrees',['../namespacepa__macros.html#aaeaf194b1761d7224708b3825dd3ce00',1,'pa_macros']]],
-  ['decimal_5fdegrees_5fminutes_17',['decimal_degrees_minutes',['../namespacepa__macros.html#a6da0729dc235618b10dd680edc75025c',1,'pa_macros']]],
-  ['decimal_5fdegrees_5fseconds_18',['decimal_degrees_seconds',['../namespacepa__macros.html#acbf486f882794cc5281a029f13dcf3e8',1,'pa_macros']]],
-  ['decimal_5fdegrees_5fto_5fangle_19',['decimal_degrees_to_angle',['../classPACoordinates.html#a16092431a788465f80c4c7e6a17141a3',1,'PACoordinates']]],
-  ['decimal_5fdegrees_5fto_5fdegree_5fhours_20',['decimal_degrees_to_degree_hours',['../namespacepa__macros.html#acb23d680e925ae805059dccf8a421324',1,'pa_macros']]],
-  ['decimal_5fhours_5fhour_21',['decimal_hours_hour',['../namespacepa__macros.html#aae3208a69452872e03c79b984be08b9a',1,'pa_macros']]],
-  ['decimal_5fhours_5fminute_22',['decimal_hours_minute',['../namespacepa__macros.html#ad51d420da53d3f525d5996099353773e',1,'pa_macros']]],
-  ['decimal_5fhours_5fsecond_23',['decimal_hours_second',['../namespacepa__macros.html#ac32da2203b0d5f1f5a4ebe482c6d4600',1,'pa_macros']]],
-  ['decimal_5fhours_5fto_5fcivil_5ftime_24',['decimal_hours_to_civil_time',['../classPADateTime.html#ad8d965664b418d25080a64b4e4bd684f',1,'PADateTime']]],
-  ['degree_5fhours_5fto_5fdecimal_5fdegrees_25',['degree_hours_to_decimal_degrees',['../namespacepa__macros.html#a703838af5c79e503be137e4bbb32388c',1,'pa_macros']]],
-  ['degrees_26',['degrees',['../namespacepa__types.html#ab68946c56cf92482bdebd1c557593b24aeb85e0821c20e303a97a813f3150b5e0',1,'pa_types']]],
-  ['degrees_5fminutes_5fseconds_5fto_5fdecimal_5fdegrees_27',['degrees_minutes_seconds_to_decimal_degrees',['../namespacepa__macros.html#a5bc3d6bacaf838b18c810ccd433fcca5',1,'pa_macros']]],
-  ['degrees_5fto_5fradians_28',['degrees_to_radians',['../namespacepa__util.html#a457297701063cbffc976655fcac3d5b1',1,'pa_util']]]
+  ['decimaldegreesdegrees_17',['DecimalDegreesDegrees',['../namespacepa__macros.html#ac2248fc2a1ae553e4fc602e12248fd0d',1,'pa_macros']]],
+  ['decimaldegreesminutes_18',['DecimalDegreesMinutes',['../namespacepa__macros.html#a823238225ebf411f576d4e39b8163c8e',1,'pa_macros']]],
+  ['decimaldegreesseconds_19',['DecimalDegreesSeconds',['../namespacepa__macros.html#a3fdd57bc1d07ee542d52ff7a38eb25a2',1,'pa_macros']]],
+  ['decimaldegreestoangle_20',['DecimalDegreesToAngle',['../classPACoordinates.html#a8e45fa474db3e5b254e9e5204f432cd6',1,'PACoordinates']]],
+  ['decimaldegreestodegreehours_21',['DecimalDegreesToDegreeHours',['../namespacepa__macros.html#a09135c11d0fb01532ba0350e19e4186c',1,'pa_macros']]],
+  ['decimalhourshour_22',['DecimalHoursHour',['../namespacepa__macros.html#acb4ebf008fc62965cb80a87f04f248e1',1,'pa_macros']]],
+  ['decimalhoursminute_23',['DecimalHoursMinute',['../namespacepa__macros.html#ab4b5be31d4023bd0a9ab7240fab49613',1,'pa_macros']]],
+  ['decimalhourssecond_24',['DecimalHoursSecond',['../namespacepa__macros.html#a2784960c3c6ce93db437ef9edced8471',1,'pa_macros']]],
+  ['decimalhourstociviltime_25',['DecimalHoursToCivilTime',['../classPADateTime.html#ac48a7d6948d467cb953c5c39d03e9e24',1,'PADateTime']]],
+  ['degreehourstodecimaldegrees_26',['DegreeHoursToDecimalDegrees',['../namespacepa__macros.html#abfc798cde445bfb93d2c1dca03e083a5',1,'pa_macros']]],
+  ['degrees_27',['Degrees',['../namespacepa__types.html#a371bca826285ce04d6372c4568ed03eeab28ef12cbe7643cb9eb5bc1151006013',1,'pa_types']]],
+  ['degreesminutessecondstodecimaldegrees_28',['DegreesMinutesSecondsToDecimalDegrees',['../namespacepa__macros.html#a2731266fe7d315233c6b56f891edf8db',1,'pa_macros']]],
+  ['degreestoradians_29',['DegreesToRadians',['../namespacepa__util.html#ae236118880978d3673639bcb94abf04d',1,'pa_util']]]
 ];

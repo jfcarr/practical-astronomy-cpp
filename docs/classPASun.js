@@ -1,6 +1,7 @@
 var classPASun =
 [
-    [ "approximate_position_of_sun", "classPASun.html#a2632ec6bdd1f49969b66777d8e2daf85", null ],
-    [ "precise_position_of_sun", "classPASun.html#ab231d841e97a565a43d664b330bae39c", null ],
-    [ "sun_distance_and_angular_size", "classPASun.html#a92f60c05ce6debdb1de92514f28b38c7", null ]
+    [ "ApproximatePositionOfSun", "classPASun.html#ab8458feb8a01bc642605e7810d03a521", null ],
+    [ "PrecisePositionOfSun", "classPASun.html#aa9c09055100b21dce5948087ced1fdc3", null ],
+    [ "SunDistanceAndAngularSize", "classPASun.html#a2754b17b4de435b054336800c9189a8a", null ],
+    [ "SunriseAndSunset", "classPASun.html#a758affe14d2bafefbfffdfbbc4c8b917", null ]
 ];

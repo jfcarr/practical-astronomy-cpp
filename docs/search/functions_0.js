@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['angle_5fbetween_5ftwo_5fobjects_131',['angle_between_two_objects',['../classPACoordinates.html#ad3bdb68a8e5354c95d33563dd52ab273',1,'PACoordinates']]],
-  ['angle_5fto_5fdecimal_5fdegrees_132',['angle_to_decimal_degrees',['../classPACoordinates.html#ac717a3d6b63f30840668ad294e9fa976',1,'PACoordinates']]],
-  ['approximate_5fposition_5fof_5fsun_133',['approximate_position_of_sun',['../classPASun.html#a2632ec6bdd1f49969b66777d8e2daf85',1,'PASun']]],
-  ['atmospheric_5frefraction_134',['atmospheric_refraction',['../classPACoordinates.html#ab2565a0a915cae5336a4616ee5fb87a6',1,'PACoordinates']]]
+  ['anglebetweentwoobjects_151',['AngleBetweenTwoObjects',['../classPACoordinates.html#a0efb1b4e0ebd371d0feb4fe3855a7dde',1,'PACoordinates']]],
+  ['angletodecimaldegrees_152',['AngleToDecimalDegrees',['../classPACoordinates.html#ae47387bd4b18c736be744d81f70c05b3',1,'PACoordinates']]],
+  ['approximatepositionofsun_153',['ApproximatePositionOfSun',['../classPASun.html#ab8458feb8a01bc642605e7810d03a521',1,'PASun']]],
+  ['atmosphericrefraction_154',['AtmosphericRefraction',['../classPACoordinates.html#ae937d7f96549e3eff303008bf00919aa',1,'PACoordinates']]]
 ];

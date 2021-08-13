@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['parallax_5fdec_190',['parallax_dec',['../namespacepa__macros.html#a95a4f18af82f25091535dfaf72eff5b2',1,'pa_macros']]],
-  ['parallax_5fdec_5fl2870_191',['parallax_dec_l2870',['../namespacepa__macros.html#a63d6b7521d9e0ef3b374c3393e80b288',1,'pa_macros']]],
-  ['parallax_5fha_192',['parallax_ha',['../namespacepa__macros.html#a6304de808eda18cf418bd640790d82e2',1,'pa_macros']]],
-  ['parallax_5fha_5fl2870_193',['parallax_ha_l2870',['../namespacepa__macros.html#aa4ca43afd78f7fee4446ef0c7d1d0063',1,'pa_macros']]],
-  ['precise_5fposition_5fof_5fsun_194',['precise_position_of_sun',['../classPASun.html#ab231d841e97a565a43d664b330bae39c',1,'PASun']]]
+  ['parallaxdec_214',['ParallaxDec',['../namespacepa__macros.html#a943a2663e522655bfeeb1af86e18e74a',1,'pa_macros']]],
+  ['parallaxdecl2870_215',['ParallaxDecL2870',['../namespacepa__macros.html#a4d7222c5f7013ffc3f3284493a8745bc',1,'pa_macros']]],
+  ['parallaxha_216',['ParallaxHa',['../namespacepa__macros.html#a6cb88d1f73d2ae8adc00fd49f928c10c',1,'pa_macros']]],
+  ['parallaxhal2870_217',['ParallaxHaL2870',['../namespacepa__macros.html#a8353c0d2319d799c4f2cd936955e8903',1,'pa_macros']]],
+  ['precisepositionofsun_218',['PrecisePositionOfSun',['../classPASun.html#aa9c09055100b21dce5948087ced1fdc3',1,'PASun']]]
 ];
