@@ -18,6 +18,17 @@ var pa__types_8h =
       [ "Ok", "pa__types_8h.html#a10349431b456a3d7d2b08ef68cd828cfaa60852f204ed8028c1c58808b746d115", null ],
       [ "ConversionError", "pa__types_8h.html#a10349431b456a3d7d2b08ef68cd828cfa33f8a28d3c790e00d94cc848895dfb51", null ]
     ] ],
+    [ "TwilightStatus", "pa__types_8h.html#a81e7b7a769bd36ff6e0cd2116e3066a9", [
+      [ "Ok", "pa__types_8h.html#a81e7b7a769bd36ff6e0cd2116e3066a9aa60852f204ed8028c1c58808b746d115", null ],
+      [ "ConversionError", "pa__types_8h.html#a81e7b7a769bd36ff6e0cd2116e3066a9a33f8a28d3c790e00d94cc848895dfb51", null ],
+      [ "LastsAllNight", "pa__types_8h.html#a81e7b7a769bd36ff6e0cd2116e3066a9ae846f9298481b24b1344a4963cfa5e67", null ],
+      [ "SunTooFarBelowHorizon", "pa__types_8h.html#a81e7b7a769bd36ff6e0cd2116e3066a9a0d9959c395ad822343f89d26c66a1c9c", null ]
+    ] ],
+    [ "TwilightType", "pa__types_8h.html#af024bf2ef95cffe8617bb2db71474c30", [
+      [ "Civil", "pa__types_8h.html#af024bf2ef95cffe8617bb2db71474c30a67ec0b59227d3f9d4e3230182eff8e95", null ],
+      [ "Nautical", "pa__types_8h.html#af024bf2ef95cffe8617bb2db71474c30a6d0d8fed5f601fa598df42d4d59d70ae", null ],
+      [ "Astronomical", "pa__types_8h.html#af024bf2ef95cffe8617bb2db71474c30a6d7c07b63245a59a523763203e9c6ca3", null ]
+    ] ],
     [ "WarningFlags", "pa__types_8h.html#a7e386b27dc854f314a7ba760a1cf5343", [
       [ "Ok", "pa__types_8h.html#a7e386b27dc854f314a7ba760a1cf5343aa60852f204ed8028c1c58808b746d115", null ],
       [ "Warning", "pa__types_8h.html#a7e386b27dc854f314a7ba760a1cf5343a0eaadb4fcb48a0a0ed7bc9868be9fbaa", null ]

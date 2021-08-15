@@ -104,6 +104,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a758affe14d2bafefbfffdfbbc4c8b917"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, double, double, <a class="el" href="namespacepa__types.html#a941b09de880d465b1f7e49ea9f420214">pa_types::RiseSetStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPASun.html#a758affe14d2bafefbfffdfbbc4c8b917">SunriseAndSunset</a> (double local_day, int local_month, int local_year, bool is_daylight_saving, int zone_correction, double geographical_long_deg, double geographical_lat_deg)</td></tr>
 <tr class="memdesc:a758affe14d2bafefbfffdfbbc4c8b917"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate local sunrise and sunset.  <a href="classPASun.html#a758affe14d2bafefbfffdfbbc4c8b917">More...</a><br /></td></tr>
 <tr class="separator:a758affe14d2bafefbfffdfbbc4c8b917"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a902facf778cdb570a9ea5537cf194c4e"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double, double, double, <a class="el" href="namespacepa__types.html#a81e7b7a769bd36ff6e0cd2116e3066a9">pa_types::TwilightStatus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPASun.html#a902facf778cdb570a9ea5537cf194c4e">MorningAndEveningTwilight</a> (double localDay, int localMonth, int localYear, bool isDaylightSaving, int zoneCorrection, double geographicalLongDeg, double geographicalLatDeg, <a class="el" href="namespacepa__types.html#af024bf2ef95cffe8617bb2db71474c30">pa_types::TwilightType</a> twilightType)</td></tr>
+<tr class="memdesc:a902facf778cdb570a9ea5537cf194c4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate times of morning and evening twilight.  <a href="classPASun.html#a902facf778cdb570a9ea5537cf194c4e">More...</a><br /></td></tr>
+<tr class="separator:a902facf778cdb570a9ea5537cf194c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -175,6 +178,75 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>tuple &lt;double sun_ra_hour, double sun_ra_main, double sun_ra_sec, double sun_dec_deg, double sun_dec_min, double sun_dec_sec&gt; </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="pa__sun_8cpp_source.html#l00018">18</a> of file <a class="el" href="pa__sun_8cpp_source.html">pa_sun.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a902facf778cdb570a9ea5537cf194c4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a902facf778cdb570a9ea5537cf194c4e">&#9670;&nbsp;</a></span>MorningAndEveningTwilight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; double, double, double, double, <a class="el" href="namespacepa__types.html#a81e7b7a769bd36ff6e0cd2116e3066a9">pa_types::TwilightStatus</a> &gt; MorningAndEveningTwilight </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>localDay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>localMonth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>localYear</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isDaylightSaving</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zoneCorrection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geographicalLongDeg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>geographicalLatDeg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacepa__types.html#af024bf2ef95cffe8617bb2db71474c30">pa_types::TwilightType</a>&#160;</td>
+          <td class="paramname"><em>twilightType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate times of morning and evening twilight. </p>
+<p>tuple &lt;double amTwilightBeginsHour, double amTwilightBeginsMin, double pmTwilightEndsHour, double pmTwilightEndsMin, <a class="el" href="namespacepa__types.html#a81e7b7a769bd36ff6e0cd2116e3066a9">pa_types::TwilightStatus</a>&gt; </p>
+
+<p class="definition">Definition at line <a class="el" href="pa__sun_8cpp_source.html#l00220">220</a> of file <a class="el" href="pa__sun_8cpp_source.html">pa_sun.cpp</a>.</p>
 
 </div>
 </div>
