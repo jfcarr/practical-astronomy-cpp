@@ -34,11 +34,31 @@ enum class CoordinateType {
 
 /**
  * Status of sunrise/sunset calculation.
- *
  */
 enum class SunRiseSetStatus {
   Ok,             /**< good value */
   ConversionError /**< bad value */
+};
+
+/**
+ * Status of twilight calculation.
+ */
+enum class TwilightStatus {
+  Ok,
+  ConversionError,
+  LastsAllNight,
+  SunTooFarBelowHorizon
+};
+
+/**
+ * \brief Twilight type
+ *
+ * Maps to degrees-below-horizon.
+ */
+enum class TwilightType {
+  Civil = 6,        /**< First period of twilight */
+  Nautical = 12,    /**< Second period of twilight */
+  Astronomical = 18 /**< Third period of twilight */
 };
 } // namespace pa_types
 #endif

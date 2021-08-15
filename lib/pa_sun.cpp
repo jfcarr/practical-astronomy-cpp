@@ -209,3 +209,53 @@ PASun::SunriseAndSunset(double localDay, int localMonth, int localYear,
                                              azimuthOfSunsetDeg,
                                              status};
 }
+
+/**
+ * \brief Calculate times of morning and evening twilight.
+ *
+ * tuple <double amTwilightBeginsHour, double amTwilightBeginsMin, double
+ * pmTwilightEndsHour, double pmTwilightEndsMin, pa_types::TwilightStatus>
+ */
+std::tuple<double, double, double, double, pa_types::TwilightStatus>
+PASun::MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
+                                 bool isDaylightSaving, int zoneCorrection,
+                                 double geographicalLongDeg,
+                                 double geographicalLatDeg,
+                                 pa_types::TwilightType twilightType) {
+  int daylightSaving = (isDaylightSaving) ? 1 : 0;
+
+  double startOfAMTwilightHours = TwilightAMLocalCivilTime(
+      localDay, localMonth, localYear, daylightSaving, zoneCorrection,
+      geographicalLongDeg, geographicalLatDeg, twilightType);
+
+  double endOfPMTwilightHours = TwilightPMLocalCivilTime(
+      localDay, localMonth, localYear, daylightSaving, zoneCorrection,
+      geographicalLongDeg, geographicalLatDeg, twilightType);
+
+  pa_types::TwilightStatus twilightStatus =
+      ETwilight(localDay, localMonth, localYear, daylightSaving, zoneCorrection,
+                geographicalLongDeg, geographicalLatDeg, twilightType);
+
+  double adjustedAMStartTime = startOfAMTwilightHours + 0.008333;
+  double adjustedPMStartTime = endOfPMTwilightHours + 0.008333;
+
+  double amTwilightBeginsHour = (twilightStatus == pa_types::TwilightStatus::Ok)
+                                    ? DecimalHoursHour(adjustedAMStartTime)
+                                    : -99;
+  double amTwilightBeginsMin = (twilightStatus == pa_types::TwilightStatus::Ok)
+                                   ? DecimalHoursMinute(adjustedAMStartTime)
+                                   : -99;
+
+  double pmTwilightEndsHour = (twilightStatus == pa_types::TwilightStatus::Ok)
+                                  ? DecimalHoursHour(adjustedPMStartTime)
+                                  : -99;
+  double pmTwilightEndsMin = (twilightStatus == pa_types::TwilightStatus::Ok)
+                                 ? DecimalHoursMinute(adjustedPMStartTime)
+                                 : -99;
+
+  pa_types::TwilightStatus status = twilightStatus;
+
+  return std::tuple<double, double, double, double, pa_types::TwilightStatus>{
+      amTwilightBeginsHour, amTwilightBeginsMin, pmTwilightEndsHour,
+      pmTwilightEndsMin, status};
+}
