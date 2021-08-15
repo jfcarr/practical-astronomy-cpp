@@ -1944,4 +1944,212 @@ double RiseSetAzimuthSet(double rah, double ram, double ras, double dd,
   return i - 360 * floor(i / 360);
 }
 
+/**
+ * \brief Calculate morning twilight start, in local time.
+ *
+ * Original macro name: TwilightAMLCT
+ */
+double TwilightAMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
+                                double gl, double gp,
+                                pa_types::TwilightType tt) {
+  double di = (double)tt;
+
+  double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
+  int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
+  int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
+  double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+      TwilightAMLocalCivilTime_L3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+    return -99.0;
+  }
+
+  double x =
+      LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
+  double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+
+  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+    return -99.0;
+  }
+
+  sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result2 =
+      TwilightAMLocalCivilTime_L3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+    return -99.0;
+  }
+
+  x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0, gl);
+  ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+
+  double xx = UniversalTimeToLocalCivilTime(ut, 0, 0, ds, zc, gd, gm, gy);
+
+  return xx;
+}
+
+/**
+ * \brief Helper function for twilight_am_lct()
+ *
+ * @return tuple <double a, double x, double y, double la,
+ * pa_types::RiseSetStatus s>
+ */
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+TwilightAMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
+                               double gp) {
+  double a = sr + NutatLong(gd, gm, gy) - 0.005694;
+  double x = EclipticRightAscension(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
+                                           y, 0, 0, di, gp);
+  pa_types::RiseSetStatus s =
+      ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
+
+  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
+      a, x, y, la, s};
+}
+
+/**
+ * \brief Calculate evening twilight end, in local time.
+ *
+ * Original macro name: TwilightPMLCT
+ */
+double TwilightPMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
+                                double gl, double gp,
+                                pa_types::TwilightType tt) {
+  double di = (double)tt;
+
+  double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
+  int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
+  int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
+  double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+      TwilightPMLocalCivilTime_L3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+    return 0.0;
+  }
+
+  double x =
+      LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
+  double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+
+  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+    return 0.0;
+  }
+
+  sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
+
+  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result2 =
+      TwilightPMLocalCivilTime_L3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+    return 0.0;
+  }
+
+  x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0, gl);
+  ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+
+  return UniversalTimeToLocalCivilTime(ut, 0, 0, ds, zc, gd, gm, gy);
+}
+
+/**
+ * \brief Helper function for twilight_pm_lct()
+ *
+ * @return tuple <double a, double x, double y, double la,
+ * pa_types::RiseSetStatus s>
+ */
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+TwilightPMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
+                               double gp) {
+  double a = sr + NutatLong(gd, gm, gy) - 0.005694;
+  double x = EclipticRightAscension(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double la = RiseSetLocalSiderealTimeSet(DecimalDegreesToDegreeHours(x), 0, 0,
+                                          y, 0, 0, di, gp);
+  pa_types::RiseSetStatus s =
+      ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
+
+  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
+      a, x, y, la, s};
+}
+
+/**
+ * \brief Twilight calculation status.
+ *
+ * Original macro name: eTwilight
+ */
+pa_types::TwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc,
+                                   double gl, double gp,
+                                   pa_types::TwilightType tt) {
+  double di = (double)tt;
+
+  double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
+  int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
+  int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
+  double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
+
+  std::tuple<double, double, double, double, pa_types::TwilightStatus> result1 =
+      ETwilight_L3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result1) != pa_types::TwilightStatus::Ok) {
+    return std::get<4>(result1);
+  }
+
+  double x =
+      LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
+  double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
+  sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
+
+  std::tuple<double, double, double, double, pa_types::TwilightStatus> result2 =
+      ETwilight_L3710(gd, gm, gy, sr, di, gp);
+
+  if (std::get<4>(result2) != pa_types::TwilightStatus::Ok) {
+    return std::get<4>(result2);
+  }
+
+  x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0, gl);
+
+  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+    return pa_types::TwilightStatus::ConversionError;
+  }
+
+  return std::get<4>(result2);
+}
+
+/**
+ * \brief Helper function for e_twilight()
+ *
+ * @return std::tuple <double a, double x, double y, double la,
+ * pa_types::TwilightStatus ts>
+ */
+std::tuple<double, double, double, double, pa_types::TwilightStatus>
+ETwilight_L3710(double gd, int gm, int gy, double sr, double di, double gp) {
+
+  double a = sr + NutatLong(gd, gm, gy) - 0.005694;
+  double x = EclipticRightAscension(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
+  double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
+                                           y, 0, 0, di, gp);
+  pa_types::RiseSetStatus s =
+      ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
+
+  pa_types::TwilightStatus ts = pa_types::TwilightStatus::Ok;
+
+  if (s == pa_types::RiseSetStatus::Circumpolar) {
+    ts = pa_types::TwilightStatus::LastsAllNight;
+  }
+
+  if (s == pa_types::RiseSetStatus::NeverRises) {
+    ts = pa_types::TwilightStatus::SunTooFarBelowHorizon;
+  }
+
+  return std::tuple<double, double, double, double, pa_types::TwilightStatus>{
+      a, x, y, la, ts};
+}
+
 } // namespace pa_macros

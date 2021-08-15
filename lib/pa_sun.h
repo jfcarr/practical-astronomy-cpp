@@ -28,5 +28,12 @@ public:
   SunriseAndSunset(double local_day, int local_month, int local_year,
                    bool is_daylight_saving, int zone_correction,
                    double geographical_long_deg, double geographical_lat_deg);
+
+  std::tuple<double, double, double, double, pa_types::TwilightStatus>
+  MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
+                            bool isDaylightSaving, int zoneCorrection,
+                            double geographicalLongDeg,
+                            double geographicalLatDeg,
+                            pa_types::TwilightType twilightType);
 };
 #endif

@@ -172,5 +172,22 @@ double RiseSetAzimuthRise(double rah, double ram, double ras, double dd,
                           double dm, double ds, double vd, double g);
 double RiseSetAzimuthSet(double rah, double ram, double ras, double dd,
                          double dm, double ds, double vd, double g);
+double TwilightAMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
+                                double gl, double gp,
+                                pa_types::TwilightType tt);
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+TwilightAMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
+                               double gp);
+double TwilightPMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
+                                double gl, double gp,
+                                pa_types::TwilightType tt);
+std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+TwilightPMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
+                               double gp);
+pa_types::TwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc,
+                                   double gl, double gp,
+                                   pa_types::TwilightType tt);
+std::tuple<double, double, double, double, pa_types::TwilightStatus>
+ETwilight_L3710(double gd, int gm, int gy, double sr, double di, double gp);
 } // namespace pa_macros
 #endif

@@ -110,3 +110,30 @@ SCENARIO("Sunrise and Sunset") {
     }
   }
 }
+
+SCENARIO("Morning and Evening Twilight") {
+  GIVEN("A PASun object") {
+    PASun paSun;
+
+    WHEN("Local date is 9/7/1979 and geographical longitude/latitude is 0d/52d "
+         "and twilight type is astronomical") {
+      std::tuple<double, double, double, double, pa_types::TwilightStatus>
+          result = paSun.MorningAndEveningTwilight(
+              7, 9, 1979, false, 0, 0, 52,
+              pa_types::TwilightType::Astronomical);
+
+      THEN("Twilight begins at 03:00 and twilight ends at 20:37 and twilight "
+           "status is OK") {
+        std::tuple<double, double, double, double, pa_types::TwilightStatus>
+            expected =
+                std::make_tuple(3, 17, 20, 37, pa_types::TwilightStatus::Ok);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+        REQUIRE(std::get<4>(result) == std::get<4>(expected));
+      }
+    }
+  }
+}
