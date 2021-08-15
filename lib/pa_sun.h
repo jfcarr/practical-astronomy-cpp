@@ -35,5 +35,8 @@ public:
                             double geographicalLongDeg,
                             double geographicalLatDeg,
                             pa_types::TwilightType twilightType);
+
+  std::tuple<double, double> EquationOfTime(double gwdateDay, int gwdateMonth,
+                                            int gwdateYear);
 };
 #endif

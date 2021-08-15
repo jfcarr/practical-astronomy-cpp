@@ -259,3 +259,27 @@ PASun::MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
       amTwilightBeginsHour, amTwilightBeginsMin, pmTwilightEndsHour,
       pmTwilightEndsMin, status};
 }
+
+/**
+ * \brief Calculate the equation of time.
+ *
+ * The equation of time is the  difference between the real Sun time and the
+ * mean Sun time.
+ *
+ * @return tuple <double equationOfTimeMin, double equationOfTimeSec>
+ */
+std::tuple<double, double>
+PASun::EquationOfTime(double gwdateDay, int gwdateMonth, int gwdateYear) {
+  double sunLongitudeDeg =
+      SunLong(12, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear);
+  double sunRAHours = DecimalDegreesToDegreeHours(EclipticRightAscension(
+      sunLongitudeDeg, 0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear));
+  double equivalentUTHours = GreenwichSiderealTimeToUniversalTime(
+      sunRAHours, 0, 0, gwdateDay, gwdateMonth, gwdateYear);
+  double equationOfTimeHours = equivalentUTHours - 12;
+
+  int equationOfTimeMin = DecimalHoursMinute(equationOfTimeHours);
+  double equationOfTimeSec = DecimalHoursSecond(equationOfTimeHours);
+
+  return std::tuple<double, double>{equationOfTimeMin, equationOfTimeSec};
+}

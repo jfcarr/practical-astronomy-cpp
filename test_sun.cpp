@@ -137,3 +137,20 @@ SCENARIO("Morning and Evening Twilight") {
     }
   }
 }
+
+SCENARIO("Equation of Time") {
+  GIVEN("A PASun object") {
+    PASun paSun;
+
+    WHEN("Greenwich date is 7/27/2010") {
+      std::tuple<double, double> result = paSun.EquationOfTime(27, 7, 2010);
+
+      THEN("Equation of time is 06:31.52") {
+        std::tuple<double, double> expected = std::make_tuple(6, 31.52);
+
+        REQUIRE(std::get<0>(result) == std::get<0>(expected));
+        REQUIRE(std::get<1>(result) == std::get<1>(expected));
+      }
+    }
+  }
+}
