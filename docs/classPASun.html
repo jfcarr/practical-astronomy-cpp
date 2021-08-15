@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1499f9f1a0ac0dea10b8dc9509875d2a"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPASun.html#a1499f9f1a0ac0dea10b8dc9509875d2a">EquationOfTime</a> (double gwdateDay, int gwdateMonth, int gwdateYear)</td></tr>
 <tr class="memdesc:a1499f9f1a0ac0dea10b8dc9509875d2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the equation of time.  <a href="classPASun.html#a1499f9f1a0ac0dea10b8dc9509875d2a">More...</a><br /></td></tr>
 <tr class="separator:a1499f9f1a0ac0dea10b8dc9509875d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5597699ff71b65bcb57556f40909c1a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPASun.html#af5597699ff71b65bcb57556f40909c1a">SolarElongation</a> (double raHour, double raMin, double raSec, double decDeg, double decMin, double decSec, double gwdateDay, int gwdateMonth, int gwdateYear)</td></tr>
+<tr class="memdesc:af5597699ff71b65bcb57556f40909c1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate solar elongation for a celestial body.  <a href="classPASun.html#af5597699ff71b65bcb57556f40909c1a">More...</a><br /></td></tr>
+<tr class="separator:af5597699ff71b65bcb57556f40909c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -358,6 +361,82 @@ Public Member Functions</h2></td></tr>
 <p>Calculate precise position of the sun for a local date and time. </p>
 
 <p class="definition">Definition at line <a class="el" href="pa__sun_8cpp_source.html#l00071">71</a> of file <a class="el" href="pa__sun_8cpp_source.html">pa_sun.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af5597699ff71b65bcb57556f40909c1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5597699ff71b65bcb57556f40909c1a">&#9670;&nbsp;</a></span>SolarElongation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SolarElongation </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>raHour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>raMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>raSec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>decDeg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>decMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>decSec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gwdateDay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gwdateMonth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gwdateYear</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate solar elongation for a celestial body. </p>
+<p>Solar elongation is the angle between the lines of sight from the Earth to the Sun and from the Earth to the celestial body.</p>
+<dl class="section return"><dt>Returns</dt><dd>Solar elongation, in degrees. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pa__sun_8cpp_source.html#l00295">295</a> of file <a class="el" href="pa__sun_8cpp_source.html">pa_sun.cpp</a>.</p>
 
 </div>
 </div>

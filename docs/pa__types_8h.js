@@ -1,5 +1,9 @@
 var pa__types_8h =
 [
+    [ "AngleMeasure", "pa__types_8h.html#a5d4d0c81ebc42af6ba918ee2a865867e", [
+      [ "Degrees", "pa__types_8h.html#a5d4d0c81ebc42af6ba918ee2a865867ea9ef125630442bb42e2e367e0cf70d892", null ],
+      [ "Hours", "pa__types_8h.html#a5d4d0c81ebc42af6ba918ee2a865867ea6a7e73161603d87b26a8eac49dab0a9c", null ]
+    ] ],
     [ "AngleMeasurementUnits", "pa__types_8h.html#a371bca826285ce04d6372c4568ed03ee", [
       [ "Hours", "pa__types_8h.html#a371bca826285ce04d6372c4568ed03eeac40e622aca7d8e0e8eb260d83ba14fcc", null ],
       [ "Degrees", "pa__types_8h.html#a371bca826285ce04d6372c4568ed03eeab28ef12cbe7643cb9eb5bc1151006013", null ]
