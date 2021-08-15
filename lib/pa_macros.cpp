@@ -2152,4 +2152,29 @@ ETwilight_L3710(double gd, int gm, int gy, double sr, double di, double gp) {
       a, x, y, la, ts};
 }
 
+/**
+ * \brief Calculate the angle between two celestial objects
+ *
+ * Original macro name: Angle
+ */
+double Angle(double xx1, double xm1, double xs1, double dd1, double dm1,
+             double ds1, double xx2, double xm2, double xs2, double dd2,
+             double dm2, double ds2, pa_types::AngleMeasure s) {
+  double a = (s == pa_types::AngleMeasure::Hours)
+                 ? DegreeHoursToDecimalDegrees(HmsToDh(xx1, xm1, xs1))
+                 : DegreesMinutesSecondsToDecimalDegrees(xx1, xm1, xs1);
+  double b = DegreesToRadians(a);
+  double c = DegreesMinutesSecondsToDecimalDegrees(dd1, dm1, ds1);
+  double d = DegreesToRadians(c);
+  double e = (s == pa_types::AngleMeasure::Hours)
+                 ? DegreeHoursToDecimalDegrees(HmsToDh(xx2, xm2, xs2))
+                 : DegreesMinutesSecondsToDecimalDegrees(xx2, xm2, xs2);
+  double f = DegreesToRadians(e);
+  double g = DegreesMinutesSecondsToDecimalDegrees(dd2, dm2, ds2);
+  double h = DegreesToRadians(g);
+  double i = acos(sin(d) * sin(h) + cos(d) * cos(h) * cos(b - f));
+
+  return WToDegrees(i);
+}
+
 } // namespace pa_macros

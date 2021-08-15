@@ -1,5 +1,6 @@
 var pa__macros_8cpp =
 [
+    [ "Angle", "pa__macros_8cpp.html#af9ac38e7d514f702314914e2f653a192", null ],
     [ "CivilDateToJulianDate", "pa__macros_8cpp.html#a1b06f81e5a2d1a510f8395886a2918f6", null ],
     [ "DecimalDegreesDegrees", "pa__macros_8cpp.html#ac2248fc2a1ae553e4fc602e12248fd0d", null ],
     [ "DecimalDegreesMinutes", "pa__macros_8cpp.html#a823238225ebf411f576d4e39b8163c8e", null ],

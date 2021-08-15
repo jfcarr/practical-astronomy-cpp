@@ -38,5 +38,9 @@ public:
 
   std::tuple<double, double> EquationOfTime(double gwdateDay, int gwdateMonth,
                                             int gwdateYear);
+
+  double SolarElongation(double raHour, double raMin, double raSec,
+                         double decDeg, double decMin, double decSec,
+                         double gwdateDay, int gwdateMonth, int gwdateYear);
 };
 #endif

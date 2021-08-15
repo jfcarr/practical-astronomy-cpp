@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['twilightstatus_280',['TwilightStatus',['../namespacepa__types.html#a81e7b7a769bd36ff6e0cd2116e3066a9',1,'pa_types']]],
-  ['twilighttype_281',['TwilightType',['../namespacepa__types.html#af024bf2ef95cffe8617bb2db71474c30',1,'pa_types']]]
+  ['twilightstatus_286',['TwilightStatus',['../namespacepa__types.html#a81e7b7a769bd36ff6e0cd2116e3066a9',1,'pa_types']]],
+  ['twilighttype_287',['TwilightType',['../namespacepa__types.html#af024bf2ef95cffe8617bb2db71474c30',1,'pa_types']]]
 ];

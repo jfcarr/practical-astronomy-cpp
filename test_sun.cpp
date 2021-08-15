@@ -154,3 +154,21 @@ SCENARIO("Equation of Time") {
     }
   }
 }
+
+SCENARIO("Calculate solar elongation for a celestial body") {
+  GIVEN("A PASun object") {
+    PASun paSun;
+
+    WHEN("Right Ascension is 10h 6m 45s and Declination is 11d 57m 27s and "
+         "Greenwich Date is 7/27.8333333/2010") {
+      double result =
+          paSun.SolarElongation(10, 6, 45, 11, 57, 27, 27.8333333, 7, 2010);
+
+      THEN("Solar Elongation is 24.78d") {
+        double expected = 24.78;
+
+        REQUIRE(result == expected);
+      }
+    }
+  }
+}

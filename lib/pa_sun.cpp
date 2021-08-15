@@ -283,3 +283,28 @@ PASun::EquationOfTime(double gwdateDay, int gwdateMonth, int gwdateYear) {
 
   return std::tuple<double, double>{equationOfTimeMin, equationOfTimeSec};
 }
+
+/**
+ * \brief Calculate solar elongation for a celestial body.
+ *
+ * Solar elongation is the angle between the lines of sight from the Earth to
+ * the Sun and from the Earth to the celestial body.
+ *
+ * @return Solar elongation, in degrees.
+ */
+double PASun::SolarElongation(double raHour, double raMin, double raSec,
+                              double decDeg, double decMin, double decSec,
+                              double gwdateDay, int gwdateMonth,
+                              int gwdateYear) {
+  double sunLongitudeDeg =
+      SunLong(0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear);
+  double sunRAHours = DecimalDegreesToDegreeHours(EclipticRightAscension(
+      sunLongitudeDeg, 0, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear));
+  double sunDecDeg = EclipticDeclination(sunLongitudeDeg, 0, 0, 0, 0, 0,
+                                         gwdateDay, gwdateMonth, gwdateYear);
+  double solarElongationDeg =
+      pa_macros::Angle(sunRAHours, 0, 0, sunDecDeg, 0, 0, raHour, raMin, raSec,
+                       decDeg, decMin, decSec, pa_types::AngleMeasure::Hours);
+
+  return pa_util::Round(solarElongationDeg, 2);
+}

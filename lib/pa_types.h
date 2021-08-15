@@ -60,5 +60,13 @@ enum class TwilightType {
   Nautical = 12,    /**< Second period of twilight */
   Astronomical = 18 /**< Third period of twilight */
 };
+
+/**
+ * \brief Angle measurement units.
+ */
+enum class AngleMeasure {
+  Degrees, /**< Measurement by degrees */
+  Hours    /**< Measurement by hours */
+};
 } // namespace pa_types
 #endif
