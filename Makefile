@@ -1,6 +1,6 @@
-LIB_OBJS1 = pa_datetime.o pa_coordinates.o pa_sun.o
-LIB_OBJS2 = pa_macros.o pa_util.o 
-TEST_OBJS = test.o test_datetime.o test_coordinates.o test_sun.o
+LIB_OBJS1 = pa_datetime.o pa_coordinates.o pa_sun.o pa_planet.o
+LIB_OBJS2 = pa_data.o pa_macros.o pa_util.o 
+TEST_OBJS = test.o test_datetime.o test_coordinates.o test_sun.o test_planet.o
 COMPILER = clang++
 CPP_STD = c++17
 
@@ -42,20 +42,28 @@ pa_coordinates.o: lib/pa_coordinates.cpp lib/pa_coordinates.h
 pa_sun.o: lib/pa_sun.cpp lib/pa_sun.h
 	$(COMPILER) -std=$(CPP_STD) -c lib/pa_sun.cpp
 
-pa_util.o: lib/pa_util.cpp lib/pa_util.h
-	$(COMPILER) -std=$(CPP_STD) -c lib/pa_util.cpp
+pa_planet.o: lib/pa_planet.cpp lib/pa_planet.h
+	$(COMPILER) -std=$(CPP_STD) -c lib/pa_planet.cpp
+
+pa_data.o: lib/pa_data.cpp lib/pa_data.h
+	$(COMPILER) -std=$(CPP_STD) -c lib/pa_data.cpp
 
 pa_macros.o: lib/pa_macros.cpp lib/pa_macros.h
 	$(COMPILER) -std=$(CPP_STD) -c lib/pa_macros.cpp
+
+pa_util.o: lib/pa_util.cpp lib/pa_util.h
+	$(COMPILER) -std=$(CPP_STD) -c lib/pa_util.cpp
 
 document:
 	doxygen
 
 format:
-	clang-format -i test.cpp test_datetime.cpp test_coordinates.cpp
+	clang-format -i test.cpp test_datetime.cpp test_coordinates.cpp test_sun.cpp test_planet.cpp
 	clang-format -i lib/pa_datetime.cpp lib/pa_datetime.h
 	clang-format -i lib/pa_coordinates.cpp lib/pa_coordinates.h
 	clang-format -i lib/pa_sun.cpp lib/pa_sun.h
+	clang-format -i lib/pa_planet.cpp lib/pa_planet.h
+	clang-format -i lib/pa_data.cpp lib/pa_data.h
 	clang-format -i lib/pa_macros.cpp lib/pa_macros.h
 	clang-format -i lib/pa_util.cpp lib/pa_util.h
 
