@@ -2,8 +2,10 @@
 #define _pa_data
 
 #include <string>
+#include <vector>
 
 namespace pa_data {
+
 class PlanetData {
 public:
   /**
@@ -94,7 +96,52 @@ public:
   }
 };
 
+class PlanetDataPrecise {
+public:
+  std::string name; /** Name of planet */
+  double value1;    /** Working value 1 */
+  double value2;    /** Working value 2 */
+  double value3;    /** Working value 3 */
+  double value4;    /** Working value 4 */
+  double value5;    /** Working value 5 */
+  double value6;    /** Working value 6 */
+  double value7;    /** Working value 7 */
+  double value8;    /** Working value 8 */
+  double value9;    /** Working value 9 */
+  double ap_value;  /** Working AP value */
+
+  PlanetDataPrecise() {}
+
+  PlanetDataPrecise(std::string name, double value1, double value2,
+                    double value3, double value4, double value5, double value6,
+                    double value7, double value8, double value9,
+                    double ap_value) {
+    this->name = name;
+    this->value1 = value1;
+    this->value2 = value2;
+    this->value3 = value3;
+    this->value4 = value4;
+    this->value5 = value5;
+    this->value6 = value6;
+    this->value7 = value7;
+    this->value8 = value8;
+    this->value9 = value9;
+    this->ap_value = ap_value;
+  }
+};
+
 PlanetData planetLookup(std::string planetName);
+
+PlanetDataPrecise getPrecisePlanetData(
+    std::string planet_name,
+    std::vector<pa_data::PlanetDataPrecise> precise_planet_data);
+
+PlanetDataPrecise populatePrecisePlanetData(std::string name, double value1,
+                                            double value2, double value3,
+                                            double value4, double value5,
+                                            double value6, double value7,
+                                            double value8, double value9,
+                                            double ap_value);
 
 } // namespace pa_data
 #endif

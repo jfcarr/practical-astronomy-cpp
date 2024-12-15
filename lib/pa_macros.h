@@ -1,5 +1,9 @@
+#include "pa_data.h"
+#include "pa_models.h"
 #include "pa_types.h"
+#include <string>
 #include <tuple>
+#include <vector>
 
 #ifndef _pa_macros
 #define _pa_macros
@@ -183,6 +187,9 @@ double EclipticRightAscension(double eld, double elm, double els, double bd,
 double SunTrueAnomaly(double lch, double lcm, double lcs, int ds, int zc,
                       double ld, int lm, int ly);
 
+double SunMeanAnomaly(double lch, double lcm, double lcs, int ds, int zc,
+                      double ld, int lm, int ly);
+
 double SunriseLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
                              double gl, double gp);
 
@@ -267,5 +274,23 @@ ETwilight_L3710(double gd, int gm, int gy, double sr, double di, double gp);
 double Angle(double xx1, double xm1, double xs1, double dd1, double dm1,
              double ds1, double xx2, double xm2, double xs2, double dd2,
              double dm2, double ds2, pa_types::AngleMeasure s);
+
+pa_models::CPlanetCoordinates PlanetCoordinates(double lh, double lm, double ls,
+                                                int ds, int zc, double dy,
+                                                int mn, int yr, std::string s);
+
+pa_models::CPlanetLongLatL4685
+PlanetLongL4685(std::vector<pa_data::PlanetDataPrecise> pl);
+
+pa_models::CPlanetLongLatL4735
+PlanetLongL4735(std::vector<pa_data::PlanetDataPrecise> pl, double ms,
+                double t);
+
+pa_models::CPlanetLongLatL4810
+PlanetLongL4810(std::vector<pa_data::PlanetDataPrecise> pl, double ms);
+
+pa_models::CPlanetLongLatL4945
+PlanetLongL4945(double t, pa_data::PlanetDataPrecise planet);
+
 } // namespace pa_macros
 #endif
