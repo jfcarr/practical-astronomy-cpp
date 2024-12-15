@@ -1,12 +1,14 @@
 #include "pa_planet.h"
 #include "pa_data.h"
 #include "pa_macros.h"
+#include "pa_models.h"
 #include "pa_types.h"
 #include "pa_util.h"
 #include <cmath>
 #include <string>
 
 using namespace pa_types;
+using namespace pa_models;
 using namespace pa_util;
 using namespace pa_macros;
 
@@ -111,4 +113,40 @@ PAPlanet::ApproximatePositionOfPlanet(double lctHour, double lctMin,
   return std::tuple<double, double, double, double, double, double>{
       planetRAHour, planetRAMin,  planetRASec,
       planetDecDeg, planetDecMin, planetDecSec};
+}
+
+/**
+ * Calculate precise position of a planet.
+ *
+ * @return CPrecisePositionOfPlanet
+ */
+CPrecisePositionOfPlanet PAPlanet::PrecisePositionOfPlanet(
+    double lctHour, double lctMin, double lctSec, bool isDaylightSaving,
+    int zoneCorrectionHours, double localDateDay, int localDateMonth,
+    int localDateYear, std::string planetName) {
+  int daylightSaving = (isDaylightSaving) ? 1 : 0;
+
+  pa_models::CPlanetCoordinates coordinateResults =
+      pa_macros::PlanetCoordinates(lctHour, lctMin, lctSec, daylightSaving,
+                                   zoneCorrectionHours, localDateDay,
+                                   localDateMonth, localDateYear, planetName);
+
+  double planetRAHours =
+      pa_macros::DecimalDegreesToDegreeHours(pa_macros::EclipticRightAscension(
+          coordinateResults.planetLongitude, 0, 0,
+          coordinateResults.planetLatitude, 0, 0, localDateDay, localDateMonth,
+          localDateYear));
+  double planetDecDeg1 = pa_macros::EclipticDeclination(
+      coordinateResults.planetLongitude, 0, 0, coordinateResults.planetLatitude,
+      0, 0, localDateDay, localDateMonth, localDateYear);
+
+  int planetRAHour = pa_macros::DecimalHoursHour(planetRAHours);
+  int planetRAMin = pa_macros::DecimalHoursMinute(planetRAHours);
+  double planetRASec = pa_macros::DecimalHoursSecond(planetRAHours);
+  double planetDecDeg = pa_macros::DecimalDegreesDegrees(planetDecDeg1);
+  double planetDecMin = pa_macros::DecimalDegreesMinutes(planetDecDeg1);
+  double planetDecSec = pa_macros::DecimalDegreesSeconds(planetDecDeg1);
+
+  return CPrecisePositionOfPlanet(planetRAHour, planetRAMin, planetRASec,
+                                  planetDecDeg, planetDecMin, planetDecSec);
 }

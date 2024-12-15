@@ -39,4 +39,25 @@ PlanetData planetLookup(std::string planetName) {
 
   return PlanetData("NoMatch", 0, 0, 0, 0, 0, 0, 0, 0, 0);
 }
+
+PlanetDataPrecise getPrecisePlanetData(
+    std::string planet_name,
+    std::vector<pa_data::PlanetDataPrecise> precise_planet_data) {
+  for (int i = 0; i < precise_planet_data.size(); i++)
+    if (precise_planet_data[i].name == planet_name)
+      return precise_planet_data[i];
+
+  return PlanetDataPrecise("NoMatch", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+}
+
+PlanetDataPrecise populatePrecisePlanetData(std::string name, double value1,
+                                            double value2, double value3,
+                                            double value4, double value5,
+                                            double value6, double value7,
+                                            double value8, double value9,
+                                            double ap_value) {
+  return PlanetDataPrecise(name, value1, value2, value3, value4, value5, value6,
+                           value7, value8, value9, ap_value);
+}
+
 } // namespace pa_data
