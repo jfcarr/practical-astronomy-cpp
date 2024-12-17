@@ -55,3 +55,31 @@ SCENARIO("Precise Position of Planet") {
     }
   }
 }
+
+SCENARIO("Visual Aspects of a Planet") {
+  GIVEN("A PAPlanet object") {
+    PAPlanet paPlanet;
+
+    WHEN("Local Civil Time is 00:00:00 and Local Date is 11/22/2003 and planet "
+         "is Jupiter") {
+      CPlanetVisualAspects result = paPlanet.VisualAspectsOfAPlanet(
+          0, 0, 0, false, 0, 22, 11, 2003, "Jupiter");
+      THEN("Distance is 5.59829 AU and Angular Diameter is 35.1 arcsecs and "
+           "Phase is 0.99 and Light Time is 00:46:33.32 and Position Angle of "
+           "the Bright Limb is 113.2 and Approximate Magnitude is -2.0") {
+        CPlanetVisualAspects expected = CPlanetVisualAspects(
+            5.59829, 35.1, 0.99, 0, 46, 33.32, 113.2, -2.0);
+
+        REQUIRE(result.distanceAU == expected.distanceAU);
+        REQUIRE(result.angDiaArcsec == expected.angDiaArcsec);
+        REQUIRE(result.phase == expected.phase);
+        REQUIRE(result.lightTimeHour == expected.lightTimeHour);
+        REQUIRE(result.lightTimeMinutes == expected.lightTimeMinutes);
+        REQUIRE(result.lightTimeSeconds == expected.lightTimeSeconds);
+        REQUIRE(result.lightTimeSeconds == expected.lightTimeSeconds);
+        REQUIRE(result.posAngleBrightLimbDeg == expected.posAngleBrightLimbDeg);
+        REQUIRE(result.approximateMagnitude == expected.approximateMagnitude);
+      }
+    }
+  }
+}

@@ -2,7 +2,6 @@
 #include "pa_data.h"
 #include "pa_macros.h"
 #include "pa_models.h"
-#include "pa_types.h"
 #include "pa_util.h"
 #include <cmath>
 #include <string>
@@ -149,4 +148,79 @@ CPrecisePositionOfPlanet PAPlanet::PrecisePositionOfPlanet(
 
   return CPrecisePositionOfPlanet(planetRAHour, planetRAMin, planetRASec,
                                   planetDecDeg, planetDecMin, planetDecSec);
+}
+
+/**
+ * Calculate several visual aspects of a planet.
+ */
+CPlanetVisualAspects
+PAPlanet::VisualAspectsOfAPlanet(double lctHour, double lctMin, double lctSec,
+                                 bool isDaylightSaving, int zoneCorrectionHours,
+                                 double localDateDay, int localDateMonth,
+                                 int localDateYear, std::string planetName) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
+
+  double greenwichDateDay = LocalCivilTimeGreenwichDay(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  int greenwichDateMonth = LocalCivilTimeGreenwichMonth(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  int greenwichDateYear = LocalCivilTimeGreenwichYear(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+
+  CPlanetCoordinates planetCoordInfo = PlanetCoordinates(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear, planetName);
+
+  double planetRARad = DegreesToRadians(EclipticRightAscension(
+      planetCoordInfo.planetLongitude, 0, 0, planetCoordInfo.planetLatitude, 0,
+      0, localDateDay, localDateMonth, localDateYear));
+  double planetDecRad = DegreesToRadians(EclipticDeclination(
+      planetCoordInfo.planetLongitude, 0, 0, planetCoordInfo.planetLatitude, 0,
+      0, localDateDay, localDateMonth, localDateYear));
+
+  double lightTravelTimeHours = planetCoordInfo.planetDistanceAU * 0.1386;
+
+  pa_data::PlanetData planetInfo = pa_data::planetLookup(planetName);
+  double angularDiameterArcsec =
+      planetInfo.theta0_AngularDiameter / planetCoordInfo.planetDistanceAU;
+  double phase1 =
+      0.5 * (1.0 + cos(DegreesToRadians(planetCoordInfo.planetLongitude -
+                                        planetCoordInfo.planetHLong1)));
+
+  double sunEclLongDeg =
+      SunLong(lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+              localDateDay, localDateMonth, localDateYear);
+  double sunRARad = DegreesToRadians(
+      EclipticRightAscension(sunEclLongDeg, 0, 0, 0, 0, 0, greenwichDateDay,
+                             greenwichDateMonth, greenwichDateYear));
+  double sunDecRad = DegreesToRadians(
+      EclipticDeclination(sunEclLongDeg, 0, 0, 0, 0, 0, greenwichDateDay,
+                          greenwichDateMonth, greenwichDateYear));
+
+  double y = cos(sunDecRad) * sin(sunRARad - planetRARad);
+  double x = cos(planetDecRad) * sin(sunDecRad) -
+             sin(planetDecRad) * cos(sunDecRad) * cos(sunRARad - planetRARad);
+
+  double chiDeg = WToDegrees(atan2(y, x));
+  double radiusVectorAU = planetCoordInfo.planetRVect;
+  double approximateMagnitude1 =
+      5.0 * log10(radiusVectorAU * planetCoordInfo.planetDistanceAU /
+                  sqrt(phase1)) +
+      planetInfo.v0_VisualMagnitude;
+
+  double distanceAU = Round(planetCoordInfo.planetDistanceAU, 5);
+  double angDiaArcsec = Round(angularDiameterArcsec, 1);
+  double phase = Round(phase1, 2);
+  int lightTimeHour = DecimalHoursHour(lightTravelTimeHours);
+  int lightTimeMinutes = DecimalHoursMinute(lightTravelTimeHours);
+  double lightTimeSeconds = DecimalHoursSecond(lightTravelTimeHours);
+  double posAngleBrightLimbDeg = Round(chiDeg, 1);
+  double approximateMagnitude = Round(approximateMagnitude1, 1);
+
+  return CPlanetVisualAspects(distanceAU, angDiaArcsec, phase, lightTimeHour,
+                              lightTimeMinutes, lightTimeSeconds,
+                              posAngleBrightLimbDeg, approximateMagnitude);
 }
