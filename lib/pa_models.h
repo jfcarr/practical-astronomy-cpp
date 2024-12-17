@@ -2,6 +2,28 @@
 #ifndef _pa_models
 #define _pa_models
 namespace pa_models {
+
+class CApproximatePositionOfPlanet {
+public:
+  CApproximatePositionOfPlanet(double planetRAHour, double planetRAMin,
+                               double planetRASec, double planetDecDeg,
+                               double planetDecMin, double planetDecSec) {
+    this->planetRAHour = planetRAHour;
+    this->planetRAMin = planetRAMin;
+    this->planetRASec = planetRASec;
+    this->planetDecDeg = planetDecDeg;
+    this->planetDecMin = planetDecMin;
+    this->planetDecSec = planetDecSec;
+  }
+
+  double planetRAHour;
+  double planetRAMin;
+  double planetRASec;
+  double planetDecDeg;
+  double planetDecMin;
+  double planetDecSec;
+};
+
 class CPrecisePositionOfPlanet {
 public:
   CPrecisePositionOfPlanet(int planetRAHour, int planetRAMin,

@@ -9,7 +9,7 @@ using namespace pa_models;
 
 class PAPlanet {
 public:
-  std::tuple<double, double, double, double, double, double>
+  CApproximatePositionOfPlanet
   ApproximatePositionOfPlanet(double lctHour, double lctMin, double lctSec,
                               bool isDaylightSaving, int zoneCorrectionHours,
                               double localDateDay, int localDateMonth,

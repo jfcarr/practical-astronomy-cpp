@@ -14,16 +14,12 @@ using namespace pa_macros;
 /**
  * Calculate approximate position of a planet.
  *
- * @return tuple <double planetRAHour, double planetRAMin, double planetRASec,
- * double planetDecDeg, double planetDecMin, double planetDecSec>
+ * @return CApproximatePositionOfPlanet
  */
-std::tuple<double, double, double, double, double, double>
-PAPlanet::ApproximatePositionOfPlanet(double lctHour, double lctMin,
-                                      double lctSec, bool isDaylightSaving,
-                                      int zoneCorrectionHours,
-                                      double localDateDay, int localDateMonth,
-                                      int localDateYear,
-                                      std::string planetName) {
+CApproximatePositionOfPlanet PAPlanet::ApproximatePositionOfPlanet(
+    double lctHour, double lctMin, double lctSec, bool isDaylightSaving,
+    int zoneCorrectionHours, double localDateDay, int localDateMonth,
+    int localDateYear, std::string planetName) {
   int daylightSaving = (isDaylightSaving) ? 1 : 0;
 
   pa_data::PlanetData planetInfo = pa_data::planetLookup(planetName);
@@ -109,9 +105,8 @@ PAPlanet::ApproximatePositionOfPlanet(double lctHour, double lctMin,
   double planetDecMin = pa_macros::DecimalDegreesMinutes(decDeg);
   double planetDecSec = pa_macros::DecimalDegreesSeconds(decDeg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      planetRAHour, planetRAMin,  planetRASec,
-      planetDecDeg, planetDecMin, planetDecSec};
+  return CApproximatePositionOfPlanet(planetRAHour, planetRAMin, planetRASec,
+                                      planetDecDeg, planetDecMin, planetDecSec);
 }
 
 /**
@@ -152,6 +147,8 @@ CPrecisePositionOfPlanet PAPlanet::PrecisePositionOfPlanet(
 
 /**
  * Calculate several visual aspects of a planet.
+ *
+ * @return CPlanetVisualAspects
  */
 CPlanetVisualAspects
 PAPlanet::VisualAspectsOfAPlanet(double lctHour, double lctMin, double lctSec,
