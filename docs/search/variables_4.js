@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['node_5flongitudeascendingnode_314',['node_LongitudeAscendingNode',['../classpa__data_1_1PlanetData.html#a931ac73757066655564d11e87be0993c',1,'pa_data::PlanetData']]]
+  ['incl_5forbitalinclination_0',['incl_OrbitalInclination',['../classpa__data_1_1PlanetData.html#a364da981c886406730e1728bbf76958f',1,'pa_data::PlanetData']]]
 ];

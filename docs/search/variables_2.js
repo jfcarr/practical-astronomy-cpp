@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['incl_5forbitalinclination_312',['incl_OrbitalInclination',['../classpa__data_1_1PlanetData.html#a364da981c886406730e1728bbf76958f',1,'pa_data::PlanetData']]]
+  ['distanceau_0',['distanceAU',['../classpa__models_1_1CPlanetVisualAspects.html#a9a82737e8ea63dbaef4dac2c2e7fb874',1,'pa_models::CPlanetVisualAspects']]]
 ];

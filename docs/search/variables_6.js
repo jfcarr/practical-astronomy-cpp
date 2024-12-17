@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['theta0_5fangulardiameter_317',['theta0_AngularDiameter',['../classpa__data_1_1PlanetData.html#a65a18383f420c5df836fbc897af07abf',1,'pa_data::PlanetData']]],
-  ['tp_5fperiodorbit_318',['tp_PeriodOrbit',['../classpa__data_1_1PlanetData.html#acd1648ee3840cc08e3654714ddb25227',1,'pa_data::PlanetData']]]
+  ['name_0',['name',['../classpa__data_1_1PlanetDataPrecise.html#a9b45b3e13bd9167aab02e17e08916231',1,'pa_data::PlanetDataPrecise']]],
+  ['node_5flongitudeascendingnode_1',['node_LongitudeAscendingNode',['../classpa__data_1_1PlanetData.html#a931ac73757066655564d11e87be0993c',1,'pa_data::PlanetData']]]
 ];

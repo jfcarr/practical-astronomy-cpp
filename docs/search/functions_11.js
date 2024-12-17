@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wtodegrees_309',['WToDegrees',['../namespacepa__macros.html#a9068027321816d1d7eb53d80efcf350c',1,'pa_macros']]]
+  ['visualaspectsofaplanet_0',['VisualAspectsOfAPlanet',['../classPAPlanet.html#a96160a86af0d2d0b8dcef44d0b03541f',1,'PAPlanet']]]
 ];

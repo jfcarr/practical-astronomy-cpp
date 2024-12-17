@@ -48,6 +48,11 @@ var namespaces_dup =
       [ "ParallaxDecL2870", "namespacepa__macros.html#a4d7222c5f7013ffc3f3284493a8745bc", null ],
       [ "ParallaxHa", "namespacepa__macros.html#a6cb88d1f73d2ae8adc00fd49f928c10c", null ],
       [ "ParallaxHaL2870", "namespacepa__macros.html#a8353c0d2319d799c4f2cd936955e8903", null ],
+      [ "PlanetCoordinates", "namespacepa__macros.html#a429f4023179c120b61e3230864d4de38", null ],
+      [ "PlanetLongL4685", "namespacepa__macros.html#a38e46d1d426e18674988c9e29e697952", null ],
+      [ "PlanetLongL4735", "namespacepa__macros.html#a9c28ef64c9d800e6f263fc2df5acc1c5", null ],
+      [ "PlanetLongL4810", "namespacepa__macros.html#ae0a0a2c378c1f410baa95585905d64b5", null ],
+      [ "PlanetLongL4945", "namespacepa__macros.html#a0a7f4772073b6909dd334dfe6e4644f9", null ],
       [ "Refract", "namespacepa__macros.html#afb80d40ed89c3b3e0c616bf66184ff3b", null ],
       [ "RefractL3035", "namespacepa__macros.html#a053058a61a67a7f5b2dc96b4d0ec7a6d", null ],
       [ "RightAscensionToHourAngle", "namespacepa__macros.html#a9ad1d2d2477cc2678ed6d7b1cc447fdb", null ],
@@ -60,6 +65,7 @@ var namespaces_dup =
       [ "SunEccentricity", "namespacepa__macros.html#ac2e9d869197bbf42cea3c07845182194", null ],
       [ "SunELong", "namespacepa__macros.html#a64709cfc3e4ce592d7248adb065d9c29", null ],
       [ "SunLong", "namespacepa__macros.html#abe78991bf567b2185965bde2add79c3c", null ],
+      [ "SunMeanAnomaly", "namespacepa__macros.html#af178f620a63ad50ce3338410f3fecb89", null ],
       [ "SunPerigee", "namespacepa__macros.html#ac1991477066d581b01b532bce206fd2d", null ],
       [ "SunriseAzimuth", "namespacepa__macros.html#a558545a6462aeaae0bbe3469badeecd1", null ],
       [ "SunriseAzimuthL3710", "namespacepa__macros.html#abbd8c53b4db56dd7e6b33c75ce3ff256", null ],
@@ -80,6 +86,7 @@ var namespaces_dup =
       [ "Unwind", "namespacepa__macros.html#a352eb7438dcf221806d2935643795a1e", null ],
       [ "WToDegrees", "namespacepa__macros.html#a9068027321816d1d7eb53d80efcf350c", null ]
     ] ],
+    [ "pa_models", "namespacepa__models.html", "namespacepa__models" ],
     [ "pa_types", "namespacepa__types.html", [
       [ "AngleMeasure", "namespacepa__types.html#a5d4d0c81ebc42af6ba918ee2a865867e", [
         [ "Degrees", "namespacepa__types.html#a5d4d0c81ebc42af6ba918ee2a865867ea9ef125630442bb42e2e367e0cf70d892", null ],
