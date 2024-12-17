@@ -20,5 +20,11 @@ public:
                           bool isDaylightSaving, int zoneCorrectionHours,
                           double localDateDay, int localDateMonth,
                           int localDateYear, std::string planetName);
+
+  CPlanetVisualAspects
+  VisualAspectsOfAPlanet(double lctHour, double lctMin, double lctSec,
+                         bool isDaylightSaving, int zoneCorrectionHours,
+                         double localDateDay, int localDateMonth,
+                         int localDateYear, std::string planetName);
 };
 #endif

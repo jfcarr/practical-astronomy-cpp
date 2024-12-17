@@ -117,5 +117,31 @@ public:
   double qg;
 };
 
+class CPlanetVisualAspects {
+public:
+  CPlanetVisualAspects(double distanceAU, double angDiaArcsec, double phase,
+                       double lightTimeHour, double lightTimeMinutes,
+                       double lightTimeSeconds, double posAngleBrightLimbDeg,
+                       double approximateMagnitude) {
+    this->distanceAU = distanceAU;
+    this->angDiaArcsec = angDiaArcsec;
+    this->phase = phase;
+    this->lightTimeHour = lightTimeHour;
+    this->lightTimeMinutes = lightTimeMinutes;
+    this->lightTimeSeconds = lightTimeSeconds;
+    this->posAngleBrightLimbDeg = posAngleBrightLimbDeg;
+    this->approximateMagnitude = approximateMagnitude;
+  }
+
+  double distanceAU;
+  double angDiaArcsec;
+  double phase;
+  double lightTimeHour;
+  double lightTimeMinutes;
+  double lightTimeSeconds;
+  double posAngleBrightLimbDeg;
+  double approximateMagnitude;
+};
+
 } // namespace pa_models
 #endif
