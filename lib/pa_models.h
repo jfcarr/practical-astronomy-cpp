@@ -1,7 +1,99 @@
-
 #ifndef _pa_models
 #define _pa_models
+
+#include "pa_types.h"
+
+using namespace pa_types;
+
 namespace pa_models {
+
+class CMonthDayYear {
+public:
+  CMonthDayYear(int month, int day, int year) {
+    this->month = month;
+    this->day = day;
+    this->year = year;
+  }
+
+  int month;
+  int day;
+  int year;
+};
+
+class CCivilTime {
+public:
+  CCivilTime(double hours, double minutes, double seconds) {
+    this->hours = hours;
+    this->minutes = minutes;
+    this->seconds = seconds;
+  }
+
+  double hours;
+  double minutes;
+  double seconds;
+};
+
+class CUniversalDateTime {
+public:
+  CUniversalDateTime(int hours, int minutes, int seconds, int day, int month,
+                     int year) {
+    this->hours = hours;
+    this->minutes = minutes;
+    this->seconds = seconds;
+    this->day = day;
+    this->month = month;
+    this->year = year;
+  }
+
+  int hours;
+  int minutes;
+  int seconds;
+  int day;
+  int month;
+  int year;
+};
+
+class CCivilDateTime : public CUniversalDateTime {
+public:
+  CCivilDateTime(int hours, int minutes, int seconds, int day, int month,
+                 int year)
+      : CUniversalDateTime(hours, minutes, seconds, day, month, year) {}
+};
+
+class CGreenwichSiderealTime {
+public:
+  CGreenwichSiderealTime(int hours, int minutes, double seconds) {
+    this->hours = hours;
+    this->minutes = minutes;
+    this->seconds = seconds;
+  }
+
+  int hours;
+  int minutes;
+  double seconds;
+};
+
+class CLocalSiderealTime : public CGreenwichSiderealTime {
+public:
+  CLocalSiderealTime(int hours, int minutes, double seconds)
+      : CGreenwichSiderealTime(hours, minutes, seconds) {}
+};
+
+class CUniversalTime {
+public:
+  CUniversalTime(int hours, int minutes, double seconds,
+                 WarningFlags warningFlag) {
+    this->hours = hours;
+    this->minutes = minutes;
+    this->seconds = seconds;
+    this->warningFlag = warningFlag;
+  }
+
+  int hours;
+  int minutes;
+  double seconds;
+  WarningFlags warningFlag;
+};
 
 class CApproximatePositionOfPlanet {
 public:

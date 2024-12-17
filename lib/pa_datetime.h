@@ -1,50 +1,53 @@
 #ifndef _pa_datetime
 #define _pa_datetime
 
+#include "pa_models.h"
 #include "pa_types.h"
 #include <tuple>
 
+using namespace pa_models;
+
 class PADateTime {
 public:
-  std::tuple<int, int, int> GetDateOfEaster(int input_year);
+  CMonthDayYear GetDateOfEaster(int inputYear);
 
   int CivilDateToDayNumber(int month, int day, int year);
 
   double CivilTimeToDecimalHours(double hours, double minutes, double seconds);
 
-  std::tuple<double, double, double>
-  DecimalHoursToCivilTime(double decimal_hours);
+  CCivilTime DecimalHoursToCivilTime(double decimalHours);
 
-  std::tuple<int, int, int, int, int, int>
-  LocalCivilTimeToUniversalTime(double lct_hours, double lct_minutes,
-                                double lct_seconds, bool is_daylight_savings,
-                                int zone_correction, double local_day,
-                                int local_month, int local_year);
+  CUniversalDateTime
+  LocalCivilTimeToUniversalTime(double lctHours, double lctMinutes,
+                                double lctSeconds, bool isDaylightSavings,
+                                int zoneCorrection, double localDay,
+                                int localMonth, int localYear);
 
-  std::tuple<int, int, int, int, int, int>
-  UniversalTimeToLocalCivilTime(double ut_hours, double ut_minutes,
-                                double ut_seconds, bool is_daylight_savings,
-                                int zone_correction, int gw_day, int gw_month,
-                                int gw_year);
+  CCivilDateTime UniversalTimeToLocalCivilTime(double utHours, double utMinutes,
+                                               double utSeconds,
+                                               bool isDaylightSavings,
+                                               int zoneCorrection, int gwDay,
+                                               int gwMonth, int gwYear);
 
-  std::tuple<int, int, double>
-  UniversalTimeToGreenwichSiderealTime(double ut_hours, double ut_minutes,
-                                       double ut_seconds, double gw_day,
-                                       int gw_month, int gw_year);
+  CGreenwichSiderealTime
+  UniversalTimeToGreenwichSiderealTime(double utHours, double utMinutes,
+                                       double utSeconds, double gwDay,
+                                       int gwMonth, int gwYear);
 
-  std::tuple<int, int, double, pa_types::WarningFlags>
-  GreenwichSiderealTimeToUniversalTime(double gst_hours, double gst_minutes,
-                                       double gst_seconds, double gw_day,
-                                       int gw_month, int gw_year);
+  CUniversalTime GreenwichSiderealTimeToUniversalTime(double gstHours,
+                                                      double gstMinutes,
+                                                      double gstSeconds,
+                                                      double gwDay, int gwMonth,
+                                                      int gwYear);
 
-  std::tuple<int, int, double>
-  GreenwichSiderealTimeToLocalSiderealTime(double gst_hours, double gst_minutes,
-                                           double gst_seconds,
-                                           double geographical_longitude);
+  CLocalSiderealTime
+  GreenwichSiderealTimeToLocalSiderealTime(double gstHours, double gstMinutes,
+                                           double gstSeconds,
+                                           double geographicalLongitude);
 
-  std::tuple<int, int, double>
-  LocalSiderealTimeToGreenwichSiderealTime(double lst_hours, double lst_minutes,
-                                           double lst_seconds,
-                                           double geographical_longitude);
+  CGreenwichSiderealTime
+  LocalSiderealTimeToGreenwichSiderealTime(double lstHours, double lstMinutes,
+                                           double lstSeconds,
+                                           double geographicalLongitude);
 };
 #endif

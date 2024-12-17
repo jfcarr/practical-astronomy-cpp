@@ -1,5 +1,6 @@
 #include "pa_datetime.h"
 #include "pa_macros.h"
+#include "pa_models.h"
 #include "pa_types.h"
 #include "pa_util.h"
 #include <cmath>
@@ -7,15 +8,16 @@
 using namespace pa_types;
 using namespace pa_util;
 using namespace pa_macros;
+using namespace pa_models;
 
 /**
  * \brief Gets the date of Easter for the year specified.
  *
  * @param input_year Input year.
  *
- * @return tuple <int month, int day, int year>
+ * @return CMonthDayYear
  */
-std::tuple<int, int, int> PADateTime::GetDateOfEaster(int inputYear) {
+CMonthDayYear PADateTime::GetDateOfEaster(int inputYear) {
   double year = (double)inputYear;
 
   double a = (int)year % 19;
@@ -36,7 +38,7 @@ std::tuple<int, int, int> PADateTime::GetDateOfEaster(int inputYear) {
   double day = p + 1.0;
   double month = n;
 
-  return std::tuple<int, int, int>{(int)month, (int)day, (int)year};
+  return CMonthDayYear(month, day, year);
 }
 
 /**
@@ -80,15 +82,14 @@ double PADateTime::CivilTimeToDecimalHours(double hours, double minutes,
  *
  * @param decimal_hours Time as a decimal, e.g., 8.5 for 08:30:00
  *
- * @return tuple <double hours, double minutes, double seconds>
+ * @return CCivilTime
  */
-std::tuple<double, double, double>
-PADateTime::DecimalHoursToCivilTime(double decimalHours) {
+CCivilTime PADateTime::DecimalHoursToCivilTime(double decimalHours) {
   int hours = DecimalHoursHour(decimalHours);
   int minutes = DecimalHoursMinute(decimalHours);
   double seconds = DecimalHoursSecond(decimalHours);
 
-  return std::tuple<double, double, double>{hours, minutes, seconds};
+  return CCivilTime(hours, minutes, seconds);
 }
 
 /**
@@ -103,15 +104,12 @@ PADateTime::DecimalHoursToCivilTime(double decimalHours) {
  * @param local_month Local date, month part.
  * @param local_year Local date, year part.
  *
- * @return tuple <int utHours, int utMinutes, int utSeconds, int gwDay, int
- * gwMonth, int gwYear>
+ * @return CUniversalTime
  */
-std::tuple<int, int, int, int, int, int>
-PADateTime::LocalCivilTimeToUniversalTime(double lctHours, double lctMinutes,
-                                          double lctSeconds,
-                                          bool isDaylightSavings,
-                                          int zoneCorrection, double localDay,
-                                          int localMonth, int localYear) {
+CUniversalDateTime PADateTime::LocalCivilTimeToUniversalTime(
+    double lctHours, double lctMinutes, double lctSeconds,
+    bool isDaylightSavings, int zoneCorrection, double localDay, int localMonth,
+    int localYear) {
   double lct = CivilTimeToDecimalHours(lctHours, lctMinutes, lctSeconds);
 
   int daylightSavingsOffset = (isDaylightSavings) ? 1 : 0;
@@ -127,12 +125,9 @@ PADateTime::LocalCivilTimeToUniversalTime(double lctHours, double lctMinutes,
 
   double ut = 24 * (gDay - floor(gDay));
 
-  return std::tuple<int, int, int, int, int, int>{DecimalHoursHour(ut),
-                                                  DecimalHoursMinute(ut),
-                                                  (int)DecimalHoursSecond(ut),
-                                                  (int)floor(gDay),
-                                                  gMonth,
-                                                  gYear};
+  return CUniversalDateTime(DecimalHoursHour(ut), DecimalHoursMinute(ut),
+                            (int)DecimalHoursSecond(ut), (int)floor(gDay),
+                            gMonth, gYear);
 }
 
 /**
@@ -147,15 +142,11 @@ PADateTime::LocalCivilTimeToUniversalTime(double lctHours, double lctMinutes,
  * @param gw_month Greenwich date, month part.
  * @param gw_year Greenwich date, year part.
  *
- * @return tuple <int lctHours, int lctMinutes, int lctSeconds, int localDay,
- * int localMonth, int localYear>
+ * @return CCivilDateTime
  */
-std::tuple<int, int, int, int, int, int>
-PADateTime::UniversalTimeToLocalCivilTime(double utHours, double utMinutes,
-                                          double utSeconds,
-                                          bool isDaylightSavings,
-                                          int zoneCorrection, int gwDay,
-                                          int gwMonth, int gwYear) {
+CCivilDateTime PADateTime::UniversalTimeToLocalCivilTime(
+    double utHours, double utMinutes, double utSeconds, bool isDaylightSavings,
+    int zoneCorrection, int gwDay, int gwMonth, int gwYear) {
   int dstValue = (isDaylightSavings) ? 1 : 0;
   double ut = HmsToDh(utHours, utMinutes, utSeconds);
   double zoneTime = ut + zoneCorrection;
@@ -169,12 +160,9 @@ PADateTime::UniversalTimeToLocalCivilTime(double utHours, double utMinutes,
 
   double lct = 24 * (localDay - integerDay);
 
-  return std::tuple<int, int, int, int, int, int>{DecimalHoursHour(lct),
-                                                  DecimalHoursMinute(lct),
-                                                  (int)DecimalHoursSecond(lct),
-                                                  (int)integerDay,
-                                                  localMonth,
-                                                  localYear};
+  return CCivilDateTime(DecimalHoursHour(lct), DecimalHoursMinute(lct),
+                        (int)DecimalHoursSecond(lct), (int)integerDay,
+                        localMonth, localYear);
 }
 
 /**
@@ -187,9 +175,9 @@ PADateTime::UniversalTimeToLocalCivilTime(double utHours, double utMinutes,
  * @param gw_month Greenwich date, month part.
  * @param gw_year Greenwich date, year part.
  *
- * @return tuple <int gst_hours, int gst_minutes, double gst_seconds>
+ * @return CGreenwichSiderealTime
  */
-std::tuple<int, int, double> PADateTime::UniversalTimeToGreenwichSiderealTime(
+CGreenwichSiderealTime PADateTime::UniversalTimeToGreenwichSiderealTime(
     double utHours, double utMinutes, double utSeconds, double gwDay,
     int gwMonth, int gwYear) {
   double jd = CivilDateToJulianDate(gwDay, gwMonth, gwYear);
@@ -206,7 +194,7 @@ std::tuple<int, int, double> PADateTime::UniversalTimeToGreenwichSiderealTime(
   int gstMinutes = DecimalHoursMinute(gst2);
   double gstSeconds = DecimalHoursSecond(gst2);
 
-  return std::tuple<int, int, double>{gstHours, gstMinutes, gstSeconds};
+  return CGreenwichSiderealTime(gstHours, gstMinutes, gstSeconds);
 }
 
 /**
@@ -219,15 +207,11 @@ std::tuple<int, int, double> PADateTime::UniversalTimeToGreenwichSiderealTime(
  * @param gw_month Greenwich date, month part.
  * @param gw_year Greenwich date, year part.
  *
- * @return tuple <int ut_hours, int ut_minutes, double ut_seconds,
- * pa_warning_flags warning_flag>
+ * @return CUniversalTime2
  */
-std::tuple<int, int, double, WarningFlags>
-PADateTime::GreenwichSiderealTimeToUniversalTime(double gstHours,
-                                                 double gstMinutes,
-                                                 double gstSeconds,
-                                                 double gwDay, int gwMonth,
-                                                 int gwYear) {
+CUniversalTime PADateTime::GreenwichSiderealTimeToUniversalTime(
+    double gstHours, double gstMinutes, double gstSeconds, double gwDay,
+    int gwMonth, int gwYear) {
   double jd = CivilDateToJulianDate(gwDay, gwMonth, gwYear);
   double s = jd - 2451545;
   double t = s / 36525;
@@ -245,8 +229,7 @@ PADateTime::GreenwichSiderealTimeToUniversalTime(double gstHours,
   WarningFlags warningFlag =
       (ut < 0.065574) ? WarningFlags::Warning : WarningFlags::Ok;
 
-  return std::tuple<int, int, double, WarningFlags>{utHours, utMinutes,
-                                                    utSeconds, warningFlag};
+  return CUniversalTime(utHours, utMinutes, utSeconds, warningFlag);
 }
 
 /**
@@ -257,10 +240,9 @@ PADateTime::GreenwichSiderealTimeToUniversalTime(double gstHours,
  * @param gst_seconds Greenwich sidereal time, seconds part.
  * @param geographical_longitude Geographical longitude.
  *
- * @return tuple <int lst_hours, int lst_minutes, double lst_seconds>
+ * @return CLocalSiderealTime
  */
-std::tuple<int, int, double>
-PADateTime::GreenwichSiderealTimeToLocalSiderealTime(
+CLocalSiderealTime PADateTime::GreenwichSiderealTimeToLocalSiderealTime(
     double gstHours, double gstMinutes, double gstSeconds,
     double geographicalLongitude) {
   double gst = HmsToDh(gstHours, gstMinutes, gstSeconds);
@@ -272,7 +254,7 @@ PADateTime::GreenwichSiderealTimeToLocalSiderealTime(
   int lstMinutes = DecimalHoursMinute(lstHours2);
   double lstSeconds = DecimalHoursSecond(lstHours2);
 
-  return std::tuple<int, int, double>{lstHours, lstMinutes, lstSeconds};
+  return CLocalSiderealTime(lstHours, lstMinutes, lstSeconds);
 }
 
 /**
@@ -283,10 +265,9 @@ PADateTime::GreenwichSiderealTimeToLocalSiderealTime(
  * @param lst_seconds Local sidereal time, seconds part.
  * @param geographical_longitude Geographical longitude.
  *
- * @return tuple <int gst_hours, int gst_minutes, double gst_seconds>
+ * @return CGreenwichSiderealTime
  */
-std::tuple<int, int, double>
-PADateTime::LocalSiderealTimeToGreenwichSiderealTime(
+CGreenwichSiderealTime PADateTime::LocalSiderealTimeToGreenwichSiderealTime(
     double lstHours, double lstMinutes, double lstSeconds,
     double geographicalLongitude) {
   double gst = HmsToDh(lstHours, lstMinutes, lstSeconds);
@@ -298,5 +279,5 @@ PADateTime::LocalSiderealTimeToGreenwichSiderealTime(
   int gstMinutes = DecimalHoursMinute(gst2);
   double gstSeconds = DecimalHoursSecond(gst2);
 
-  return std::tuple<int, int, double>{gstHours, gstMinutes, gstSeconds};
+  return CGreenwichSiderealTime(gstHours, gstMinutes, gstSeconds);
 }

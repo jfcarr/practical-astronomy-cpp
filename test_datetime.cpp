@@ -1,10 +1,12 @@
 #include "catch2/catch.hpp"
 #include "lib/pa_datetime.h"
+#include "lib/pa_models.h"
 #include "lib/pa_types.h"
 #include "lib/pa_util.h"
 #include <iostream>
 
 using namespace pa_types;
+using namespace pa_models;
 using namespace pa_util;
 
 SCENARIO("Calculate date of Easter", "[date_time") {
@@ -12,35 +14,38 @@ SCENARIO("Calculate date of Easter", "[date_time") {
     PADateTime paDateTime;
 
     WHEN("The year is 2003") {
-      std::tuple<int, int, int> result = paDateTime.GetDateOfEaster(2003);
-      std::tuple<int, int, int> expected = std::make_tuple(4, 20, 2003);
+      CMonthDayYear result = paDateTime.GetDateOfEaster(2003);
 
       THEN("The result is 4/20/2003") {
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        CMonthDayYear expected = CMonthDayYear(4, 20, 2003);
+
+        REQUIRE(result.month == expected.month);
+        REQUIRE(result.day == expected.day);
+        REQUIRE(result.year == expected.year);
       }
     }
 
     WHEN("The year is 2019") {
-      std::tuple<int, int, int> result = paDateTime.GetDateOfEaster(2019);
-      std::tuple<int, int, int> expected = std::make_tuple(4, 21, 2019);
+      CMonthDayYear result = paDateTime.GetDateOfEaster(2019);
 
       THEN("The result is 4/21/2019") {
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        CMonthDayYear expected = CMonthDayYear(4, 21, 2019);
+
+        REQUIRE(result.month == expected.month);
+        REQUIRE(result.day == expected.day);
+        REQUIRE(result.year == expected.year);
       }
     }
 
     WHEN("The year is 2020") {
-      std::tuple<int, int, int> result = paDateTime.GetDateOfEaster(2020);
-      std::tuple<int, int, int> expected = std::make_tuple(4, 12, 2020);
+      CMonthDayYear result = paDateTime.GetDateOfEaster(2020);
 
       THEN("The result is 4/12/2020") {
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        CMonthDayYear expected = CMonthDayYear(4, 12, 2020);
+
+        REQUIRE(result.month == expected.month);
+        REQUIRE(result.day == expected.day);
+        REQUIRE(result.year == expected.year);
       }
     }
   }
@@ -93,14 +98,14 @@ SCENARIO("Convert civil time to and from decimal hours", "[date_time]") {
     }
 
     WHEN("Decimal hours is 18.52416667") {
-      std::tuple<double, double, double> result =
-          paDateTime.DecimalHoursToCivilTime(18.52416667);
-      std::tuple<double, double, double> expected = std::make_tuple(18, 31, 27);
+      CCivilTime result = paDateTime.DecimalHoursToCivilTime(18.52416667);
 
       THEN("Civil time is 18:31:27") {
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(Round(std::get<2>(result), 0) == std::get<2>(expected));
+        CCivilTime expected = CCivilTime(18, 31, 27);
+
+        REQUIRE(result.hours == expected.hours);
+        REQUIRE(result.minutes == expected.minutes);
+        REQUIRE(result.seconds == expected.seconds);
       }
     }
   }
@@ -111,36 +116,35 @@ SCENARIO("Convert civil time to and from universal time", "[date_time]") {
     PADateTime paDateTime;
 
     WHEN("Civil time is 03:37:00") {
-      std::tuple<int, int, int, int, int, int> result =
-          paDateTime.LocalCivilTimeToUniversalTime(3, 37, 0, true, 4, 1, 7,
-                                                   2013);
-      std::tuple<int, int, int, int, int, int> expected =
-          std::make_tuple(22, 37, 0, 30, 6, 2013);
+      CUniversalDateTime result = paDateTime.LocalCivilTimeToUniversalTime(
+          3, 37, 0, true, 4, 1, 7, 2013);
 
       THEN("Universal time is 22:37:00") {
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
-        REQUIRE(std::get<3>(result) == std::get<3>(expected));
-        REQUIRE(std::get<4>(result) == std::get<4>(expected));
-        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+        CUniversalDateTime expected =
+            CUniversalDateTime(22, 37, 0, 30, 6, 2013);
+
+        REQUIRE(result.hours == expected.hours);
+        REQUIRE(result.minutes == expected.minutes);
+        REQUIRE(result.seconds == expected.seconds);
+        REQUIRE(result.day == expected.day);
+        REQUIRE(result.month == expected.month);
+        REQUIRE(result.year == expected.year);
       }
     }
 
     WHEN("Universal time is 22:37:00") {
-      std::tuple<int, int, int, int, int, int> result =
-          paDateTime.UniversalTimeToLocalCivilTime(22, 37, 0, true, 4, 30, 6,
-                                                   2013);
-      std::tuple<int, int, int, int, int, int> expected =
-          std::make_tuple(3, 37, 0, 1, 7, 2013);
+      CCivilDateTime result = paDateTime.UniversalTimeToLocalCivilTime(
+          22, 37, 0, true, 4, 30, 6, 2013);
 
       THEN("Civil time is 03:37:00") {
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
-        REQUIRE(std::get<3>(result) == std::get<3>(expected));
-        REQUIRE(std::get<4>(result) == std::get<4>(expected));
-        REQUIRE(std::get<5>(result) == std::get<5>(expected));
+        CCivilDateTime expected = CCivilDateTime(3, 37, 0, 1, 7, 2013);
+
+        REQUIRE(result.hours == expected.hours);
+        REQUIRE(result.minutes == expected.minutes);
+        REQUIRE(result.seconds == expected.seconds);
+        REQUIRE(result.day == expected.day);
+        REQUIRE(result.month == expected.month);
+        REQUIRE(result.year == expected.year);
       }
     }
   }
@@ -152,31 +156,31 @@ SCENARIO("Convert universal time to and from Greenwich sidereal time",
     PADateTime paDateTime;
 
     WHEN("Universal time is 14:36:51.67") {
-      std::tuple<int, int, double> result =
+      CGreenwichSiderealTime result =
           paDateTime.UniversalTimeToGreenwichSiderealTime(14, 36, 51.67, 22, 4,
                                                           1980);
 
       THEN("Greenwich sidereal time is 4:40:5.23") {
-        std::tuple<int, int, double> expected = std::make_tuple(4, 40, 5.23);
+        CGreenwichSiderealTime expected = CGreenwichSiderealTime(4, 40, 5.23);
 
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(result.hours == expected.hours);
+        REQUIRE(result.minutes == expected.minutes);
+        REQUIRE(result.seconds == expected.seconds);
       }
     }
 
     WHEN("Greenwich sidereal time is 4:40:5.23") {
-      std::tuple<int, int, double, WarningFlags> result =
-          paDateTime.GreenwichSiderealTimeToUniversalTime(4, 40, 5.23, 22, 4,
-                                                          1980);
-      THEN("Universal time is 14:36:51.67") {
-        std::tuple<int, int, double, WarningFlags> expected =
-            std::make_tuple(14, 36, 51.67, WarningFlags::Ok);
+      CUniversalTime result = paDateTime.GreenwichSiderealTimeToUniversalTime(
+          4, 40, 5.23, 22, 4, 1980);
 
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
-        REQUIRE(std::get<3>(result) == std::get<3>(expected));
+      THEN("Universal time is 14:36:51.67") {
+        CUniversalTime expected =
+            CUniversalTime(14, 36, 51.67, WarningFlags::Ok);
+
+        REQUIRE(result.hours == expected.hours);
+        REQUIRE(result.minutes == expected.minutes);
+        REQUIRE(result.seconds == expected.seconds);
+        REQUIRE(result.warningFlag == expected.warningFlag);
       }
     }
   }
@@ -189,28 +193,29 @@ SCENARIO("Convert Greenwich Sidereal Time to and from Local Sidereal Time",
 
     WHEN("Greenwich Sidereal Time is 04:40:05.23, with Geographical Longitude "
          "of -64") {
-      std::tuple<int, int, double> result =
+      CLocalSiderealTime result =
           paDateTime.GreenwichSiderealTimeToLocalSiderealTime(4, 40, 5.23, -64);
 
       THEN("Local Sidereal Time is 00:24:5.23") {
-        std::tuple<int, int, double> expected = std::make_tuple(0, 24, 5.23);
+        CLocalSiderealTime expected = CLocalSiderealTime(0, 24, 5.23);
 
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+        REQUIRE(result.hours == expected.hours);
+        REQUIRE(result.minutes == expected.minutes);
+        REQUIRE(result.seconds == expected.seconds);
       }
     }
 
     WHEN("Local Sidereal Time is 00:24:05.23, with Geographical Longitude "
          "of -64") {
-      std::tuple<int, int, double> result =
+      CGreenwichSiderealTime result =
           paDateTime.LocalSiderealTimeToGreenwichSiderealTime(0, 24, 5.23, -64);
-      THEN("Greenwich Sidereal Time is 04:40:5.23") {
-        std::tuple<int, int, double> expected = std::make_tuple(4, 40, 5.23);
 
-        REQUIRE(std::get<0>(result) == std::get<0>(expected));
-        REQUIRE(std::get<1>(result) == std::get<1>(expected));
-        REQUIRE(std::get<2>(result) == std::get<2>(expected));
+      THEN("Greenwich Sidereal Time is 04:40:5.23") {
+        CGreenwichSiderealTime expected = CGreenwichSiderealTime(4, 40, 5.23);
+
+        REQUIRE(result.hours == expected.hours);
+        REQUIRE(result.minutes == expected.minutes);
+        REQUIRE(result.seconds == expected.seconds);
       }
     }
   }
