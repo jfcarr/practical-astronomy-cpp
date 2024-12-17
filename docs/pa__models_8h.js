@@ -1,5 +1,6 @@
 var pa__models_8h =
 [
+    [ "CApproximatePositionOfPlanet", "classpa__models_1_1CApproximatePositionOfPlanet.html", "classpa__models_1_1CApproximatePositionOfPlanet" ],
     [ "CPrecisePositionOfPlanet", "classpa__models_1_1CPrecisePositionOfPlanet.html", "classpa__models_1_1CPrecisePositionOfPlanet" ],
     [ "CPlanetCoordinates", "classpa__models_1_1CPlanetCoordinates.html", "classpa__models_1_1CPlanetCoordinates" ],
     [ "CPlanetLongLatL4685", "classpa__models_1_1CPlanetLongLatL4685.html", "classpa__models_1_1CPlanetLongLatL4685" ],

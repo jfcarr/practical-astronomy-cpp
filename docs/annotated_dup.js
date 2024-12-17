@@ -5,6 +5,7 @@ var annotated_dup =
       [ "PlanetDataPrecise", "classpa__data_1_1PlanetDataPrecise.html", "classpa__data_1_1PlanetDataPrecise" ]
     ] ],
     [ "pa_models", "namespacepa__models.html", [
+      [ "CApproximatePositionOfPlanet", "classpa__models_1_1CApproximatePositionOfPlanet.html", "classpa__models_1_1CApproximatePositionOfPlanet" ],
       [ "CPlanetCoordinates", "classpa__models_1_1CPlanetCoordinates.html", "classpa__models_1_1CPlanetCoordinates" ],
       [ "CPlanetLongLatL4685", "classpa__models_1_1CPlanetLongLatL4685.html", "classpa__models_1_1CPlanetLongLatL4685" ],
       [ "CPlanetLongLatL4735", "classpa__models_1_1CPlanetLongLatL4735.html", "classpa__models_1_1CPlanetLongLatL4735" ],

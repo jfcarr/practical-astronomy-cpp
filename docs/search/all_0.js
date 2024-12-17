@@ -11,7 +11,7 @@ var searchData=
   ['ap_5fvalue_8',['ap_value',['../classpa__data_1_1PlanetDataPrecise.html#a1979df4617decabaa148bf49c787f658',1,'pa_data::PlanetDataPrecise']]],
   ['apparent_9',['Apparent',['../namespacepa__types.html#af532ebccf30da4696c48ec61f6b4d663a49a24e1e94b9d8ab152beaf7cc6bb7c7',1,'pa_types']]],
   ['approximatemagnitude_10',['approximateMagnitude',['../classpa__models_1_1CPlanetVisualAspects.html#a4b56bbbdbbb41aecd278545cffdd6a63',1,'pa_models::CPlanetVisualAspects']]],
-  ['approximatepositionofplanet_11',['ApproximatePositionOfPlanet',['../classPAPlanet.html#a3ea89047806451ca5ec86eb43723229e',1,'PAPlanet']]],
+  ['approximatepositionofplanet_11',['ApproximatePositionOfPlanet',['../classPAPlanet.html#a9e4d0b60e2f73c6c7d0d0b89e70c6de9',1,'PAPlanet']]],
   ['approximatepositionofsun_12',['ApproximatePositionOfSun',['../classPASun.html#ab8458feb8a01bc642605e7810d03a521',1,'PASun']]],
   ['astronomical_13',['Astronomical',['../namespacepa__types.html#af024bf2ef95cffe8617bb2db71474c30a6d7c07b63245a59a523763203e9c6ca3',1,'pa_types']]],
   ['atmosphericrefraction_14',['AtmosphericRefraction',['../classPACoordinates.html#ae937d7f96549e3eff303008bf00919aa',1,'PACoordinates']]],
