@@ -1,5 +1,12 @@
 var pa__models_8h =
 [
+    [ "CMonthDayYear", "classpa__models_1_1CMonthDayYear.html", "classpa__models_1_1CMonthDayYear" ],
+    [ "CCivilTime", "classpa__models_1_1CCivilTime.html", "classpa__models_1_1CCivilTime" ],
+    [ "CUniversalDateTime", "classpa__models_1_1CUniversalDateTime.html", "classpa__models_1_1CUniversalDateTime" ],
+    [ "CCivilDateTime", "classpa__models_1_1CCivilDateTime.html", "classpa__models_1_1CCivilDateTime" ],
+    [ "CGreenwichSiderealTime", "classpa__models_1_1CGreenwichSiderealTime.html", "classpa__models_1_1CGreenwichSiderealTime" ],
+    [ "CLocalSiderealTime", "classpa__models_1_1CLocalSiderealTime.html", "classpa__models_1_1CLocalSiderealTime" ],
+    [ "CUniversalTime", "classpa__models_1_1CUniversalTime.html", "classpa__models_1_1CUniversalTime" ],
     [ "CApproximatePositionOfPlanet", "classpa__models_1_1CApproximatePositionOfPlanet.html", "classpa__models_1_1CApproximatePositionOfPlanet" ],
     [ "CPrecisePositionOfPlanet", "classpa__models_1_1CPrecisePositionOfPlanet.html", "classpa__models_1_1CPrecisePositionOfPlanet" ],
     [ "CPlanetCoordinates", "classpa__models_1_1CPlanetCoordinates.html", "classpa__models_1_1CPlanetCoordinates" ],

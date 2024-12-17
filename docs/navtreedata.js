@@ -37,6 +37,7 @@ var NAVTREE =
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Data Fields", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
@@ -52,8 +53,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"namespacepa__macros.html#a1b06f81e5a2d1a510f8395886a2918f6",
-"pa__macros_8h.html#a7819d55a350d96a6766a7baa3facbe0d"
+"classpa__models_1_1CPrecisePositionOfPlanet.html",
+"pa__macros_8cpp.html#aad72ac8320d25a32ec0b9668d5b04819"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

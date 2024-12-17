@@ -1,4 +1,20 @@
 var searchData=
 [
-  ['sa_0',['sa',['../classpa__models_1_1CPlanetLongLatL4810.html#a511d78bce8691d2fae5b65e404f7171b',1,'pa_models::CPlanetLongLatL4810']]]
+  ['peri_5flongitudeperihelion_0',['peri_LongitudePerihelion',['../classpa__data_1_1PlanetData.html#abee1dffcc1f592543a6ea2ab8cfc67f4',1,'pa_data::PlanetData']]],
+  ['phase_1',['phase',['../classpa__models_1_1CPlanetVisualAspects.html#a1c9de474c0c47316b53ae755957f90e2',1,'pa_models::CPlanetVisualAspects']]],
+  ['planetdecdeg_2',['planetdecdeg',['../classpa__models_1_1CPrecisePositionOfPlanet.html#aadcf066bf8f9e7b004f30d3221a70da7',1,'pa_models::CPrecisePositionOfPlanet::PlanetDecDeg'],['../classpa__models_1_1CApproximatePositionOfPlanet.html#a2ceb415318a4483dfddf70419529ba1f',1,'pa_models::CApproximatePositionOfPlanet::planetDecDeg']]],
+  ['planetdecmin_3',['planetdecmin',['../classpa__models_1_1CPrecisePositionOfPlanet.html#a18c9d59884dfac1fd659d0c00b06fa31',1,'pa_models::CPrecisePositionOfPlanet::PlanetDecMin'],['../classpa__models_1_1CApproximatePositionOfPlanet.html#a298434cf58731bb66894fe1b50e7f406',1,'pa_models::CApproximatePositionOfPlanet::planetDecMin']]],
+  ['planetdecsec_4',['planetdecsec',['../classpa__models_1_1CPrecisePositionOfPlanet.html#acf1d701a1a1734a0b88e241ace69e356',1,'pa_models::CPrecisePositionOfPlanet::PlanetDecSec'],['../classpa__models_1_1CApproximatePositionOfPlanet.html#af1e2994f85db969aca6b1ad9d59e920f',1,'pa_models::CApproximatePositionOfPlanet::planetDecSec']]],
+  ['planetdistanceau_5',['planetDistanceAU',['../classpa__models_1_1CPlanetCoordinates.html#a3518fd5241ba1a5687d9230ecf1d05a1',1,'pa_models::CPlanetCoordinates']]],
+  ['planethlat_6',['planetHLat',['../classpa__models_1_1CPlanetCoordinates.html#a37fec089c86fa612dff39a7d23dd5755',1,'pa_models::CPlanetCoordinates']]],
+  ['planethlong1_7',['planetHLong1',['../classpa__models_1_1CPlanetCoordinates.html#aeb4aaa9e4e5fecc164ad51cfbccae67b',1,'pa_models::CPlanetCoordinates']]],
+  ['planethlong2_8',['planetHLong2',['../classpa__models_1_1CPlanetCoordinates.html#a012a17bb9b9b44a2588da53f9730b99d',1,'pa_models::CPlanetCoordinates']]],
+  ['planetlatitude_9',['planetLatitude',['../classpa__models_1_1CPlanetCoordinates.html#a9e88ecbb5e01f5f425308e93a642edee',1,'pa_models::CPlanetCoordinates']]],
+  ['planetlongitude_10',['planetLongitude',['../classpa__models_1_1CPlanetCoordinates.html#a8c540354a972127cc0dd66abed0de49a',1,'pa_models::CPlanetCoordinates']]],
+  ['planetname_11',['planetName',['../classpa__data_1_1PlanetData.html#a1cc303acbb3ff05d12048e9caaa58081',1,'pa_data::PlanetData']]],
+  ['planetrahour_12',['planetrahour',['../classpa__models_1_1CPrecisePositionOfPlanet.html#a009c3fff26f912be89c2ee1a147ee2c7',1,'pa_models::CPrecisePositionOfPlanet::PlanetRAHour'],['../classpa__models_1_1CApproximatePositionOfPlanet.html#aedce21f52cc8809d618d7fc95252ac82',1,'pa_models::CApproximatePositionOfPlanet::planetRAHour']]],
+  ['planetramin_13',['planetramin',['../classpa__models_1_1CPrecisePositionOfPlanet.html#a25d3f3848c7aea973c90a3e66ead2394',1,'pa_models::CPrecisePositionOfPlanet::PlanetRAMin'],['../classpa__models_1_1CApproximatePositionOfPlanet.html#a97c55716aa81d6b863cc433e8c12007e',1,'pa_models::CApproximatePositionOfPlanet::planetRAMin']]],
+  ['planetrasec_14',['planetrasec',['../classpa__models_1_1CApproximatePositionOfPlanet.html#aaa75d8b5ef8eee6c0a84b60079af70a1',1,'pa_models::CApproximatePositionOfPlanet::planetRASec'],['../classpa__models_1_1CPrecisePositionOfPlanet.html#a1132fd2fea98f08f43843a676d7be5ea',1,'pa_models::CPrecisePositionOfPlanet::PlanetRASec']]],
+  ['planetrvect_15',['planetRVect',['../classpa__models_1_1CPlanetCoordinates.html#a0d24332db58c8769eec1d3e7cb86cca4',1,'pa_models::CPlanetCoordinates']]],
+  ['posanglebrightlimbdeg_16',['posAngleBrightLimbDeg',['../classpa__models_1_1CPlanetVisualAspects.html#a5bc840160b499293b5ede14c1446bb9a',1,'pa_models::CPlanetVisualAspects']]]
 ];
