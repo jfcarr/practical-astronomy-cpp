@@ -1,8 +1,22 @@
 var searchData=
 [
   ['a_0',['a',['../classpa__models_1_1CPlanetLongLatL4810.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CPlanetLongLatL4810']]],
-  ['angdiaarcsec_1',['angDiaArcsec',['../classpa__models_1_1CPlanetVisualAspects.html#a0e14d7ed125ab1dccb733b2b015e49b5',1,'pa_models::CPlanetVisualAspects']]],
-  ['ap_5fvalue_2',['ap_value',['../classpa__data_1_1PlanetDataPrecise.html#a1979df4617decabaa148bf49c787f658',1,'pa_data::PlanetDataPrecise']]],
-  ['approximatemagnitude_3',['approximateMagnitude',['../classpa__models_1_1CPlanetVisualAspects.html#a4b56bbbdbbb41aecd278545cffdd6a63',1,'pa_models::CPlanetVisualAspects']]],
-  ['axis_5faxisorbit_4',['axis_AxisOrbit',['../classpa__data_1_1PlanetData.html#a0ba8a02d2e5ab801b3be6ed2b81f1029',1,'pa_data::PlanetData']]]
+  ['altitudedegrees_1',['altitudeDegrees',['../classpa__models_1_1CHorizonCoordinates.html#a71140c42a94c47a1481676b1d3ac0125',1,'pa_models::CHorizonCoordinates']]],
+  ['altitudeminutes_2',['altitudeMinutes',['../classpa__models_1_1CHorizonCoordinates.html#a11ac0292a93039d8c909f5f57417273b',1,'pa_models::CHorizonCoordinates']]],
+  ['altitudeseconds_3',['altitudeSeconds',['../classpa__models_1_1CHorizonCoordinates.html#a99cbe98fc470c862dcd36270762b61b6',1,'pa_models::CHorizonCoordinates']]],
+  ['angdiaarcsec_4',['angDiaArcsec',['../classpa__models_1_1CPlanetVisualAspects.html#a0e14d7ed125ab1dccb733b2b015e49b5',1,'pa_models::CPlanetVisualAspects']]],
+  ['ap_5fvalue_5',['ap_value',['../classpa__data_1_1PlanetDataPrecise.html#a1979df4617decabaa148bf49c787f658',1,'pa_data::PlanetDataPrecise']]],
+  ['apparentecllatdeg_6',['apparentEclLatDeg',['../classpa__models_1_1CAberration.html#a993e6c2bd6e5b23195693b6f8c5cd71e',1,'pa_models::CAberration']]],
+  ['apparentecllatmin_7',['apparentEclLatMin',['../classpa__models_1_1CAberration.html#a583b6e5f4399ae7ff1a6c473b7c8e2a1',1,'pa_models::CAberration']]],
+  ['apparentecllatsec_8',['apparentEclLatSec',['../classpa__models_1_1CAberration.html#a5141f4611f1475f0b9ea9ee7f87da970',1,'pa_models::CAberration']]],
+  ['apparentecllongdeg_9',['apparentEclLongDeg',['../classpa__models_1_1CAberration.html#a45e774ddcd98bc96b28a7cff5b9ece64',1,'pa_models::CAberration']]],
+  ['apparentecllongmin_10',['apparentEclLongMin',['../classpa__models_1_1CAberration.html#a6662827953364f39864d9df78f5bec4d',1,'pa_models::CAberration']]],
+  ['apparentecllongsec_11',['apparentEclLongSec',['../classpa__models_1_1CAberration.html#a1ff58661f3f6d28fcfd2a17a4c151e37',1,'pa_models::CAberration']]],
+  ['approximatemagnitude_12',['approximateMagnitude',['../classpa__models_1_1CPlanetVisualAspects.html#a4b56bbbdbbb41aecd278545cffdd6a63',1,'pa_models::CPlanetVisualAspects']]],
+  ['axis_5faxisorbit_13',['axis_AxisOrbit',['../classpa__data_1_1PlanetData.html#a0ba8a02d2e5ab801b3be6ed2b81f1029',1,'pa_data::PlanetData']]],
+  ['azimuthdegrees_14',['azimuthDegrees',['../classpa__models_1_1CHorizonCoordinates.html#a5c67fdf7f8ad0c316418bb037d339b14',1,'pa_models::CHorizonCoordinates']]],
+  ['azimuthminutes_15',['azimuthMinutes',['../classpa__models_1_1CHorizonCoordinates.html#a7367ee8fee72c52b987583bd45676daf',1,'pa_models::CHorizonCoordinates']]],
+  ['azimuthseconds_16',['azimuthSeconds',['../classpa__models_1_1CHorizonCoordinates.html#a603a97414cf495512a9ce79370db67e2',1,'pa_models::CHorizonCoordinates']]],
+  ['azrise_17',['azRise',['../classpa__models_1_1CRiseSet.html#a45bc5ba8bc432ff10c026c0218982523',1,'pa_models::CRiseSet']]],
+  ['azset_18',['azSet',['../classpa__models_1_1CRiseSet.html#a4e21a5f135bcfd5c21b0a21537f8e97c',1,'pa_models::CRiseSet']]]
 ];

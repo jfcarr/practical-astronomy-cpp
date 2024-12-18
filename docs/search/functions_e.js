@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['selenographiccoordinates1_0',['SelenographicCoordinates1',['../classPACoordinates.html#a0cb04eecbd956efaf900e4947a11c584',1,'PACoordinates']]],
-  ['selenographiccoordinates2_1',['SelenographicCoordinates2',['../classPACoordinates.html#a5f7e9170f24bb161d03e2717c68a7eda',1,'PACoordinates']]],
+  ['selenographiccoordinates1_0',['SelenographicCoordinates1',['../classPACoordinates.html#adf235eae0f53cdcc0aae5ffeac21bab2',1,'PACoordinates']]],
+  ['selenographiccoordinates2_1',['SelenographicCoordinates2',['../classPACoordinates.html#ac9a9762ace6ab9b1d6da4347094697a8',1,'PACoordinates']]],
   ['solarelongation_2',['SolarElongation',['../classPASun.html#af5597699ff71b65bcb57556f40909c1a',1,'PASun']]],
   ['sundia_3',['SunDia',['../namespacepa__macros.html#ac6439025f54c3259b0c2a17e0dae62f4',1,'pa_macros']]],
   ['sundist_4',['SunDist',['../namespacepa__macros.html#a93c495c18298a41adeb6a45b73ddf2c7',1,'pa_macros']]],
