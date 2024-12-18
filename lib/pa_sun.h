@@ -4,6 +4,8 @@
 #include "pa_types.h"
 #include <tuple>
 
+using namespace pa_types;
+
 class PASun {
 public:
   std::tuple<double, double, double, double, double, double>
@@ -23,18 +25,17 @@ public:
                             int local_month, int local_year,
                             bool is_daylight_saving, int zone_correction);
 
-  std::tuple<double, double, double, double, double, double,
-             pa_types::RiseSetStatus>
+  std::tuple<double, double, double, double, double, double, ERiseSetStatus>
   SunriseAndSunset(double local_day, int local_month, int local_year,
                    bool is_daylight_saving, int zone_correction,
                    double geographical_long_deg, double geographical_lat_deg);
 
-  std::tuple<double, double, double, double, pa_types::TwilightStatus>
+  std::tuple<double, double, double, double, ETwilightStatus>
   MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
                             bool isDaylightSaving, int zoneCorrection,
                             double geographicalLongDeg,
                             double geographicalLatDeg,
-                            pa_types::TwilightType twilightType);
+                            ETwilightType twilightType);
 
   std::tuple<double, double> EquationOfTime(double gwdateDay, int gwdateMonth,
                                             int gwdateYear);

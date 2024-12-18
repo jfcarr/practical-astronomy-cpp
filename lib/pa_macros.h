@@ -7,7 +7,10 @@
 
 #ifndef _pa_macros
 #define _pa_macros
+using namespace pa_types;
+
 namespace pa_macros {
+
 double HmsToDh(double hours, double minutes, double seconds);
 
 int DecimalHoursHour(double decimalHours);
@@ -137,19 +140,19 @@ double TrueAnomaly(double am, double ec);
 
 double EccentricAnomaly(double am, double ec);
 
-double Refract(double y2, pa_types::CoordinateType sw, double pr, double tr);
+double Refract(double y2, ECoordinateType sw, double pr, double tr);
 
 double RefractL3035(double pr, double tr, double y, double d);
 
 double ParallaxHa(double hh, double hm, double hs, double dd, double dm,
-                  double ds, pa_types::CoordinateType sw, double gp, double ht,
+                  double ds, ECoordinateType sw, double gp, double ht,
                   double hp);
 
 std::tuple<double, double> ParallaxHaL2870(double x, double y, double rc,
                                            double rp, double rs, double tp);
 
 double ParallaxDec(double hh, double hm, double hs, double dd, double dm,
-                   double ds, pa_types::CoordinateType sw, double gp, double ht,
+                   double ds, ECoordinateType sw, double gp, double ht,
                    double hp);
 
 std::tuple<double, double> ParallaxDecL2870(double x, double y, double rc,
@@ -196,11 +199,11 @@ double SunriseLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
 double SunsetLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
                             double gl, double gp);
 
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 SunriseLocalCivilTimeL3710(double gd, int gm, int gy, double sr, double di,
                            double gp);
 
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 SunsetLocalCivilTimeL3710(double gd, int gm, int gy, double sr, double di,
                           double gp);
 
@@ -212,34 +215,34 @@ double RiseSetLocalSiderealTimeSet(double rah, double ram, double ras,
                                    double dd, double dm, double ds, double vd,
                                    double g);
 
-pa_types::RiseSetStatus ERiseSet(double rah, double ram, double ras, double dd,
-                                 double dm, double ds, double vd, double g);
+ERiseSetStatus ERiseSet(double rah, double ram, double ras, double dd,
+                        double dm, double ds, double vd, double g);
 
-pa_types::WarningFlags EGstUt(double gsh, double gsm, double gss, double gd,
-                              int gm, int gy);
+EWarningFlags EGstUt(double gsh, double gsm, double gss, double gd, int gm,
+                     int gy);
 
 double UniversalTimeToLocalCivilTime(double u_hours, double u_minutes,
                                      double u_seconds, int daylight_saving,
                                      int zone_correction, double greenwich_day,
                                      int greenwich_month, int greenwich_year);
 
-pa_types::RiseSetStatus ESunRiseSetCalcStatus(double ld, int lm, int ly, int ds,
-                                              int zc, double gl, double gp);
+ERiseSetStatus ESunRiseSetCalcStatus(double ld, int lm, int ly, int ds, int zc,
+                                     double gl, double gp);
 
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 ESunRiseSetCalcStatusL3710(double gd, int gm, int gy, double sr, double di,
                            double gp);
 
 double SunriseAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
                       double gp);
 
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 SunriseAzimuthL3710(double gd, int gm, int gy, double sr, double di, double gp);
 
 double SunsetAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
                      double gp);
 
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 SunsetAzimuthL3710(double gd, int gm, int gy, double sr, double di, double gp);
 
 double RiseSetAzimuthRise(double rah, double ram, double ras, double dd,
@@ -249,31 +252,28 @@ double RiseSetAzimuthSet(double rah, double ram, double ras, double dd,
                          double dm, double ds, double vd, double g);
 
 double TwilightAMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
-                                double gl, double gp,
-                                pa_types::TwilightType tt);
+                                double gl, double gp, ETwilightType tt);
 
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 TwilightAMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
                                double gp);
 
 double TwilightPMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
-                                double gl, double gp,
-                                pa_types::TwilightType tt);
+                                double gl, double gp, ETwilightType tt);
 
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 TwilightPMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
                                double gp);
 
-pa_types::TwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc,
-                                   double gl, double gp,
-                                   pa_types::TwilightType tt);
+ETwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc, double gl,
+                          double gp, ETwilightType tt);
 
-std::tuple<double, double, double, double, pa_types::TwilightStatus>
+std::tuple<double, double, double, double, ETwilightStatus>
 ETwilight_L3710(double gd, int gm, int gy, double sr, double di, double gp);
 
 double Angle(double xx1, double xm1, double xs1, double dd1, double dm1,
              double ds1, double xx2, double xm2, double xs2, double dd2,
-             double dm2, double ds2, pa_types::AngleMeasure s);
+             double dm2, double ds2, EAngleMeasure s);
 
 pa_models::CPlanetCoordinates PlanetCoordinates(double lh, double lm, double ls,
                                                 int ds, int zc, double dy,

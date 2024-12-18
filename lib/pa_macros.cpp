@@ -8,6 +8,7 @@
 #include <tuple>
 #include <vector>
 
+using namespace pa_types;
 using namespace pa_util;
 
 namespace pa_macros {
@@ -892,10 +893,10 @@ double EccentricAnomaly(double am, double ec) {
  *
  * Original macro name: Refract
  */
-double Refract(double y2, pa_types::CoordinateType sw, double pr, double tr) {
+double Refract(double y2, ECoordinateType sw, double pr, double tr) {
   double y = DegreesToRadians(y2);
 
-  double d = (sw == pa_types::CoordinateType::Actual) ? -1.0 : 1.0;
+  double d = (sw == ECoordinateType::Actual) ? -1.0 : 1.0;
 
   if (d == -1) {
     double y3 = y;
@@ -955,7 +956,7 @@ double RefractL3035(double pr, double tr, double y, double d) {
  * Original macro name: ParallaxHA
  */
 double ParallaxHa(double hh, double hm, double hs, double dd, double dm,
-                  double ds, pa_types::CoordinateType sw, double gp, double ht,
+                  double ds, ECoordinateType sw, double gp, double ht,
                   double hp) {
   double a = DegreesToRadians(gp);
   double c1 = cos(a);
@@ -979,7 +980,7 @@ double ParallaxHa(double hh, double hm, double hs, double dd, double dm,
       DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
   double y1 = y;
 
-  double d = (sw == pa_types::CoordinateType::Actual) ? 1.0 : -1.0;
+  double d = (sw == ECoordinateType::Actual) ? 1.0 : -1.0;
 
   if (d == 1) {
     std::tuple<double, double> result = ParallaxHaL2870(x, y, rc, rp, rs, tp);
@@ -1044,7 +1045,7 @@ std::tuple<double, double> ParallaxHaL2870(double x, double y, double rc,
  * Original macro name: ParallaxDec
  */
 double ParallaxDec(double hh, double hm, double hs, double dd, double dm,
-                   double ds, pa_types::CoordinateType sw, double gp, double ht,
+                   double ds, ECoordinateType sw, double gp, double ht,
                    double hp) {
   double a = DegreesToRadians(gp);
   double c1 = cos(a);
@@ -1069,7 +1070,7 @@ double ParallaxDec(double hh, double hm, double hs, double dd, double dm,
       DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
   double y1 = y;
 
-  double d = (sw == pa_types::CoordinateType::Actual) ? 1.0 : -1.0;
+  double d = (sw == ECoordinateType::Actual) ? 1.0 : -1.0;
 
   if (d == 1) {
     std::tuple<double, double> result = ParallaxDecL2870(x, y, rc, rp, rs, tp);
@@ -1547,25 +1548,25 @@ double SunriseLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
   int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
   double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result1 =
       SunriseLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
 
   double xx;
-  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result1) != ERiseSetStatus::Ok) {
     xx = -99.0;
   } else {
     double x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0,
                                                         0, gl);
     double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
 
-    if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+    if (EGstUt(x, 0, 0, gd, gm, gy) != EWarningFlags::Ok) {
       xx = -99.0;
     } else {
       sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
-      std::tuple<double, double, double, double, pa_types::RiseSetStatus>
-          result2 = SunriseLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
+      std::tuple<double, double, double, double, ERiseSetStatus> result2 =
+          SunriseLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
 
-      if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+      if (std::get<4>(result2) != ERiseSetStatus::Ok) {
         xx = -99.0;
       } else {
         x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0,
@@ -1592,25 +1593,25 @@ double SunsetLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
   int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
   double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result1 =
       SunsetLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
 
   double xx;
-  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result1) != ERiseSetStatus::Ok) {
     xx = -99.0;
   } else {
     double x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0,
                                                         0, gl);
     double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
 
-    if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+    if (EGstUt(x, 0, 0, gd, gm, gy) != EWarningFlags::Ok) {
       xx = -99.0;
     } else {
       sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
-      std::tuple<double, double, double, double, pa_types::RiseSetStatus>
-          result2 = SunsetLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
+      std::tuple<double, double, double, double, ERiseSetStatus> result2 =
+          SunsetLocalCivilTimeL3710(gd, gm, gy, sr, di, gp);
 
-      if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+      if (std::get<4>(result2) != ERiseSetStatus::Ok) {
         xx = -99;
       } else {
         x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0,
@@ -1628,9 +1629,9 @@ double SunsetLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
  * \brief Helper function for sunrise_lct()
  *
  * @return tuple<double a, double x, double y, double la,
- * pa_types::rise_set_status s>
+ * rise_set_status s>
  */
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 SunriseLocalCivilTimeL3710(double gd, int gm, int gy, double sr, double di,
                            double gp) {
   double a = sr + NutatLong(gd, gm, gy) - 0.005694;
@@ -1638,20 +1639,20 @@ SunriseLocalCivilTimeL3710(double gd, int gm, int gy, double sr, double di,
   double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
   double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
                                            y, 0, 0, di, gp);
-  pa_types::RiseSetStatus s =
+  ERiseSetStatus s =
       ERiseSet(DecimalDegreesToDegreeHours(x), 0.0, 0.0, y, 0.0, 0.0, di, gp);
 
-  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
-      a, x, y, la, s};
+  return std::tuple<double, double, double, double, ERiseSetStatus>{a, x, y, la,
+                                                                    s};
 }
 
 /**
  * \brief Helper function for sunset_lct().
  *
  * @return tuple<double a, double x, double y, double la,
- * pa_types::rise_set_status s>
+ * rise_set_status s>
  */
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 SunsetLocalCivilTimeL3710(double gd, int gm, int gy, double sr, double di,
                           double gp) {
   double a = sr + NutatLong(gd, gm, gy) - 0.005694;
@@ -1659,11 +1660,11 @@ SunsetLocalCivilTimeL3710(double gd, int gm, int gy, double sr, double di,
   double y = EclipticDeclination(a, 0.0, 0.0, 0.0, 0.0, 0.0, gd, gm, gy);
   double la = RiseSetLocalSiderealTimeSet(DecimalDegreesToDegreeHours(x), 0, 0,
                                           y, 0, 0, di, gp);
-  pa_types::RiseSetStatus s =
+  ERiseSetStatus s =
       ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
 
-  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
-      a, x, y, la, s};
+  return std::tuple<double, double, double, double, ERiseSetStatus>{a, x, y, la,
+                                                                    s};
 }
 
 /**
@@ -1711,8 +1712,8 @@ double RiseSetLocalSiderealTimeSet(double rah, double ram, double ras,
 /**
  * \brief Rise/Set status
  */
-pa_types::RiseSetStatus ERiseSet(double rah, double ram, double ras, double dd,
-                                 double dm, double ds, double vd, double g) {
+ERiseSetStatus ERiseSet(double rah, double ram, double ras, double dd,
+                        double dm, double ds, double vd, double g) {
   double a = HmsToDh(rah, ram, ras);
   double c =
       DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
@@ -1720,11 +1721,11 @@ pa_types::RiseSetStatus ERiseSet(double rah, double ram, double ras, double dd,
   double e = DegreesToRadians(g);
   double f = -(sin(d) + sin(e) * sin(c)) / (cos(e) * cos(c));
 
-  pa_types::RiseSetStatus return_value = pa_types::RiseSetStatus::Ok;
+  ERiseSetStatus return_value = ERiseSetStatus::Ok;
   if (f >= 1)
-    return_value = pa_types::RiseSetStatus::NeverRises;
+    return_value = ERiseSetStatus::NeverRises;
   if (f <= -1)
-    return_value = pa_types::RiseSetStatus::Circumpolar;
+    return_value = ERiseSetStatus::Circumpolar;
 
   return return_value;
 }
@@ -1734,8 +1735,8 @@ pa_types::RiseSetStatus ERiseSet(double rah, double ram, double ras, double dd,
  *
  * Original macro name: eGSTUT
  */
-pa_types::WarningFlags EGstUt(double gsh, double gsm, double gss, double gd,
-                              int gm, int gy) {
+EWarningFlags EGstUt(double gsh, double gsm, double gss, double gd, int gm,
+                     int gy) {
   double a = CivilDateToJulianDate(gd, gm, gy);
   double b = a - 2451545;
   double c = b / 36525;
@@ -1745,8 +1746,8 @@ pa_types::WarningFlags EGstUt(double gsh, double gsm, double gss, double gd,
   double g = f - e;
   double h = g - (24 * floor(g / 24));
 
-  return ((h * 0.9972695663) < (4.0 / 60.0)) ? pa_types::WarningFlags::Warning
-                                             : pa_types::WarningFlags::Ok;
+  return ((h * 0.9972695663) < (4.0 / 60.0)) ? EWarningFlags::Warning
+                                             : EWarningFlags::Ok;
 }
 
 /**
@@ -1754,35 +1755,35 @@ pa_types::WarningFlags EGstUt(double gsh, double gsm, double gss, double gd,
  *
  * Original macro name: eSunRS
  */
-pa_types::RiseSetStatus ESunRiseSetCalcStatus(double ld, int lm, int ly, int ds,
-                                              int zc, double gl, double gp) {
+ERiseSetStatus ESunRiseSetCalcStatus(double ld, int lm, int ly, int ds, int zc,
+                                     double gl, double gp) {
   double di = 0.8333333;
   double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
   int gm = LocalCivilTimeGreenwichMonth(12, 0, 0, ds, zc, ld, lm, ly);
   int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
   double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result1 =
       ESunRiseSetCalcStatusL3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result1) != ERiseSetStatus::Ok) {
     return std::get<4>(result1);
   } else {
     double x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0,
                                                         0, gl);
     double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
     sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
-    std::tuple<double, double, double, double, pa_types::RiseSetStatus>
-        result2 = ESunRiseSetCalcStatusL3710(gd, gm, gy, sr, di, gp);
-    if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+    std::tuple<double, double, double, double, ERiseSetStatus> result2 =
+        ESunRiseSetCalcStatusL3710(gd, gm, gy, sr, di, gp);
+    if (std::get<4>(result2) != ERiseSetStatus::Ok) {
       return std::get<4>(result2);
     } else {
       x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0,
                                                    gl);
 
-      if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok)
+      if (EGstUt(x, 0, 0, gd, gm, gy) != EWarningFlags::Ok)
 
-        return pa_types::RiseSetStatus::GstToUtConversionWarning;
+        return ERiseSetStatus::GstToUtConversionWarning;
     }
 
     return std::get<4>(result2);
@@ -1792,7 +1793,7 @@ pa_types::RiseSetStatus ESunRiseSetCalcStatus(double ld, int lm, int ly, int ds,
 /// <summary>
 /// Helper function for e_sun_rs()
 /// </summary>
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 ESunRiseSetCalcStatusL3710(double gd, int gm, int gy, double sr, double di,
                            double gp) {
   double a = sr + NutatLong(gd, gm, gy) - 0.005694;
@@ -1800,11 +1801,11 @@ ESunRiseSetCalcStatusL3710(double gd, int gm, int gy, double sr, double di,
   double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
   double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
                                            y, 0, 0, di, gp);
-  pa_types::RiseSetStatus s =
+  ERiseSetStatus s =
       ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
 
-  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
-      a, x, y, la, s};
+  return std::tuple<double, double, double, double, ERiseSetStatus>{a, x, y, la,
+                                                                    s};
 }
 
 /**
@@ -1820,10 +1821,10 @@ double SunriseAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
   int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
   double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result1 =
       SunriseAzimuthL3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result1) != ERiseSetStatus::Ok) {
     return -99.0;
   }
 
@@ -1831,15 +1832,15 @@ double SunriseAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
       LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
   double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
 
-  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+  if (EGstUt(x, 0, 0, gd, gm, gy) != EWarningFlags::Ok) {
     return -99.0;
   }
 
   sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result2 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result2 =
       SunriseAzimuthL3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result2) != ERiseSetStatus::Ok) {
     return -99.0;
   }
 
@@ -1850,7 +1851,7 @@ double SunriseAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
 /**
  * \brief Helper function for sunrise_az()
  */
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 SunriseAzimuthL3710(double gd, int gm, int gy, double sr, double di,
                     double gp) {
   double a = sr + NutatLong(gd, gm, gy) - 0.005694;
@@ -1858,11 +1859,11 @@ SunriseAzimuthL3710(double gd, int gm, int gy, double sr, double di,
   double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
   double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
                                            y, 0, 0, di, gp);
-  pa_types::RiseSetStatus s =
+  ERiseSetStatus s =
       ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
 
-  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
-      a, x, y, la, s};
+  return std::tuple<double, double, double, double, ERiseSetStatus>{a, x, y, la,
+                                                                    s};
 }
 
 /**
@@ -1878,10 +1879,10 @@ double SunsetAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
   int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
   double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result1 =
       SunsetAzimuthL3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result1) != ERiseSetStatus::Ok) {
     return -99.0;
   }
 
@@ -1889,16 +1890,16 @@ double SunsetAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
       LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
   double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
 
-  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+  if (EGstUt(x, 0, 0, gd, gm, gy) != EWarningFlags::Ok) {
     return -99.0;
   }
 
   sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result2 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result2 =
       SunsetAzimuthL3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result2) != ERiseSetStatus::Ok) {
     return -99.0;
   }
 
@@ -1910,20 +1911,20 @@ double SunsetAzimuth(double ld, int lm, int ly, int ds, int zc, double gl,
  * \brief Helper function for sunset_az()
  *
  * @return tuple<double a, double x, double y, double la,
- * pa_types::RiseSetStatus s>
+ * RiseSetStatus s>
  */
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 SunsetAzimuthL3710(double gd, int gm, int gy, double sr, double di, double gp) {
   double a = sr + NutatLong(gd, gm, gy) - 0.005694;
   double x = EclipticRightAscension(a, 0, 0, 0, 0, 0, gd, gm, gy);
   double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
   double la = RiseSetLocalSiderealTimeSet(DecimalDegreesToDegreeHours(x), 0, 0,
                                           y, 0, 0, di, gp);
-  pa_types::RiseSetStatus s =
+  ERiseSetStatus s =
       ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
 
-  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
-      a, x, y, la, s};
+  return std::tuple<double, double, double, double, ERiseSetStatus>{a, x, y, la,
+                                                                    s};
 }
 
 /**
@@ -1939,8 +1940,7 @@ double RiseSetAzimuthRise(double rah, double ram, double ras, double dd,
   double d = DegreesToRadians(vd);
   double e = DegreesToRadians(g);
   double f = (sin(c) + sin(d) * sin(e)) / (cos(d) * cos(e));
-  double h = (ERiseSet(rah, ram, ras, dd, dm, ds, vd, g) ==
-              pa_types::RiseSetStatus::Ok)
+  double h = (ERiseSet(rah, ram, ras, dd, dm, ds, vd, g) == ERiseSetStatus::Ok)
                  ? acos(f)
                  : 0;
   double i = WToDegrees(h);
@@ -1961,8 +1961,7 @@ double RiseSetAzimuthSet(double rah, double ram, double ras, double dd,
   double d = DegreesToRadians(vd);
   double e = DegreesToRadians(g);
   double f = (sin(c) + sin(d) * sin(e)) / (cos(d) * cos(e));
-  double h = (ERiseSet(rah, ram, ras, dd, dm, ds, vd, g) ==
-              pa_types::RiseSetStatus::Ok)
+  double h = (ERiseSet(rah, ram, ras, dd, dm, ds, vd, g) == ERiseSetStatus::Ok)
                  ? acos(f)
                  : 0;
   double i = 360 - WToDegrees(h);
@@ -1976,8 +1975,7 @@ double RiseSetAzimuthSet(double rah, double ram, double ras, double dd,
  * Original macro name: TwilightAMLCT
  */
 double TwilightAMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
-                                double gl, double gp,
-                                pa_types::TwilightType tt) {
+                                double gl, double gp, ETwilightType tt) {
   double di = (double)tt;
 
   double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
@@ -1985,10 +1983,10 @@ double TwilightAMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
   int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
   double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result1 =
       TwilightAMLocalCivilTime_L3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result1) != ERiseSetStatus::Ok) {
     return -99.0;
   }
 
@@ -1996,16 +1994,16 @@ double TwilightAMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
       LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
   double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
 
-  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+  if (EGstUt(x, 0, 0, gd, gm, gy) != EWarningFlags::Ok) {
     return -99.0;
   }
 
   sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result2 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result2 =
       TwilightAMLocalCivilTime_L3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result2) != ERiseSetStatus::Ok) {
     return -99.0;
   }
 
@@ -2021,9 +2019,9 @@ double TwilightAMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
  * \brief Helper function for twilight_am_lct()
  *
  * @return tuple <double a, double x, double y, double la,
- * pa_types::RiseSetStatus s>
+ * RiseSetStatus s>
  */
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 TwilightAMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
                                double gp) {
   double a = sr + NutatLong(gd, gm, gy) - 0.005694;
@@ -2031,11 +2029,11 @@ TwilightAMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
   double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
   double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
                                            y, 0, 0, di, gp);
-  pa_types::RiseSetStatus s =
+  ERiseSetStatus s =
       ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
 
-  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
-      a, x, y, la, s};
+  return std::tuple<double, double, double, double, ERiseSetStatus>{a, x, y, la,
+                                                                    s};
 }
 
 /**
@@ -2044,8 +2042,7 @@ TwilightAMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
  * Original macro name: TwilightPMLCT
  */
 double TwilightPMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
-                                double gl, double gp,
-                                pa_types::TwilightType tt) {
+                                double gl, double gp, ETwilightType tt) {
   double di = (double)tt;
 
   double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
@@ -2053,10 +2050,10 @@ double TwilightPMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
   int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
   double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result1 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result1 =
       TwilightPMLocalCivilTime_L3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result1) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result1) != ERiseSetStatus::Ok) {
     return 0.0;
   }
 
@@ -2064,16 +2061,16 @@ double TwilightPMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
       LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result1), 0, 0, gl);
   double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
 
-  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
+  if (EGstUt(x, 0, 0, gd, gm, gy) != EWarningFlags::Ok) {
     return 0.0;
   }
 
   sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
 
-  std::tuple<double, double, double, double, pa_types::RiseSetStatus> result2 =
+  std::tuple<double, double, double, double, ERiseSetStatus> result2 =
       TwilightPMLocalCivilTime_L3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result2) != pa_types::RiseSetStatus::Ok) {
+  if (std::get<4>(result2) != ERiseSetStatus::Ok) {
     return 0.0;
   }
 
@@ -2087,9 +2084,9 @@ double TwilightPMLocalCivilTime(double ld, int lm, int ly, int ds, int zc,
  * \brief Helper function for twilight_pm_lct()
  *
  * @return tuple <double a, double x, double y, double la,
- * pa_types::RiseSetStatus s>
+ * RiseSetStatus s>
  */
-std::tuple<double, double, double, double, pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, ERiseSetStatus>
 TwilightPMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
                                double gp) {
   double a = sr + NutatLong(gd, gm, gy) - 0.005694;
@@ -2097,11 +2094,11 @@ TwilightPMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
   double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
   double la = RiseSetLocalSiderealTimeSet(DecimalDegreesToDegreeHours(x), 0, 0,
                                           y, 0, 0, di, gp);
-  pa_types::RiseSetStatus s =
+  ERiseSetStatus s =
       ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
 
-  return std::tuple<double, double, double, double, pa_types::RiseSetStatus>{
-      a, x, y, la, s};
+  return std::tuple<double, double, double, double, ERiseSetStatus>{a, x, y, la,
+                                                                    s};
 }
 
 /**
@@ -2109,9 +2106,8 @@ TwilightPMLocalCivilTime_L3710(double gd, int gm, int gy, double sr, double di,
  *
  * Original macro name: eTwilight
  */
-pa_types::TwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc,
-                                   double gl, double gp,
-                                   pa_types::TwilightType tt) {
+ETwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc, double gl,
+                          double gp, ETwilightType tt) {
   double di = (double)tt;
 
   double gd = LocalCivilTimeGreenwichDay(12, 0, 0, ds, zc, ld, lm, ly);
@@ -2119,10 +2115,10 @@ pa_types::TwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc,
   int gy = LocalCivilTimeGreenwichYear(12, 0, 0, ds, zc, ld, lm, ly);
   double sr = SunLong(12, 0, 0, ds, zc, ld, lm, ly);
 
-  std::tuple<double, double, double, double, pa_types::TwilightStatus> result1 =
+  std::tuple<double, double, double, double, ETwilightStatus> result1 =
       ETwilight_L3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result1) != pa_types::TwilightStatus::Ok) {
+  if (std::get<4>(result1) != ETwilightStatus::Ok) {
     return std::get<4>(result1);
   }
 
@@ -2131,17 +2127,17 @@ pa_types::TwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc,
   double ut = GreenwichSiderealTimeToUniversalTime(x, 0, 0, gd, gm, gy);
   sr = SunLong(ut, 0, 0, 0, 0, gd, gm, gy);
 
-  std::tuple<double, double, double, double, pa_types::TwilightStatus> result2 =
+  std::tuple<double, double, double, double, ETwilightStatus> result2 =
       ETwilight_L3710(gd, gm, gy, sr, di, gp);
 
-  if (std::get<4>(result2) != pa_types::TwilightStatus::Ok) {
+  if (std::get<4>(result2) != ETwilightStatus::Ok) {
     return std::get<4>(result2);
   }
 
   x = LocalSiderealTimeToGreenwichSiderealTime(std::get<3>(result2), 0, 0, gl);
 
-  if (EGstUt(x, 0, 0, gd, gm, gy) != pa_types::WarningFlags::Ok) {
-    return pa_types::TwilightStatus::ConversionError;
+  if (EGstUt(x, 0, 0, gd, gm, gy) != EWarningFlags::Ok) {
+    return ETwilightStatus::ConversionError;
   }
 
   return std::get<4>(result2);
@@ -2151,9 +2147,9 @@ pa_types::TwilightStatus ETwilight(double ld, int lm, int ly, int ds, int zc,
  * \brief Helper function for e_twilight()
  *
  * @return std::tuple <double a, double x, double y, double la,
- * pa_types::TwilightStatus ts>
+ * TwilightStatus ts>
  */
-std::tuple<double, double, double, double, pa_types::TwilightStatus>
+std::tuple<double, double, double, double, ETwilightStatus>
 ETwilight_L3710(double gd, int gm, int gy, double sr, double di, double gp) {
 
   double a = sr + NutatLong(gd, gm, gy) - 0.005694;
@@ -2161,21 +2157,21 @@ ETwilight_L3710(double gd, int gm, int gy, double sr, double di, double gp) {
   double y = EclipticDeclination(a, 0, 0, 0, 0, 0, gd, gm, gy);
   double la = RiseSetLocalSiderealTimeRise(DecimalDegreesToDegreeHours(x), 0, 0,
                                            y, 0, 0, di, gp);
-  pa_types::RiseSetStatus s =
+  ERiseSetStatus s =
       ERiseSet(DecimalDegreesToDegreeHours(x), 0, 0, y, 0, 0, di, gp);
 
-  pa_types::TwilightStatus ts = pa_types::TwilightStatus::Ok;
+  ETwilightStatus ts = ETwilightStatus::Ok;
 
-  if (s == pa_types::RiseSetStatus::Circumpolar) {
-    ts = pa_types::TwilightStatus::LastsAllNight;
+  if (s == ERiseSetStatus::Circumpolar) {
+    ts = ETwilightStatus::LastsAllNight;
   }
 
-  if (s == pa_types::RiseSetStatus::NeverRises) {
-    ts = pa_types::TwilightStatus::SunTooFarBelowHorizon;
+  if (s == ERiseSetStatus::NeverRises) {
+    ts = ETwilightStatus::SunTooFarBelowHorizon;
   }
 
-  return std::tuple<double, double, double, double, pa_types::TwilightStatus>{
-      a, x, y, la, ts};
+  return std::tuple<double, double, double, double, ETwilightStatus>{a, x, y,
+                                                                     la, ts};
 }
 
 /**
@@ -2185,14 +2181,14 @@ ETwilight_L3710(double gd, int gm, int gy, double sr, double di, double gp) {
  */
 double Angle(double xx1, double xm1, double xs1, double dd1, double dm1,
              double ds1, double xx2, double xm2, double xs2, double dd2,
-             double dm2, double ds2, pa_types::AngleMeasure s) {
-  double a = (s == pa_types::AngleMeasure::Hours)
+             double dm2, double ds2, EAngleMeasure s) {
+  double a = (s == EAngleMeasure::Hours)
                  ? DegreeHoursToDecimalDegrees(HmsToDh(xx1, xm1, xs1))
                  : DegreesMinutesSecondsToDecimalDegrees(xx1, xm1, xs1);
   double b = DegreesToRadians(a);
   double c = DegreesMinutesSecondsToDecimalDegrees(dd1, dm1, ds1);
   double d = DegreesToRadians(c);
-  double e = (s == pa_types::AngleMeasure::Hours)
+  double e = (s == EAngleMeasure::Hours)
                  ? DegreeHoursToDecimalDegrees(HmsToDh(xx2, xm2, xs2))
                  : DegreesMinutesSecondsToDecimalDegrees(xx2, xm2, xs2);
   double f = DegreesToRadians(e);

@@ -226,8 +226,8 @@ CUniversalTime PADateTime::GreenwichSiderealTimeToUniversalTime(
   int utMinutes = DecimalHoursMinute(ut);
   double utSeconds = DecimalHoursSecond(ut);
 
-  WarningFlags warningFlag =
-      (ut < 0.065574) ? WarningFlags::Warning : WarningFlags::Ok;
+  EWarningFlags warningFlag =
+      (ut < 0.065574) ? EWarningFlags::Warning : EWarningFlags::Ok;
 
   return CUniversalTime(utHours, utMinutes, utSeconds, warningFlag);
 }

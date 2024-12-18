@@ -6,6 +6,7 @@
 #include <tuple>
 
 using namespace pa_models;
+using namespace pa_types;
 
 class PACoordinates {
 public:
@@ -68,7 +69,7 @@ public:
                                 double ra_long_2_hour_deg, double ra_long_2_min,
                                 double ra_long_2_sec, double dec_lat_2_deg,
                                 double dec_lat_2_min, double dec_lat_2_sec,
-                                pa_types::AngleMeasurementUnits hour_or_degree);
+                                EAngleMeasurementUnits hour_or_degree);
 
   CRiseSet RisingAndSetting(double ra_hours, double ra_minutes,
                             double ra_seconds, double dec_deg, double dec_min,
@@ -98,7 +99,7 @@ public:
   CAtmosphericRefraction AtmosphericRefraction(
       double true_ra_hour, double true_ra_min, double true_ra_sec,
       double true_dec_deg, double true_dec_min, double true_dec_sec,
-      pa_types::CoordinateType coordinate_type1, double geog_long_deg,
+      ECoordinateType coordinate_type1, double geog_long_deg,
       double geog_lat_deg, int daylight_saving_hours, int timezone_hours,
       double lcd_day, int lcd_month, int lcd_year, double lct_hour,
       double lct_min, double lct_sec, double atmospheric_pressure_mbar,
@@ -106,7 +107,7 @@ public:
 
   CGeocentricParallax CorrectionsForGeocentricParallax(
       double ra_hour, double ra_min, double ra_sec, double dec_deg,
-      double dec_min, double dec_sec, pa_types::CoordinateType coordinate_type,
+      double dec_min, double dec_sec, ECoordinateType coordinate_type,
       double equatorial_hor_parallax_deg, double geog_long_deg,
       double geog_lat_deg, double height_m, int daylight_saving,
       int timezone_hours, double lcd_day, int lcd_month, int lcd_year,

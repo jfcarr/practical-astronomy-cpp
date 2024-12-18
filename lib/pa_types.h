@@ -1,10 +1,11 @@
 #ifndef _pa_types
 #define _pa_types
 namespace pa_types {
+
 /**
  * Warning flags for calculation results.
  */
-enum class WarningFlags {
+enum class EWarningFlags {
   Ok,     /**< Calculation result is OK. */
   Warning /**< Calculation result is invalid/inaccurate. */
 };
@@ -12,12 +13,12 @@ enum class WarningFlags {
 /**
  * Angle measurement units.
  */
-enum AngleMeasurementUnits { Hours, Degrees };
+enum class EAngleMeasurementUnits { Hours, Degrees };
 
 /**
  * Rise/Set status of an object.
  */
-enum class RiseSetStatus {
+enum class ERiseSetStatus {
   Ok,                      /**< Object rises and sets */
   NeverRises,              /**< Object is never visible above the horizon. */
   Circumpolar,             /**< Object never sets. */
@@ -27,7 +28,7 @@ enum class RiseSetStatus {
 /**
  * Coordinate types
  */
-enum class CoordinateType {
+enum class ECoordinateType {
   Actual,  /**< actual/real */
   Apparent /**< apparent (observer) */
 };
@@ -35,7 +36,7 @@ enum class CoordinateType {
 /**
  * Status of sunrise/sunset calculation.
  */
-enum class SunRiseSetStatus {
+enum class ESunRiseSetStatus {
   Ok,             /**< good value */
   ConversionError /**< bad value */
 };
@@ -43,7 +44,7 @@ enum class SunRiseSetStatus {
 /**
  * Status of twilight calculation.
  */
-enum class TwilightStatus {
+enum class ETwilightStatus {
   Ok,
   ConversionError,
   LastsAllNight,
@@ -55,7 +56,7 @@ enum class TwilightStatus {
  *
  * Maps to degrees-below-horizon.
  */
-enum class TwilightType {
+enum class ETwilightType {
   Civil = 6,        /**< First period of twilight */
   Nautical = 12,    /**< Second period of twilight */
   Astronomical = 18 /**< Third period of twilight */
@@ -64,9 +65,10 @@ enum class TwilightType {
 /**
  * \brief Angle measurement units.
  */
-enum class AngleMeasure {
+enum class EAngleMeasure {
   Degrees, /**< Measurement by degrees */
   Hours    /**< Measurement by hours */
 };
+
 } // namespace pa_types
 #endif

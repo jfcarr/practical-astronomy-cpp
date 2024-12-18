@@ -235,7 +235,7 @@ SCENARIO("Calculate angle between two objects", "[coordinates]") {
          "Object 2 is Right Ascension 6h 44m 13.4s Declination -16h 41m 11s") {
       CAngle result = paCoordinates.AngleBetweenTwoObjects(
           5, 13, 31.7, -8, 13, 30, 6, 44, 13.4, -16, 41, 11,
-          pa_types::AngleMeasurementUnits::Hours);
+          EAngleMeasurementUnits::Hours);
 
       THEN("Angular distance is 23d 40m 25.86s") {
         CAngle expected = CAngle(23, 40, 25.86);
@@ -260,7 +260,7 @@ SCENARIO("Calculate rising and setting times", "[coordinates]") {
       THEN("Rise/Set status is OK, and rise time is 14:16 and set time is 4:10 "
            "and azimuth rise/set is 64.36/295.64") {
         CRiseSet expected =
-            CRiseSet(pa_types::RiseSetStatus::Ok, 14, 16, 4, 10, 64.36, 295.64);
+            CRiseSet(ERiseSetStatus::Ok, 14, 16, 4, 10, 64.36, 295.64);
 
         REQUIRE(result.azRise == expected.azRise);
         REQUIRE(result.azSet == expected.azSet);
@@ -352,8 +352,8 @@ SCENARIO("Correct for atmospheric refraction") {
          "and Local Civil Time is 01:01:24 and Atmospheric Pressure "
          "Millibar/Temperature Celsius is 1012/21.7") {
       CAtmosphericRefraction result = paCoordinates.AtmosphericRefraction(
-          23, 14, 0, 40, 10, 0, pa_types::CoordinateType::Actual, 0.17,
-          51.2036110, 0, 0, 23, 3, 1987, 1, 1, 24, 1012, 21.7);
+          23, 14, 0, 40, 10, 0, ECoordinateType::Actual, 0.17, 51.2036110, 0, 0,
+          23, 3, 1987, 1, 1, 24, 1012, 21.7);
 
       THEN("Corrected Right Ascension is 23h 13m 44.74s and Corrected "
            "Declination is 40d 19m 45.76s") {
@@ -380,8 +380,8 @@ SCENARIO("Corrections for geocentric parallax") {
          "2/26/1979 and Local Civil Time is 10:45:00") {
       CGeocentricParallax result =
           paCoordinates.CorrectionsForGeocentricParallax(
-              22, 35, 19, -7, 41, 13, pa_types::CoordinateType::Actual,
-              1.019167, -100, 50, 60, 0, -6, 26, 2, 1979, 10, 45, 0);
+              22, 35, 19, -7, 41, 13, ECoordinateType::Actual, 1.019167, -100,
+              50, 60, 0, -6, 26, 2, 1979, 10, 45, 0);
 
       THEN("Corrected Right Ascension is 22h 36m 43.22s and Corrected "
            "Declination is -8d 32m 17.4s") {

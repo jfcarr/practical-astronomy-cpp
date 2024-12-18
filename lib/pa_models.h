@@ -82,7 +82,7 @@ public:
 class CUniversalTime {
 public:
   CUniversalTime(int hours, int minutes, double seconds,
-                 WarningFlags warningFlag) {
+                 EWarningFlags warningFlag) {
     this->hours = hours;
     this->minutes = minutes;
     this->seconds = seconds;
@@ -92,7 +92,7 @@ public:
   int hours;
   int minutes;
   double seconds;
-  WarningFlags warningFlag;
+  EWarningFlags warningFlag;
 };
 
 class CAngle {
@@ -406,9 +406,8 @@ public:
 
 class CRiseSet {
 public:
-  CRiseSet(pa_types::RiseSetStatus rsStatus, double utRiseHour,
-           double utRiseMin, double utSetHour, double utSetMin, double azRise,
-           double azSet) {
+  CRiseSet(ERiseSetStatus rsStatus, double utRiseHour, double utRiseMin,
+           double utSetHour, double utSetMin, double azRise, double azSet) {
     this->rsStatus = rsStatus;
     this->utRiseHour = utRiseHour;
     this->utRiseMin = utRiseMin;
@@ -418,7 +417,7 @@ public:
     this->azSet = azSet;
   }
 
-  pa_types::RiseSetStatus rsStatus;
+  ERiseSetStatus rsStatus;
   double utRiseHour;
   double utRiseMin;
   double utSetHour;

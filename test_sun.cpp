@@ -87,17 +87,16 @@ SCENARIO("Sunrise and Sunset") {
 
     WHEN("Local date is 3/10/1986 and Geographical Longitude/Latitude is "
          "-71.05d/42.37d") {
-      std::tuple<double, double, double, double, double, double,
-                 pa_types::RiseSetStatus>
+      std::tuple<double, double, double, double, double, double, ERiseSetStatus>
           result =
               paSun.SunriseAndSunset(10, 3, 1986, false, -5, -71.05, 42.37);
 
       THEN("Local sunrise is 06:05 and local sunset is 17:45 and azimuth of "
            "sunrise/sunset is 94.83d/265.43d") {
         std::tuple<double, double, double, double, double, double,
-                   pa_types::RiseSetStatus>
+                   ERiseSetStatus>
             expected = std::make_tuple(6, 5, 17, 45, 94.83, 265.43,
-                                       pa_types::RiseSetStatus::Ok);
+                                       ERiseSetStatus::Ok);
 
         REQUIRE(std::get<0>(result) == std::get<0>(expected));
         REQUIRE(std::get<1>(result) == std::get<1>(expected));
@@ -117,16 +116,14 @@ SCENARIO("Morning and Evening Twilight") {
 
     WHEN("Local date is 9/7/1979 and geographical longitude/latitude is 0d/52d "
          "and twilight type is astronomical") {
-      std::tuple<double, double, double, double, pa_types::TwilightStatus>
-          result = paSun.MorningAndEveningTwilight(
-              7, 9, 1979, false, 0, 0, 52,
-              pa_types::TwilightType::Astronomical);
+      std::tuple<double, double, double, double, ETwilightStatus> result =
+          paSun.MorningAndEveningTwilight(7, 9, 1979, false, 0, 0, 52,
+                                          ETwilightType::Astronomical);
 
       THEN("Twilight begins at 03:00 and twilight ends at 20:37 and twilight "
            "status is OK") {
-        std::tuple<double, double, double, double, pa_types::TwilightStatus>
-            expected =
-                std::make_tuple(3, 17, 20, 37, pa_types::TwilightStatus::Ok);
+        std::tuple<double, double, double, double, ETwilightStatus> expected =
+            std::make_tuple(3, 17, 20, 37, ETwilightStatus::Ok);
 
         REQUIRE(std::get<0>(result) == std::get<0>(expected));
         REQUIRE(std::get<1>(result) == std::get<1>(expected));

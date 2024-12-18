@@ -175,7 +175,7 @@ SCENARIO("Convert universal time to and from Greenwich sidereal time",
 
       THEN("Universal time is 14:36:51.67") {
         CUniversalTime expected =
-            CUniversalTime(14, 36, 51.67, WarningFlags::Ok);
+            CUniversalTime(14, 36, 51.67, EWarningFlags::Ok);
 
         REQUIRE(result.hours == expected.hours);
         REQUIRE(result.minutes == expected.minutes);

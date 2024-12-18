@@ -5,10 +5,10 @@
 #include "pa_util.h"
 #include <cmath>
 
-using namespace pa_types;
-using namespace pa_models;
-using namespace pa_util;
 using namespace pa_macros;
+using namespace pa_models;
+using namespace pa_types;
+using namespace pa_util;
 
 /**
  * \brief Convert Angle (degrees,minutes,seconds) to Decimal Degrees
@@ -346,13 +346,12 @@ CAngle PACoordinates::AngleBetweenTwoObjects(
     double decLat1Deg, double decLat1Min, double decLat1Sec,
     double raLong2HourDeg, double raLong2Min, double raLong2Sec,
     double decLat2Deg, double decLat2Min, double decLat2Sec,
-    pa_types::AngleMeasurementUnits hourOrDegree) {
-  double raLong1Decimal =
-      (hourOrDegree == pa_types::AngleMeasurementUnits::Hours)
-          ? HmsToDh(raLong1HourDeg, raLong1Min, raLong1Sec)
-          : DegreesMinutesSecondsToDecimalDegrees(raLong1HourDeg, raLong1Min,
-                                                  raLong1Sec);
-  double raLong1Deg = (hourOrDegree == pa_types::AngleMeasurementUnits::Hours)
+    EAngleMeasurementUnits hourOrDegree) {
+  double raLong1Decimal = (hourOrDegree == EAngleMeasurementUnits::Hours)
+                              ? HmsToDh(raLong1HourDeg, raLong1Min, raLong1Sec)
+                              : DegreesMinutesSecondsToDecimalDegrees(
+                                    raLong1HourDeg, raLong1Min, raLong1Sec);
+  double raLong1Deg = (hourOrDegree == EAngleMeasurementUnits::Hours)
                           ? DegreeHoursToDecimalDegrees(raLong1Decimal)
                           : raLong1Decimal;
 
@@ -361,12 +360,11 @@ CAngle PACoordinates::AngleBetweenTwoObjects(
       DegreesMinutesSecondsToDecimalDegrees(decLat1Deg, decLat1Min, decLat1Sec);
   double decLat1Rad = DegreesToRadians(decLat1Deg1);
 
-  double raLong2Decimal =
-      (hourOrDegree == pa_types::AngleMeasurementUnits::Hours)
-          ? HmsToDh(raLong2HourDeg, raLong2Min, raLong2Sec)
-          : DegreesMinutesSecondsToDecimalDegrees(raLong2HourDeg, raLong2Min,
-                                                  raLong2Sec);
-  double raLong2Deg = (hourOrDegree == pa_types::AngleMeasurementUnits::Hours)
+  double raLong2Decimal = (hourOrDegree == EAngleMeasurementUnits::Hours)
+                              ? HmsToDh(raLong2HourDeg, raLong2Min, raLong2Sec)
+                              : DegreesMinutesSecondsToDecimalDegrees(
+                                    raLong2HourDeg, raLong2Min, raLong2Sec);
+  double raLong2Deg = (hourOrDegree == EAngleMeasurementUnits::Hours)
                           ? DegreeHoursToDecimalDegrees(raLong2Decimal)
                           : raLong2Decimal;
   double raLong2Rad = DegreesToRadians(raLong2Deg);
@@ -428,30 +426,28 @@ CRiseSet PACoordinates::RisingAndSetting(double raHours, double raMinutes,
   double utRiseAdjustedHours = utRiseHours1 + 0.008333;
   double utSetAdjustedHours = utSetHours1 + 0.008333;
 
-  pa_types::RiseSetStatus rsStatus = pa_types::RiseSetStatus::Ok;
+  ERiseSetStatus rsStatus = ERiseSetStatus::Ok;
   if (cosH > 1)
-    rsStatus = pa_types::RiseSetStatus::NeverRises;
+    rsStatus = ERiseSetStatus::NeverRises;
   if (cosH < -1)
-    rsStatus = pa_types::RiseSetStatus::Circumpolar;
+    rsStatus = ERiseSetStatus::Circumpolar;
 
-  int utRiseHour = (rsStatus == pa_types::RiseSetStatus::Ok)
+  int utRiseHour = (rsStatus == ERiseSetStatus::Ok)
                        ? DecimalHoursHour(utRiseAdjustedHours)
                        : 0;
-  int utRiseMin = (rsStatus == pa_types::RiseSetStatus::Ok)
+  int utRiseMin = (rsStatus == ERiseSetStatus::Ok)
                       ? DecimalHoursMinute(utRiseAdjustedHours)
                       : 0;
-  int utSetHour = (rsStatus == pa_types::RiseSetStatus::Ok)
+  int utSetHour = (rsStatus == ERiseSetStatus::Ok)
                       ? DecimalHoursHour(utSetAdjustedHours)
                       : 0;
-  int utSetMin = (rsStatus == pa_types::RiseSetStatus::Ok)
+  int utSetMin = (rsStatus == ERiseSetStatus::Ok)
                      ? DecimalHoursMinute(utSetAdjustedHours)
                      : 0;
-  double azRise = (rsStatus == pa_types::RiseSetStatus::Ok)
-                      ? pa_util::Round(azRiseDeg, 2)
-                      : 0;
-  double azSet = (rsStatus == pa_types::RiseSetStatus::Ok)
-                     ? pa_util::Round(azSetDeg, 2)
-                     : 0;
+  double azRise =
+      (rsStatus == ERiseSetStatus::Ok) ? pa_util::Round(azRiseDeg, 2) : 0;
+  double azSet =
+      (rsStatus == ERiseSetStatus::Ok) ? pa_util::Round(azSetDeg, 2) : 0;
 
   return CRiseSet(rsStatus, utRiseHour, utRiseMin, utSetHour, utSetMin, azRise,
                   azSet);
@@ -571,11 +567,10 @@ CAberration PACoordinates::CorrectForAberration(
  */
 CAtmosphericRefraction PACoordinates::AtmosphericRefraction(
     double trueRaHour, double trueRaMin, double trueRaSec, double trueDecDeg,
-    double trueDecMin, double trueDecSec,
-    pa_types::CoordinateType coordinateType1, double geogLongDeg,
-    double geogLatDeg, int daylightSavingHours, int timezoneHours,
-    double lcdDay, int lcdMonth, int lcdYear, double lctHour, double lctMin,
-    double lctSec, double atmosphericPressureMbar,
+    double trueDecMin, double trueDecSec, ECoordinateType coordinateType1,
+    double geogLongDeg, double geogLatDeg, int daylightSavingHours,
+    int timezoneHours, double lcdDay, int lcdMonth, int lcdYear, double lctHour,
+    double lctMin, double lctSec, double atmosphericPressureMbar,
     double atmosphericTemperatureCelsius) {
   double haHour = pa_macros::RightAscensionToHourAngle(
       trueRaHour, trueRaMin, trueRaSec, lctHour, lctMin, lctSec,
@@ -616,7 +611,7 @@ CAtmosphericRefraction PACoordinates::AtmosphericRefraction(
  */
 CGeocentricParallax PACoordinates::CorrectionsForGeocentricParallax(
     double raHour, double raMin, double raSec, double decDeg, double decMin,
-    double decSec, pa_types::CoordinateType coordinateType,
+    double decSec, ECoordinateType coordinateType,
     double equatorialHorParallaxDeg, double geogLongDeg, double geogLatDeg,
     double heightM, int daylightSaving, int timezoneHours, double lcdDay,
     int lcdMonth, int lcdYear, double lctHour, double lctMin, double lctSec) {

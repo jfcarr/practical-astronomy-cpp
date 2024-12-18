@@ -147,10 +147,9 @@ std::tuple<double, double, double, double> PASun::SunDistanceAndAngularSize(
  *
  * tuple <double local_sunrise_hour, double local_sunrise_minute, double
  * local_sunset_hour, double local_sunset_minute, double azimuth_of_sunrise_deg,
- * double azimuth_of_sunset_deg, pa_types::sun_rise_set_status>
+ * double azimuth_of_sunset_deg, sun_rise_set_status>
  */
-std::tuple<double, double, double, double, double, double,
-           pa_types::RiseSetStatus>
+std::tuple<double, double, double, double, double, double, ERiseSetStatus>
 PASun::SunriseAndSunset(double localDay, int localMonth, int localYear,
                         bool isDaylightSaving, int zoneCorrection,
                         double geographicalLongDeg, double geographicalLatDeg) {
@@ -163,7 +162,7 @@ PASun::SunriseAndSunset(double localDay, int localMonth, int localYear,
       localDay, localMonth, localYear, daylightSaving, zoneCorrection,
       geographicalLongDeg, geographicalLatDeg);
 
-  pa_types::RiseSetStatus sunRiseSetStatus = ESunRiseSetCalcStatus(
+  ERiseSetStatus sunRiseSetStatus = ESunRiseSetCalcStatus(
       localDay, localMonth, localYear, daylightSaving, zoneCorrection,
       geographicalLongDeg, geographicalLatDeg);
 
@@ -177,51 +176,51 @@ PASun::SunriseAndSunset(double localDay, int localMonth, int localYear,
       SunsetAzimuth(localDay, localMonth, localYear, daylightSaving,
                     zoneCorrection, geographicalLongDeg, geographicalLatDeg);
 
-  int localSunriseHour = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+  int localSunriseHour = (sunRiseSetStatus == ERiseSetStatus::Ok)
                              ? DecimalHoursHour(adjustedSunriseHours)
                              : 0;
-  int localSunriseMinute = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+  int localSunriseMinute = (sunRiseSetStatus == ERiseSetStatus::Ok)
                                ? DecimalHoursMinute(adjustedSunriseHours)
                                : 0;
 
-  int localSunsetHour = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+  int localSunsetHour = (sunRiseSetStatus == ERiseSetStatus::Ok)
                             ? DecimalHoursHour(adjustedSunsetHours)
                             : 0;
-  int localSunsetMinute = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+  int localSunsetMinute = (sunRiseSetStatus == ERiseSetStatus::Ok)
                               ? DecimalHoursMinute(adjustedSunsetHours)
                               : 0;
 
-  double azimuthOfSunriseDeg = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+  double azimuthOfSunriseDeg = (sunRiseSetStatus == ERiseSetStatus::Ok)
                                    ? pa_util::Round(azimuthOfSunriseDeg1, 2)
                                    : 0;
-  double azimuthOfSunsetDeg = (sunRiseSetStatus == pa_types::RiseSetStatus::Ok)
+  double azimuthOfSunsetDeg = (sunRiseSetStatus == ERiseSetStatus::Ok)
                                   ? pa_util::Round(azimuthOfSunsetDeg1, 2)
                                   : 0;
 
-  pa_types::RiseSetStatus status = sunRiseSetStatus;
+  ERiseSetStatus status = sunRiseSetStatus;
 
   return std::tuple<double, double, double, double, double, double,
-                    pa_types::RiseSetStatus>{localSunriseHour,
-                                             localSunriseMinute,
-                                             localSunsetHour,
-                                             localSunsetMinute,
-                                             azimuthOfSunriseDeg,
-                                             azimuthOfSunsetDeg,
-                                             status};
+                    ERiseSetStatus>{localSunriseHour,
+                                    localSunriseMinute,
+                                    localSunsetHour,
+                                    localSunsetMinute,
+                                    azimuthOfSunriseDeg,
+                                    azimuthOfSunsetDeg,
+                                    status};
 }
 
 /**
  * \brief Calculate times of morning and evening twilight.
  *
  * tuple <double amTwilightBeginsHour, double amTwilightBeginsMin, double
- * pmTwilightEndsHour, double pmTwilightEndsMin, pa_types::TwilightStatus>
+ * pmTwilightEndsHour, double pmTwilightEndsMin, TwilightStatus>
  */
-std::tuple<double, double, double, double, pa_types::TwilightStatus>
+std::tuple<double, double, double, double, ETwilightStatus>
 PASun::MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
                                  bool isDaylightSaving, int zoneCorrection,
                                  double geographicalLongDeg,
                                  double geographicalLatDeg,
-                                 pa_types::TwilightType twilightType) {
+                                 ETwilightType twilightType) {
   int daylightSaving = (isDaylightSaving) ? 1 : 0;
 
   double startOfAMTwilightHours = TwilightAMLocalCivilTime(
@@ -232,30 +231,30 @@ PASun::MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
       localDay, localMonth, localYear, daylightSaving, zoneCorrection,
       geographicalLongDeg, geographicalLatDeg, twilightType);
 
-  pa_types::TwilightStatus twilightStatus =
+  ETwilightStatus twilightStatus =
       ETwilight(localDay, localMonth, localYear, daylightSaving, zoneCorrection,
                 geographicalLongDeg, geographicalLatDeg, twilightType);
 
   double adjustedAMStartTime = startOfAMTwilightHours + 0.008333;
   double adjustedPMStartTime = endOfPMTwilightHours + 0.008333;
 
-  double amTwilightBeginsHour = (twilightStatus == pa_types::TwilightStatus::Ok)
+  double amTwilightBeginsHour = (twilightStatus == ETwilightStatus::Ok)
                                     ? DecimalHoursHour(adjustedAMStartTime)
                                     : -99;
-  double amTwilightBeginsMin = (twilightStatus == pa_types::TwilightStatus::Ok)
+  double amTwilightBeginsMin = (twilightStatus == ETwilightStatus::Ok)
                                    ? DecimalHoursMinute(adjustedAMStartTime)
                                    : -99;
 
-  double pmTwilightEndsHour = (twilightStatus == pa_types::TwilightStatus::Ok)
+  double pmTwilightEndsHour = (twilightStatus == ETwilightStatus::Ok)
                                   ? DecimalHoursHour(adjustedPMStartTime)
                                   : -99;
-  double pmTwilightEndsMin = (twilightStatus == pa_types::TwilightStatus::Ok)
+  double pmTwilightEndsMin = (twilightStatus == ETwilightStatus::Ok)
                                  ? DecimalHoursMinute(adjustedPMStartTime)
                                  : -99;
 
-  pa_types::TwilightStatus status = twilightStatus;
+  ETwilightStatus status = twilightStatus;
 
-  return std::tuple<double, double, double, double, pa_types::TwilightStatus>{
+  return std::tuple<double, double, double, double, ETwilightStatus>{
       amTwilightBeginsHour, amTwilightBeginsMin, pmTwilightEndsHour,
       pmTwilightEndsMin, status};
 }
@@ -304,7 +303,7 @@ double PASun::SolarElongation(double raHour, double raMin, double raSec,
                                          gwdateDay, gwdateMonth, gwdateYear);
   double solarElongationDeg =
       pa_macros::Angle(sunRAHours, 0, 0, sunDecDeg, 0, 0, raHour, raMin, raSec,
-                       decDeg, decMin, decSec, pa_types::AngleMeasure::Hours);
+                       decDeg, decMin, decSec, EAngleMeasure::Hours);
 
   return pa_util::Round(solarElongationDeg, 2);
 }
