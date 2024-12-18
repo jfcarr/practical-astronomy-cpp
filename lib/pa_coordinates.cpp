@@ -1,10 +1,12 @@
 #include "pa_coordinates.h"
 #include "pa_macros.h"
+#include "pa_models.h"
 #include "pa_types.h"
 #include "pa_util.h"
 #include <cmath>
 
 using namespace pa_types;
+using namespace pa_models;
 using namespace pa_util;
 using namespace pa_macros;
 
@@ -32,10 +34,9 @@ double PACoordinates::AngleToDecimalDegrees(double degrees, double minutes,
  *
  * @param decimalDegrees
  *
- * @return tuple <double degrees, double minutes, double seconds>
+ * @return CAngle
  */
-std::tuple<double, double, double>
-PACoordinates::DecimalDegreesToAngle(double decimalDegrees) {
+CAngle PACoordinates::DecimalDegreesToAngle(double decimalDegrees) {
   double unsignedDecimal = std::abs(decimalDegrees);
   double totalSeconds = unsignedDecimal * 3600;
   double seconds2dp = Round(std::fmod(totalSeconds, 60), 2);
@@ -47,17 +48,15 @@ PACoordinates::DecimalDegreesToAngle(double decimalDegrees) {
   double signedDegrees =
       (decimalDegrees < 0) ? -1 * unsignedDegrees : unsignedDegrees;
 
-  return std::tuple<double, double, double>{signedDegrees, minutes,
-                                            floor(correctedSeconds)};
+  return CAngle(signedDegrees, minutes, floor(correctedSeconds));
 }
 
 /**
  * \brief Convert Right Ascension to Hour Angle
  *
- * @return tuple <double hour_angle_hours, double hour_angle_minutes, double
- * hour_angle_seconds>
+ * @return CHourAngle
  */
-std::tuple<double, double, double> PACoordinates::RightAscensionToHourAngle(
+CHourAngle PACoordinates::RightAscensionToHourAngle(
     double raHours, double raMinutes, double raSeconds, double lctHours,
     double lctMinutes, double lctSeconds, bool isDaylightSavings,
     int zoneCorrection, double localDay, int localMonth, int localYear,
@@ -73,17 +72,15 @@ std::tuple<double, double, double> PACoordinates::RightAscensionToHourAngle(
   int hourAngleMinutes = DecimalHoursMinute(hourAngle);
   double hourAngleSeconds = DecimalHoursSecond(hourAngle);
 
-  return std::tuple<double, double, double>{hourAngleHours, hourAngleMinutes,
-                                            hourAngleSeconds};
+  return CHourAngle(hourAngleHours, hourAngleMinutes, hourAngleSeconds);
 }
 
 /**
  * \brief Convert Hour Angle to Right Ascension
  *
- * @return tuple <double right_ascension_hours, double right_ascension_minutes,
- * double right_ascension_seconds>
+ * @return CRightAscension
  */
-std::tuple<double, double, double> PACoordinates::HourAngleToRightAscension(
+CRightAscension PACoordinates::HourAngleToRightAscension(
     double hourAngleHours, double hourAngleMinutes, double hourAngleSeconds,
     double lctHours, double lctMinutes, double lctSeconds,
     bool isDaylightSavings, int zoneCorrection, double localDay, int localMonth,
@@ -99,19 +96,16 @@ std::tuple<double, double, double> PACoordinates::HourAngleToRightAscension(
   int rightAscensionMinutes = DecimalHoursMinute(rightAscension);
   int rightAscensionSeconds = DecimalHoursSecond(rightAscension);
 
-  return std::tuple<double, double, double>{
-      rightAscensionHours, rightAscensionMinutes, rightAscensionSeconds};
+  return CRightAscension(rightAscensionHours, rightAscensionMinutes,
+                         rightAscensionSeconds);
 }
 
 /**
  * \brief Convert Equatorial Coordinates to Horizon Coordinates
  *
- * @return tuple <double azimuthDegrees, double azimuthMinutes, double
- * azimuthSeconds, double altitudeDegrees, double altitudeMinutes, double
- * altitudeSeconds>
+ * @return CHorizonCoordinates
  */
-std::tuple<double, double, double, double, double, double>
-PACoordinates::EquatorialCoordinatesToHorizonCoordinates(
+CHorizonCoordinates PACoordinates::EquatorialCoordinatesToHorizonCoordinates(
     double hourAngleHours, double hourAngleMinutes, double hourAngleSeconds,
     double declinationDegrees, double declinationMinutes,
     double declinationSeconds, double geographicalLatitude) {
@@ -131,19 +125,16 @@ PACoordinates::EquatorialCoordinatesToHorizonCoordinates(
   double altitudeMinutes = DecimalDegreesMinutes(altitudeInDecimalDegrees);
   double altitudeSeconds = DecimalDegreesSeconds(altitudeInDecimalDegrees);
 
-  return std::tuple<double, double, double, double, double, double>{
-      azimuthDegrees,  azimuthMinutes,  azimuthSeconds,
-      altitudeDegrees, altitudeMinutes, altitudeSeconds};
+  return CHorizonCoordinates(azimuthDegrees, azimuthMinutes, azimuthSeconds,
+                             altitudeDegrees, altitudeMinutes, altitudeSeconds);
 }
 
 /**
  * \brief Convert Horizon Coordinates to Equatorial Coordinates
  *
- * @return tuple <double hour_angle_hours, double hour_angle_minutes, double
- * hour_angle-seconds, double declination_degrees, double declination_minutes,
- * double declination_seconds>
+ * @return CEquatorialCoordinatesHA
  */
-std::tuple<double, double, double, double, double, double>
+CEquatorialCoordinatesHA
 PACoordinates::HorizonCoordinatesToEquatorialCoordinates(
     double azimuthDegrees, double azimuthMinutes, double azimuthSeconds,
     double altitudeDegrees, double altitudeMinutes, double altitudeSeconds,
@@ -167,9 +158,9 @@ PACoordinates::HorizonCoordinatesToEquatorialCoordinates(
   double declinationSeconds =
       DecimalDegreesSeconds(declinationInDecimalDegrees);
 
-  return std::tuple<double, double, double, double, double, double>{
-      hourAngleHours,     hourAngleMinutes,   hourAngleSeconds,
-      declinationDegrees, declinationMinutes, declinationSeconds};
+  return CEquatorialCoordinatesHA(hourAngleHours, hourAngleMinutes,
+                                  hourAngleSeconds, declinationDegrees,
+                                  declinationMinutes, declinationSeconds);
 }
 
 /**
@@ -191,10 +182,9 @@ double PACoordinates::MeanObliquityOfTheEcliptic(double greenwichDay,
 /**
  * \brief Convert Ecliptic Coordinates to Equatorial Coordinates
  *
- * @return tuple <double outRAHours, double outRAMinutes, double outRASeconds,
- * double outDecDegrees, double outDecMinutes, double outDecSeconds>
+ * @return CEquatorialCoordinatesRA
  */
-std::tuple<double, double, double, double, double, double>
+CEquatorialCoordinatesRA
 PACoordinates::EclipticCoordinateToEquatorialCoordinate(
     double eclipticLongitudeDegrees, double eclipticLongitudeMinutes,
     double eclipticLongitudeSeconds, double eclipticLatitudeDegrees,
@@ -228,19 +218,16 @@ PACoordinates::EclipticCoordinateToEquatorialCoordinate(
   double outDecMinutes = DecimalDegreesMinutes(decDeg);
   double outDecSeconds = DecimalDegreesSeconds(decDeg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      outRaHours,    outRaMinutes,  outRaSeconds,
-      outDecDegrees, outDecMinutes, outDecSeconds};
+  return CEquatorialCoordinatesRA(outRaHours, outRaMinutes, outRaSeconds,
+                                  outDecDegrees, outDecMinutes, outDecSeconds);
 }
 
 /**
  * \brief Convert Equatorial Coordinates to Ecliptic Coordinates
  *
- * @return tuple <double outEclLongDeg, double outEclLongMin, double
- * outEclLongSec, double outEclLatDeg, double outEclLatMin, double outEclLatSec>
+ * @return CEqlipticCoordinates
  */
-std::tuple<double, double, double, double, double, double>
-PACoordinates::EquatorialCoordinateToEclipticCoordinate(
+CEqlipticCoordinates PACoordinates::EquatorialCoordinateToEclipticCoordinate(
     double raHours, double raMinutes, double raSeconds, double decDegrees,
     double decMinutes, double decSeconds, double gwDay, int gwMonth,
     int gwYear) {
@@ -269,19 +256,16 @@ PACoordinates::EquatorialCoordinateToEclipticCoordinate(
   double outEclLatMin = DecimalDegreesMinutes(eclLatDeg);
   double outEclLatSec = DecimalDegreesSeconds(eclLatDeg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      outEclLongDeg, outEclLongMin, outEclLongSec,
-      outEclLatDeg,  outEclLatMin,  outEclLatSec};
+  return CEqlipticCoordinates(outEclLongDeg, outEclLongMin, outEclLongSec,
+                              outEclLatDeg, outEclLatMin, outEclLatSec);
 }
 
 /**
  * \brief Convert Equatorial Coordinates to Galactic Coordinates
  *
- * @return tuple <double galLongDeg, double galLongMin, double galLongSec,
- * double galLatDeg, double galLatMin, double galLatSec>
+ * @return CGalacticCoordinates
  */
-std::tuple<double, double, double, double, double, double>
-PACoordinates::EquatorialCoordinateToGalacticCoordinate(
+CGalacticCoordinates PACoordinates::EquatorialCoordinateToGalacticCoordinate(
     double raHours, double raMinutes, double raSeconds, double decDegrees,
     double decMinutes, double decSeconds) {
   double raDeg =
@@ -308,17 +292,16 @@ PACoordinates::EquatorialCoordinateToGalacticCoordinate(
   double galLatMin = DecimalDegreesMinutes(bDeg);
   double galLatSec = DecimalDegreesSeconds(bDeg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      galLongDeg, galLongMin, galLongSec, galLatDeg, galLatMin, galLatSec};
+  return CGalacticCoordinates(galLongDeg, galLongMin, galLongSec, galLatDeg,
+                              galLatMin, galLatSec);
 }
 
 /**
  * \brief Convert Galactic Coordinates to Equatorial Coordinates
  *
- * @return tuple <double raHours, double raMinutes, double raSeconds, double
- * decDegrees, double decMinutes, double decSeconds>
+ * @return CEquatorialCoordinatesRA
  */
-std::tuple<double, double, double, double, double, double>
+CEquatorialCoordinatesRA
 PACoordinates::GalacticCoordinateToEquatorialCoordinate(
     double galLongDeg, double galLongMin, double galLongSec, double galLatDeg,
     double galLatMin, double galLatSec) {
@@ -349,16 +332,16 @@ PACoordinates::GalacticCoordinateToEquatorialCoordinate(
   double decMinutes = DecimalDegreesMinutes(decDeg);
   double decSeconds = DecimalDegreesSeconds(decDeg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      raHours, raMinutes, raSeconds, decDegrees, decMinutes, decSeconds};
+  return CEquatorialCoordinatesRA(raHours, raMinutes, raSeconds, decDegrees,
+                                  decMinutes, decSeconds);
 }
 
 /**
  * \brief Calculate the angle between two celestial objects
  *
- * @return tuple <double angleDeg, double angleMin, double angleSec>
+ * @return CAngle
  */
-std::tuple<double, double, double> PACoordinates::AngleBetweenTwoObjects(
+CAngle PACoordinates::AngleBetweenTwoObjects(
     double raLong1HourDeg, double raLong1Min, double raLong1Sec,
     double decLat1Deg, double decLat1Min, double decLat1Sec,
     double raLong2HourDeg, double raLong2Min, double raLong2Sec,
@@ -401,23 +384,21 @@ std::tuple<double, double, double> PACoordinates::AngleBetweenTwoObjects(
   double angleMin = DecimalDegreesMinutes(dDeg);
   double angleSec = DecimalDegreesSeconds(dDeg);
 
-  return std::tuple<double, double, double>{angleDeg, angleMin, angleSec};
+  return CAngle(angleDeg, angleMin, angleSec);
 }
 
 /**
  * \brief Calculate rising and setting times for an object.
  *
- * @return tuple <rise_set_status riseSetStatus, double utRiseHour, double
- * utRiseMin, double utSetHour, double utSetMin, double azRise, double azSet>
+ * @return CRiseSet
  */
-std::tuple<pa_types::RiseSetStatus, double, double, double, double, double,
-           double>
-PACoordinates::RisingAndSetting(double raHours, double raMinutes,
-                                double raSeconds, double decDeg, double decMin,
-                                double decSec, double gwDateDay,
-                                int gwDateMonth, int gwDateYear,
-                                double geogLongDeg, double geogLatDeg,
-                                double vertShiftDeg) {
+CRiseSet PACoordinates::RisingAndSetting(double raHours, double raMinutes,
+                                         double raSeconds, double decDeg,
+                                         double decMin, double decSec,
+                                         double gwDateDay, int gwDateMonth,
+                                         int gwDateYear, double geogLongDeg,
+                                         double geogLatDeg,
+                                         double vertShiftDeg) {
   double raHours1 = HmsToDh(raHours, raMinutes, raSeconds);
   double decRad = DegreesToRadians(
       DegreesMinutesSecondsToDecimalDegrees(decDeg, decMin, decSec));
@@ -472,25 +453,19 @@ PACoordinates::RisingAndSetting(double raHours, double raMinutes,
                      ? pa_util::Round(azSetDeg, 2)
                      : 0;
 
-  return std::tuple<pa_types::RiseSetStatus, double, double, double, double,
-                    double, double>{rsStatus, utRiseHour, utRiseMin, utSetHour,
-                                    utSetMin, azRise,     azSet};
+  return CRiseSet(rsStatus, utRiseHour, utRiseMin, utSetHour, utSetMin, azRise,
+                  azSet);
 }
 
 /**
  * \brief Calculate precession (corrected coordinates between two epochs)
  *
- * @return tuple<double corrected_ra_hour, double corrected_ra_minutes, double
- * corrected_ra_seconds, double corrected_dec_deg, double corrected_dec_minutes,
- * double corrected_dec_seconds>
+ * @return CPrecession
  */
-std::tuple<double, double, double, double, double, double>
-PACoordinates::CorrectForPrecession(double raHour, double raMinutes,
-                                    double raSeconds, double decDeg,
-                                    double decMinutes, double decSeconds,
-                                    double epoch1Day, int epoch1Month,
-                                    int epoch1Year, double epoch2Day,
-                                    int epoch2Month, int epoch2Year) {
+CPrecession PACoordinates::CorrectForPrecession(
+    double raHour, double raMinutes, double raSeconds, double decDeg,
+    double decMinutes, double decSeconds, double epoch1Day, int epoch1Month,
+    int epoch1Year, double epoch2Day, int epoch2Month, int epoch2Year) {
   double ra1Rad = DegreesToRadians(
       DegreeHoursToDecimalDegrees(HmsToDh(raHour, raMinutes, raSeconds)));
   double dec1Rad = DegreesToRadians(
@@ -518,22 +493,18 @@ PACoordinates::CorrectForPrecession(double raHour, double raMinutes,
   double correctedDecMinutes = DecimalDegreesMinutes(dec2Deg);
   double correctedDecSeconds = DecimalDegreesSeconds(dec2Deg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      correctedRaHour, correctedRaMinutes,  correctedRaSeconds,
-      correctedDecDeg, correctedDecMinutes, correctedDecSeconds};
+  return CPrecession(correctedRaHour, correctedRaMinutes, correctedRaSeconds,
+                     correctedDecDeg, correctedDecMinutes, correctedDecSeconds);
 }
 
 /**
  * \brief Calculate nutation for two values: ecliptic longitude and obliquity,
  * for a Greenwich date.
  *
- * @return tuple<nutation in ecliptic longitude (degrees), nutation in obliquity
- * (degrees)>
+ * @return CNutation
  */
-std::tuple<double, double>
-PACoordinates::NutationInEclipticLongitudeAndObliquity(double greenwichDay,
-                                                       int greenwichMonth,
-                                                       int greenwichYear) {
+CNutation PACoordinates::NutationInEclipticLongitudeAndObliquity(
+    double greenwichDay, int greenwichMonth, int greenwichYear) {
   double jdDays =
       CivilDateToJulianDate(greenwichDay, greenwichMonth, greenwichYear);
   double tCenturies = (jdDays - 2415020) / 36525;
@@ -552,23 +523,19 @@ PACoordinates::NutationInEclipticLongitudeAndObliquity(double greenwichDay,
   double nutInLongDeg = nutInLongArcsec / 3600;
   double nutInOblDeg = nutInOblArcsec / 3600;
 
-  return std::tuple<double, double>{nutInLongDeg, nutInOblDeg};
+  return CNutation(nutInLongDeg, nutInOblDeg);
 }
 
 /**
  * \brief Correct ecliptic coordinates for the effects of aberration.
  *
- * @return tuple<apparent ecliptic longitude (degrees, minutes, seconds),
- * apparent ecliptic latitude (degrees, minutes, seconds)>
+ * @return CAberration
  */
-std::tuple<double, double, double, double, double, double>
-PACoordinates::CorrectForAberration(double utHour, double utMinutes,
-                                    double utSeconds, double gwDay, int gwMonth,
-                                    int gw_year, double trueEclLongDeg,
-                                    double trueEclLongMin,
-                                    double trueEclLongSec, double trueEclLatDeg,
-                                    double trueEclLatMin,
-                                    double trueEclLatSec) {
+CAberration PACoordinates::CorrectForAberration(
+    double utHour, double utMinutes, double utSeconds, double gwDay,
+    int gwMonth, int gw_year, double trueEclLongDeg, double trueEclLongMin,
+    double trueEclLongSec, double trueEclLatDeg, double trueEclLatMin,
+    double trueEclLatSec) {
   double trueLongDeg = DegreesMinutesSecondsToDecimalDegrees(
       trueEclLongDeg, trueEclLongMin, trueEclLongSec);
   double trueLatDeg = DegreesMinutesSecondsToDecimalDegrees(
@@ -591,9 +558,8 @@ PACoordinates::CorrectForAberration(double utHour, double utMinutes,
   double apparentEclLatMin = DecimalDegreesMinutes(apparentLatDeg);
   double apparentEclLatSec = DecimalDegreesSeconds(apparentLatDeg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      apparentEclLongDeg, apparentEclLongMin, apparentEclLongSec,
-      apparentEclLatDeg,  apparentEclLatMin,  apparentEclLatSec};
+  return CAberration(apparentEclLongDeg, apparentEclLongMin, apparentEclLongSec,
+                     apparentEclLatDeg, apparentEclLatMin, apparentEclLatSec);
 }
 
 /**
@@ -601,11 +567,9 @@ PACoordinates::CorrectForAberration(double utHour, double utMinutes,
  *
  * NOTE: Valid values for coordinate_type are "TRUE" and "APPARENT".
  *
- * @return tuple <corrected RA hours,minutes,seconds and corrected Declination
- * degrees,minutes,seconds>
+ * @return CAtmosphericRefraction
  */
-std::tuple<double, double, double, double, double, double>
-PACoordinates::AtmosphericRefraction(
+CAtmosphericRefraction PACoordinates::AtmosphericRefraction(
     double trueRaHour, double trueRaMin, double trueRaSec, double trueDecDeg,
     double trueDecMin, double trueDecSec,
     pa_types::CoordinateType coordinateType1, double geogLongDeg,
@@ -640,19 +604,17 @@ PACoordinates::AtmosphericRefraction(
   double correctedDecMin = pa_macros::DecimalDegreesMinutes(correctedDecDeg1);
   double correctedDecSec = pa_macros::DecimalDegreesSeconds(correctedDecDeg1);
 
-  return std::tuple<double, double, double, double, double, double>{
-      correctedRaHour, correctedRaMin,  correctedRaSec,
-      correctedDecDeg, correctedDecMin, correctedDecSec};
+  return CAtmosphericRefraction(correctedRaHour, correctedRaMin, correctedRaSec,
+                                correctedDecDeg, correctedDecMin,
+                                correctedDecSec);
 }
 
 /**
  * \brief Calculate corrected RA/Dec, accounting for geocentric parallax.
  *
- * @return tuple <corrected RA hours,minutes,seconds and corrected Declination
- * degrees,minutes,seconds>
+ * @return CGeocentricParallax
  */
-std::tuple<double, double, double, double, double, double>
-PACoordinates::CorrectionsForGeocentricParallax(
+CGeocentricParallax PACoordinates::CorrectionsForGeocentricParallax(
     double raHour, double raMin, double raSec, double decDeg, double decMin,
     double decSec, pa_types::CoordinateType coordinateType,
     double equatorialHorParallaxDeg, double geogLongDeg, double geogLatDeg,
@@ -681,9 +643,8 @@ PACoordinates::CorrectionsForGeocentricParallax(
   double correctedDecMin = pa_macros::DecimalDegreesMinutes(correctedDecDeg1);
   double correctedDecSec = pa_macros::DecimalDegreesSeconds(correctedDecDeg1);
 
-  return std::tuple<double, double, double, double, double, double>{
-      correctedRaHour, correctedRaMin,  correctedRaSec,
-      correctedDecDeg, correctedDecMin, correctedDecSec};
+  return CGeocentricParallax(correctedRaHour, correctedRaMin, correctedRaSec,
+                             correctedDecDeg, correctedDecMin, correctedDecSec);
 }
 
 /**
@@ -691,9 +652,9 @@ PACoordinates::CorrectionsForGeocentricParallax(
  * given heliographic position angle and heliographic displacement in arc
  * minutes.
  *
- * @return tuple <heliographic longitude and heliographic latitude, in degrees>
+ * @return CHeliographicCoordinates
  */
-std::tuple<double, double> PACoordinates::HeliographicCoordinates(
+CHeliographicCoordinates PACoordinates::HeliographicCoordinates(
     double helioPositionAngleDeg, double helioDisplacementArcmin,
     double gwdateDay, int gwdateMonth, int gwdate_year) {
   double julianDateDays =
@@ -740,7 +701,7 @@ std::tuple<double, double> PACoordinates::HeliographicCoordinates(
   double helioLongDeg = Round(lDeg2, 2);
   double helioLatDeg = Round(bDeg, 2);
 
-  return std::tuple<double, double>{helioLongDeg, helioLatDeg};
+  return CHeliographicCoordinates(helioLongDeg, helioLatDeg);
 }
 
 /**
@@ -761,10 +722,9 @@ int PACoordinates::CarringtonRotationNumber(double gwdateDay, int gwdateMonth,
 /**
  * \brief Calculate selenographic (lunar) coordinates (sub-Earth)
  *
- * @return tuple<sub-earth longitude, sub-earth latitude, and position angle of
- * pole>
+ * @return CSelenographicCoordinates1
  */
-std::tuple<double, double, double>
+CSelenographicCoordinates1
 PACoordinates::SelenographicCoordinates1(double gwdateDay, int gwdateMonth,
                                          int gwdateYear) {
   double julianDateDays =
@@ -811,17 +771,16 @@ PACoordinates::SelenographicCoordinates1(double gwdateDay, int gwdateMonth,
   double subEarthLatitude = Round(subEarthLatDeg, 2);
   double positionAngleOfPole = Round(cDeg, 2);
 
-  return std::tuple<double, double, double>{subEarthLongitude, subEarthLatitude,
-                                            positionAngleOfPole};
+  return CSelenographicCoordinates1(subEarthLongitude, subEarthLatitude,
+                                    positionAngleOfPole);
 }
 
 /**
  * \brief Calculate selenographic (lunar) coordinates (sub-Solar)
  *
- * @return tuple<sub-solar longitude, sub-solar colongitude, and sub-solar
- * latitude>
+ * @return CSelenographicCoordinates2
  */
-std::tuple<double, double, double>
+CSelenographicCoordinates2
 PACoordinates::SelenographicCoordinates2(double gwdateDay, int gwdateMonth,
                                          int gwdateYear) {
   double julianDateDays =
@@ -873,6 +832,6 @@ PACoordinates::SelenographicCoordinates2(double gwdateDay, int gwdateMonth,
   double subSolarColongitude = Round(subSolarColongDeg, 2);
   double subSolarLatitude = Round(subSolarLatDeg, 2);
 
-  return std::tuple<double, double, double>{
-      subSolarLongitude, subSolarColongitude, subSolarLatitude};
+  return CSelenographicCoordinates2(subSolarLongitude, subSolarColongitude,
+                                    subSolarLatitude);
 }

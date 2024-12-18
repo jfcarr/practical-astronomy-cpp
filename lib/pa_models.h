@@ -95,6 +95,153 @@ public:
   WarningFlags warningFlag;
 };
 
+class CAngle {
+public:
+  CAngle(double degrees, double minutes, double seconds) {
+    this->degrees = degrees;
+    this->minutes = minutes;
+    this->seconds = seconds;
+  }
+
+  double degrees;
+  double minutes;
+  double seconds;
+};
+
+class CHourAngle {
+public:
+  CHourAngle(double hours, double minutes, double seconds) {
+    this->hours = hours;
+    this->minutes = minutes;
+    this->seconds = seconds;
+  }
+
+  double hours;
+  double minutes;
+  double seconds;
+};
+
+class CRightAscension {
+public:
+  CRightAscension(double hours, double minutes, double seconds) {
+    this->hours = hours;
+    this->minutes = minutes;
+    this->seconds = seconds;
+  }
+
+  double hours;
+  double minutes;
+  double seconds;
+};
+
+class CHorizonCoordinates {
+public:
+  CHorizonCoordinates(double azimuthDegrees, double azimuthMinutes,
+                      double azimuthSeconds, double altitudeDegrees,
+                      double altitudeMinutes, double altitudeSeconds) {
+    this->azimuthDegrees = azimuthDegrees;
+    this->azimuthMinutes = azimuthMinutes;
+    this->azimuthSeconds = azimuthSeconds;
+    this->altitudeDegrees = altitudeDegrees;
+    this->altitudeMinutes = altitudeMinutes;
+    this->altitudeSeconds = altitudeSeconds;
+  }
+
+  double azimuthDegrees;
+  double azimuthMinutes;
+  double azimuthSeconds;
+  double altitudeDegrees;
+  double altitudeMinutes;
+  double altitudeSeconds;
+};
+
+class CEquatorialCoordinatesHA {
+public:
+  CEquatorialCoordinatesHA(double hourAngleHours, double hourAngleMinutes,
+                           double hourAngleSeconds, double declinationDegrees,
+                           double declinationMinutes,
+                           double declinationSeconds) {
+    this->hourAngleHours = hourAngleHours;
+    this->hourAngleMinutes = hourAngleMinutes;
+    this->hourAngleSeconds = hourAngleSeconds;
+    this->declinationDegrees = declinationDegrees;
+    this->declinationMinutes = declinationMinutes;
+    this->declinationSeconds = declinationSeconds;
+  }
+
+  double hourAngleHours;
+  double hourAngleMinutes;
+  double hourAngleSeconds;
+  double declinationDegrees;
+  double declinationMinutes;
+  double declinationSeconds;
+};
+
+class CEquatorialCoordinatesRA {
+public:
+  CEquatorialCoordinatesRA(double rightAscensionHours,
+                           double rightAscensionMinutes,
+                           double rightAscensionSeconds,
+                           double declinationDegrees, double declinationMinutes,
+                           double declinationSeconds) {
+    this->rightAscensionHours = rightAscensionHours;
+    this->rightAscensionMinutes = rightAscensionMinutes;
+    this->rightAscensionSeconds = rightAscensionSeconds;
+    this->declinationDegrees = declinationDegrees;
+    this->declinationMinutes = declinationMinutes;
+    this->declinationSeconds = declinationSeconds;
+  }
+
+  double rightAscensionHours;
+  double rightAscensionMinutes;
+  double rightAscensionSeconds;
+  double declinationDegrees;
+  double declinationMinutes;
+  double declinationSeconds;
+};
+
+class CEqlipticCoordinates {
+public:
+  CEqlipticCoordinates(double longitudeDegrees, double longitudeMinutes,
+                       double longitudeSeconds, double latitudeDegrees,
+                       double latitudeMinutes, double latitudeSeconds) {
+    this->longitudeDegrees = longitudeDegrees;
+    this->longitudeMinutes = longitudeMinutes;
+    this->longitudeSeconds = longitudeSeconds;
+    this->latitudeDegrees = latitudeDegrees;
+    this->latitudeMinutes = latitudeMinutes;
+    this->latitudeSeconds = latitudeSeconds;
+  }
+
+  double longitudeDegrees;
+  double longitudeMinutes;
+  double longitudeSeconds;
+  double latitudeDegrees;
+  double latitudeMinutes;
+  double latitudeSeconds;
+};
+
+class CGalacticCoordinates {
+public:
+  CGalacticCoordinates(double longitudeDegrees, double longitudeMinutes,
+                       double longitudeSeconds, double latitudeDegrees,
+                       double latitudeMinutes, double latitudeSeconds) {
+    this->longitudeDegrees = longitudeDegrees;
+    this->longitudeMinutes = longitudeMinutes;
+    this->longitudeSeconds = longitudeSeconds;
+    this->latitudeDegrees = latitudeDegrees;
+    this->latitudeMinutes = latitudeMinutes;
+    this->latitudeSeconds = latitudeSeconds;
+  }
+
+  double longitudeDegrees;
+  double longitudeMinutes;
+  double longitudeSeconds;
+  double latitudeDegrees;
+  double latitudeMinutes;
+  double latitudeSeconds;
+};
+
 class CApproximatePositionOfPlanet {
 public:
   CApproximatePositionOfPlanet(double planetRAHour, double planetRAMin,
@@ -255,6 +402,164 @@ public:
   double lightTimeSeconds;
   double posAngleBrightLimbDeg;
   double approximateMagnitude;
+};
+
+class CRiseSet {
+public:
+  CRiseSet(pa_types::RiseSetStatus rsStatus, double utRiseHour,
+           double utRiseMin, double utSetHour, double utSetMin, double azRise,
+           double azSet) {
+    this->rsStatus = rsStatus;
+    this->utRiseHour = utRiseHour;
+    this->utRiseMin = utRiseMin;
+    this->utSetHour = utSetHour;
+    this->utSetMin = utSetMin;
+    this->azRise = azRise;
+    this->azSet = azSet;
+  }
+
+  pa_types::RiseSetStatus rsStatus;
+  double utRiseHour;
+  double utRiseMin;
+  double utSetHour;
+  double utSetMin;
+  double azRise;
+  double azSet;
+};
+
+class CPrecession {
+public:
+  CPrecession(double correctedRaHour, double correctedRaMinutes,
+              double correctedRaSeconds, double correctedDecDeg,
+              double correctedDecMinutes, double correctedDecSeconds) {
+    this->correctedRaHour = correctedRaHour;
+    this->correctedRaMinutes = correctedRaMinutes;
+    this->correctedRaSeconds = correctedRaSeconds;
+    this->correctedDecDeg = correctedDecDeg;
+    this->correctedDecMinutes = correctedDecMinutes;
+    this->correctedDecSeconds = correctedDecSeconds;
+  }
+
+  double correctedRaHour;
+  double correctedRaMinutes;
+  double correctedRaSeconds;
+  double correctedDecDeg;
+  double correctedDecMinutes;
+  double correctedDecSeconds;
+};
+
+class CNutation {
+public:
+  CNutation(double nutInLongDeg, double nutInOblDeg) {
+    this->nutInLongDeg = nutInLongDeg;
+    this->nutInOblDeg = nutInOblDeg;
+  }
+
+  double nutInLongDeg;
+  double nutInOblDeg;
+};
+
+class CAberration {
+public:
+  CAberration(double apparentEclLongDeg, double apparentEclLongMin,
+              double apparentEclLongSec, double apparentEclLatDeg,
+              double apparentEclLatMin, double apparentEclLatSec) {
+    this->apparentEclLongDeg = apparentEclLongDeg;
+    this->apparentEclLongMin = apparentEclLongMin;
+    this->apparentEclLongSec = apparentEclLongSec;
+    this->apparentEclLatDeg = apparentEclLatDeg;
+    this->apparentEclLatMin = apparentEclLatMin;
+    this->apparentEclLatSec = apparentEclLatSec;
+  }
+
+  double apparentEclLongDeg;
+  double apparentEclLongMin;
+  double apparentEclLongSec;
+  double apparentEclLatDeg;
+  double apparentEclLatMin;
+  double apparentEclLatSec;
+};
+
+class CAtmosphericRefraction {
+public:
+  CAtmosphericRefraction(double correctedRaHour, double correctedRaMin,
+                         double correctedRaSec, double correctedDecDeg,
+                         double correctedDecMin, double correctedDecSec) {
+    this->correctedRaHour = correctedRaHour;
+    this->correctedRaMin = correctedRaMin;
+    this->correctedRaSec = correctedRaSec;
+    this->correctedDecDeg = correctedDecDeg;
+    this->correctedDecMin = correctedDecMin;
+    this->correctedDecSec = correctedDecSec;
+  }
+
+  double correctedRaHour;
+  double correctedRaMin;
+  double correctedRaSec;
+  double correctedDecDeg;
+  double correctedDecMin;
+  double correctedDecSec;
+};
+
+class CGeocentricParallax {
+public:
+  CGeocentricParallax(double correctedRaHour, double correctedRaMin,
+                      double correctedRaSec, double correctedDecDeg,
+                      double correctedDecMin, double correctedDecSec) {
+    this->correctedRaHour = correctedRaHour;
+    this->correctedRaMin = correctedRaMin;
+    this->correctedRaSec = correctedRaSec;
+    this->correctedDecDeg = correctedDecDeg;
+    this->correctedDecMin = correctedDecMin;
+    this->correctedDecSec = correctedDecSec;
+  }
+
+  double correctedRaHour;
+  double correctedRaMin;
+  double correctedRaSec;
+  double correctedDecDeg;
+  double correctedDecMin;
+  double correctedDecSec;
+};
+
+class CHeliographicCoordinates {
+public:
+  CHeliographicCoordinates(double longitudeDegrees, double latitudeDegrees) {
+    this->longitudeDegrees = longitudeDegrees;
+    this->latitudeDegrees = latitudeDegrees;
+  }
+
+  double longitudeDegrees;
+  double latitudeDegrees;
+};
+
+class CSelenographicCoordinates1 {
+public:
+  CSelenographicCoordinates1(double subEarthLongitude, double subEarthLatitude,
+                             double positionAngleOfPole) {
+    this->subEarthLongitude = subEarthLongitude;
+    this->subEarthLatitude = subEarthLatitude;
+    this->positionAngleOfPole = positionAngleOfPole;
+  }
+
+  double subEarthLongitude;
+  double subEarthLatitude;
+  double positionAngleOfPole;
+};
+
+class CSelenographicCoordinates2 {
+public:
+  CSelenographicCoordinates2(double subSolarLongitude,
+                             double subSolarColongitude,
+                             double subSolarLatitude) {
+    this->subSolarLongitude = subSolarLongitude;
+    this->subSolarColongitude = subSolarColongitude;
+    this->subSolarLatitude = subSolarLatitude;
+  }
+
+  double subSolarLongitude;
+  double subSolarColongitude;
+  double subSolarLatitude;
 };
 
 } // namespace pa_models
