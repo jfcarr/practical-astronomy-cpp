@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['lastsallnight_0',['LastsAllNight',['../namespacepa__types.html#a81e7b7a769bd36ff6e0cd2116e3066a9ae846f9298481b24b1344a4963cfa5e67',1,'pa_types']]],
+  ['lastsallnight_0',['LastsAllNight',['../namespacepa__types.html#a8c9e83678fdb5c54484e19d32bb92d88ae846f9298481b24b1344a4963cfa5e67',1,'pa_types']]],
   ['latitudedegrees_1',['latitudedegrees',['../classpa__models_1_1CGalacticCoordinates.html#a4b61e2bf872ba83cc205c56c22361a18',1,'pa_models::CGalacticCoordinates::latitudeDegrees'],['../classpa__models_1_1CEqlipticCoordinates.html#a4b61e2bf872ba83cc205c56c22361a18',1,'pa_models::CEqlipticCoordinates::latitudeDegrees'],['../classpa__models_1_1CHeliographicCoordinates.html#a4b61e2bf872ba83cc205c56c22361a18',1,'pa_models::CHeliographicCoordinates::latitudeDegrees']]],
   ['latitudeminutes_2',['latitudeminutes',['../classpa__models_1_1CEqlipticCoordinates.html#a9f686947be6a055f65a253b2e327f2db',1,'pa_models::CEqlipticCoordinates::latitudeMinutes'],['../classpa__models_1_1CGalacticCoordinates.html#a9f686947be6a055f65a253b2e327f2db',1,'pa_models::CGalacticCoordinates::latitudeMinutes']]],
   ['latitudeseconds_3',['latitudeseconds',['../classpa__models_1_1CEqlipticCoordinates.html#ada16cff4bac8db00bf81d222921252a3',1,'pa_models::CEqlipticCoordinates::latitudeSeconds'],['../classpa__models_1_1CGalacticCoordinates.html#ada16cff4bac8db00bf81d222921252a3',1,'pa_models::CGalacticCoordinates::latitudeSeconds']]],

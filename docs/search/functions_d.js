@@ -1,7 +1,7 @@
 var searchData=
 [
   ['radianstodegrees_0',['RadiansToDegrees',['../namespacepa__util.html#a7584eaf459f597ee2c28e27e32e16edc',1,'pa_util']]],
-  ['refract_1',['Refract',['../namespacepa__macros.html#afb80d40ed89c3b3e0c616bf66184ff3b',1,'pa_macros']]],
+  ['refract_1',['Refract',['../namespacepa__macros.html#ac9d3e61ccff5ded25847031a5ae357f1',1,'pa_macros']]],
   ['refractl3035_2',['RefractL3035',['../namespacepa__macros.html#a053058a61a67a7f5b2dc96b4d0ec7a6d',1,'pa_macros']]],
   ['rightascensiontohourangle_3',['rightascensiontohourangle',['../classPACoordinates.html#a813501f7fa288538fac5c228661e256c',1,'PACoordinates::RightAscensionToHourAngle()'],['../namespacepa__macros.html#a9ad1d2d2477cc2678ed6d7b1cc447fdb',1,'pa_macros::RightAscensionToHourAngle(double raHours, double raMinutes, double raSeconds, double lctHours, double lctMinutes, double lctSeconds, int daylightSaving, int zoneCorrection, double localDay, int localMonth, int localYear, double geographicalLongitude)']]],
   ['risesetazimuthrise_4',['RiseSetAzimuthRise',['../namespacepa__macros.html#af3a37fe9c1e4895530da19680fcb24fc',1,'pa_macros']]],

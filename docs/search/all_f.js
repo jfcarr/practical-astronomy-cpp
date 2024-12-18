@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sa_0',['sa',['../classpa__models_1_1CPlanetLongLatL4810.html#a511d78bce8691d2fae5b65e404f7171b',1,'pa_models::CPlanetLongLatL4810']]],
-  ['seconds_1',['seconds',['../classpa__models_1_1CCivilTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CCivilTime::seconds'],['../classpa__models_1_1CRightAscension.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CRightAscension::seconds'],['../classpa__models_1_1CHourAngle.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CHourAngle::seconds'],['../classpa__models_1_1CAngle.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CAngle::seconds'],['../classpa__models_1_1CUniversalTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CUniversalTime::seconds'],['../classpa__models_1_1CGreenwichSiderealTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CGreenwichSiderealTime::seconds'],['../classpa__models_1_1CUniversalDateTime.html#a77bd4f876bdc3afed5acdd936f775d34',1,'pa_models::CUniversalDateTime::seconds']]],
+  ['seconds_1',['seconds',['../classpa__models_1_1CCivilTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CCivilTime::seconds'],['../classpa__models_1_1CUniversalDateTime.html#a77bd4f876bdc3afed5acdd936f775d34',1,'pa_models::CUniversalDateTime::seconds'],['../classpa__models_1_1CGreenwichSiderealTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CGreenwichSiderealTime::seconds'],['../classpa__models_1_1CUniversalTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CUniversalTime::seconds'],['../classpa__models_1_1CAngle.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CAngle::seconds'],['../classpa__models_1_1CHourAngle.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CHourAngle::seconds'],['../classpa__models_1_1CRightAscension.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CRightAscension::seconds']]],
   ['selenographiccoordinates1_2',['SelenographicCoordinates1',['../classPACoordinates.html#adf235eae0f53cdcc0aae5ffeac21bab2',1,'PACoordinates']]],
   ['selenographiccoordinates2_3',['SelenographicCoordinates2',['../classPACoordinates.html#ac9a9762ace6ab9b1d6da4347094697a8',1,'PACoordinates']]],
   ['solarelongation_4',['SolarElongation',['../classPASun.html#af5597699ff71b65bcb57556f40909c1a',1,'PASun']]],
@@ -18,16 +18,15 @@ var searchData=
   ['sunlong_15',['SunLong',['../namespacepa__macros.html#abe78991bf567b2185965bde2add79c3c',1,'pa_macros']]],
   ['sunmeananomaly_16',['SunMeanAnomaly',['../namespacepa__macros.html#af178f620a63ad50ce3338410f3fecb89',1,'pa_macros']]],
   ['sunperigee_17',['SunPerigee',['../namespacepa__macros.html#ac1991477066d581b01b532bce206fd2d',1,'pa_macros']]],
-  ['sunriseandsunset_18',['SunriseAndSunset',['../classPASun.html#a758affe14d2bafefbfffdfbbc4c8b917',1,'PASun']]],
+  ['sunriseandsunset_18',['SunriseAndSunset',['../classPASun.html#ab75968e5859bf578dabbcea4927d9396',1,'PASun']]],
   ['sunriseazimuth_19',['SunriseAzimuth',['../namespacepa__macros.html#a558545a6462aeaae0bbe3469badeecd1',1,'pa_macros']]],
-  ['sunriseazimuthl3710_20',['SunriseAzimuthL3710',['../namespacepa__macros.html#abbd8c53b4db56dd7e6b33c75ce3ff256',1,'pa_macros']]],
+  ['sunriseazimuthl3710_20',['SunriseAzimuthL3710',['../namespacepa__macros.html#a04652d70d4a6bfbfe7d98e72dffe8aa9',1,'pa_macros']]],
   ['sunriselocalciviltime_21',['SunriseLocalCivilTime',['../namespacepa__macros.html#aac3ea087f6554cf4fa2dc24674b6cfae',1,'pa_macros']]],
-  ['sunriselocalciviltimel3710_22',['SunriseLocalCivilTimeL3710',['../namespacepa__macros.html#aad72ac8320d25a32ec0b9668d5b04819',1,'pa_macros']]],
-  ['sunrisesetstatus_23',['SunRiseSetStatus',['../namespacepa__types.html#a10349431b456a3d7d2b08ef68cd828cf',1,'pa_types']]],
-  ['sunsetazimuth_24',['SunsetAzimuth',['../namespacepa__macros.html#a6bc53259ff968b088f4e00d978745747',1,'pa_macros']]],
-  ['sunsetazimuthl3710_25',['SunsetAzimuthL3710',['../namespacepa__macros.html#a5fe8267ba9d77f53895a60c4cf674f6d',1,'pa_macros']]],
-  ['sunsetlocalciviltime_26',['SunsetLocalCivilTime',['../namespacepa__macros.html#a86dbe90ba75c321af99c572c3ea85d19',1,'pa_macros']]],
-  ['sunsetlocalciviltimel3710_27',['SunsetLocalCivilTimeL3710',['../namespacepa__macros.html#a5b18607f623e76fb8ae975a31c7b30f6',1,'pa_macros']]],
-  ['suntoofarbelowhorizon_28',['SunTooFarBelowHorizon',['../namespacepa__types.html#a81e7b7a769bd36ff6e0cd2116e3066a9a0d9959c395ad822343f89d26c66a1c9c',1,'pa_types']]],
-  ['suntrueanomaly_29',['SunTrueAnomaly',['../namespacepa__macros.html#a694610647865ee94f4f16fc31ff01c0b',1,'pa_macros']]]
+  ['sunriselocalciviltimel3710_22',['SunriseLocalCivilTimeL3710',['../namespacepa__macros.html#a50d23ed61559159a9f6f0d80e1e136e2',1,'pa_macros']]],
+  ['sunsetazimuth_23',['SunsetAzimuth',['../namespacepa__macros.html#a6bc53259ff968b088f4e00d978745747',1,'pa_macros']]],
+  ['sunsetazimuthl3710_24',['SunsetAzimuthL3710',['../namespacepa__macros.html#ae4f71cb2f060c59f3a7be94180d9f9a4',1,'pa_macros']]],
+  ['sunsetlocalciviltime_25',['SunsetLocalCivilTime',['../namespacepa__macros.html#a86dbe90ba75c321af99c572c3ea85d19',1,'pa_macros']]],
+  ['sunsetlocalciviltimel3710_26',['SunsetLocalCivilTimeL3710',['../namespacepa__macros.html#a79dfcf1353950673701105b675cd4e82',1,'pa_macros']]],
+  ['suntoofarbelowhorizon_27',['SunTooFarBelowHorizon',['../namespacepa__types.html#a8c9e83678fdb5c54484e19d32bb92d88a0d9959c395ad822343f89d26c66a1c9c',1,'pa_types']]],
+  ['suntrueanomaly_28',['SunTrueAnomaly',['../namespacepa__macros.html#a694610647865ee94f4f16fc31ff01c0b',1,'pa_macros']]]
 ];

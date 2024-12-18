@@ -4,16 +4,16 @@ var searchData=
   ['eclipticcoordinatetoequatorialcoordinate_1',['EclipticCoordinateToEquatorialCoordinate',['../classPACoordinates.html#a1abb46924e6706aefc4149ad04be05e0',1,'PACoordinates']]],
   ['eclipticdeclination_2',['EclipticDeclination',['../namespacepa__macros.html#a2f9cfe6d663a797a768e1fa9badd6369',1,'pa_macros']]],
   ['eclipticrightascension_3',['EclipticRightAscension',['../namespacepa__macros.html#a495b684a1813eef15dfc26c99204cde6',1,'pa_macros']]],
-  ['egstut_4',['EGstUt',['../namespacepa__macros.html#ab7743e7ae01e7f12e4f8147a7d23f866',1,'pa_macros']]],
+  ['egstut_4',['EGstUt',['../namespacepa__macros.html#a0f8f2fd40b54a16132dda1397998a8a7',1,'pa_macros']]],
   ['equationoftime_5',['EquationOfTime',['../classPASun.html#a1499f9f1a0ac0dea10b8dc9509875d2a',1,'PASun']]],
   ['equatorialcoordinatestoaltitude_6',['EquatorialCoordinatesToAltitude',['../namespacepa__macros.html#ad0ec2cdd27489fbec1b7ac73fa5fcccf',1,'pa_macros']]],
   ['equatorialcoordinatestoazimuth_7',['EquatorialCoordinatesToAzimuth',['../namespacepa__macros.html#ae6c7619a64602983be251999db4ec1df',1,'pa_macros']]],
   ['equatorialcoordinatestohorizoncoordinates_8',['EquatorialCoordinatesToHorizonCoordinates',['../classPACoordinates.html#a4c72efce297451057b489942f154f71f',1,'PACoordinates']]],
   ['equatorialcoordinatetoeclipticcoordinate_9',['EquatorialCoordinateToEclipticCoordinate',['../classPACoordinates.html#a55bef761eb622c49089e398401e1c27d',1,'PACoordinates']]],
   ['equatorialcoordinatetogalacticcoordinate_10',['EquatorialCoordinateToGalacticCoordinate',['../classPACoordinates.html#a45da0d5d850458deced43d13dad5006e',1,'PACoordinates']]],
-  ['eriseset_11',['ERiseSet',['../namespacepa__macros.html#a61b97dc4902f15bfbfce176efbc82087',1,'pa_macros']]],
-  ['esunrisesetcalcstatus_12',['ESunRiseSetCalcStatus',['../namespacepa__macros.html#acbb661bc6a85a9db431525c1121dcbea',1,'pa_macros']]],
-  ['esunrisesetcalcstatusl3710_13',['ESunRiseSetCalcStatusL3710',['../namespacepa__macros.html#a926258c553b41b9b9dcae7d5f1524443',1,'pa_macros']]],
-  ['etwilight_14',['ETwilight',['../namespacepa__macros.html#abbeb771535824ab13188ac39cdebbfe9',1,'pa_macros']]],
-  ['etwilight_5fl3710_15',['ETwilight_L3710',['../namespacepa__macros.html#ac07d2f19a4812d323f3d93dd728c6fba',1,'pa_macros']]]
+  ['eriseset_11',['ERiseSet',['../namespacepa__macros.html#a07354a0f37c5abcd8303f106a68fc53c',1,'pa_macros']]],
+  ['esunrisesetcalcstatus_12',['ESunRiseSetCalcStatus',['../namespacepa__macros.html#a82ec4e6e0584777dd32964588ac46060',1,'pa_macros']]],
+  ['esunrisesetcalcstatusl3710_13',['ESunRiseSetCalcStatusL3710',['../namespacepa__macros.html#a7609344c84f591c3da12599af1d2db0e',1,'pa_macros']]],
+  ['etwilight_14',['ETwilight',['../namespacepa__macros.html#aa530307989df471890366cb26ceb995d',1,'pa_macros']]],
+  ['etwilight_5fl3710_15',['ETwilight_L3710',['../namespacepa__macros.html#aa5ce1f401b9bb1711e8226f0aed24269',1,'pa_macros']]]
 ];

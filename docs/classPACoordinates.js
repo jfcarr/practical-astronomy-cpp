@@ -1,12 +1,12 @@
 var classPACoordinates =
 [
-    [ "AngleBetweenTwoObjects", "classPACoordinates.html#a80b7c6d587ba2293f17b6b5d032efd35", null ],
+    [ "AngleBetweenTwoObjects", "classPACoordinates.html#aa67be7a5b07dad05a7427efcddd87d7f", null ],
     [ "AngleToDecimalDegrees", "classPACoordinates.html#ae47387bd4b18c736be744d81f70c05b3", null ],
-    [ "AtmosphericRefraction", "classPACoordinates.html#aeb6431580eee8047f732805949763dd6", null ],
+    [ "AtmosphericRefraction", "classPACoordinates.html#a647886b20da716845165e7cf6bffd27f", null ],
     [ "CarringtonRotationNumber", "classPACoordinates.html#ab65d6c96be897855912d6e62e074d0af", null ],
     [ "CorrectForAberration", "classPACoordinates.html#ad85a2fd61982089a9e0d87206e424733", null ],
     [ "CorrectForPrecession", "classPACoordinates.html#acceceda1d82fce41ca99a8c963ec9757", null ],
-    [ "CorrectionsForGeocentricParallax", "classPACoordinates.html#a50a4d02e50c22b21a5bde272a9fd8933", null ],
+    [ "CorrectionsForGeocentricParallax", "classPACoordinates.html#aed1b412d13822142f78afa32a26f45dc", null ],
     [ "DecimalDegreesToAngle", "classPACoordinates.html#a381f25495a8c229cb5330d9eaeec8229", null ],
     [ "EclipticCoordinateToEquatorialCoordinate", "classPACoordinates.html#a1abb46924e6706aefc4149ad04be05e0", null ],
     [ "EquatorialCoordinatesToHorizonCoordinates", "classPACoordinates.html#a4c72efce297451057b489942f154f71f", null ],

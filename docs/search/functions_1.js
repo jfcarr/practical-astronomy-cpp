@@ -24,7 +24,7 @@ var searchData=
   ['cnutation_21',['CNutation',['../classpa__models_1_1CNutation.html#a9fb1fe5c6bfa6422162cb6e6d3b78d1a',1,'pa_models::CNutation']]],
   ['correctforaberration_22',['CorrectForAberration',['../classPACoordinates.html#ad85a2fd61982089a9e0d87206e424733',1,'PACoordinates']]],
   ['correctforprecession_23',['CorrectForPrecession',['../classPACoordinates.html#acceceda1d82fce41ca99a8c963ec9757',1,'PACoordinates']]],
-  ['correctionsforgeocentricparallax_24',['CorrectionsForGeocentricParallax',['../classPACoordinates.html#a50a4d02e50c22b21a5bde272a9fd8933',1,'PACoordinates']]],
+  ['correctionsforgeocentricparallax_24',['CorrectionsForGeocentricParallax',['../classPACoordinates.html#aed1b412d13822142f78afa32a26f45dc',1,'PACoordinates']]],
   ['cplanetcoordinates_25',['CPlanetCoordinates',['../classpa__models_1_1CPlanetCoordinates.html#aad7ac9126cd9785d40be40c6efe0047f',1,'pa_models::CPlanetCoordinates']]],
   ['cplanetlonglatl4685_26',['CPlanetLongLatL4685',['../classpa__models_1_1CPlanetLongLatL4685.html#a7eb3f7ab21aafc5f1f29fce13ced8ee0',1,'pa_models::CPlanetLongLatL4685']]],
   ['cplanetlonglatl4735_27',['CPlanetLongLatL4735',['../classpa__models_1_1CPlanetLongLatL4735.html#a5ba4ce87a100bfd039e4c1f2ee5d4a9a',1,'pa_models::CPlanetLongLatL4735']]],
@@ -34,9 +34,9 @@ var searchData=
   ['cprecession_31',['CPrecession',['../classpa__models_1_1CPrecession.html#a1386f7dafc0cb584b017542e931979a5',1,'pa_models::CPrecession']]],
   ['cprecisepositionofplanet_32',['CPrecisePositionOfPlanet',['../classpa__models_1_1CPrecisePositionOfPlanet.html#a0e00119bd3e3ab41dd5511894701c9d6',1,'pa_models::CPrecisePositionOfPlanet']]],
   ['crightascension_33',['CRightAscension',['../classpa__models_1_1CRightAscension.html#a362e7c45be1ef958d3b7a51c951a8071',1,'pa_models::CRightAscension']]],
-  ['criseset_34',['CRiseSet',['../classpa__models_1_1CRiseSet.html#a23612564b7e1ef7a59d494fdab147afc',1,'pa_models::CRiseSet']]],
+  ['criseset_34',['CRiseSet',['../classpa__models_1_1CRiseSet.html#a7872724d69c659976ea429e157882e0c',1,'pa_models::CRiseSet']]],
   ['cselenographiccoordinates1_35',['CSelenographicCoordinates1',['../classpa__models_1_1CSelenographicCoordinates1.html#aca4e34d72de4950269aaf0d6469f5399',1,'pa_models::CSelenographicCoordinates1']]],
   ['cselenographiccoordinates2_36',['CSelenographicCoordinates2',['../classpa__models_1_1CSelenographicCoordinates2.html#ab455666b3d808bd40f5db66519d42c70',1,'pa_models::CSelenographicCoordinates2']]],
   ['cuniversaldatetime_37',['CUniversalDateTime',['../classpa__models_1_1CUniversalDateTime.html#ada3e0269245c06b03af9240c77618e5d',1,'pa_models::CUniversalDateTime']]],
-  ['cuniversaltime_38',['CUniversalTime',['../classpa__models_1_1CUniversalTime.html#a03623248518c6b3191a589814e7fc7dc',1,'pa_models::CUniversalTime']]]
+  ['cuniversaltime_38',['CUniversalTime',['../classpa__models_1_1CUniversalTime.html#aa53f62e0778c5330a9107d09f2203674',1,'pa_models::CUniversalTime']]]
 ];

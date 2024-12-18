@@ -6,5 +6,5 @@ var searchData=
   ['moonhorizontalparallax_3',['MoonHorizontalParallax',['../namespacepa__macros.html#a7819d55a350d96a6766a7baa3facbe0d',1,'pa_macros']]],
   ['moonlatitude_4',['MoonLatitude',['../namespacepa__macros.html#a2010640778ed6ecf43f4900dd6e60035',1,'pa_macros']]],
   ['moonlongitude_5',['MoonLongitude',['../namespacepa__macros.html#a19278dc3c55ccf01fff47738d191b9dd',1,'pa_macros']]],
-  ['morningandeveningtwilight_6',['MorningAndEveningTwilight',['../classPASun.html#a902facf778cdb570a9ea5537cf194c4e',1,'PASun']]]
+  ['morningandeveningtwilight_6',['MorningAndEveningTwilight',['../classPASun.html#aaaa5f2d0b03576c248f21f266c3dfea0',1,'PASun']]]
 ];

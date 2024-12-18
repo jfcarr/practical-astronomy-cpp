@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['parallaxdec_0',['ParallaxDec',['../namespacepa__macros.html#a943a2663e522655bfeeb1af86e18e74a',1,'pa_macros']]],
+  ['parallaxdec_0',['ParallaxDec',['../namespacepa__macros.html#abf4c607266c1456f32c8c2f4e4adaf1e',1,'pa_macros']]],
   ['parallaxdecl2870_1',['ParallaxDecL2870',['../namespacepa__macros.html#a4d7222c5f7013ffc3f3284493a8745bc',1,'pa_macros']]],
-  ['parallaxha_2',['ParallaxHa',['../namespacepa__macros.html#a6cb88d1f73d2ae8adc00fd49f928c10c',1,'pa_macros']]],
+  ['parallaxha_2',['ParallaxHa',['../namespacepa__macros.html#a1bbddd9ec8fa3bd696e45ed5721729f6',1,'pa_macros']]],
   ['parallaxhal2870_3',['ParallaxHaL2870',['../namespacepa__macros.html#a8353c0d2319d799c4f2cd936955e8903',1,'pa_macros']]],
   ['planetcoordinates_4',['PlanetCoordinates',['../namespacepa__macros.html#a429f4023179c120b61e3230864d4de38',1,'pa_macros']]],
   ['planetdata_5',['planetdata',['../classpa__data_1_1PlanetData.html#a5c1f54c7ccd109ce5b3ec36db83ff49c',1,'pa_data::PlanetData::PlanetData(std::string planetName, double tp_PeriodOrbit, double long_LongitudeEpoch, double peri_LongitudePerihelion, double ecc_EccentricityOrbit, double axis_AxisOrbit, double incl_OrbitalInclination, double node_LongitudeAscendingNode, double theta0_AngularDiameter, double v0_VisualMagnitude)'],['../classpa__data_1_1PlanetData.html#a3174c924431b6375e3abd139fbbe6b55',1,'pa_data::PlanetData::PlanetData()']]],
