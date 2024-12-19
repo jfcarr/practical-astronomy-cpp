@@ -31,5 +31,11 @@ var pa__models_8h =
     [ "CGeocentricParallax", "classpa__models_1_1CGeocentricParallax.html", "classpa__models_1_1CGeocentricParallax" ],
     [ "CHeliographicCoordinates", "classpa__models_1_1CHeliographicCoordinates.html", "classpa__models_1_1CHeliographicCoordinates" ],
     [ "CSelenographicCoordinates1", "classpa__models_1_1CSelenographicCoordinates1.html", "classpa__models_1_1CSelenographicCoordinates1" ],
-    [ "CSelenographicCoordinates2", "classpa__models_1_1CSelenographicCoordinates2.html", "classpa__models_1_1CSelenographicCoordinates2" ]
+    [ "CSelenographicCoordinates2", "classpa__models_1_1CSelenographicCoordinates2.html", "classpa__models_1_1CSelenographicCoordinates2" ],
+    [ "CApproximatePositionOfSun", "classpa__models_1_1CApproximatePositionOfSun.html", "classpa__models_1_1CApproximatePositionOfSun" ],
+    [ "CPrecisePositionOfSun", "classpa__models_1_1CPrecisePositionOfSun.html", "classpa__models_1_1CPrecisePositionOfSun" ],
+    [ "CSunDistanceAngularSize", "classpa__models_1_1CSunDistanceAngularSize.html", "classpa__models_1_1CSunDistanceAngularSize" ],
+    [ "CSunriseAndSunset", "classpa__models_1_1CSunriseAndSunset.html", "classpa__models_1_1CSunriseAndSunset" ],
+    [ "CMorningAndEveningTwilight", "classpa__models_1_1CMorningAndEveningTwilight.html", "classpa__models_1_1CMorningAndEveningTwilight" ],
+    [ "CEquationOfTime", "classpa__models_1_1CEquationOfTime.html", "classpa__models_1_1CEquationOfTime" ]
 ];

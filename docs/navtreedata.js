@@ -52,9 +52,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classpa__models_1_1CGeocentricParallax.html#a8c8cd553a5659f0fa441d8ee319b9dbe",
-"classpa__models_1_1CUniversalDateTime.html#ab693b677bdc9ded12b06daf49778101c",
-"pa__macros_8cpp.html#aacb18548390e65ce1a2920611d404dee"
+"classpa__models_1_1CGalacticCoordinates.html#a4b61e2bf872ba83cc205c56c22361a18",
+"classpa__models_1_1CRightAscension.html",
+"namespacepa__types.html#adfa9e65e662efb9fd3e811b17946be6a",
+"pa__util_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

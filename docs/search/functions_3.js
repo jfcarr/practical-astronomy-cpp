@@ -5,7 +5,7 @@ var searchData=
   ['eclipticdeclination_2',['EclipticDeclination',['../namespacepa__macros.html#a2f9cfe6d663a797a768e1fa9badd6369',1,'pa_macros']]],
   ['eclipticrightascension_3',['EclipticRightAscension',['../namespacepa__macros.html#a495b684a1813eef15dfc26c99204cde6',1,'pa_macros']]],
   ['egstut_4',['EGstUt',['../namespacepa__macros.html#a0f8f2fd40b54a16132dda1397998a8a7',1,'pa_macros']]],
-  ['equationoftime_5',['EquationOfTime',['../classPASun.html#a1499f9f1a0ac0dea10b8dc9509875d2a',1,'PASun']]],
+  ['equationoftime_5',['EquationOfTime',['../classPASun.html#a89f7032d0b6d431a4f20ab0062ac5aca',1,'PASun']]],
   ['equatorialcoordinatestoaltitude_6',['EquatorialCoordinatesToAltitude',['../namespacepa__macros.html#ad0ec2cdd27489fbec1b7ac73fa5fcccf',1,'pa_macros']]],
   ['equatorialcoordinatestoazimuth_7',['EquatorialCoordinatesToAzimuth',['../namespacepa__macros.html#ae6c7619a64602983be251999db4ec1df',1,'pa_macros']]],
   ['equatorialcoordinatestohorizoncoordinates_8',['EquatorialCoordinatesToHorizonCoordinates',['../classPACoordinates.html#a4c72efce297451057b489942f154f71f',1,'PACoordinates']]],

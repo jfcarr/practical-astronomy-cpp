@@ -14,5 +14,5 @@ var searchData=
   ['planetlookup_11',['planetLookup',['../namespacepa__data.html#a2d5cf59cbca744378b94a0f13947414a',1,'pa_data']]],
   ['populatepreciseplanetdata_12',['populatePrecisePlanetData',['../namespacepa__data.html#ade1b2e033851a555c4b23f6fb1ff7bb9',1,'pa_data']]],
   ['precisepositionofplanet_13',['PrecisePositionOfPlanet',['../classPAPlanet.html#a7ba10d5c5a550f6562c98efe8c5c88b6',1,'PAPlanet']]],
-  ['precisepositionofsun_14',['PrecisePositionOfSun',['../classPASun.html#aa9c09055100b21dce5948087ced1fdc3',1,'PASun']]]
+  ['precisepositionofsun_14',['PrecisePositionOfSun',['../classPASun.html#a72719680f7966b0ffcce9f4566404988',1,'PASun']]]
 ];
