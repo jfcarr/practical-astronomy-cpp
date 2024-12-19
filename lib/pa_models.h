@@ -561,5 +561,122 @@ public:
   double subSolarLatitude;
 };
 
+class CApproximatePositionOfSun {
+public:
+  CApproximatePositionOfSun(double rightAscensionHours,
+                            double rightAscensionMinutes,
+                            double rightAscensionSeconds,
+                            double declinationDegrees,
+                            double declinationMinutes,
+                            double declinationSeconds) {
+    this->rightAscensionHours = rightAscensionHours;
+    this->rightAscensionMinutes = rightAscensionMinutes;
+    this->rightAscensionSeconds = rightAscensionSeconds;
+    this->declinationDegrees = declinationDegrees;
+    this->declinationMinutes = declinationMinutes;
+    this->declinationSeconds = declinationSeconds;
+  }
+
+  double rightAscensionHours;
+  double rightAscensionMinutes;
+  double rightAscensionSeconds;
+  double declinationDegrees;
+  double declinationMinutes;
+  double declinationSeconds;
+};
+
+class CPrecisePositionOfSun {
+public:
+  CPrecisePositionOfSun(double rightAscensionHours,
+                        double rightAscensionMinutes,
+                        double rightAscensionSeconds, double declinationDegrees,
+                        double declinationMinutes, double declinationSeconds) {
+    this->rightAscensionHours = rightAscensionHours;
+    this->rightAscensionMinutes = rightAscensionMinutes;
+    this->rightAscensionSeconds = rightAscensionSeconds;
+    this->declinationDegrees = declinationDegrees;
+    this->declinationMinutes = declinationMinutes;
+    this->declinationSeconds = declinationSeconds;
+  }
+
+  double rightAscensionHours;
+  double rightAscensionMinutes;
+  double rightAscensionSeconds;
+  double declinationDegrees;
+  double declinationMinutes;
+  double declinationSeconds;
+};
+
+class CSunDistanceAngularSize {
+public:
+  CSunDistanceAngularSize(double distKm, double angSizeDeg, double angSizeMin,
+                          double angSizeSec) {
+    this->distKm = distKm;
+    this->angSizeDeg = angSizeDeg;
+    this->angSizeMin = angSizeMin;
+    this->angSizeSec = angSizeSec;
+  };
+
+  double distKm;
+  double angSizeDeg;
+  double angSizeMin;
+  double angSizeSec;
+};
+
+class CSunriseAndSunset {
+public:
+  CSunriseAndSunset(double localSunriseHour, double localSunriseMinute,
+                    double localSunsetHour, double localSunsetMinute,
+                    double azimuthOfSunriseDeg, double azimuthOfSunsetDeg,
+                    ERiseSetStatus status) {
+    this->localSunriseHour = localSunsetHour;
+    this->localSunriseMinute = localSunsetMinute;
+    this->localSunsetHour = localSunsetHour;
+    this->localSunsetMinute = localSunsetMinute;
+    this->azimuthOfSunriseDeg = azimuthOfSunriseDeg;
+    this->azimuthOfSunsetDeg = azimuthOfSunsetDeg;
+    this->status = status;
+  }
+
+  double localSunriseHour;
+  double localSunriseMinute;
+  double localSunsetHour;
+  double localSunsetMinute;
+  double azimuthOfSunriseDeg;
+  double azimuthOfSunsetDeg;
+  ERiseSetStatus status;
+};
+
+class CMorningAndEveningTwilight {
+public:
+  CMorningAndEveningTwilight(double amTwilightBeginsHour,
+                             double amTwilightBeginsMin,
+                             double pmTwilightEndsHour,
+                             double pmTwilightEndsMin, ETwilightStatus status) {
+    this->amTwilightBeginsHour = amTwilightBeginsHour;
+    this->amTwilightBeginsMin = amTwilightBeginsMin;
+    this->pmTwilightEndsHour = pmTwilightEndsHour;
+    this->pmTwilightEndsMin = pmTwilightEndsMin;
+    this->status = status;
+  }
+
+  double amTwilightBeginsHour;
+  double amTwilightBeginsMin;
+  double pmTwilightEndsHour;
+  double pmTwilightEndsMin;
+  ETwilightStatus status;
+};
+
+class CEquationOfTime {
+public:
+  CEquationOfTime(double minutes, double seconds) {
+    this->minutes = minutes;
+    this->seconds = seconds;
+  }
+
+  double minutes;
+  double seconds;
+};
+
 } // namespace pa_models
 #endif

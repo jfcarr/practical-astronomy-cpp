@@ -1,44 +1,45 @@
 #ifndef _pa_sun
 #define _pa_sun
 
+#include "pa_models.h"
 #include "pa_types.h"
 #include <tuple>
 
+using namespace pa_models;
 using namespace pa_types;
 
 class PASun {
 public:
-  std::tuple<double, double, double, double, double, double>
+  CApproximatePositionOfSun
   ApproximatePositionOfSun(double lct_hours, double lct_minutes,
                            double lct_seconds, double local_day,
                            int local_month, int local_year,
                            bool is_daylight_saving, int zone_correction);
 
-  std::tuple<double, double, double, double, double, double>
+  CPrecisePositionOfSun
   PrecisePositionOfSun(double lct_hours, double lct_minutes, double lct_seconds,
                        double local_day, int local_month, int local_year,
                        bool is_daylight_saving, int zone_correction);
 
-  std::tuple<double, double, double, double>
+  CSunDistanceAngularSize
   SunDistanceAndAngularSize(double lct_hours, double lct_minutes,
                             double lct_seconds, double local_day,
                             int local_month, int local_year,
                             bool is_daylight_saving, int zone_correction);
 
-  std::tuple<double, double, double, double, double, double, ERiseSetStatus>
-  SunriseAndSunset(double local_day, int local_month, int local_year,
-                   bool is_daylight_saving, int zone_correction,
-                   double geographical_long_deg, double geographical_lat_deg);
+  CSunriseAndSunset SunriseAndSunset(double local_day, int local_month,
+                                     int local_year, bool is_daylight_saving,
+                                     int zone_correction,
+                                     double geographical_long_deg,
+                                     double geographical_lat_deg);
 
-  std::tuple<double, double, double, double, ETwilightStatus>
-  MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
-                            bool isDaylightSaving, int zoneCorrection,
-                            double geographicalLongDeg,
-                            double geographicalLatDeg,
-                            ETwilightType twilightType);
+  CMorningAndEveningTwilight MorningAndEveningTwilight(
+      double localDay, int localMonth, int localYear, bool isDaylightSaving,
+      int zoneCorrection, double geographicalLongDeg, double geographicalLatDeg,
+      ETwilightType twilightType);
 
-  std::tuple<double, double> EquationOfTime(double gwdateDay, int gwdateMonth,
-                                            int gwdateYear);
+  CEquationOfTime EquationOfTime(double gwdateDay, int gwdateMonth,
+                                 int gwdateYear);
 
   double SolarElongation(double raHour, double raMin, double raSec,
                          double decDeg, double decMin, double decSec,

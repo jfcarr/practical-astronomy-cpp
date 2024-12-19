@@ -1,5 +1,6 @@
 #include "pa_sun.h"
 #include "pa_macros.h"
+#include "pa_models.h"
 #include "pa_types.h"
 #include "pa_util.h"
 #include <cmath>
@@ -7,18 +8,16 @@
 using namespace pa_types;
 using namespace pa_util;
 using namespace pa_macros;
+using namespace pa_models;
 
 /**
  * \brief Calculate approximate position of the sun for a local date and time.
  *
- * @return tuple <double sun_ra_hour, double sun_ra_main, double sun_ra_sec,
- * double sun_dec_deg, double sun_dec_min, double sun_dec_sec>
+ * @return CApproximatePositionOfSun
  */
-std::tuple<double, double, double, double, double, double>
-PASun::ApproximatePositionOfSun(double lctHours, double lctMinutes,
-                                double lctSeconds, double localDay,
-                                int localMonth, int localYear,
-                                bool isDaylightSaving, int zoneCorrection) {
+CApproximatePositionOfSun PASun::ApproximatePositionOfSun(
+    double lctHours, double lctMinutes, double lctSeconds, double localDay,
+    int localMonth, int localYear, bool isDaylightSaving, int zoneCorrection) {
   int daylightSaving = (isDaylightSaving == true) ? 1 : 0;
 
   double greenwichDateDay = LocalCivilTimeGreenwichDay(
@@ -60,18 +59,16 @@ PASun::ApproximatePositionOfSun(double lctHours, double lctMinutes,
   double sunDecMin = DecimalDegreesMinutes(decDeg);
   double sunDecSec = DecimalDegreesSeconds(decDeg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      sunRaHour, sunRaMin, sunRaSec, sunDecDeg, sunDecMin, sunDecSec};
+  return CApproximatePositionOfSun(sunRaHour, sunRaMin, sunRaSec, sunDecDeg,
+                                   sunDecMin, sunDecSec);
 }
 
 /**
  * \brief Calculate precise position of the sun for a local date and time.
  */
-std::tuple<double, double, double, double, double, double>
-PASun::PrecisePositionOfSun(double lctHours, double lctMinutes,
-                            double lctSeconds, double localDay, int localMonth,
-                            int localYear, bool isDaylightSaving,
-                            int zoneCorrection) {
+CPrecisePositionOfSun PASun::PrecisePositionOfSun(
+    double lctHours, double lctMinutes, double lctSeconds, double localDay,
+    int localMonth, int localYear, bool isDaylightSaving, int zoneCorrection) {
   int daylightSaving = (isDaylightSaving == true) ? 1 : 0;
 
   double gDay = LocalCivilTimeGreenwichDay(lctHours, lctMinutes, lctSeconds,
@@ -99,17 +96,16 @@ PASun::PrecisePositionOfSun(double lctHours, double lctMinutes,
   double sunDecMin = DecimalDegreesMinutes(decDeg);
   double sunDecSec = DecimalDegreesSeconds(decDeg);
 
-  return std::tuple<double, double, double, double, double, double>{
-      sunRaHour, sunRaMin, sunRaSec, sunDecDeg, sunDecMin, sunDecSec};
+  return CPrecisePositionOfSun(sunRaHour, sunRaMin, sunRaSec, sunDecDeg,
+                               sunDecMin, sunDecSec);
 }
 
 /**
  * \brief Calculate distance to the Sun (in km), and angular size.
  *
- * @return tuple<double sun_dist_km, double sun_ang_size_deg, double
- * sun_ang_size_min, double sun_ang_size_sec>
+ * @return CSunDistanceAngularSize
  */
-std::tuple<double, double, double, double> PASun::SunDistanceAndAngularSize(
+CSunDistanceAngularSize PASun::SunDistanceAndAngularSize(
     double lctHours, double lctMinutes, double lctSeconds, double localDay,
     int localMonth, int localYear, bool isDaylightSaving, int zoneCorrection) {
   int daylightSaving = (isDaylightSaving) ? 1 : 0;
@@ -138,21 +134,20 @@ std::tuple<double, double, double, double> PASun::SunDistanceAndAngularSize(
   double sunAngSizeMin = DecimalDegreesMinutes(thetaDeg);
   double sunAngSizeSec = DecimalDegreesSeconds(thetaDeg);
 
-  return std::tuple<double, double, double, double>{
-      sunDistKm, sunAngSizeDeg, sunAngSizeMin, sunAngSizeSec};
+  return CSunDistanceAngularSize(sunDistKm, sunAngSizeDeg, sunAngSizeMin,
+                                 sunAngSizeSec);
 }
 
 /**
  * \brief Calculate local sunrise and sunset.
  *
- * tuple <double local_sunrise_hour, double local_sunrise_minute, double
- * local_sunset_hour, double local_sunset_minute, double azimuth_of_sunrise_deg,
- * double azimuth_of_sunset_deg, sun_rise_set_status>
+ * @return CSunriseAndSunset
  */
-std::tuple<double, double, double, double, double, double, ERiseSetStatus>
-PASun::SunriseAndSunset(double localDay, int localMonth, int localYear,
-                        bool isDaylightSaving, int zoneCorrection,
-                        double geographicalLongDeg, double geographicalLatDeg) {
+CSunriseAndSunset PASun::SunriseAndSunset(double localDay, int localMonth,
+                                          int localYear, bool isDaylightSaving,
+                                          int zoneCorrection,
+                                          double geographicalLongDeg,
+                                          double geographicalLatDeg) {
   int daylightSaving = (isDaylightSaving) ? 1 : 0;
 
   double localSunriseHours = SunriseLocalCivilTime(
@@ -199,28 +194,20 @@ PASun::SunriseAndSunset(double localDay, int localMonth, int localYear,
 
   ERiseSetStatus status = sunRiseSetStatus;
 
-  return std::tuple<double, double, double, double, double, double,
-                    ERiseSetStatus>{localSunriseHour,
-                                    localSunriseMinute,
-                                    localSunsetHour,
-                                    localSunsetMinute,
-                                    azimuthOfSunriseDeg,
-                                    azimuthOfSunsetDeg,
-                                    status};
+  return CSunriseAndSunset(localSunriseHour, localSunriseMinute,
+                           localSunsetHour, localSunsetMinute,
+                           azimuthOfSunriseDeg, azimuthOfSunsetDeg, status);
 }
 
 /**
  * \brief Calculate times of morning and evening twilight.
  *
- * tuple <double amTwilightBeginsHour, double amTwilightBeginsMin, double
- * pmTwilightEndsHour, double pmTwilightEndsMin, TwilightStatus>
+ * @return CMorningAndEveningTwilight
  */
-std::tuple<double, double, double, double, ETwilightStatus>
-PASun::MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
-                                 bool isDaylightSaving, int zoneCorrection,
-                                 double geographicalLongDeg,
-                                 double geographicalLatDeg,
-                                 ETwilightType twilightType) {
+CMorningAndEveningTwilight PASun::MorningAndEveningTwilight(
+    double localDay, int localMonth, int localYear, bool isDaylightSaving,
+    int zoneCorrection, double geographicalLongDeg, double geographicalLatDeg,
+    ETwilightType twilightType) {
   int daylightSaving = (isDaylightSaving) ? 1 : 0;
 
   double startOfAMTwilightHours = TwilightAMLocalCivilTime(
@@ -254,9 +241,9 @@ PASun::MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
 
   ETwilightStatus status = twilightStatus;
 
-  return std::tuple<double, double, double, double, ETwilightStatus>{
-      amTwilightBeginsHour, amTwilightBeginsMin, pmTwilightEndsHour,
-      pmTwilightEndsMin, status};
+  return CMorningAndEveningTwilight(amTwilightBeginsHour, amTwilightBeginsMin,
+                                    pmTwilightEndsHour, pmTwilightEndsMin,
+                                    status);
 }
 
 /**
@@ -265,10 +252,10 @@ PASun::MorningAndEveningTwilight(double localDay, int localMonth, int localYear,
  * The equation of time is the  difference between the real Sun time and the
  * mean Sun time.
  *
- * @return tuple <double equationOfTimeMin, double equationOfTimeSec>
+ * @return CEquationOfTime
  */
-std::tuple<double, double>
-PASun::EquationOfTime(double gwdateDay, int gwdateMonth, int gwdateYear) {
+CEquationOfTime PASun::EquationOfTime(double gwdateDay, int gwdateMonth,
+                                      int gwdateYear) {
   double sunLongitudeDeg =
       SunLong(12, 0, 0, 0, 0, gwdateDay, gwdateMonth, gwdateYear);
   double sunRAHours = DecimalDegreesToDegreeHours(EclipticRightAscension(
@@ -280,7 +267,7 @@ PASun::EquationOfTime(double gwdateDay, int gwdateMonth, int gwdateYear) {
   int equationOfTimeMin = DecimalHoursMinute(equationOfTimeHours);
   double equationOfTimeSec = DecimalHoursSecond(equationOfTimeHours);
 
-  return std::tuple<double, double>{equationOfTimeMin, equationOfTimeSec};
+  return CEquationOfTime(equationOfTimeMin, equationOfTimeSec);
 }
 
 /**
