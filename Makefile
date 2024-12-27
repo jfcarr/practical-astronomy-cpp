@@ -1,6 +1,6 @@
-LIB_OBJS1 = pa_datetime.o pa_coordinates.o pa_sun.o pa_planet.o
+LIB_OBJS1 = pa_datetime.o pa_coordinates.o pa_sun.o pa_planet.o pa_comet.o
 LIB_OBJS2 = pa_data.o pa_macros.o pa_util.o 
-TEST_OBJS = test.o test_datetime.o test_coordinates.o test_sun.o test_planet.o
+TEST_OBJS = test.o test_datetime.o test_coordinates.o test_sun.o test_planet.o test_comet.o
 SUPPORT_HEADERS = lib/pa_models.h lib/pa_types.h
 COMPILER = g++
 CPP_STD = c++17
@@ -47,6 +47,9 @@ pa_sun.o: lib/pa_sun.cpp lib/pa_sun.h $(SUPPORT_HEADERS)
 pa_planet.o: lib/pa_planet.cpp lib/pa_planet.h $(SUPPORT_HEADERS)
 	$(COMPILER) -std=$(CPP_STD) -c lib/pa_planet.cpp
 
+pa_comet.o: lib/pa_comet.cpp lib/pa_comet.h $(SUPPORT_HEADERS)
+	$(COMPILER) -std=$(CPP_STD) -c lib/pa_comet.cpp
+
 pa_data.o: lib/pa_data.cpp lib/pa_data.h
 	$(COMPILER) -std=$(CPP_STD) -c lib/pa_data.cpp
 
@@ -65,6 +68,7 @@ format:
 	$(FORMATTER) -i lib/pa_coordinates.cpp lib/pa_coordinates.h
 	$(FORMATTER) -i lib/pa_sun.cpp lib/pa_sun.h
 	$(FORMATTER) -i lib/pa_planet.cpp lib/pa_planet.h
+	$(FORMATTER) -i lib/pa_comet.cpp lib/pa_comet.h
 	$(FORMATTER) -i lib/pa_data.cpp lib/pa_data.h
 	$(FORMATTER) -i lib/pa_macros.cpp lib/pa_macros.h
 	$(FORMATTER) -i lib/pa_util.cpp lib/pa_util.h

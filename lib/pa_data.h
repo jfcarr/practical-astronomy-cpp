@@ -143,5 +143,53 @@ PlanetDataPrecise populatePrecisePlanetData(std::string name, double value1,
                                             double value8, double value9,
                                             double ap_value);
 
+class CometDataElliptical {
+public:
+  /** Name of comet */
+  std::string name;
+
+  /** Epoch of the perihelion */
+  double epoch_EpochOfPerihelion;
+
+  /** Longitude of the perihelion */
+  double peri_LongitudeOfPerihelion;
+
+  /** Longitude of the ascending node */
+  double node_LongitudeOfAscendingNode;
+
+  /** Period of the orbit */
+  double period_PeriodOfOrbit;
+
+  /** Semi-major axis of the orbit */
+  double axis_SemiMajorAxisOfOrbit;
+
+  /** Eccentricity of the orbit */
+  double ecc_EccentricityOfOrbit;
+
+  /** Inclination of the orbit */
+  double incl_InclinationOfOrbit;
+
+  CometDataElliptical() {}
+
+  CometDataElliptical(std::string name, double epoch_EpochOfPerihelion,
+                      double peri_LongitudeOfPerihelion,
+                      double node_LongitudeOfAscendingNode,
+                      double period_PeriodOfOrbit,
+                      double axis_SemiMajorAxisOfOrbit,
+                      double ecc_EccentricityOfOrbit,
+                      double incl_InclinationOfOrbit) {
+    this->name = name;
+    this->epoch_EpochOfPerihelion = epoch_EpochOfPerihelion;
+    this->peri_LongitudeOfPerihelion = peri_LongitudeOfPerihelion;
+    this->node_LongitudeOfAscendingNode = node_LongitudeOfAscendingNode;
+    this->period_PeriodOfOrbit = period_PeriodOfOrbit;
+    this->axis_SemiMajorAxisOfOrbit = axis_SemiMajorAxisOfOrbit;
+    this->ecc_EccentricityOfOrbit = ecc_EccentricityOfOrbit;
+    this->incl_InclinationOfOrbit = incl_InclinationOfOrbit;
+  }
+};
+
+CometDataElliptical ellipticalCometLookup(std::string cometName);
+
 } // namespace pa_data
 #endif
