@@ -700,5 +700,18 @@ public:
   double distEarth;
 };
 
+class CCometLongLatDist {
+public:
+  CCometLongLatDist(double longDeg, double latDeg, double distAU) {
+    this->longDeg = longDeg;
+    this->latDeg = latDeg;
+    this->distAU = distAU;
+  }
+
+  double longDeg;
+  double latDeg;
+  double distAU;
+};
+
 } // namespace pa_models
 #endif

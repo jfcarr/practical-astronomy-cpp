@@ -292,5 +292,13 @@ PlanetLongL4810(std::vector<pa_data::PlanetDataPrecise> pl, double ms);
 pa_models::CPlanetLongLatL4945
 PlanetLongL4945(double t, pa_data::PlanetDataPrecise planet);
 
+pa_models::CCometLongLatDist PCometLongLatDist(double lh, double lm, double ls,
+                                               int ds, int zc, double dy,
+                                               int mn, int yr, double td,
+                                               int tm, int ty, double q,
+                                               double i, double p, double n);
+
+double SolveCubic(double w);
+
 } // namespace pa_macros
 #endif

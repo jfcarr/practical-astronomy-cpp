@@ -29,3 +29,29 @@ SCENARIO("Position of Elliptical Comet") {
     }
   }
 }
+
+SCENARIO("Position of Parabolic Comet") {
+  GIVEN("A PAComet object") {
+    PAComet paComet;
+
+    WHEN("Civil Time is 0:0:0 and Local Date is 12/25/1977 and comet is "
+         "Kohler") {
+      CCometPosition result = paComet.PositionOfParabolicComet(
+          0, 0, 0, false, 0, 25, 12, 1977, "Kohler");
+
+      THEN("Right Ascension is 23h 17m 11.53s and Declination is -33d 42m "
+           "26.42s and Distance From Earth is 1.11") {
+        CCometPosition expected =
+            CCometPosition(23, 17, 11.53, -33, 42, 26.42, 1.11);
+
+        REQUIRE(result.decDeg == expected.decDeg);
+        REQUIRE(result.decMin == expected.decMin);
+        REQUIRE(result.decSec == expected.decSec);
+        REQUIRE(result.distEarth == expected.distEarth);
+        REQUIRE(result.raHour == expected.raHour);
+        REQUIRE(result.raMin == expected.raMin);
+        REQUIRE(result.raSec == expected.raSec);
+      }
+    }
+  }
+}

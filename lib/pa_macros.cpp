@@ -3140,4 +3140,104 @@ PlanetLongL4945(double t, pa_data::PlanetDataPrecise planet) {
   return (pa_models::CPlanetLongLatL4945(qa, qb, qc, qd, qe, qf, qg));
 }
 
+/**
+ * Calculate longitude, latitude, and distance of parabolic-orbit comet.
+ *
+ * Original macro names: PcometLong, PcometLat, PcometDist
+ */
+pa_models::CCometLongLatDist
+PCometLongLatDist(double lh, /** Local civil time, hour part. */
+                  double lm, /** Local civil time, minutes part. */
+                  double ls, /** Local civil time, seconds part. */
+                  int ds,    /** Daylight Savings offset. */
+                  int zc,    /** Time zone correction, in hours. */
+                  double dy, /** Local date, day part. */
+                  int mn,    /** Local date, month part. */
+                  int yr,    /** Local date, year part. */
+                  double td, /** Perihelion epoch (day) */
+                  int tm,    /** Perihelion epoch (month) */
+                  int ty,    /** Perihelion epoch (year) */
+                  double q,  /** a (AU) */
+                  double i,  /** Inclination (degrees) */
+                  double p,  /** Perihelion (degrees) */
+                  double n   /** Node (degrees) */
+) {
+  double gd = LocalCivilTimeGreenwichDay(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gm = LocalCivilTimeGreenwichMonth(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gy = LocalCivilTimeGreenwichYear(lh, lm, ls, ds, zc, dy, mn, yr);
+  double ut = LocalCivilTimeToUniversalTime(lh, lm, ls, ds, zc, dy, mn, yr);
+  double tpe = (ut / 365.242191) + CivilDateToJulianDate(gd, gm, gy) -
+               CivilDateToJulianDate(td, tm, ty);
+  double lg = DegreesToRadians(SunLong(lh, lm, ls, ds, zc, dy, mn, yr) + 180.0);
+  double re = SunDist(lh, lm, ls, ds, zc, dy, mn, yr);
+
+  double rh2 = 0.0;
+  double rd = 0.0;
+  double s3 = 0.0;
+  double c3 = 0.0;
+  double lc = 0.0;
+  double s2 = 0.0;
+  double c2 = 0.0;
+
+  for (int k = 1; k < 3; k++) {
+    double s = SolveCubic(0.0364911624 * tpe / (q * sqrt(q)));
+    double nu = 2.0 * atan(s);
+    double r = q * (1.0 + s * s);
+    double l = nu + DegreesToRadians(p);
+    double s1 = sin(l);
+    double c1 = cos(l);
+    double i1 = DegreesToRadians(i);
+    s2 = s1 * sin(i1);
+    double ps = asin(s2);
+    double y = s1 * cos(i1);
+    lc = atan2(y, c1) + DegreesToRadians(n);
+    c2 = cos(ps);
+    rd = r * c2;
+    double ll = lc - lg;
+    c3 = cos(ll);
+    s3 = sin(ll);
+    double rh = sqrt((re * re) + (r * r) - (2.0 * re * rd * c3 * cos(ps)));
+    if (k == 1) {
+      rh2 = sqrt((re * re) + (r * r) -
+                 (2.0 * re * r * cos(ps) * cos(l + DegreesToRadians(n) - lg)));
+    }
+  }
+
+  double ep;
+
+  ep = (rd < re) ? atan(-rd * s3 / (re - (rd * c3))) + lg + 3.141592654
+                 : atan(re * s3 / (rd - (re * c3))) + lc;
+  ep = Unwind(ep);
+
+  double tb = rd * s2 * sin(ep - lc) / (c2 * re * s3);
+  double bp = atan(tb);
+
+  double comet_long_deg = WToDegrees(ep);
+  double comet_lat_deg = WToDegrees(bp);
+  double comet_dist_au = rh2;
+
+  return pa_models::CCometLongLatDist(comet_long_deg, comet_lat_deg,
+                                      comet_dist_au);
+}
+
+/**
+ * For W, in radians, return S, also in radians.
+ *
+ * Original macro name: SolveCubic
+ */
+double SolveCubic(double w) {
+  double s = w / 3.0;
+
+  while (1 == 1) {
+    double s2 = s * s;
+    double d = (s2 + 3.0) * s - w;
+
+    if (fabs(d) < 0.000001) {
+      return s;
+    }
+
+    s = ((2.0 * s * s2) + w) / (3.0 * (s2 + 1.0));
+  }
+}
+
 } // namespace pa_macros
