@@ -191,5 +191,49 @@ public:
 
 CometDataElliptical ellipticalCometLookup(std::string cometName);
 
+class CometDataParabolic {
+public:
+  /** Name of the comet  */
+  std::string name;
+
+  /** Epoch perihelion day */
+  double epoch_peri_day;
+
+  /** Epoch perihelion month */
+  int epoch_peri_month;
+
+  /** Epoch perihelion year */
+  int epoch_peri_year;
+
+  /** Arg perihelion */
+  double arg_peri;
+
+  /** Comet's node */
+  double node;
+
+  /** Distance at the perihelion */
+  double peri_dist;
+
+  /** Inclination */
+  double incl;
+
+  CometDataParabolic() {}
+
+  CometDataParabolic(std::string name, double epoch_peri_day,
+                     int epoch_peri_month, int epoch_peri_year, double arg_peri,
+                     double node, double peri_dist, double incl) {
+    this->name = name;
+    this->epoch_peri_day = epoch_peri_day;
+    this->epoch_peri_month = epoch_peri_month;
+    this->epoch_peri_year = epoch_peri_year;
+    this->arg_peri = arg_peri;
+    this->node = node;
+    this->peri_dist = peri_dist;
+    this->incl = incl;
+  }
+};
+
+CometDataParabolic parabolicCometLookup(std::string cometName);
+
 } // namespace pa_data
 #endif

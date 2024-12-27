@@ -104,4 +104,20 @@ CometDataElliptical ellipticalCometLookup(std::string cometName) {
   return CometDataElliptical("NoMatch", 0, 0, 0, 0, 0, 0, 0);
 }
 
+/**
+ * Retrieve information about a parabolic comet.
+ */
+CometDataParabolic parabolicCometLookup(std::string cometName) {
+  std::vector<CometDataParabolic> cometData;
+
+  cometData.push_back(CometDataParabolic("Kohler", 10.5659, 11, 1977, 163.4799,
+                                         181.8175, 0.990662, 48.7196));
+
+  for (int i = 0; i < cometData.size(); i++)
+    if (cometData[i].name == cometName)
+      return cometData[i];
+
+  return CometDataParabolic("NoMatch", 0, 0, 0, 0, 0, 0, 0);
+}
+
 } // namespace pa_data
