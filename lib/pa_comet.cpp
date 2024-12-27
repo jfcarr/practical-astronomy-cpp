@@ -108,54 +108,53 @@ CCometPosition PAComet::PositionOfEllipticalComet(
  * Calculate position of a parabolic comet.
  */
 CCometPosition PAComet::PositionOfParabolicComet(
-    double lct_hour, double lct_min, double lct_sec, bool is_daylight_saving,
-    int zone_correction_hours, double local_date_day, int local_date_month,
-    int local_date_year, std::string comet_name) {
-  int daylight_saving = is_daylight_saving ? 1 : 0;
+    double lctHour, double lctMin, double lctSec, bool isDaylightSaving,
+    int zoneCorrectionHours, double localDateDay, int localDateMonth,
+    int localDateYear, std::string cometName) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
 
-  double greenwich_date_day = LocalCivilTimeGreenwichDay(
-      lct_hour, lct_min, lct_sec, daylight_saving, zone_correction_hours,
-      local_date_day, local_date_month, local_date_year);
-  int greenwich_date_month = LocalCivilTimeGreenwichMonth(
-      lct_hour, lct_min, lct_sec, daylight_saving, zone_correction_hours,
-      local_date_day, local_date_month, local_date_year);
-  int greenwich_date_year = LocalCivilTimeGreenwichYear(
-      lct_hour, lct_min, lct_sec, daylight_saving, zone_correction_hours,
-      local_date_day, local_date_month, local_date_year);
+  double greenwichDateDay = LocalCivilTimeGreenwichDay(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  int greenwichDateMonth = LocalCivilTimeGreenwichMonth(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  int greenwichDateYear = LocalCivilTimeGreenwichYear(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
 
-  pa_data::CometDataParabolic comet_info =
-      pa_data::parabolicCometLookup(comet_name);
+  pa_data::CometDataParabolic cometInfo =
+      pa_data::parabolicCometLookup(cometName);
 
-  double perihelion_epoch_day = comet_info.epoch_peri_day;
-  int perihelion_epoch_month = comet_info.epoch_peri_month;
-  int perihelion_epoch_year = comet_info.epoch_peri_year;
-  double q_au = comet_info.peri_dist;
-  double inclination_deg = comet_info.incl;
-  double perihelion_deg = comet_info.arg_peri;
-  double node_deg = comet_info.node;
+  double perihelionEpochDay = cometInfo.epoch_peri_day;
+  int perihelionEpochMonth = cometInfo.epoch_peri_month;
+  int perihelionEpochYear = cometInfo.epoch_peri_year;
+  double qAU = cometInfo.peri_dist;
+  double inclinationDeg = cometInfo.incl;
+  double perihelionDeg = cometInfo.arg_peri;
+  double nodeDeg = cometInfo.node;
 
-  CCometLongLatDist comet_long_lat_dist = PCometLongLatDist(
-      lct_hour, lct_min, lct_sec, daylight_saving, zone_correction_hours,
-      local_date_day, local_date_month, local_date_year, perihelion_epoch_day,
-      perihelion_epoch_month, perihelion_epoch_year, q_au, inclination_deg,
-      perihelion_deg, node_deg);
+  CCometLongLatDist cometLongLatDist = PCometLongLatDist(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear, perihelionEpochDay,
+      perihelionEpochMonth, perihelionEpochYear, qAU, inclinationDeg,
+      perihelionDeg, nodeDeg);
 
-  double comet_ra_hours = DecimalDegreesToDegreeHours(EclipticRightAscension(
-      comet_long_lat_dist.longDeg, 0, 0, comet_long_lat_dist.latDeg, 0, 0,
-      greenwich_date_day, greenwich_date_month, greenwich_date_year));
-  double comet_dec_deg1 = EclipticDeclination(
-      comet_long_lat_dist.longDeg, 0, 0, comet_long_lat_dist.latDeg, 0, 0,
-      greenwich_date_day, greenwich_date_month, greenwich_date_year);
+  double cometRAHours = DecimalDegreesToDegreeHours(EclipticRightAscension(
+      cometLongLatDist.longDeg, 0, 0, cometLongLatDist.latDeg, 0, 0,
+      greenwichDateDay, greenwichDateMonth, greenwichDateYear));
+  double cometDecDeg1 = EclipticDeclination(
+      cometLongLatDist.longDeg, 0, 0, cometLongLatDist.latDeg, 0, 0,
+      greenwichDateDay, greenwichDateMonth, greenwichDateYear);
 
-  int comet_ra_hour = DecimalHoursHour(comet_ra_hours);
-  int comet_ra_min = DecimalHoursMinute(comet_ra_hours);
-  double comet_ra_sec = DecimalHoursSecond(comet_ra_hours);
-  double comet_dec_deg = DecimalDegreesDegrees(comet_dec_deg1);
-  double comet_dec_min = DecimalDegreesMinutes(comet_dec_deg1);
-  double comet_dec_sec = DecimalDegreesSeconds(comet_dec_deg1);
-  double comet_dist_earth = Round(comet_long_lat_dist.distAU, 2);
+  int cometRAHour = DecimalHoursHour(cometRAHours);
+  int cometRAMin = DecimalHoursMinute(cometRAHours);
+  double cometRASec = DecimalHoursSecond(cometRAHours);
+  double cometDecDeg = DecimalDegreesDegrees(cometDecDeg1);
+  double cometDecMin = DecimalDegreesMinutes(cometDecDeg1);
+  double cometDecSec = DecimalDegreesSeconds(cometDecDeg1);
+  double cometDistEarth = Round(cometLongLatDist.distAU, 2);
 
-  return CCometPosition(comet_ra_hour, comet_ra_min, comet_ra_sec,
-                        comet_dec_deg, comet_dec_min, comet_dec_sec,
-                        comet_dist_earth);
+  return CCometPosition(cometRAHour, cometRAMin, cometRASec, cometDecDeg,
+                        cometDecMin, cometDecSec, cometDistEarth);
 }
