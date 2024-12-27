@@ -713,5 +713,16 @@ public:
   double distAU;
 };
 
+class CBinaryStarOrbitalData {
+public:
+  CBinaryStarOrbitalData(double positionAngleDeg, double separationArcsec) {
+    this->positionAngleDeg = positionAngleDeg;
+    this->separationArcsec = separationArcsec;
+  }
+
+  double positionAngleDeg;
+  double separationArcsec;
+};
+
 } // namespace pa_models
 #endif

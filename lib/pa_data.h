@@ -235,5 +235,34 @@ public:
 
 CometDataParabolic parabolicCometLookup(std::string cometName);
 
+class BinaryStarData {
+public:
+  std::string name;  /** Name of binary system.  */
+  double period;     /** Period of the orbit. */
+  double epoch_peri; /** Epoch of the perihelion. */
+  double long_peri;  /** Longitude of the perihelion. */
+  double ecc;        /** Eccentricity of the orbit. */
+  double axis;       /** Semi-major axis of the orbit. */
+  double incl;       /** Orbital inclination. */
+  double pa_node;    /** Position angle of the ascending node. */
+
+  BinaryStarData() {}
+
+  BinaryStarData(std::string name, double period, double epoch_peri,
+                 double long_peri, double ecc, double axis, double incl,
+                 double pa_node) {
+    this->name = name;
+    this->period = period;
+    this->epoch_peri = epoch_peri;
+    this->long_peri = long_peri;
+    this->ecc = ecc;
+    this->axis = axis;
+    this->incl = incl;
+    this->pa_node = pa_node;
+  }
+};
+
+BinaryStarData getBinaryStarData(std::string starName);
+
 } // namespace pa_data
 #endif
