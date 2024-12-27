@@ -678,5 +678,27 @@ public:
   double seconds;
 };
 
+class CCometPosition {
+public:
+  CCometPosition(double raHour, double raMin, double raSec, double decDeg,
+                 double decMin, double decSec, double distEarth) {
+    this->raHour = raHour;
+    this->raMin = raMin;
+    this->raSec = raSec;
+    this->decDeg = decDeg;
+    this->decMin = decMin;
+    this->decSec = decSec;
+    this->distEarth = distEarth;
+  }
+
+  double raHour;
+  double raMin;
+  double raSec;
+  double decDeg;
+  double decMin;
+  double decSec;
+  double distEarth;
+};
+
 } // namespace pa_models
 #endif
