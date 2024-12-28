@@ -838,5 +838,26 @@ public:
   double f;
 };
 
+class CMoonDistDiameterHP {
+public:
+  CMoonDistDiameterHP(double earthMoonDist, double angDiameterDeg,
+                      double angDiameterMin, double horParallaxDeg,
+                      double horParallaxMin, double horParallaxSec) {
+    this->earthMoonDist = earthMoonDist;
+    this->angDiameterDeg = angDiameterDeg;
+    this->angDiameterMin = angDiameterMin;
+    this->horParallaxDeg = horParallaxDeg;
+    this->horParallaxMin = horParallaxMin;
+    this->horParallaxSec = horParallaxSec;
+  }
+
+  double earthMoonDist;
+  double angDiameterDeg;
+  double angDiameterMin;
+  double horParallaxDeg;
+  double horParallaxMin;
+  double horParallaxSec;
+};
+
 } // namespace pa_models
 #endif

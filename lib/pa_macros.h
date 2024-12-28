@@ -170,6 +170,12 @@ double MoonLongitude(double lh, double lm, double ls, int ds, int zc, double dy,
 double MoonLatitude(double lh, double lm, double ls, int ds, int zc, double dy,
                     int mn, int yr);
 
+double MoonDist(double lh, double lm, double ls, int ds, int zc, double dy,
+                int mn, int yr);
+
+double MoonSize(double lh, double lm, double ls, int ds, int zc, double dy,
+                int mn, int yr);
+
 double MoonHorizontalParallax(double lh, double lm, double ls, int ds, int zc,
                               double dy, int mn, int yr);
 

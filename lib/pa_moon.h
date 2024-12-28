@@ -30,6 +30,12 @@ public:
                                          int zoneCorrectionHours,
                                          double localDateDay,
                                          int localDateMonth, int localDateYear);
+
+  CMoonDistDiameterHP
+  MoonDistAngDiamHorParallax(double lctHour, double lctMin, double lctSec,
+                             bool isDaylightSaving, int zoneCorrectionHours,
+                             double localDateDay, int localDateMonth,
+                             int localDateYear);
 };
 
 #endif

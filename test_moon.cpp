@@ -104,3 +104,28 @@ SCENARIO("Times of New Moon and Full Moon") {
     }
   }
 }
+
+SCENARIO(
+    "Calculate Moon's distance, angular diameter, and horizontal parallax") {
+  GIVEN("A PAMoon object") {
+    PAMoon paMoon;
+
+    WHEN("Local Civil Time is 0:0:0 and Local Date is 9/1/2003") {
+      CMoonDistDiameterHP result =
+          paMoon.MoonDistAngDiamHorParallax(0, 0, 0, false, 0, 1, 9, 2003);
+
+      THEN("Distance is 367964 and Angular Diameter is 0d 32m and Horizontal "
+           "Parallax is 0d 59m 35.49s") {
+        CMoonDistDiameterHP expected =
+            CMoonDistDiameterHP(367964, 0, 32, 0, 59, 35.49);
+
+        REQUIRE(result.angDiameterDeg == expected.angDiameterDeg);
+        REQUIRE(result.angDiameterMin == expected.angDiameterMin);
+        REQUIRE(result.earthMoonDist == expected.earthMoonDist);
+        REQUIRE(result.horParallaxDeg == expected.horParallaxDeg);
+        REQUIRE(result.horParallaxMin == expected.horParallaxMin);
+        REQUIRE(result.horParallaxSec == expected.horParallaxSec);
+      }
+    }
+  }
+}
