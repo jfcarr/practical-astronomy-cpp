@@ -250,3 +250,34 @@ CMoonNewFull PAMoon::TimesOfNewMoonAndFullMoon(bool isDaylightSaving,
   return CMoonNewFull(nmLTH, nmLTM, nmLDD, nmLDM, nmLDY, fmLTH, fmLTM, fmLDD,
                       fmLDM, fmLDY);
 }
+
+/**
+ * Calculate Moon's distance, angular diameter, and horizontal parallax.
+ */
+CMoonDistDiameterHP
+PAMoon::MoonDistAngDiamHorParallax(double lctHour, double lctMin, double lctSec,
+                                   bool isDaylightSaving,
+                                   int zoneCorrectionHours, double localDateDay,
+                                   int localDateMonth, int localDateYear) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
+
+  double moonDistance =
+      MoonDist(lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+               localDateDay, localDateMonth, localDateYear);
+  double moonAngularDiameter =
+      MoonSize(lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+               localDateDay, localDateMonth, localDateYear);
+  double moonHorizontalParallax = MoonHorizontalParallax(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+
+  double earthMoonDist = Round(moonDistance, 0);
+  double angDiameterDeg = DecimalDegreesDegrees(moonAngularDiameter + 0.008333);
+  double angDiameterMin = DecimalDegreesMinutes(moonAngularDiameter + 0.008333);
+  double horParallaxDeg = DecimalDegreesDegrees(moonHorizontalParallax);
+  double horParallaxMin = DecimalDegreesMinutes(moonHorizontalParallax);
+  double horParallaxSec = DecimalDegreesSeconds(moonHorizontalParallax);
+
+  return CMoonDistDiameterHP(earthMoonDist, angDiameterDeg, angDiameterMin,
+                             horParallaxDeg, horParallaxMin, horParallaxSec);
+}
