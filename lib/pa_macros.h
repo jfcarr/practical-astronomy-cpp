@@ -302,5 +302,8 @@ pa_models::CCometLongLatDist PCometLongLatDist(double lh, double lm, double ls,
 
 double SolveCubic(double w);
 
+pa_models::CMoonLongLatHP MoonLongLatHP(double lh, double lm, double ls, int ds,
+                                        int zc, double dy, int mn, int yr);
+
 } // namespace pa_macros
 #endif
