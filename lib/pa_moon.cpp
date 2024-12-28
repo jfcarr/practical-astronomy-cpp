@@ -189,3 +189,64 @@ CMoonPhase PAMoon::MoonPhase(double lctHour, double lctMin, double lctSec,
 
   return CMoonPhase(moonPhase, brightLimbDeg);
 }
+
+/**
+ * Calculate new moon and full moon instances.
+ */
+CMoonNewFull PAMoon::TimesOfNewMoonAndFullMoon(bool isDaylightSaving,
+                                               int zoneCorrectionHours,
+                                               double localDateDay,
+                                               int localDateMonth,
+                                               int localDateYear) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
+
+  double jdOfNewMoonDays = NewMoon(daylightSaving, zoneCorrectionHours,
+                                   localDateDay, localDateMonth, localDateYear);
+  double jdOfFullMoonDays = FullMoon(3, zoneCorrectionHours, localDateDay,
+                                     localDateMonth, localDateYear);
+
+  double gDateOfNewMoonDay = JulianDateDay(jdOfNewMoonDays);
+  double integerDay1 = floor(gDateOfNewMoonDay);
+  int gDateOfNewMoonMonth = JulianDateMonth(jdOfNewMoonDays);
+  int gDateOfNewMoonYear = JulianDateYear(jdOfNewMoonDays);
+
+  double gDateOfFullMoonDay = JulianDateDay(jdOfFullMoonDays);
+  double integerDay2 = floor(gDateOfFullMoonDay);
+  int gDateOfFullMoonMonth = JulianDateMonth(jdOfFullMoonDays);
+  int gDateOfFullMoonYear = JulianDateYear(jdOfFullMoonDays);
+
+  double utOfNewMoonHours = 24.0 * (gDateOfNewMoonDay - integerDay1);
+  double utOfFullMoonHours = 24.0 * (gDateOfFullMoonDay - integerDay2);
+  double lctOfNewMoonHours = UniversalTimeToLocalCivilTime(
+      utOfNewMoonHours + 0.008333, 0, 0, daylightSaving, zoneCorrectionHours,
+      integerDay1, gDateOfNewMoonMonth, gDateOfNewMoonYear);
+  double lctOfFullMoonHours = UniversalTimeToLocalCivilTime(
+      utOfFullMoonHours + 0.008333, 0, 0, daylightSaving, zoneCorrectionHours,
+      integerDay2, gDateOfFullMoonMonth, gDateOfFullMoonYear);
+
+  int nmLTH = DecimalHoursHour(lctOfNewMoonHours);
+  int nmLTM = DecimalHoursMinute(lctOfNewMoonHours);
+  double nmLDD = UniversalTimeLocalCivilDay(
+      utOfNewMoonHours, 0, 0, daylightSaving, zoneCorrectionHours, integerDay1,
+      gDateOfNewMoonMonth, gDateOfNewMoonYear);
+  int nmLDM = UniversalTimeLocalCivilMonth(
+      utOfNewMoonHours, 0, 0, daylightSaving, zoneCorrectionHours, integerDay1,
+      gDateOfNewMoonMonth, gDateOfNewMoonYear);
+  int nmLDY = UniversalTimeLocalCivilYear(
+      utOfNewMoonHours, 0, 0, daylightSaving, zoneCorrectionHours, integerDay1,
+      gDateOfNewMoonMonth, gDateOfNewMoonYear);
+  int fmLTH = DecimalHoursHour(lctOfFullMoonHours);
+  int fmLTM = DecimalHoursMinute(lctOfFullMoonHours);
+  double fmLDD = UniversalTimeLocalCivilDay(
+      utOfFullMoonHours, 0, 0, daylightSaving, zoneCorrectionHours, integerDay2,
+      gDateOfFullMoonMonth, gDateOfFullMoonYear);
+  int fmLDM = UniversalTimeLocalCivilMonth(
+      utOfFullMoonHours, 0, 0, daylightSaving, zoneCorrectionHours, integerDay2,
+      gDateOfFullMoonMonth, gDateOfFullMoonYear);
+  int fmLDY = UniversalTimeLocalCivilYear(
+      utOfFullMoonHours, 0, 0, daylightSaving, zoneCorrectionHours, integerDay2,
+      gDateOfFullMoonMonth, gDateOfFullMoonYear);
+
+  return CMoonNewFull(nmLTH, nmLTM, nmLDD, nmLDM, nmLDY, fmLTH, fmLTM, fmLDD,
+                      fmLDM, fmLDY);
+}

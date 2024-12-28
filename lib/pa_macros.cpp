@@ -294,6 +294,65 @@ double UniversalTimeToLocalCivilTime(double uHours, double uMinutes,
 }
 
 /**
+ * Get Local Civil Day for Universal Time
+ *
+ * Original macro name: UTLcDay
+ */
+double UniversalTimeLocalCivilDay(double u_hours, double u_minutes,
+                                  double u_seconds, int daylight_saving,
+                                  int zone_correction, double greenwich_day,
+                                  int greenwich_month, int greenwich_year) {
+  double a = HmsToDh(u_hours, u_minutes, u_seconds);
+  double b = a + zone_correction;
+  double c = b + daylight_saving;
+  double d =
+      CivilDateToJulianDate(greenwich_day, greenwich_month, greenwich_year) +
+      (c / 24.0);
+  double e = JulianDateDay(d);
+  double e1 = floor(e);
+
+  return e1;
+}
+
+/**
+ * Get Local Civil Month for Universal Time
+ *
+ * Original macro name: UTLcMonth
+ */
+int UniversalTimeLocalCivilMonth(double u_hours, double u_minutes,
+                                 double u_seconds, int daylight_saving,
+                                 int zone_correction, double greenwich_day,
+                                 int greenwich_month, int greenwich_year) {
+  double a = HmsToDh(u_hours, u_minutes, u_seconds);
+  double b = a + zone_correction;
+  double c = b + daylight_saving;
+  double d =
+      CivilDateToJulianDate(greenwich_day, greenwich_month, greenwich_year) +
+      (c / 24.0);
+
+  return JulianDateMonth(d);
+}
+
+/**
+ * Get Local Civil Year for Universal Time
+ *
+ * Original macro name: UTLcYear
+ */
+int UniversalTimeLocalCivilYear(double u_hours, double u_minutes,
+                                double u_seconds, int daylight_saving,
+                                int zone_correction, double greenwich_day,
+                                int greenwich_month, int greenwich_year) {
+  double a = HmsToDh(u_hours, u_minutes, u_seconds);
+  double b = a + zone_correction;
+  double c = b + daylight_saving;
+  double d =
+      CivilDateToJulianDate(greenwich_day, greenwich_month, greenwich_year) +
+      (c / 24.0);
+
+  return JulianDateYear(d);
+}
+
+/**
  * \brief Determine Greenwich Day for Local Time
  *
  * Original macro name: LctGDay
@@ -3490,6 +3549,127 @@ double MoonMeanAnomaly(double lh, double lm, double ls, int ds, int zc,
   md = md + 0.000817 * s1 + s3 + 0.002541 * s2;
 
   return DegreesToRadians(md);
+}
+
+/**
+ * Calculate Julian date of New Moon.
+ *
+ * Original macro name: NewMoon
+ */
+double NewMoon(int ds, int zc, double dy, int mn, int yr) {
+  double d0 = LocalCivilTimeGreenwichDay(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+  int m0 = LocalCivilTimeGreenwichMonth(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+  int y0 = LocalCivilTimeGreenwichYear(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+
+  double j0 = CivilDateToJulianDate(0.0, 1, y0) - 2415020.0;
+  double dj = CivilDateToJulianDate(d0, m0, y0) - 2415020.0;
+  double k = Lint(((y0 - 1900.0 + ((dj - j0) / 365.0)) * 12.3685) + 0.5);
+  double tn = k / 1236.85;
+  double tf = (k + 0.5) / 1236.85;
+  double t = tn;
+  pa_models::CNewMoonFullMoonL6855 nmfm_result1 = NewMoonFullMoonL6855(k, t);
+  double ni = nmfm_result1.a;
+  double nf = nmfm_result1.b;
+  t = tf;
+  k += 0.5;
+  pa_models::CNewMoonFullMoonL6855 nmfm_result2 = NewMoonFullMoonL6855(k, t);
+
+  return ni + 2415020.0 + nf;
+}
+
+/**
+ * Calculate Julian date of Full Moon.
+ *
+ * Original macro name: FullMoon
+ */
+double FullMoon(int ds, int zc, double dy, int mn, int yr) {
+  double d0 = LocalCivilTimeGreenwichDay(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+  int m0 = LocalCivilTimeGreenwichMonth(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+  int y0 = LocalCivilTimeGreenwichYear(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+
+  double j0 = CivilDateToJulianDate(0.0, 1, y0) - 2415020.0;
+  double dj = CivilDateToJulianDate(d0, m0, y0) - 2415020.0;
+  double k = Lint(((y0 - 1900.0 + ((dj - j0) / 365.0)) * 12.3685) + 0.5);
+  double tn = k / 1236.85;
+  double tf = (k + 0.5) / 1236.85;
+  double t = tn;
+  pa_models::CNewMoonFullMoonL6855 nmfm_result1 = NewMoonFullMoonL6855(k, t);
+  t = tf;
+  k += 0.5;
+  pa_models::CNewMoonFullMoonL6855 nmfm_result2 = NewMoonFullMoonL6855(k, t);
+  double fi = nmfm_result2.a;
+  double ff = nmfm_result2.b;
+
+  return fi + 2415020.0 + ff;
+}
+
+/**
+ * Helper function for NewMoon() and FullMoon()
+ */
+pa_models::CNewMoonFullMoonL6855 NewMoonFullMoonL6855(double k, double t) {
+  double t2 = t * t;
+  double e = 29.53 * k;
+  double c = 166.56 + (132.87 - 0.009173 * t) * t;
+  c = DegreesToRadians(c);
+  double b = 0.00058868 * k + (0.0001178 - 0.000000155 * t) * t2;
+  b = b + 0.00033 * sin(c) + 0.75933;
+  double a = k / 12.36886;
+  double a1 = 359.2242 + 360.0 * Fract(a) - (0.0000333 + 0.00000347 * t) * t2;
+  double a2 = 306.0253 + 360.0 * Fract(k / 0.9330851);
+  a2 += (0.0107306 + 0.00001236 * t) * t2;
+  a = k / 0.9214926;
+  double f = 21.2964 + 360.0 * Fract(a) - (0.0016528 + 0.00000239 * t) * t2;
+  a1 = UnwindDeg(a1);
+  a2 = UnwindDeg(a2);
+  f = UnwindDeg(f);
+  a1 = DegreesToRadians(a1);
+  a2 = DegreesToRadians(a2);
+  f = DegreesToRadians(f);
+
+  double dd = (0.1734 - 0.000393 * t) * sin(a1) + 0.0021 * sin(2.0 * a1);
+  dd = dd - 0.4068 * sin(a2) + 0.0161 * sin(2.0 * a2) - 0.0004 * sin(3.0 * a2);
+  dd = dd + 0.0104 * sin(2.0 * f) - 0.0051 * sin(a1 + a2);
+  dd = dd - 0.0074 * sin(a1 - a2) + 0.0004 * sin(2.0 * f + a1);
+  dd = dd - 0.0004 * sin(2.0 * f - a1) - 0.0006 * sin(2.0 * f + a2) +
+       0.001 * sin(2.0 * f - a2);
+  dd += 0.0005 * sin(a1 + 2.0 * a2);
+  double e1 = floor(e);
+  b = b + dd + (e - e1);
+  double b1 = floor(b);
+  a = e1 + b1;
+  b -= b1;
+
+  return pa_models::CNewMoonFullMoonL6855(a, b, f);
+}
+
+/**
+ * Original macro name: FRACT
+ */
+double Fract(double w) { return w - Lint(w); }
+
+/**
+ * Original macro name: LINT
+ */
+double Lint(double w) { return IInt(w) + IInt(((1.0 * Sign(w)) - 1.0) / 2.0); }
+
+/**
+ * Original macro name: IINT
+ */
+double IInt(double w) { return Sign(w) * floor(fabs(w)); }
+
+/**
+ * Calculate sign of number.
+ */
+double Sign(double number_to_check) {
+  double sign_value = 0.0;
+
+  if (number_to_check < 0.0)
+    sign_value = -1.0;
+
+  if (number_to_check > 0.0)
+    sign_value = 1.0;
+
+  return sign_value;
 }
 
 } // namespace pa_macros
