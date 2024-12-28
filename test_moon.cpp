@@ -56,3 +56,22 @@ SCENARIO("Precise Position of Moon") {
     }
   }
 }
+
+SCENARIO("Moon Phase and Bright Limb") {
+  GIVEN("A PAMoon object") {
+    PAMoon paMoon;
+
+    WHEN("Civil Time is 0:0:0 and Local Date is 9/1/2003 and Accuracy Level is "
+         "Approximate") {
+      CMoonPhase result = paMoon.MoonPhase(0, 0, 0, false, 0, 1, 9, 2003,
+                                           EAccuracyLevel::Approximate);
+
+      THEN("Phase is 0.22 and Bright Limb is -71.58d") {
+        CMoonPhase expected = CMoonPhase(0.22, -71.58);
+
+        REQUIRE(result.brightLimbDeg == expected.brightLimbDeg);
+        REQUIRE(result.phase == expected.phase);
+      }
+    }
+  }
+}

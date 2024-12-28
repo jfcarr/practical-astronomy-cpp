@@ -70,5 +70,10 @@ enum class EAngleMeasure {
   Hours    /**< Measurement by hours */
 };
 
+/**
+ * Level of precision for calculations.
+ */
+enum class EAccuracyLevel { Approximate, Precise };
+
 } // namespace pa_types
 #endif
