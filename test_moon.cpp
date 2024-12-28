@@ -75,3 +75,32 @@ SCENARIO("Moon Phase and Bright Limb") {
     }
   }
 }
+
+SCENARIO("Times of New Moon and Full Moon") {
+  GIVEN("A PAMoon object") {
+    PAMoon paMoon;
+
+    WHEN("Local Date is 9/1/2003") {
+      CMoonNewFull result =
+          paMoon.TimesOfNewMoonAndFullMoon(false, 0, 1, 9, 2003);
+
+      THEN("New Moon Local Time is 17:27 and New Moon Local Date is 8/27/2003 "
+           "and Full Moon Local Time is 16:36 and Full Moon Local Date is "
+           "9/10/2003") {
+        CMoonNewFull expected =
+            CMoonNewFull(17, 27, 27, 8, 2003, 16, 36, 10, 9, 2003);
+
+        REQUIRE(result.fmLocalDateDay == expected.fmLocalDateDay);
+        REQUIRE(result.fmLocalDateMonth == expected.fmLocalDateMonth);
+        REQUIRE(result.fmLocalDateYear == expected.fmLocalDateYear);
+        REQUIRE(result.fmLocalTimeHour == expected.fmLocalTimeHour);
+        REQUIRE(result.fmLocalTimeMin == expected.fmLocalTimeMin);
+        REQUIRE(result.nmLocalDateDay == expected.nmLocalDateDay);
+        REQUIRE(result.nmLocalDateMonth == expected.nmLocalDateMonth);
+        REQUIRE(result.nmLocalDateYear == expected.nmLocalDateYear);
+        REQUIRE(result.nmLocalTimeHour == expected.nmLocalTimeHour);
+        REQUIRE(result.nmLocalTimeMin == expected.nmLocalTimeMin);
+      }
+    }
+  }
+}

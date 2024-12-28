@@ -228,6 +228,21 @@ double UniversalTimeToLocalCivilTime(double u_hours, double u_minutes,
                                      int zone_correction, double greenwich_day,
                                      int greenwich_month, int greenwich_year);
 
+double UniversalTimeLocalCivilDay(double u_hours, double u_minutes,
+                                  double u_seconds, int daylight_saving,
+                                  int zone_correction, double greenwich_day,
+                                  int greenwich_month, int greenwich_year);
+
+int UniversalTimeLocalCivilMonth(double u_hours, double u_minutes,
+                                 double u_seconds, int daylight_saving,
+                                 int zone_correction, double greenwich_day,
+                                 int greenwich_month, int greenwich_year);
+
+int UniversalTimeLocalCivilYear(double u_hours, double u_minutes,
+                                double u_seconds, int daylight_saving,
+                                int zone_correction, double greenwich_day,
+                                int greenwich_month, int greenwich_year);
+
 ERiseSetStatus ESunRiseSetCalcStatus(double ld, int lm, int ly, int ds, int zc,
                                      double gl, double gp);
 
@@ -310,6 +325,20 @@ double MoonPhase(double lh, double lm, double ls, int ds, int zc, double dy,
 
 double MoonMeanAnomaly(double lh, double lm, double ls, int ds, int zc,
                        double dy, int mn, int yr);
+
+double NewMoon(int ds, int zc, double dy, int mn, int yr);
+
+double FullMoon(int ds, int zc, double dy, int mn, int yr);
+
+pa_models::CNewMoonFullMoonL6855 NewMoonFullMoonL6855(double k, double t);
+
+double Fract(double w);
+
+double Lint(double w);
+
+double IInt(double w);
+
+double Sign(double number_to_check);
 
 } // namespace pa_macros
 #endif

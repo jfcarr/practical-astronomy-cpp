@@ -25,6 +25,11 @@ public:
                        bool isDaylightSaving, int zoneCorrectionHours,
                        double localDateDay, int localDateMonth,
                        int localDateYear, EAccuracyLevel accuracyLevel);
+
+  CMoonNewFull TimesOfNewMoonAndFullMoon(bool isDaylightSaving,
+                                         int zoneCorrectionHours,
+                                         double localDateDay,
+                                         int localDateMonth, int localDateYear);
 };
 
 #endif

@@ -794,5 +794,49 @@ public:
   double brightLimbDeg;
 };
 
+class CMoonNewFull {
+public:
+  CMoonNewFull(double nmLocalTimeHour, double nmLocalTimeMin,
+               double nmLocalDateDay, int nmLocalDateMonth, int nmLocalDateYear,
+               double fmLocalTimeHour, double fmLocalTimeMin,
+               double fmLocalDateDay, int fmLocalDateMonth,
+               int fmLocalDateYear) {
+    this->nmLocalTimeHour = nmLocalTimeHour;
+    this->nmLocalTimeMin = nmLocalTimeMin;
+    this->nmLocalDateDay = nmLocalDateDay;
+    this->nmLocalDateMonth = nmLocalDateMonth;
+    this->nmLocalDateYear = nmLocalDateYear;
+    this->fmLocalTimeHour = fmLocalTimeHour;
+    this->fmLocalTimeMin = fmLocalTimeMin;
+    this->fmLocalDateDay = fmLocalDateDay;
+    this->fmLocalDateMonth = fmLocalDateMonth;
+    this->fmLocalDateYear = fmLocalDateYear;
+  }
+
+  double nmLocalTimeHour;
+  double nmLocalTimeMin;
+  double nmLocalDateDay;
+  int nmLocalDateMonth;
+  int nmLocalDateYear;
+  double fmLocalTimeHour;
+  double fmLocalTimeMin;
+  double fmLocalDateDay;
+  int fmLocalDateMonth;
+  int fmLocalDateYear;
+};
+
+class CNewMoonFullMoonL6855 {
+public:
+  CNewMoonFullMoonL6855(double a, double b, double f) {
+    this->a = a;
+    this->b = b;
+    this->f = f;
+  }
+
+  double a;
+  double b;
+  double f;
+};
+
 } // namespace pa_models
 #endif
