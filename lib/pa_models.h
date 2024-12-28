@@ -744,5 +744,44 @@ public:
   double decSec;
 };
 
+class CMoonPrecisePosition {
+public:
+  CMoonPrecisePosition(double raHour, double raMin, double raSec, double decDeg,
+                       double decMin, double decSec, double earthMoonDistKM,
+                       double horParallaxDeg) {
+    this->raHour = raHour;
+    this->raMin = raMin;
+    this->raSec = raSec;
+    this->decDeg = decDeg;
+    this->decMin = decMin;
+    this->decSec = decSec;
+    this->earthMoonDistKM = earthMoonDistKM;
+    this->horParallaxDeg = horParallaxDeg;
+  }
+
+  double raHour;
+  double raMin;
+  double raSec;
+  double decDeg;
+  double decMin;
+  double decSec;
+  double earthMoonDistKM;
+  double horParallaxDeg;
+};
+
+class CMoonLongLatHP {
+public:
+  CMoonLongLatHP(double longitudeDegrees, double latitudeDegrees,
+                 double horizontalParallax) {
+    this->longitudeDegrees = longitudeDegrees;
+    this->latitudeDegrees = latitudeDegrees;
+    this->horizontalParallax = horizontalParallax;
+  }
+
+  double longitudeDegrees;
+  double latitudeDegrees;
+  double horizontalParallax;
+};
+
 } // namespace pa_models
 #endif

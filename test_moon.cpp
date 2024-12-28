@@ -29,3 +29,30 @@ SCENARIO("Approximate Position of Moon") {
     }
   }
 }
+
+SCENARIO("Precise Position of Moon") {
+  GIVEN("A PAMoon object") {
+    PAMoon paMoon;
+
+    WHEN("Civil Time is 0:0:0 and Local Date is 9/1/2003") {
+      CMoonPrecisePosition result =
+          paMoon.PrecisePositionOfMoon(0, 0, 0, false, 0, 1, 9, 2003);
+
+      THEN("Right Ascension is 14h 12m 10.21s and Declination is -11d 34m "
+           "57.83s and Earth-Moon Distance is 367964km and Horizontal Parallax "
+           "is 0.993191d") {
+        CMoonPrecisePosition expected = CMoonPrecisePosition(
+            14, 12, 10.21, -11, 34, 57.83, 367964, 0.993191);
+
+        REQUIRE(result.decDeg == expected.decDeg);
+        REQUIRE(result.decMin == expected.decMin);
+        REQUIRE(result.decSec == expected.decSec);
+        REQUIRE(result.earthMoonDistKM == expected.earthMoonDistKM);
+        REQUIRE(result.horParallaxDeg == expected.horParallaxDeg);
+        REQUIRE(result.raHour == expected.raHour);
+        REQUIRE(result.raMin == expected.raMin);
+        REQUIRE(result.raSec == expected.raSec);
+      }
+    }
+  }
+}

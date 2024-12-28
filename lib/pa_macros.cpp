@@ -3247,4 +3247,174 @@ double SolveCubic(double w) {
   }
 }
 
+/**
+ * Calculate longitude, latitude, and horizontal parallax of the Moon.
+ *
+ * Original macro names: MoonLong, MoonLat, MoonHP
+ */
+pa_models::CMoonLongLatHP MoonLongLatHP(double lh, double lm, double ls, int ds,
+                                        int zc, double dy, int mn, int yr) {
+  double ut = LocalCivilTimeToUniversalTime(lh, lm, ls, ds, zc, dy, mn, yr);
+  double gd = LocalCivilTimeGreenwichDay(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gm = LocalCivilTimeGreenwichMonth(lh, lm, ls, ds, zc, dy, mn, yr);
+  int gy = LocalCivilTimeGreenwichYear(lh, lm, ls, ds, zc, dy, mn, yr);
+  double t = ((CivilDateToJulianDate(gd, gm, gy) - 2415020.0) / 36525.0) +
+             (ut / 876600.0);
+  double t2 = t * t;
+
+  double m1 = 27.32158213;
+  double m2 = 365.2596407;
+  double m3 = 27.55455094;
+  double m4 = 29.53058868;
+  double m5 = 27.21222039;
+  double m6 = 6798.363307;
+  double q = CivilDateToJulianDate(gd, gm, gy) - 2415020.0 + (ut / 24.0);
+  m1 = q / m1;
+  m2 = q / m2;
+  m3 = q / m3;
+  m4 = q / m4;
+  m5 = q / m5;
+  m6 = q / m6;
+  m1 = 360.0 * (m1 - floor(m1));
+  m2 = 360.0 * (m2 - floor(m2));
+  m3 = 360.0 * (m3 - floor(m3));
+  m4 = 360.0 * (m4 - floor(m4));
+  m5 = 360.0 * (m5 - floor(m5));
+  m6 = 360.0 * (m6 - floor(m6));
+
+  double ml = 270.434164 + m1 - (0.001133 - 0.0000019 * t) * t2;
+  double ms = 358.475833 + m2 - (0.00015 + 0.0000033 * t) * t2;
+  double md = 296.104608 + m3 + (0.009192 + 0.0000144 * t) * t2;
+  double me1 = 350.737486 + m4 - (0.001436 - 0.0000019 * t) * t2;
+  double mf = 11.250889 + m5 - (0.003211 + 0.0000003 * t) * t2;
+  double na = 259.183275 - m6 + (0.002078 + 0.0000022 * t) * t2;
+  double a = DegreesToRadians(51.2 + 20.2 * t);
+  double s1 = sin(a);
+  double s2 = sin(DegreesToRadians(na));
+  double b = 346.56 + (132.87 - 0.0091731 * t) * t;
+  double s3 = 0.003964 * sin(DegreesToRadians(b));
+  double c = DegreesToRadians(na + 275.05 - 2.3 * t);
+  double s4 = sin(c);
+  ml = ml + 0.000233 * s1 + s3 + 0.001964 * s2;
+  ms -= 0.001778 * s1;
+  md = md + 0.000817 * s1 + s3 + 0.002541 * s2;
+  mf = mf + s3 - 0.024691 * s2 - 0.004328 * s4;
+  me1 = me1 + 0.002011 * s1 + s3 + 0.001964 * s2;
+  double e = 1.0 - (0.002495 + 0.00000752 * t) * t;
+  double e2 = e * e;
+  ml = DegreesToRadians(ml);
+  ms = DegreesToRadians(ms);
+  na = DegreesToRadians(na);
+  me1 = DegreesToRadians(me1);
+  mf = DegreesToRadians(mf);
+  md = DegreesToRadians(md);
+
+  // Longitude-specific
+  double l = 6.28875 * sin(md) + 1.274018 * sin(2.0 * me1 - md);
+  l = l + 0.658309 * sin(2.0 * me1) + 0.213616 * sin(2.0 * md);
+  l = l - e * 0.185596 * sin(ms) - 0.114336 * sin(2.0 * mf);
+  l += 0.058793 * sin(2.0 * (me1 - md));
+  l = l + 0.057212 * e * sin(2.0 * me1 - ms - md) +
+      0.05332 * sin(2.0 * me1 + md);
+  l = l + 0.045874 * e * sin(2.0 * me1 - ms) + 0.041024 * e * sin(md - ms);
+  l = l - 0.034718 * sin(me1) - e * 0.030465 * sin(ms + md);
+  l = l + 0.015326 * sin(2.0 * (me1 - mf)) - 0.012528 * sin(2.0 * mf + md);
+  l = l - 0.01098 * sin(2.0 * mf - md) + 0.010674 * sin(4.0 * me1 - md);
+  l = l + 0.010034 * sin(3.0 * md) + 0.008548 * sin(4.0 * me1 - 2.0 * md);
+  l = l - e * 0.00791 * sin(ms - md + 2.0 * me1) -
+      e * 0.006783 * sin(2.0 * me1 + ms);
+  l = l + 0.005162 * sin(md - me1) + e * 0.005 * sin(ms + me1);
+  l = l + 0.003862 * sin(4.0 * me1) + e * 0.004049 * sin(md - ms + 2.0 * me1);
+  l = l + 0.003996 * sin(2.0 * (md + me1)) +
+      0.003665 * sin(2.0 * me1 - 3.0 * md);
+  l = l + e * 0.002695 * sin(2.0 * md - ms) +
+      0.002602 * sin(md - 2.0 * (mf + me1));
+  l = l + e * 0.002396 * sin(2.0 * (me1 - md) - ms) - 0.002349 * sin(md + me1);
+  l = l + e2 * 0.002249 * sin(2.0 * (me1 - ms)) -
+      e * 0.002125 * sin(2.0 * md + ms);
+  l = l - e2 * 0.002079 * sin(2.0 * ms) +
+      e2 * 0.002059 * sin(2.0 * (me1 - ms) - md);
+  l = l - 0.001773 * sin(md + 2.0 * (me1 - mf)) -
+      0.001595 * sin(2.0 * (mf + me1));
+  l = l + e * 0.00122 * sin(4.0 * me1 - ms - md) -
+      0.00111 * sin(2.0 * (md + mf));
+  l = l + 0.000892 * sin(md - 3.0 * me1) -
+      e * 0.000811 * sin(ms + md + 2.0 * me1);
+  l += e * 0.000761 * sin(4.0 * me1 - ms - 2.0 * md);
+  l += e2 * 0.000704 * sin(md - 2.0 * (ms + me1));
+  l += e * 0.000693 * sin(ms - 2.0 * (md - me1));
+  l += e * 0.000598 * sin(2.0 * (me1 - mf) - ms);
+  l = l + 0.00055 * sin(md + 4.0 * me1) + 0.000538 * sin(4.0 * md);
+  l = l + e * 0.000521 * sin(4.0 * me1 - ms) + 0.000486 * sin(2.0 * md - me1);
+  l += e2 * 0.000717 * sin(md - 2.0 * ms);
+  double mm = Unwind(ml + DegreesToRadians(l));
+
+  // Latitude-specific
+  double g = 5.128189 * sin(mf) + 0.280606 * sin(md + mf);
+  g = g + 0.277693 * sin(md - mf) + 0.173238 * sin(2.0 * me1 - mf);
+  g = g + 0.055413 * sin(2.0 * me1 + mf - md) +
+      0.046272 * sin(2.0 * me1 - mf - md);
+  g = g + 0.032573 * sin(2.0 * me1 + mf) + 0.017198 * sin(2.0 * md + mf);
+  g = g + 0.009267 * sin(2.0 * me1 + md - mf) + 0.008823 * sin(2.0 * md - mf);
+  g = g + e * 0.008247 * sin(2.0 * me1 - ms - mf) +
+      0.004323 * sin(2.0 * (me1 - md) - mf);
+  g = g + 0.0042 * sin(2.0 * me1 + mf + md) +
+      e * 0.003372 * sin(mf - ms - 2.0 * me1);
+  g += e * 0.002472 * sin(2.0 * me1 + mf - ms - md);
+  g += e * 0.002222 * sin(2.0 * me1 + mf - ms);
+  g += e * 0.002072 * sin(2.0 * me1 - mf - ms - md);
+  g = g + e * 0.001877 * sin(mf - ms + md) +
+      0.001828 * sin(4.0 * me1 - mf - md);
+  g = g - e * 0.001803 * sin(mf + ms) - 0.00175 * sin(3.0 * mf);
+  g = g + e * 0.00157 * sin(md - ms - mf) - 0.001487 * sin(mf + me1);
+  g = g - e * 0.001481 * sin(mf + ms + md) + e * 0.001417 * sin(mf - ms - md);
+  g = g + e * 0.00135 * sin(mf - ms) + 0.00133 * sin(mf - me1);
+  g = g + 0.001106 * sin(mf + 3.0 * md) + 0.00102 * sin(4.0 * me1 - mf);
+  g = g + 0.000833 * sin(mf + 4.0 * me1 - md) + 0.000781 * sin(md - 3.0 * mf);
+  g = g + 0.00067 * sin(mf + 4.0 * me1 - 2.0 * md) +
+      0.000606 * sin(2.0 * me1 - 3.0 * mf);
+  g += 0.000597 * sin(2.0 * (me1 + md) - mf);
+  g = g + e * 0.000492 * sin(2.0 * me1 + md - ms - mf) +
+      0.00045 * sin(2.0 * (md - me1) - mf);
+  g = g + 0.000439 * sin(3.0 * md - mf) + 0.000423 * sin(mf + 2.0 * (me1 + md));
+  g = g + 0.000422 * sin(2.0 * me1 - mf - 3.0 * md) -
+      e * 0.000367 * sin(ms + mf + 2.0 * me1 - md);
+  g = g - e * 0.000353 * sin(ms + mf + 2.0 * me1) +
+      0.000331 * sin(mf + 4.0 * me1);
+  g += e * 0.000317 * sin(2.0 * me1 + mf - ms + md);
+  g = g + e2 * 0.000306 * sin(2.0 * (me1 - ms) - mf) -
+      0.000283 * sin(md + 3.0 * mf);
+  double w1 = 0.0004664 * cos(na);
+  double w2 = 0.0000754 * cos(c);
+  double bm = DegreesToRadians(g) * (1.0 - w1 - w2);
+
+  // Horizontal parallax-specific
+  double pm = 0.950724 + 0.051818 * cos(md) + 0.009531 * cos(2.0 * me1 - md);
+  pm = pm + 0.007843 * cos(2.0 * me1) + 0.002824 * cos(2.0 * md);
+  pm = pm + 0.000857 * cos(2.0 * me1 + md) + e * 0.000533 * cos(2.0 * me1 - ms);
+  pm += e * 0.000401 * cos(2.0 * me1 - md - ms);
+  pm = pm + e * 0.00032 * cos(md - ms) - 0.000271 * cos(me1);
+  pm = pm - e * 0.000264 * cos(ms + md) - 0.000198 * cos(2.0 * mf - md);
+  pm = pm + 0.000173 * cos(3.0 * md) + 0.000167 * cos(4.0 * me1 - md);
+  pm = pm - e * 0.000111 * cos(ms) + 0.000103 * cos(4.0 * me1 - 2.0 * md);
+  pm = pm - 0.000084 * cos(2.0 * md - 2.0 * me1) -
+       e * 0.000083 * cos(2.0 * me1 + ms);
+  pm = pm + 0.000079 * cos(2.0 * me1 + 2.0 * md) + 0.000072 * cos(4.0 * me1);
+  pm = pm + e * 0.000064 * cos(2.0 * me1 - ms + md) -
+       e * 0.000063 * cos(2.0 * me1 + ms - md);
+  pm = pm + e * 0.000041 * cos(ms + me1) + e * 0.000035 * cos(2.0 * md - ms);
+  pm = pm - 0.000033 * cos(3.0 * md - 2.0 * me1) - 0.00003 * cos(md + me1);
+  pm =
+      pm - 0.000029 * cos(2.0 * (mf - me1)) - e * 0.000029 * cos(2.0 * md + ms);
+  pm = pm + e2 * 0.000026 * cos(2.0 * (me1 - ms)) -
+       0.000023 * cos(2.0 * (mf - me1) + md);
+  pm += e * 0.000019 * cos(4.0 * me1 - ms - md);
+
+  double moonLongDeg = WToDegrees(mm);
+  double moonLatDeg = WToDegrees(bm);
+  double moonHorPara = pm;
+
+  return pa_models::CMoonLongLatHP(moonLongDeg, moonLatDeg, moonHorPara);
+}
+
 } // namespace pa_macros
