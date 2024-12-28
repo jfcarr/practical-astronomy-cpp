@@ -87,49 +87,105 @@ PAMoon::ApproximatePositionOfMoon(double lctHour, double lctMin, double lctSec,
  * Calculate precise position of the Moon.
  */
 CMoonPrecisePosition
-PAMoon::PrecisePositionOfMoon(double lct_hour, double lct_min, double lct_sec,
-                              bool is_daylight_saving,
-                              int zone_correction_hours, double local_date_day,
-                              int local_date_month, int local_date_year) {
-  int daylight_saving = is_daylight_saving ? 1 : 0;
+PAMoon::PrecisePositionOfMoon(double lctHour, double lctMin, double lctSec,
+                              bool isDaylightSaving, int zoneCorrectionHours,
+                              double localDateDay, int localDateMonth,
+                              int localDateYear) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
 
-  double gdate_day = LocalCivilTimeGreenwichDay(
-      lct_hour, lct_min, lct_sec, daylight_saving, zone_correction_hours,
-      local_date_day, local_date_month, local_date_year);
-  int gdate_month = LocalCivilTimeGreenwichMonth(
-      lct_hour, lct_min, lct_sec, daylight_saving, zone_correction_hours,
-      local_date_day, local_date_month, local_date_year);
-  int gdate_year = LocalCivilTimeGreenwichYear(
-      lct_hour, lct_min, lct_sec, daylight_saving, zone_correction_hours,
-      local_date_day, local_date_month, local_date_year);
+  double gdateDay = LocalCivilTimeGreenwichDay(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  int gdateMonth = LocalCivilTimeGreenwichMonth(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  int gdateYear = LocalCivilTimeGreenwichYear(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
 
-  CMoonLongLatHP moon_result = MoonLongLatHP(
-      lct_hour, lct_min, lct_sec, daylight_saving, zone_correction_hours,
-      local_date_day, local_date_month, local_date_year);
+  CMoonLongLatHP moonResult = MoonLongLatHP(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
 
-  double nutation_in_longitude_deg =
-      NutatLong(gdate_day, gdate_month, gdate_year);
-  double corrected_long_deg =
-      moon_result.longitudeDegrees + nutation_in_longitude_deg;
-  double earth_moon_distance_km =
-      6378.14 / sin(DegreesToRadians(moon_result.horizontalParallax));
-  double moon_ra_hours1 = DecimalDegreesToDegreeHours(EclipticRightAscension(
-      corrected_long_deg, 0, 0, moon_result.latitudeDegrees, 0, 0, gdate_day,
-      gdate_month, gdate_year));
-  double moon_dec_deg1 =
-      EclipticDeclination(corrected_long_deg, 0, 0, moon_result.latitudeDegrees,
-                          0, 0, gdate_day, gdate_month, gdate_year);
+  double nutationInLongitudeDeg = NutatLong(gdateDay, gdateMonth, gdateYear);
+  double correctedLongDeg =
+      moonResult.longitudeDegrees + nutationInLongitudeDeg;
+  double earthMoonDistanceKM =
+      6378.14 / sin(DegreesToRadians(moonResult.horizontalParallax));
+  double moonRAHours1 = DecimalDegreesToDegreeHours(
+      EclipticRightAscension(correctedLongDeg, 0, 0, moonResult.latitudeDegrees,
+                             0, 0, gdateDay, gdateMonth, gdateYear));
+  double moonDecDeg1 =
+      EclipticDeclination(correctedLongDeg, 0, 0, moonResult.latitudeDegrees, 0,
+                          0, gdateDay, gdateMonth, gdateYear);
 
-  int moon_ra_hour = DecimalHoursHour(moon_ra_hours1);
-  int moon_ra_min = DecimalHoursMinute(moon_ra_hours1);
-  double moon_ra_sec = DecimalHoursSecond(moon_ra_hours1);
-  double moon_dec_deg = DecimalDegreesDegrees(moon_dec_deg1);
-  double moon_dec_min = DecimalDegreesMinutes(moon_dec_deg1);
-  double moon_dec_sec = DecimalDegreesSeconds(moon_dec_deg1);
-  double earth_moon_dist_km = Round(earth_moon_distance_km, 0);
-  double moon_hor_parallax_deg = Round(moon_result.horizontalParallax, 6);
+  int moonRAHour = DecimalHoursHour(moonRAHours1);
+  int moonRAMin = DecimalHoursMinute(moonRAHours1);
+  double moonRASec = DecimalHoursSecond(moonRAHours1);
+  double moonDecDeg = DecimalDegreesDegrees(moonDecDeg1);
+  double moonDecMin = DecimalDegreesMinutes(moonDecDeg1);
+  double moonDecSec = DecimalDegreesSeconds(moonDecDeg1);
+  double earthMoonDistKM = Round(earthMoonDistanceKM, 0);
+  double moonHorParallaxDeg = Round(moonResult.horizontalParallax, 6);
 
-  return CMoonPrecisePosition(moon_ra_hour, moon_ra_min, moon_ra_sec,
-                              moon_dec_deg, moon_dec_min, moon_dec_sec,
-                              earth_moon_dist_km, moon_hor_parallax_deg);
+  return CMoonPrecisePosition(moonRAHour, moonRAMin, moonRASec, moonDecDeg,
+                              moonDecMin, moonDecSec, earthMoonDistKM,
+                              moonHorParallaxDeg);
+}
+
+/**
+ * Calculate Moon phase and position angle of bright limb.
+ */
+CMoonPhase PAMoon::MoonPhase(double lctHour, double lctMin, double lctSec,
+                             bool isDaylightSaving, int zoneCorrectionHours,
+                             double localDateDay, int localDateMonth,
+                             int localDateYear, EAccuracyLevel accuracyLevel) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
+
+  double gdateDay = LocalCivilTimeGreenwichDay(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  int gdateMonth = LocalCivilTimeGreenwichMonth(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  int gdateYear = LocalCivilTimeGreenwichYear(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+
+  double sunLongDeg =
+      SunLong(lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+              localDateDay, localDateMonth, localDateYear);
+  CMoonLongLatHP moonResult = MoonLongLatHP(
+      lctHour, lctMin, lctSec, daylightSaving, zoneCorrectionHours,
+      localDateDay, localDateMonth, localDateYear);
+  double dRad = DegreesToRadians(moonResult.longitudeDegrees - sunLongDeg);
+
+  double moonPhase1 =
+      (accuracyLevel == EAccuracyLevel::Precise)
+          ? pa_macros::MoonPhase(lctHour, lctMin, lctSec, daylightSaving,
+                                 zoneCorrectionHours, localDateDay,
+                                 localDateMonth, localDateYear)
+          : (1.0 - cos(dRad)) / 2.0;
+
+  double sunRARad = DegreesToRadians(EclipticRightAscension(
+      sunLongDeg, 0, 0, 0, 0, 0, gdateDay, gdateMonth, gdateYear));
+  double moonRARad = DegreesToRadians(EclipticRightAscension(
+      moonResult.longitudeDegrees, 0, 0, moonResult.latitudeDegrees, 0, 0,
+      gdateDay, gdateMonth, gdateYear));
+  double sunDecRad = DegreesToRadians(EclipticDeclination(
+      sunLongDeg, 0, 0, 0, 0, 0, gdateDay, gdateMonth, gdateYear));
+  double moonDecRad = DegreesToRadians(EclipticDeclination(
+      moonResult.longitudeDegrees, 0, 0, moonResult.latitudeDegrees, 0, 0,
+      gdateDay, gdateMonth, gdateYear));
+
+  double y = cos(sunDecRad) * sin(sunRARad - moonRARad);
+  double x = cos(moonDecRad) * sin(sunDecRad) -
+             sin(moonDecRad) * cos(sunDecRad) * cos(sunRARad - moonRARad);
+
+  double chiDeg = WToDegrees(atan2(y, x));
+
+  double moonPhase = Round(moonPhase1, 2);
+  double brightLimbDeg = Round(chiDeg, 2);
+
+  return CMoonPhase(moonPhase, brightLimbDeg);
 }

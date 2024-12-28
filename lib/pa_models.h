@@ -783,5 +783,16 @@ public:
   double horizontalParallax;
 };
 
+class CMoonPhase {
+public:
+  CMoonPhase(double phase, double brightLimbDeg) {
+    this->phase = phase;
+    this->brightLimbDeg = brightLimbDeg;
+  }
+
+  double phase;
+  double brightLimbDeg;
+};
+
 } // namespace pa_models
 #endif
