@@ -175,6 +175,8 @@ double MoonHorizontalParallax(double lh, double lm, double ls, int ds, int zc,
 
 double Unwind(double w);
 
+double UnwindDeg(double w);
+
 double SunELong(double gd, int gm, int gy);
 
 double SunPerigee(double gd, int gm, int gy);

@@ -724,5 +724,25 @@ public:
   double separationArcsec;
 };
 
+class CMoonApproximatePosition {
+public:
+  CMoonApproximatePosition(double raHour, double raMin, double raSec,
+                           double decDeg, double decMin, double decSec) {
+    this->raHour = raHour;
+    this->raMin = raMin;
+    this->raSec = raSec;
+    this->decDeg = decDeg;
+    this->decMin = decMin;
+    this->decSec = decSec;
+  }
+
+  double raHour;
+  double raMin;
+  double raSec;
+  double decDeg;
+  double decMin;
+  double decSec;
+};
+
 } // namespace pa_models
 #endif
