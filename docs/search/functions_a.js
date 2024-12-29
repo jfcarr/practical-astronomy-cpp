@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['nutationineclipticlongitudeandobliquity_0',['NutationInEclipticLongitudeAndObliquity',['../classPACoordinates.html#a4766eb2844e101c7d2f7d2ec41e982dc',1,'PACoordinates']]],
-  ['nutatlong_1',['NutatLong',['../namespacepa__macros.html#a3fdd50bcda8c29ef59f7c834c2dba1d4',1,'pa_macros']]],
-  ['nutatobl_2',['NutatObl',['../namespacepa__macros.html#aacb18548390e65ce1a2920611d404dee',1,'pa_macros']]]
+  ['lint_0',['Lint',['../namespacepa__macros.html#ad6cbc7c1c2323f3e63f2cff5c7d62e43',1,'pa_macros']]],
+  ['localciviltimegreenwichday_1',['LocalCivilTimeGreenwichDay',['../namespacepa__macros.html#ae40f65305890e6aec6ecdd43964d783c',1,'pa_macros']]],
+  ['localciviltimegreenwichmonth_2',['LocalCivilTimeGreenwichMonth',['../namespacepa__macros.html#a7e3da48ae3fe563c506e9f608af96cae',1,'pa_macros']]],
+  ['localciviltimegreenwichyear_3',['LocalCivilTimeGreenwichYear',['../namespacepa__macros.html#a78078a93903220a765fc484414b21886',1,'pa_macros']]],
+  ['localciviltimetouniversaltime_4',['localciviltimetouniversaltime',['../classPADateTime.html#a118e46f0730d912736eba63265dbbd13',1,'PADateTime::LocalCivilTimeToUniversalTime()'],['../namespacepa__macros.html#a7843630ca60f7248657aadb06a8c3a49',1,'pa_macros::LocalCivilTimeToUniversalTime()']]],
+  ['localsiderealtimetogreenwichsiderealtime_5',['localsiderealtimetogreenwichsiderealtime',['../classPADateTime.html#a2d5f720ab529a2a374eaee23d7f67c16',1,'PADateTime::LocalSiderealTimeToGreenwichSiderealTime()'],['../namespacepa__macros.html#a9916483f585b8631c9b0d75f16699d0c',1,'pa_macros::LocalSiderealTimeToGreenwichSiderealTime()']]]
 ];

@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['v0_5fvisualmagnitude_0',['v0_VisualMagnitude',['../classpa__data_1_1PlanetData.html#a7d2352f012e0065cec1a33a569dbf90a',1,'pa_data::PlanetData']]],
-  ['value1_1',['value1',['../classpa__data_1_1PlanetDataPrecise.html#a09fc6c954b508867840f2a3bb84910e9',1,'pa_data::PlanetDataPrecise']]],
-  ['value2_2',['value2',['../classpa__data_1_1PlanetDataPrecise.html#a0b9393e8b754ab3b65fdd97713ca14b8',1,'pa_data::PlanetDataPrecise']]],
-  ['value3_3',['value3',['../classpa__data_1_1PlanetDataPrecise.html#ac81f6cac829d7c8150be7542f135be95',1,'pa_data::PlanetDataPrecise']]],
-  ['value4_4',['value4',['../classpa__data_1_1PlanetDataPrecise.html#a3bb3155d25e1892c1869a72aaad5e258',1,'pa_data::PlanetDataPrecise']]],
-  ['value5_5',['value5',['../classpa__data_1_1PlanetDataPrecise.html#aa68eae921e8e329ee9f901f11f06263f',1,'pa_data::PlanetDataPrecise']]],
-  ['value6_6',['value6',['../classpa__data_1_1PlanetDataPrecise.html#a0aa504055baf3f89d1963dacb27f329b',1,'pa_data::PlanetDataPrecise']]],
-  ['value7_7',['value7',['../classpa__data_1_1PlanetDataPrecise.html#a63daadbc645910b14faf32733397465a',1,'pa_data::PlanetDataPrecise']]],
-  ['value8_8',['value8',['../classpa__data_1_1PlanetDataPrecise.html#a165e533abb41b355ba91f75d0af90f3f',1,'pa_data::PlanetDataPrecise']]],
-  ['value9_9',['value9',['../classpa__data_1_1PlanetDataPrecise.html#ad00d5aa296c2edc0f9f63bf9579c22dd',1,'pa_data::PlanetDataPrecise']]]
+  ['sa_0',['sa',['../classpa__models_1_1CPlanetLongLatL4810.html#a511d78bce8691d2fae5b65e404f7171b',1,'pa_models::CPlanetLongLatL4810']]],
+  ['seconds_1',['seconds',['../classpa__models_1_1CCivilTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CCivilTime::seconds'],['../classpa__models_1_1CEquationOfTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CEquationOfTime::seconds'],['../classpa__models_1_1CRightAscension.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CRightAscension::seconds'],['../classpa__models_1_1CHourAngle.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CHourAngle::seconds'],['../classpa__models_1_1CAngle.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CAngle::seconds'],['../classpa__models_1_1CUniversalTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CUniversalTime::seconds'],['../classpa__models_1_1CGreenwichSiderealTime.html#a6664ee0d5227cf47362c565f9fab37f5',1,'pa_models::CGreenwichSiderealTime::seconds'],['../classpa__models_1_1CUniversalDateTime.html#a77bd4f876bdc3afed5acdd936f775d34',1,'pa_models::CUniversalDateTime::seconds']]],
+  ['separationarcsec_2',['separationArcsec',['../classpa__models_1_1CBinaryStarOrbitalData.html#a510465048722dc58ba435a2d6454ecf1',1,'pa_models::CBinaryStarOrbitalData']]],
+  ['status_3',['status',['../classpa__models_1_1CSunriseAndSunset.html#af543ee7f16824f3bd687ad7269717f0d',1,'pa_models::CSunriseAndSunset::status'],['../classpa__models_1_1CMorningAndEveningTwilight.html#a48f377d2ac5e53996cf19ae606161164',1,'pa_models::CMorningAndEveningTwilight::status']]],
+  ['subearthlatitude_4',['subEarthLatitude',['../classpa__models_1_1CSelenographicCoordinates1.html#aa90ec71a0cfb617f277643301b7c9547',1,'pa_models::CSelenographicCoordinates1']]],
+  ['subearthlongitude_5',['subEarthLongitude',['../classpa__models_1_1CSelenographicCoordinates1.html#a1f05a148e2f68a1b619409679a573bf2',1,'pa_models::CSelenographicCoordinates1']]],
+  ['subsolarcolongitude_6',['subSolarColongitude',['../classpa__models_1_1CSelenographicCoordinates2.html#af8ce3196357a777f4375b0947b25d898',1,'pa_models::CSelenographicCoordinates2']]],
+  ['subsolarlatitude_7',['subSolarLatitude',['../classpa__models_1_1CSelenographicCoordinates2.html#ab7accc539077e1d088fc01e3f8d69a40',1,'pa_models::CSelenographicCoordinates2']]],
+  ['subsolarlongitude_8',['subSolarLongitude',['../classpa__models_1_1CSelenographicCoordinates2.html#a27722f97cdc49667eaf830e5d472ef29',1,'pa_models::CSelenographicCoordinates2']]]
 ];

@@ -1,5 +1,9 @@
 var pa__types_8h =
 [
+    [ "EAccuracyLevel", "pa__types_8h.html#a602c29ecbd8c0f75ca85a220562304df", [
+      [ "Approximate", "pa__types_8h.html#a602c29ecbd8c0f75ca85a220562304dfab81a30c12698563b79179ec37d43629b", null ],
+      [ "Precise", "pa__types_8h.html#a602c29ecbd8c0f75ca85a220562304dfaa15adae4bec50f3317d666972d3b9aeb", null ]
+    ] ],
     [ "EAngleMeasure", "pa__types_8h.html#a38a9a20d2250ef006138fbf54c1018a2", [
       [ "Degrees", "pa__types_8h.html#a38a9a20d2250ef006138fbf54c1018a2a9ef125630442bb42e2e367e0cf70d892", null ],
       [ "Hours", "pa__types_8h.html#a38a9a20d2250ef006138fbf54c1018a2a6a7e73161603d87b26a8eac49dab0a9c", null ]

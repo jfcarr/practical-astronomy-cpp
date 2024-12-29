@@ -40,7 +40,7 @@ var NAVTREE =
       [ "Data Fields", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -52,10 +52,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classpa__models_1_1CGalacticCoordinates.html#a4b61e2bf872ba83cc205c56c22361a18",
-"classpa__models_1_1CRightAscension.html",
-"namespacepa__types.html#adfa9e65e662efb9fd3e811b17946be6a",
-"pa__util_8h_source.html"
+"classpa__models_1_1CAtmosphericRefraction.html#a60b0a544e884f96ab79f9ae0a8a942df",
+"classpa__models_1_1CMoonLongLatHP.html#aade05b24a26c68ef3ce92f0e9c908f84",
+"classpa__models_1_1CMoonSetAzL6700.html#aa78c78a33ff8aacecd1105f94444acd3",
+"classpa__models_1_1CPrecisePositionOfPlanet.html#a18c9d59884dfac1fd659d0c00b06fa31",
+"namespacepa__macros.html#a9068027321816d1d7eb53d80efcf350c",
+"pa__macros_8cpp.html#afe4407c53cfed2efad3bdb03015dab70"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

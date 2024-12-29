@@ -1,5 +1,9 @@
 var dir_97aefd0d527b934f1d99a682da8fe6a9 =
 [
+    [ "pa_binary.cpp", "pa__binary_8cpp.html", null ],
+    [ "pa_binary.h", "pa__binary_8h.html", "pa__binary_8h" ],
+    [ "pa_comet.cpp", "pa__comet_8cpp.html", null ],
+    [ "pa_comet.h", "pa__comet_8h.html", "pa__comet_8h" ],
     [ "pa_coordinates.cpp", "pa__coordinates_8cpp.html", null ],
     [ "pa_coordinates.h", "pa__coordinates_8h.html", "pa__coordinates_8h" ],
     [ "pa_data.cpp", "pa__data_8cpp.html", "pa__data_8cpp" ],
@@ -9,6 +13,8 @@ var dir_97aefd0d527b934f1d99a682da8fe6a9 =
     [ "pa_macros.cpp", "pa__macros_8cpp.html", "pa__macros_8cpp" ],
     [ "pa_macros.h", "pa__macros_8h.html", "pa__macros_8h" ],
     [ "pa_models.h", "pa__models_8h.html", "pa__models_8h" ],
+    [ "pa_moon.cpp", "pa__moon_8cpp.html", null ],
+    [ "pa_moon.h", "pa__moon_8h.html", "pa__moon_8h" ],
     [ "pa_planet.cpp", "pa__planet_8cpp.html", null ],
     [ "pa_planet.h", "pa__planet_8h.html", "pa__planet_8h" ],
     [ "pa_sun.cpp", "pa__sun_8cpp.html", null ],

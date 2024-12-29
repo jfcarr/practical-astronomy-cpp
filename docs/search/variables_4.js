@@ -1,7 +1,13 @@
 var searchData=
 [
-  ['houranglehours_0',['hourAngleHours',['../classpa__models_1_1CEquatorialCoordinatesHA.html#a13d05a0e4ddf8d4da90928d0adf6c191',1,'pa_models::CEquatorialCoordinatesHA']]],
-  ['hourangleminutes_1',['hourAngleMinutes',['../classpa__models_1_1CEquatorialCoordinatesHA.html#a01f2e7f2d0bebea882a64252569ac147',1,'pa_models::CEquatorialCoordinatesHA']]],
-  ['hourangleseconds_2',['hourAngleSeconds',['../classpa__models_1_1CEquatorialCoordinatesHA.html#ae3a9c7dfbed5342339604b1ce9b61a67',1,'pa_models::CEquatorialCoordinatesHA']]],
-  ['hours_3',['hours',['../classpa__models_1_1CCivilTime.html#af3d82d91d4bd4785b2928cfaf6d7a96b',1,'pa_models::CCivilTime::hours'],['../classpa__models_1_1CUniversalDateTime.html#af23005df06fc3cd4264e5eee2dfa2f8c',1,'pa_models::CUniversalDateTime::hours'],['../classpa__models_1_1CGreenwichSiderealTime.html#af23005df06fc3cd4264e5eee2dfa2f8c',1,'pa_models::CGreenwichSiderealTime::hours'],['../classpa__models_1_1CUniversalTime.html#af23005df06fc3cd4264e5eee2dfa2f8c',1,'pa_models::CUniversalTime::hours'],['../classpa__models_1_1CHourAngle.html#af3d82d91d4bd4785b2928cfaf6d7a96b',1,'pa_models::CHourAngle::hours'],['../classpa__models_1_1CRightAscension.html#af3d82d91d4bd4785b2928cfaf6d7a96b',1,'pa_models::CRightAscension::hours']]]
+  ['earthmoondist_0',['earthMoonDist',['../classpa__models_1_1CMoonDistDiameterHP.html#ad690ec6b36ffcdafc69ef1a366e664a8',1,'pa_models::CMoonDistDiameterHP']]],
+  ['earthmoondistkm_1',['earthMoonDistKM',['../classpa__models_1_1CMoonPrecisePosition.html#a169254ee284ec4c7234668c4eca3d00d',1,'pa_models::CMoonPrecisePosition']]],
+  ['ecc_2',['ecc',['../classpa__data_1_1BinaryStarData.html#a934ef9ffeec1c7d9c8a8c0656c1a7215',1,'pa_data::BinaryStarData']]],
+  ['ecc_5feccentricityoforbit_3',['ecc_EccentricityOfOrbit',['../classpa__data_1_1CometDataElliptical.html#a6e2934557a66470fe0ab3fd3b5eaa821',1,'pa_data::CometDataElliptical']]],
+  ['ecc_5feccentricityorbit_4',['ecc_EccentricityOrbit',['../classpa__data_1_1PlanetData.html#a5344867a38ba77324ed1af16a79c3bce',1,'pa_data::PlanetData']]],
+  ['epoch_5fepochofperihelion_5',['epoch_EpochOfPerihelion',['../classpa__data_1_1CometDataElliptical.html#a6b93dafc8d45e74e0c13cb47d242cdd1',1,'pa_data::CometDataElliptical']]],
+  ['epoch_5fperi_6',['epoch_peri',['../classpa__data_1_1BinaryStarData.html#ac1cb69e7b903a5982e5febcd0db488b9',1,'pa_data::BinaryStarData']]],
+  ['epoch_5fperi_5fday_7',['epoch_peri_day',['../classpa__data_1_1CometDataParabolic.html#a616339fc9ed6eaa7d2218be798b230ff',1,'pa_data::CometDataParabolic']]],
+  ['epoch_5fperi_5fmonth_8',['epoch_peri_month',['../classpa__data_1_1CometDataParabolic.html#a6de3f28727b7ebb3e6251fbbfc7e60d7',1,'pa_data::CometDataParabolic']]],
+  ['epoch_5fperi_5fyear_9',['epoch_peri_year',['../classpa__data_1_1CometDataParabolic.html#ae98adc87d0a2307bce9ab0062a2091ee',1,'pa_data::CometDataParabolic']]]
 ];

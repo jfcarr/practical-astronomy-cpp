@@ -1,19 +1,15 @@
 var searchData=
 [
-  ['eccentricanomaly_0',['EccentricAnomaly',['../namespacepa__macros.html#ab9ec7af3d9f3be93d0a99ca677a11f23',1,'pa_macros']]],
-  ['eclipticcoordinatetoequatorialcoordinate_1',['EclipticCoordinateToEquatorialCoordinate',['../classPACoordinates.html#a1abb46924e6706aefc4149ad04be05e0',1,'PACoordinates']]],
-  ['eclipticdeclination_2',['EclipticDeclination',['../namespacepa__macros.html#a2f9cfe6d663a797a768e1fa9badd6369',1,'pa_macros']]],
-  ['eclipticrightascension_3',['EclipticRightAscension',['../namespacepa__macros.html#a495b684a1813eef15dfc26c99204cde6',1,'pa_macros']]],
-  ['egstut_4',['EGstUt',['../namespacepa__macros.html#a0f8f2fd40b54a16132dda1397998a8a7',1,'pa_macros']]],
-  ['equationoftime_5',['EquationOfTime',['../classPASun.html#a89f7032d0b6d431a4f20ab0062ac5aca',1,'PASun']]],
-  ['equatorialcoordinatestoaltitude_6',['EquatorialCoordinatesToAltitude',['../namespacepa__macros.html#ad0ec2cdd27489fbec1b7ac73fa5fcccf',1,'pa_macros']]],
-  ['equatorialcoordinatestoazimuth_7',['EquatorialCoordinatesToAzimuth',['../namespacepa__macros.html#ae6c7619a64602983be251999db4ec1df',1,'pa_macros']]],
-  ['equatorialcoordinatestohorizoncoordinates_8',['EquatorialCoordinatesToHorizonCoordinates',['../classPACoordinates.html#a4c72efce297451057b489942f154f71f',1,'PACoordinates']]],
-  ['equatorialcoordinatetoeclipticcoordinate_9',['EquatorialCoordinateToEclipticCoordinate',['../classPACoordinates.html#a55bef761eb622c49089e398401e1c27d',1,'PACoordinates']]],
-  ['equatorialcoordinatetogalacticcoordinate_10',['EquatorialCoordinateToGalacticCoordinate',['../classPACoordinates.html#a45da0d5d850458deced43d13dad5006e',1,'PACoordinates']]],
-  ['eriseset_11',['ERiseSet',['../namespacepa__macros.html#a07354a0f37c5abcd8303f106a68fc53c',1,'pa_macros']]],
-  ['esunrisesetcalcstatus_12',['ESunRiseSetCalcStatus',['../namespacepa__macros.html#a82ec4e6e0584777dd32964588ac46060',1,'pa_macros']]],
-  ['esunrisesetcalcstatusl3710_13',['ESunRiseSetCalcStatusL3710',['../namespacepa__macros.html#a7609344c84f591c3da12599af1d2db0e',1,'pa_macros']]],
-  ['etwilight_14',['ETwilight',['../namespacepa__macros.html#aa530307989df471890366cb26ceb995d',1,'pa_macros']]],
-  ['etwilight_5fl3710_15',['ETwilight_L3710',['../namespacepa__macros.html#aa5ce1f401b9bb1711e8226f0aed24269',1,'pa_macros']]]
+  ['decimaldegreesdegrees_0',['DecimalDegreesDegrees',['../namespacepa__macros.html#ac2248fc2a1ae553e4fc602e12248fd0d',1,'pa_macros']]],
+  ['decimaldegreesminutes_1',['DecimalDegreesMinutes',['../namespacepa__macros.html#a823238225ebf411f576d4e39b8163c8e',1,'pa_macros']]],
+  ['decimaldegreesseconds_2',['DecimalDegreesSeconds',['../namespacepa__macros.html#a3fdd57bc1d07ee542d52ff7a38eb25a2',1,'pa_macros']]],
+  ['decimaldegreestoangle_3',['DecimalDegreesToAngle',['../classPACoordinates.html#a381f25495a8c229cb5330d9eaeec8229',1,'PACoordinates']]],
+  ['decimaldegreestodegreehours_4',['DecimalDegreesToDegreeHours',['../namespacepa__macros.html#a09135c11d0fb01532ba0350e19e4186c',1,'pa_macros']]],
+  ['decimalhourshour_5',['DecimalHoursHour',['../namespacepa__macros.html#acb4ebf008fc62965cb80a87f04f248e1',1,'pa_macros']]],
+  ['decimalhoursminute_6',['DecimalHoursMinute',['../namespacepa__macros.html#ab4b5be31d4023bd0a9ab7240fab49613',1,'pa_macros']]],
+  ['decimalhourssecond_7',['DecimalHoursSecond',['../namespacepa__macros.html#a2784960c3c6ce93db437ef9edced8471',1,'pa_macros']]],
+  ['decimalhourstociviltime_8',['DecimalHoursToCivilTime',['../classPADateTime.html#a43b3256f7f9b76ec84bb84f2068ba2d3',1,'PADateTime']]],
+  ['degreehourstodecimaldegrees_9',['DegreeHoursToDecimalDegrees',['../namespacepa__macros.html#abfc798cde445bfb93d2c1dca03e083a5',1,'pa_macros']]],
+  ['degreesminutessecondstodecimaldegrees_10',['DegreesMinutesSecondsToDecimalDegrees',['../namespacepa__macros.html#a2731266fe7d315233c6b56f891edf8db',1,'pa_macros']]],
+  ['degreestoradians_11',['DegreesToRadians',['../namespacepa__util.html#ae236118880978d3673639bcb94abf04d',1,'pa_util']]]
 ];

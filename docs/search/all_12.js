@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['v0_5fvisualmagnitude_0',['v0_VisualMagnitude',['../classpa__data_1_1PlanetData.html#a7d2352f012e0065cec1a33a569dbf90a',1,'pa_data::PlanetData']]],
-  ['value1_1',['value1',['../classpa__data_1_1PlanetDataPrecise.html#a09fc6c954b508867840f2a3bb84910e9',1,'pa_data::PlanetDataPrecise']]],
-  ['value2_2',['value2',['../classpa__data_1_1PlanetDataPrecise.html#a0b9393e8b754ab3b65fdd97713ca14b8',1,'pa_data::PlanetDataPrecise']]],
-  ['value3_3',['value3',['../classpa__data_1_1PlanetDataPrecise.html#ac81f6cac829d7c8150be7542f135be95',1,'pa_data::PlanetDataPrecise']]],
-  ['value4_4',['value4',['../classpa__data_1_1PlanetDataPrecise.html#a3bb3155d25e1892c1869a72aaad5e258',1,'pa_data::PlanetDataPrecise']]],
-  ['value5_5',['value5',['../classpa__data_1_1PlanetDataPrecise.html#aa68eae921e8e329ee9f901f11f06263f',1,'pa_data::PlanetDataPrecise']]],
-  ['value6_6',['value6',['../classpa__data_1_1PlanetDataPrecise.html#a0aa504055baf3f89d1963dacb27f329b',1,'pa_data::PlanetDataPrecise']]],
-  ['value7_7',['value7',['../classpa__data_1_1PlanetDataPrecise.html#a63daadbc645910b14faf32733397465a',1,'pa_data::PlanetDataPrecise']]],
-  ['value8_8',['value8',['../classpa__data_1_1PlanetDataPrecise.html#a165e533abb41b355ba91f75d0af90f3f',1,'pa_data::PlanetDataPrecise']]],
-  ['value9_9',['value9',['../classpa__data_1_1PlanetDataPrecise.html#ad00d5aa296c2edc0f9f63bf9579c22dd',1,'pa_data::PlanetDataPrecise']]],
-  ['visualaspectsofaplanet_10',['VisualAspectsOfAPlanet',['../classPAPlanet.html#a96160a86af0d2d0b8dcef44d0b03541f',1,'PAPlanet']]]
+  ['th_0',['th',['../classpa__models_1_1CMoonRiseLCTL6700.html#aa78c78a33ff8aacecd1105f94444acd3',1,'pa_models::CMoonRiseLCTL6700::th'],['../classpa__models_1_1CMoonSetLCTL6700.html#aa78c78a33ff8aacecd1105f94444acd3',1,'pa_models::CMoonSetLCTL6700::th'],['../classpa__models_1_1CMoonRiseLcDMYL6700.html#aa78c78a33ff8aacecd1105f94444acd3',1,'pa_models::CMoonRiseLcDMYL6700::th'],['../classpa__models_1_1CMoonSetLcDMYL6700.html#aa78c78a33ff8aacecd1105f94444acd3',1,'pa_models::CMoonSetLcDMYL6700::th'],['../classpa__models_1_1CMoonRiseAzL6700.html#aa78c78a33ff8aacecd1105f94444acd3',1,'pa_models::CMoonRiseAzL6700::th'],['../classpa__models_1_1CMoonSetAzL6700.html#aa78c78a33ff8aacecd1105f94444acd3',1,'pa_models::CMoonSetAzL6700::th']]],
+  ['theta0_5fangulardiameter_1',['theta0_AngularDiameter',['../classpa__data_1_1PlanetData.html#a65a18383f420c5df836fbc897af07abf',1,'pa_data::PlanetData']]],
+  ['timesofnewmoonandfullmoon_2',['TimesOfNewMoonAndFullMoon',['../classPAMoon.html#afa90d9007b8c80756b1a75f684fba7c1',1,'PAMoon']]],
+  ['tp_5fperiodorbit_3',['tp_PeriodOrbit',['../classpa__data_1_1PlanetData.html#acd1648ee3840cc08e3654714ddb25227',1,'pa_data::PlanetData']]],
+  ['trueanomaly_4',['TrueAnomaly',['../namespacepa__macros.html#a6dbd342edf5e5c2aebe9ff6221148f76',1,'pa_macros']]],
+  ['twilightamlocalciviltime_5',['TwilightAMLocalCivilTime',['../namespacepa__macros.html#ae6acbb4f1772627a6a4188e08b58a0d3',1,'pa_macros']]],
+  ['twilightamlocalciviltime_5fl3710_6',['TwilightAMLocalCivilTime_L3710',['../namespacepa__macros.html#a3815e4237f654cd21769485f0f3a2c00',1,'pa_macros']]],
+  ['twilightpmlocalciviltime_7',['TwilightPMLocalCivilTime',['../namespacepa__macros.html#acb007c7af769d5b3b4dfa35f65083ca9',1,'pa_macros']]],
+  ['twilightpmlocalciviltime_5fl3710_8',['TwilightPMLocalCivilTime_L3710',['../namespacepa__macros.html#aa943de103df6b794f2c944a667fb52f7',1,'pa_macros']]]
 ];
