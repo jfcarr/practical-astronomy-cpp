@@ -420,5 +420,21 @@ ELunarEclipseStatus LunarEclipseOccurrence(int ds, int zc, double dy, int mn,
 
 CLunarEclipseOccurrenceL6855 LunarEclipseOccurrenceL6855(double t, double k);
 
+double UTMaxLunarEclipse(double dy, int mn, int yr, int ds, int zc);
+
+double UTFirstContactLunarEclipse(double dy, int mn, int yr, int ds, int zc);
+
+double UTLastContactLunarEclipse(double dy, int mn, int yr, int ds, int zc);
+
+double UTStartUmbraLunarEclipse(double dy, int mn, int yr, int ds, int zc);
+
+double UTEndUmbraLunarEclipse(double dy, int mn, int yr, int ds, int zc);
+
+double UTStartTotalLunarEclipse(double dy, int mn, int yr, int ds, int zc);
+
+double UTEndTotalLunarEclipse(double dy, int mn, int yr, int ds, int zc);
+
+double MagLunarEclipse(double dy, int mn, int yr, int ds, int zc);
+
 } // namespace pa_macros
 #endif

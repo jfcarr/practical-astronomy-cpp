@@ -4554,4 +4554,767 @@ CLunarEclipseOccurrenceL6855 LunarEclipseOccurrenceL6855(double t, double k) {
   return CLunarEclipseOccurrenceL6855(f, dd1, e1, b1, a, b);
 }
 
+/**
+ * Calculate time of maximum shadow for lunar eclipse (UT)
+ *
+ * Original macro name: UTMaxLunarEclipse
+ */
+double UTMaxLunarEclipse(double dy, int mn, int yr, int ds, int zc) {
+  double tp = 2.0 * M_PI;
+
+  if (LunarEclipseOccurrence(ds, zc, dy, mn, yr) == ELunarEclipseStatus::None)
+    return -99.0;
+
+  double dj = FullMoon(ds, zc, dy, mn, yr);
+  double gday = JulianDateDay(dj);
+  int gmonth = JulianDateMonth(dj);
+  int gyear = JulianDateYear(dj);
+  double igday = floor(gday);
+  double xi = gday - igday;
+  double utfm = xi * 24.0;
+  double ut = utfm - 1.0;
+  double ly =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double my =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double by =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hy = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  ut = utfm + 1.0;
+  double sb =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear)) - ly;
+  double mz =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double bz =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hz = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+
+  if (sb < 0.0)
+    sb += tp;
+
+  double xh = utfm;
+  double x0 = xh + 1.0 - (2.0 * bz / (bz - by));
+  double dm = mz - my;
+
+  if (dm < 0.0)
+    dm += tp;
+
+  double lj = (dm - sb) / 2.0;
+  double q = 0.0;
+  double mr = my + (dm * (x0 - xh + 1.0) / 2.0);
+  ut = x0 - 0.13851852;
+  double rr = SunDist(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear);
+  double sr =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  sr += DegreesToRadians(NutatLong(igday, gmonth, gyear) - 0.00569);
+  sr = sr + M_PI - Lint((sr + M_PI) / tp) * tp;
+  by -= q;
+  bz -= q;
+  double p3 = 0.00004263;
+  double zh = (sr - mr) / lj;
+  double tc = x0 + zh;
+  double sh = (((bz - by) * (tc - xh - 1.0) / 2.0) + bz) / lj;
+  double s2 = sh * sh;
+  double z2 = zh * zh;
+  double ps = p3 / (rr * lj);
+  double z1 = (zh * z2 / (z2 + s2)) + x0;
+  double h0 = (hy + hz) / (2.0 * lj);
+  double rm = 0.272446 * h0;
+  double rn = 0.00465242 / (lj * rr);
+  double hd = h0 * 0.99834;
+  double rp = (hd + rn + ps) * 1.02;
+  double r = rm + rp;
+  double dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  return z1;
+}
+
+/**
+ * Calculate time of first shadow contact for lunar eclipse (UT)
+ *
+ * Original macro name: UTFirstContactLunarEclipse
+ */
+double UTFirstContactLunarEclipse(double dy, int mn, int yr, int ds, int zc) {
+  double tp = 2.0 * M_PI;
+
+  if (LunarEclipseOccurrence(ds, zc, dy, mn, yr) == ELunarEclipseStatus::None)
+    return -99.0;
+
+  double dj = FullMoon(ds, zc, dy, mn, yr);
+  double gday = JulianDateDay(dj);
+  int gmonth = JulianDateMonth(dj);
+  int gyear = JulianDateYear(dj);
+  double igday = floor(gday);
+  double xi = gday - igday;
+  double utfm = xi * 24.0;
+  double ut = utfm - 1.0;
+  double ly =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double my =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double by =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hy = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  ut = utfm + 1.0;
+  double sb =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear)) - ly;
+  double mz =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double bz =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hz = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+
+  if (sb < 0.0)
+    sb += tp;
+
+  double xh = utfm;
+  double x0 = xh + 1.0 - (2.0 * bz / (bz - by));
+  double dm = mz - my;
+
+  if (dm < 0.0)
+    dm += tp;
+
+  double lj = (dm - sb) / 2.0;
+  double q = 0.0;
+  double mr = my + (dm * (x0 - xh + 1.0) / 2.0);
+  ut = x0 - 0.13851852;
+  double rr = SunDist(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear);
+  double sr =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  sr += DegreesToRadians(NutatLong(igday, gmonth, gyear) - 0.00569);
+  sr = sr + M_PI - Lint((sr + M_PI) / tp) * tp;
+  by -= q;
+  bz -= q;
+  double p3 = 0.00004263;
+  double zh = (sr - mr) / lj;
+  double tc = x0 + zh;
+  double sh = (((bz - by) * (tc - xh - 1.0) / 2.0) + bz) / lj;
+  double s2 = sh * sh;
+  double z2 = zh * zh;
+  double ps = p3 / (rr * lj);
+  double z1 = (zh * z2 / (z2 + s2)) + x0;
+  double h0 = (hy + hz) / (2.0 * lj);
+  double rm = 0.272446 * h0;
+  double rn = 0.00465242 / (lj * rr);
+  double hd = h0 * 0.99834;
+  double rp = (hd + rn + ps) * 1.02;
+  double r = rm + rp;
+  double dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  double zd = sqrt(dd);
+  double z6 = z1 - zd;
+
+  if (z6 < 0.0)
+    z6 += 24.0;
+
+  return z6;
+}
+
+/**
+ * Calculate time of last shadow contact for lunar eclipse (UT)
+ *
+ * Original macro name: UTLastContactLunarEclipse
+ */
+double UTLastContactLunarEclipse(double dy, int mn, int yr, int ds, int zc) {
+  double tp = 2.0 * M_PI;
+
+  if (LunarEclipseOccurrence(ds, zc, dy, mn, yr) == ELunarEclipseStatus::None)
+    return -99.0;
+
+  double dj = FullMoon(ds, zc, dy, mn, yr);
+  double gday = JulianDateDay(dj);
+  int gmonth = JulianDateMonth(dj);
+  int gyear = JulianDateYear(dj);
+  double igday = floor(gday);
+  double xi = gday - igday;
+  double utfm = xi * 24.0;
+  double ut = utfm - 1.0;
+  double ly =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double my =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double by =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hy = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  ut = utfm + 1.0;
+  double sb =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear)) - ly;
+  double mz =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double bz =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hz = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+
+  if (sb < 0.0)
+    sb += tp;
+
+  double xh = utfm;
+  double x0 = xh + 1.0 - (2.0 * bz / (bz - by));
+  double dm = mz - my;
+
+  if (dm < 0.0)
+    dm += tp;
+
+  double lj = (dm - sb) / 2.0;
+  double q = 0.0;
+  double mr = my + (dm * (x0 - xh + 1.0) / 2.0);
+  ut = x0 - 0.13851852;
+  double rr = SunDist(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear);
+  double sr =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  sr += DegreesToRadians(NutatLong(igday, gmonth, gyear) - 0.00569);
+  sr = sr + M_PI - Lint((sr + M_PI) / tp) * tp;
+  by -= q;
+  bz -= q;
+  double p3 = 0.00004263;
+  double zh = (sr - mr) / lj;
+  double tc = x0 + zh;
+  double sh = (((bz - by) * (tc - xh - 1.0) / 2.0) + bz) / lj;
+  double s2 = sh * sh;
+  double z2 = zh * zh;
+  double ps = p3 / (rr * lj);
+  double z1 = (zh * z2 / (z2 + s2)) + x0;
+  double h0 = (hy + hz) / (2.0 * lj);
+  double rm = 0.272446 * h0;
+  double rn = 0.00465242 / (lj * rr);
+  double hd = h0 * 0.99834;
+  double rp = (hd + rn + ps) * 1.02;
+  double r = rm + rp;
+  double dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  double zd = sqrt(dd);
+  double z7 = z1 + zd - Lint((z1 + zd) / 24.0) * 24.0;
+
+  return z7;
+}
+
+/**
+ * Calculate start time of umbra phase of lunar eclipse (UT)
+ *
+ * Original macro name: UTStartUmbraLunarEclipse
+ */
+double UTStartUmbraLunarEclipse(double dy, int mn, int yr, int ds, int zc) {
+  double tp = 2.0 * M_PI;
+
+  if (LunarEclipseOccurrence(ds, zc, dy, mn, yr) == ELunarEclipseStatus::None)
+    return -99.0;
+
+  double dj = FullMoon(ds, zc, dy, mn, yr);
+  double gday = JulianDateDay(dj);
+  int gmonth = JulianDateMonth(dj);
+  int gyear = JulianDateYear(dj);
+  double igday = floor(gday);
+  double xi = gday - igday;
+  double utfm = xi * 24.0;
+  double ut = utfm - 1.0;
+  double ly =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double my =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double by =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hy = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  ut = utfm + 1.0;
+  double sb =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear)) - ly;
+  double mz =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double bz =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hz = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+
+  if (sb < 0.0)
+    sb += tp;
+
+  double xh = utfm;
+  double x0 = xh + 1.0 - (2.0 * bz / (bz - by));
+  double dm = mz - my;
+
+  if (dm < 0.0)
+    dm += tp;
+
+  double lj = (dm - sb) / 2.0;
+  double q = 0.0;
+  double mr = my + (dm * (x0 - xh + 1.0) / 2.0);
+  ut = x0 - 0.13851852;
+  double rr = SunDist(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear);
+  double sr =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  sr += DegreesToRadians(NutatLong(igday, gmonth, gyear) - 0.00569);
+  sr = sr + M_PI - Lint((sr + M_PI) / tp) * tp;
+  by -= q;
+  bz -= q;
+  double p3 = 0.00004263;
+  double zh = (sr - mr) / lj;
+  double tc = x0 + zh;
+  double sh = (((bz - by) * (tc - xh - 1.0) / 2.0) + bz) / lj;
+  double s2 = sh * sh;
+  double z2 = zh * zh;
+  double ps = p3 / (rr * lj);
+  double z1 = (zh * z2 / (z2 + s2)) + x0;
+  double h0 = (hy + hz) / (2.0 * lj);
+  double rm = 0.272446 * h0;
+  double rn = 0.00465242 / (lj * rr);
+  double hd = h0 * 0.99834;
+  double ru = (hd - rn + ps) * 1.02;
+  double rp = (hd + rn + ps) * 1.02;
+  double pj = fabs(sh * zh / sqrt(s2 + z2));
+  double r = rm + rp;
+  double dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  double zd = sqrt(dd);
+  double z6 = z1 - zd;
+
+  r = rm + ru;
+  dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  zd = sqrt(dd);
+  double z8 = z1 - zd;
+
+  if (z8 < 0.0)
+    z8 += 24.0;
+
+  return z8;
+}
+
+/**
+ * Calculate end time of umbra phase of lunar eclipse (UT)
+ *
+ * Original macro name: UTEndUmbraLunarEclipse
+ */
+double UTEndUmbraLunarEclipse(double dy, int mn, int yr, int ds, int zc) {
+  double tp = 2.0 * M_PI;
+
+  if (LunarEclipseOccurrence(ds, zc, dy, mn, yr) == ELunarEclipseStatus::None)
+    return -99.0;
+
+  double dj = FullMoon(ds, zc, dy, mn, yr);
+  double gday = JulianDateDay(dj);
+  int gmonth = JulianDateMonth(dj);
+  int gyear = JulianDateYear(dj);
+  double igday = floor(gday);
+  double xi = gday - igday;
+  double utfm = xi * 24.0;
+  double ut = utfm - 1.0;
+  double ly =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double my =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double by =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hy = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  ut = utfm + 1.0;
+  double sb =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear)) - ly;
+  double mz =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double bz =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hz = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+
+  if (sb < 0.0)
+    sb += tp;
+
+  double xh = utfm;
+  double x0 = xh + 1.0 - (2.0 * bz / (bz - by));
+  double dm = mz - my;
+
+  if (dm < 0.0)
+    dm += tp;
+
+  double lj = (dm - sb) / 2.0;
+  double q = 0.0;
+  double mr = my + (dm * (x0 - xh + 1.0) / 2.0);
+  ut = x0 - 0.13851852;
+  double rr = SunDist(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear);
+  double sr =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  sr += DegreesToRadians(NutatLong(igday, gmonth, gyear) - 0.00569);
+  sr = sr + M_PI - Lint((sr + M_PI) / tp) * tp;
+  by -= q;
+  bz -= q;
+  double p3 = 0.00004263;
+  double zh = (sr - mr) / lj;
+  double tc = x0 + zh;
+  double sh = (((bz - by) * (tc - xh - 1.0) / 2.0) + bz) / lj;
+  double s2 = sh * sh;
+  double z2 = zh * zh;
+  double ps = p3 / (rr * lj);
+  double z1 = (zh * z2 / (z2 + s2)) + x0;
+  double h0 = (hy + hz) / (2.0 * lj);
+  double rm = 0.272446 * h0;
+  double rn = 0.00465242 / (lj * rr);
+  double hd = h0 * 0.99834;
+  double ru = (hd - rn + ps) * 1.02;
+  double rp = (hd + rn + ps) * 1.02;
+  double pj = fabs(sh * zh / sqrt(s2 + z2));
+  double r = rm + rp;
+  double dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  double zd = sqrt(dd);
+  double z6 = z1 - zd;
+
+  r = rm + ru;
+  dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  zd = sqrt(dd);
+  double z9 = z1 + zd - Lint((z1 + zd) / 24.0) * 24.0;
+
+  return z9;
+}
+
+/**
+ * Calculate start time of total phase of lunar eclipse (UT)
+ *
+ * Original macro name: UTStartTotalLunarEclipse
+ */
+double UTStartTotalLunarEclipse(double dy, int mn, int yr, int ds, int zc) {
+  double tp = 2.0 * M_PI;
+
+  if (LunarEclipseOccurrence(ds, zc, dy, mn, yr) == ELunarEclipseStatus::None)
+    return -99.0;
+
+  double dj = FullMoon(ds, zc, dy, mn, yr);
+  double gday = JulianDateDay(dj);
+  int gmonth = JulianDateMonth(dj);
+  int gyear = JulianDateYear(dj);
+  double igday = floor(gday);
+  double xi = gday - igday;
+  double utfm = xi * 24.0;
+  double ut = utfm - 1.0;
+  double ly =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double my =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double by =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hy = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  ut = utfm + 1.0;
+  double sb =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear)) - ly;
+  double mz =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double bz =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hz = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+
+  if (sb < 0.0)
+    sb += tp;
+
+  double xh = utfm;
+  double x0 = xh + 1.0 - (2.0 * bz / (bz - by));
+  double dm = mz - my;
+
+  if (dm < 0.0)
+    dm += tp;
+
+  double lj = (dm - sb) / 2.0;
+  double q = 0.0;
+  double mr = my + (dm * (x0 - xh + 1.0) / 2.0);
+  ut = x0 - 0.13851852;
+  double rr = SunDist(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear);
+  double sr =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  sr += DegreesToRadians(NutatLong(igday, gmonth, gyear) - 0.00569);
+  sr = sr + M_PI - Lint((sr + M_PI) / tp) * tp;
+  by -= q;
+  bz -= q;
+  double p3 = 0.00004263;
+  double zh = (sr - mr) / lj;
+  double tc = x0 + zh;
+  double sh = (((bz - by) * (tc - xh - 1.0) / 2.0) + bz) / lj;
+  double s2 = sh * sh;
+  double z2 = zh * zh;
+  double ps = p3 / (rr * lj);
+  double z1 = (zh * z2 / (z2 + s2)) + x0;
+  double h0 = (hy + hz) / (2.0 * lj);
+  double rm = 0.272446 * h0;
+  double rn = 0.00465242 / (lj * rr);
+  double hd = h0 * 0.99834;
+  double ru = (hd - rn + ps) * 1.02;
+  double rp = (hd + rn + ps) * 1.02;
+  double pj = fabs(sh * zh / sqrt(s2 + z2));
+  double r = rm + rp;
+  double dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  double zd = sqrt(dd);
+  double z6 = z1 - zd;
+
+  r = rm + ru;
+  dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  zd = sqrt(dd);
+  double z8 = z1 - zd;
+
+  r = ru - rm;
+  dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  zd = sqrt(dd);
+  double zcc = z1 - zd;
+
+  if (zcc < 0.0)
+    zcc = zc + 24.0;
+
+  return zcc;
+}
+
+/**
+ * Calculate end time of total phase of lunar eclipse (UT)
+ *
+ * Original macro name: UTEndTotalLunarEclipse
+ */
+double UTEndTotalLunarEclipse(double dy, int mn, int yr, int ds, int zc) {
+  double tp = 2.0 * M_PI;
+
+  if (LunarEclipseOccurrence(ds, zc, dy, mn, yr) == ELunarEclipseStatus::None)
+    return -99.0;
+
+  double dj = FullMoon(ds, zc, dy, mn, yr);
+  double gday = JulianDateDay(dj);
+  int gmonth = JulianDateMonth(dj);
+  int gyear = JulianDateYear(dj);
+  double igday = floor(gday);
+  double xi = gday - igday;
+  double utfm = xi * 24.0;
+  double ut = utfm - 1.0;
+  double ly =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double my =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double by =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hy = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  ut = utfm + 1.0;
+  double sb =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear)) - ly;
+  double mz =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double bz =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hz = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+
+  if (sb < 0.0)
+    sb += tp;
+
+  double xh = utfm;
+  double x0 = xh + 1.0 - (2.0 * bz / (bz - by));
+  double dm = mz - my;
+
+  if (dm < 0.0)
+    dm += tp;
+
+  double lj = (dm - sb) / 2.0;
+  double q = 0.0;
+  double mr = my + (dm * (x0 - xh + 1.0) / 2.0);
+  ut = x0 - 0.13851852;
+  double rr = SunDist(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear);
+  double sr =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  sr += DegreesToRadians(NutatLong(igday, gmonth, gyear) - 0.00569);
+  sr = sr + M_PI - Lint((sr + M_PI) / tp) * tp;
+  by -= q;
+  bz -= q;
+  double p3 = 0.00004263;
+  double zh = (sr - mr) / lj;
+  double tc = x0 + zh;
+  double sh = (((bz - by) * (tc - xh - 1.0) / 2.0) + bz) / lj;
+  double s2 = sh * sh;
+  double z2 = zh * zh;
+  double ps = p3 / (rr * lj);
+  double z1 = (zh * z2 / (z2 + s2)) + x0;
+  double h0 = (hy + hz) / (2.0 * lj);
+  double rm = 0.272446 * h0;
+  double rn = 0.00465242 / (lj * rr);
+  double hd = h0 * 0.99834;
+  double ru = (hd - rn + ps) * 1.02;
+  double rp = (hd + rn + ps) * 1.02;
+  double pj = fabs(sh * zh / sqrt(s2 + z2));
+  double r = rm + rp;
+  double dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  double zd = sqrt(dd);
+  double z6 = z1 - zd;
+
+  r = rm + ru;
+  dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  zd = sqrt(dd);
+  double z8 = z1 - zd;
+
+  r = ru - rm;
+  dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  zd = sqrt(dd);
+  double zb = z1 + zd - Lint((z1 + zd) / 24.0) * 24.0;
+
+  return zb;
+}
+
+/**
+ * Calculate magnitude of lunar eclipse.
+ *
+ * Original macro name: MagLunarEclipse
+ */
+double MagLunarEclipse(double dy, int mn, int yr, int ds, int zc) {
+  double tp = 2.0 * M_PI;
+
+  if (LunarEclipseOccurrence(ds, zc, dy, mn, yr) == ELunarEclipseStatus::None)
+    return -99.0;
+
+  double dj = FullMoon(ds, zc, dy, mn, yr);
+  double gday = JulianDateDay(dj);
+  int gmonth = JulianDateMonth(dj);
+  int gyear = JulianDateYear(dj);
+  double igday = floor(gday);
+  double xi = gday - igday;
+  double utfm = xi * 24.0;
+  double ut = utfm - 1.0;
+  double ly =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double my =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double by =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hy = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  ut = utfm + 1.0;
+  double sb =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear)) - ly;
+  double mz =
+      DegreesToRadians(MoonLongitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double bz =
+      DegreesToRadians(MoonLatitude(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  double hz = DegreesToRadians(
+      MoonHorizontalParallax(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+
+  if (sb < 0.0)
+    sb += tp;
+
+  double xh = utfm;
+  double x0 = xh + 1.0 - (2.0 * bz / (bz - by));
+  double dm = mz - my;
+
+  if (dm < 0.0)
+    dm += tp;
+
+  double lj = (dm - sb) / 2.0;
+  double q = 0.0;
+  double mr = my + (dm * (x0 - xh + 1.0) / 2.0);
+  ut = x0 - 0.13851852;
+  double rr = SunDist(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear);
+  double sr =
+      DegreesToRadians(SunLong(ut, 0.0, 0.0, 0, 0, igday, gmonth, gyear));
+  sr += DegreesToRadians(NutatLong(igday, gmonth, gyear) - 0.00569);
+  sr = sr + M_PI - Lint((sr + M_PI) / tp) * tp;
+  by -= q;
+  bz -= q;
+  double p3 = 0.00004263;
+  double zh = (sr - mr) / lj;
+  double tc = x0 + zh;
+  double sh = (((bz - by) * (tc - xh - 1.0) / 2.0) + bz) / lj;
+  double s2 = sh * sh;
+  double z2 = zh * zh;
+  double ps = p3 / (rr * lj);
+  double z1 = (zh * z2 / (z2 + s2)) + x0;
+  double h0 = (hy + hz) / (2.0 * lj);
+  double rm = 0.272446 * h0;
+  double rn = 0.00465242 / (lj * rr);
+  double hd = h0 * 0.99834;
+  double ru = (hd - rn + ps) * 1.02;
+  double rp = (hd + rn + ps) * 1.02;
+  double pj = fabs(sh * zh / sqrt(s2 + z2));
+  double r = rm + rp;
+  double dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+
+  if (dd < 0.0)
+    return -99.0;
+
+  double zd = sqrt(dd);
+  double z6 = z1 - zd;
+
+  r = rm + ru;
+  dd = z1 - x0;
+  dd = dd * dd - ((z2 - (r * r)) * dd / zh);
+  double mg = (rm + rp - pj) / (2.0 * rm);
+
+  if (dd < 0.0)
+    return mg;
+
+  zd = sqrt(dd);
+  double z8 = z1 - zd;
+
+  r = ru - rm;
+  dd = z1 - x0;
+  mg = (rm + ru - pj) / (2.0 * rm);
+
+  return mg;
+}
+
 } // namespace pa_macros
