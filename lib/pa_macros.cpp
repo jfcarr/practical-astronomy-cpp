@@ -3718,6 +3718,43 @@ double UTDayAdjust(double ut, double g1) {
 }
 
 /**
+ * Original macro name: Fpart
+ */
+double FPart(double w) { return w - Lint(w); }
+
+/**
+ * Original macro name: EQElat
+ */
+double EQELat(double rah, double ram, double ras, double dd, double dm,
+              double ds, double gd, int gm, int gy) {
+  double a =
+      DegreesToRadians(DegreeHoursToDecimalDegrees(HmsToDh(rah, ram, ras)));
+  double b =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
+  double c = DegreesToRadians(Obliq(gd, gm, gy));
+  double d = sin(b) * cos(c) - cos(b) * sin(c) * sin(a);
+
+  return WToDegrees(asin(d));
+}
+
+/**
+ * Original macro name: EQElong
+ */
+double EQELong(double rah, double ram, double ras, double dd, double dm,
+               double ds, double gd, int gm, int gy) {
+  double a =
+      DegreesToRadians(DegreeHoursToDecimalDegrees(HmsToDh(rah, ram, ras)));
+  double b =
+      DegreesToRadians(DegreesMinutesSecondsToDecimalDegrees(dd, dm, ds));
+  double c = DegreesToRadians(Obliq(gd, gm, gy));
+  double d = sin(a) * cos(c) + tan(b) * sin(c);
+  double e = cos(a);
+  double f = WToDegrees(atan2(d, e));
+
+  return f - 360.0 * floor(f / 360.0);
+}
+
+/**
  * Local time of moonrise.
  *
  * Original macro name: MoonRiseLCT
@@ -4433,6 +4470,88 @@ CMoonSetAzL6700 MoonSetAzL6700(double lct, int ds, int zc, double dy1, int mn1,
   double au = RiseSetAzimuthSet(p, 0.0, 0.0, q, 0.0, 0.0, WToDegrees(di), gLat);
 
   return CMoonSetAzL6700(mm, bm, pm, dp, th, di, p, q, lu, lct, au);
+}
+
+/**
+ * Determine if a lunar eclipse is likely to occur.
+ *
+ * Original macro name: LEOccurrence
+ */
+ELunarEclipseStatus LunarEclipseOccurrence(int ds, int zc, double dy, int mn,
+                                           int yr) {
+  double d0 = LocalCivilTimeGreenwichDay(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+  int m0 = LocalCivilTimeGreenwichMonth(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+  int y0 = LocalCivilTimeGreenwichYear(12.0, 0.0, 0.0, ds, zc, dy, mn, yr);
+
+  double j0 = CivilDateToJulianDate(0.0, 1, y0);
+  double dj = CivilDateToJulianDate(d0, m0, y0);
+  double k = (y0 - 1900.0 + ((dj - j0) * 1.0 / 365.0)) * 12.3685;
+  k = Lint(k + 0.5);
+  double tn = k / 1236.85;
+  double tf = (k + 0.5) / 1236.85;
+  double t = tn;
+  CLunarEclipseOccurrenceL6855 l6855_result1 =
+      LunarEclipseOccurrenceL6855(t, k);
+  t = tf;
+  k += 0.5;
+  CLunarEclipseOccurrenceL6855 l6855_result2 =
+      LunarEclipseOccurrenceL6855(t, k);
+  double fb = l6855_result2.f;
+
+  double df = fabs(fb - 3.141592654 * Lint(fb / 3.141592654));
+
+  if (df > 0.37)
+    df = 3.141592654 - df;
+
+  ELunarEclipseStatus s = ELunarEclipseStatus::Certain;
+  if (df >= 0.242600766) {
+    s = ELunarEclipseStatus::Possible;
+
+    if (df > 0.37)
+      s = ELunarEclipseStatus::None;
+  }
+
+  return s;
+}
+
+/**
+ * Helper function for lunar_eclipse_occurrence
+ */
+CLunarEclipseOccurrenceL6855 LunarEclipseOccurrenceL6855(double t, double k) {
+  double t2 = t * t;
+  double e = 29.53 * k;
+  double c = 166.56 + (132.87 - 0.009173 * t) * t;
+  c = DegreesToRadians(c);
+  double b = 0.00058868 * k + (0.0001178 - 0.000000155 * t) * t2;
+  b = b + 0.00033 * sin(c) + 0.75933;
+  double a = k / 12.36886;
+  double a1 = 359.2242 + 360.0 * FPart(a) - (0.0000333 + 0.00000347 * t) * t2;
+  double a2 = 306.0253 + 360.0 * FPart(k / 0.9330851);
+  a2 += (0.0107306 + 0.00001236 * t) * t2;
+  a = k / 0.9214926;
+  double f = 21.2964 + 360.0 * FPart(a) - (0.0016528 + 0.00000239 * t) * t2;
+  a1 = UnwindDeg(a1);
+  a2 = UnwindDeg(a2);
+  f = UnwindDeg(f);
+  a1 = DegreesToRadians(a1);
+  a2 = DegreesToRadians(a2);
+  f = DegreesToRadians(f);
+
+  double dd1 = (0.1734 - 0.000393 * t) * sin(a1) + 0.0021 * sin(2.0 * a1);
+  dd1 =
+      dd1 - 0.4068 * sin(a2) + 0.0161 * sin(2.0 * a2) - 0.0004 * sin(3.0 * a2);
+  dd1 = dd1 + 0.0104 * sin(2.0 * f) - 0.0051 * sin(a1 + a2);
+  dd1 = dd1 - 0.0074 * sin(a1 - a2) + 0.0004 * sin(2.0 * f + a1);
+  dd1 = dd1 - 0.0004 * sin(2.0 * f - a1) - 0.0006 * sin(2.0 * f + a2) +
+        0.001 * sin(2.0 * f - a2);
+  dd1 += 0.0005 * sin(a1 + 2.0 * a2);
+  double e1 = floor(e);
+  b = b + dd1 + (e - e1);
+  double b1 = floor(b);
+  a = e1 + b1;
+  b -= b1;
+
+  return CLunarEclipseOccurrenceL6855(f, dd1, e1, b1, a, b);
 }
 
 } // namespace pa_macros
