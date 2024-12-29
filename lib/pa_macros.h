@@ -300,33 +300,30 @@ double Angle(double xx1, double xm1, double xs1, double dd1, double dm1,
              double ds1, double xx2, double xm2, double xs2, double dd2,
              double dm2, double ds2, EAngleMeasure s);
 
-pa_models::CPlanetCoordinates PlanetCoordinates(double lh, double lm, double ls,
-                                                int ds, int zc, double dy,
-                                                int mn, int yr, std::string s);
+CPlanetCoordinates PlanetCoordinates(double lh, double lm, double ls, int ds,
+                                     int zc, double dy, int mn, int yr,
+                                     std::string s);
 
-pa_models::CPlanetLongLatL4685
-PlanetLongL4685(std::vector<pa_data::PlanetDataPrecise> pl);
+CPlanetLongLatL4685 PlanetLongL4685(std::vector<pa_data::PlanetDataPrecise> pl);
 
-pa_models::CPlanetLongLatL4735
-PlanetLongL4735(std::vector<pa_data::PlanetDataPrecise> pl, double ms,
-                double t);
+CPlanetLongLatL4735 PlanetLongL4735(std::vector<pa_data::PlanetDataPrecise> pl,
+                                    double ms, double t);
 
-pa_models::CPlanetLongLatL4810
-PlanetLongL4810(std::vector<pa_data::PlanetDataPrecise> pl, double ms);
+CPlanetLongLatL4810 PlanetLongL4810(std::vector<pa_data::PlanetDataPrecise> pl,
+                                    double ms);
 
-pa_models::CPlanetLongLatL4945
-PlanetLongL4945(double t, pa_data::PlanetDataPrecise planet);
+CPlanetLongLatL4945 PlanetLongL4945(double t,
+                                    pa_data::PlanetDataPrecise planet);
 
-pa_models::CCometLongLatDist PCometLongLatDist(double lh, double lm, double ls,
-                                               int ds, int zc, double dy,
-                                               int mn, int yr, double td,
-                                               int tm, int ty, double q,
-                                               double i, double p, double n);
+CCometLongLatDist PCometLongLatDist(double lh, double lm, double ls, int ds,
+                                    int zc, double dy, int mn, int yr,
+                                    double td, int tm, int ty, double q,
+                                    double i, double p, double n);
 
 double SolveCubic(double w);
 
-pa_models::CMoonLongLatHP MoonLongLatHP(double lh, double lm, double ls, int ds,
-                                        int zc, double dy, int mn, int yr);
+CMoonLongLatHP MoonLongLatHP(double lh, double lm, double ls, int ds, int zc,
+                             double dy, int mn, int yr);
 
 double MoonPhase(double lh, double lm, double ls, int ds, int zc, double dy,
                  int mn, int yr);
@@ -338,7 +335,7 @@ double NewMoon(int ds, int zc, double dy, int mn, int yr);
 
 double FullMoon(int ds, int zc, double dy, int mn, int yr);
 
-pa_models::CNewMoonFullMoonL6855 NewMoonFullMoonL6855(double k, double t);
+CNewMoonFullMoonL6855 NewMoonFullMoonL6855(double k, double t);
 
 double Fract(double w);
 
