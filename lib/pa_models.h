@@ -859,5 +859,370 @@ public:
   double horParallaxSec;
 };
 
+class CMoonRiseSet {
+public:
+  CMoonRiseSet(double mrLocalTimeHour, double mrLocalTimeMin,
+               double mrLocalDateDay, int mrLocalDateMonth, int mrLocalDateYear,
+               double mrAzimuthDeg, double msLocalTimeHour,
+               double msLocalTimeMin, double msLocalDateDay,
+               int msLocalDateMonth, int msLocalDateYear, double msAzimuthDeg) {
+    this->mrLocalTimeHour = mrLocalTimeHour;
+    this->mrLocalTimeMin = mrLocalTimeMin;
+    this->mrLocalDateDay = mrLocalDateDay;
+    this->mrLocalDateMonth = mrLocalDateMonth;
+    this->mrLocalDateYear = mrLocalDateYear;
+    this->mrAzimuthDeg = mrAzimuthDeg;
+    this->msLocalTimeHour = msLocalTimeHour;
+    this->msLocalTimeMin = msLocalTimeMin;
+    this->msLocalDateDay = msLocalDateDay;
+    this->msLocalDateMonth = msLocalDateMonth;
+    this->msLocalDateYear = msLocalDateYear;
+    this->msAzimuthDeg = msAzimuthDeg;
+  }
+
+  double mrLocalTimeHour;
+  double mrLocalTimeMin;
+  double mrLocalDateDay;
+  int mrLocalDateMonth;
+  int mrLocalDateYear;
+  double mrAzimuthDeg;
+  double msLocalTimeHour;
+  double msLocalTimeMin;
+  double msLocalDateDay;
+  int msLocalDateMonth;
+  int msLocalDateYear;
+  double msAzimuthDeg;
+};
+
+class CMoonRiseLCTL6680 {
+public:
+  CMoonRiseLCTL6680(double ut, double lct, double dy1, int mn1, int yr1,
+                    double gdy, int gmn, int gyr) {
+    this->ut = ut;
+    this->lct = lct;
+    this->dy1 = dy1;
+    this->mn1 = mn1;
+    this->yr1 = yr1;
+    this->gdy = gdy;
+    this->gmn = gmn;
+    this->gyr = gyr;
+  }
+
+  double ut;
+  double lct;
+  double dy1;
+  int mn1;
+  int yr1;
+  double gdy;
+  int gmn;
+  int gyr;
+};
+
+class CMoonSetLCTL6680 {
+public:
+  CMoonSetLCTL6680(double ut, double lct, double dy1, int mn1, int yr1,
+                   double gdy, int gmn, int gyr) {
+    this->ut = ut;
+    this->lct = lct;
+    this->dy1 = dy1;
+    this->mn1 = mn1;
+    this->yr1 = yr1;
+    this->gdy = gdy;
+    this->gmn = gmn;
+    this->gyr = gyr;
+  }
+
+  double ut;
+  double lct;
+  double dy1;
+  int mn1;
+  int yr1;
+  double gdy;
+  int gmn;
+  int gyr;
+};
+
+class CMoonRiseLCTL6700 {
+public:
+  CMoonRiseLCTL6700(double mm, double bm, double pm, double dp, double th,
+                    double di, double p, double q, double lu, double lct) {
+    this->mm = mm;
+    this->bm = bm;
+    this->pm = pm;
+    this->dp = dp;
+    this->th = th;
+    this->di = di;
+    this->p = p;
+    this->q = q;
+    this->lu = lu;
+    this->lct = lct;
+  }
+
+  double mm;
+  double bm;
+  double pm;
+  double dp;
+  double th;
+  double di;
+  double p;
+  double q;
+  double lu;
+  double lct;
+};
+
+class CMoonSetLCTL6700 {
+public:
+  CMoonSetLCTL6700(double mm, double bm, double pm, double dp, double th,
+                   double di, double p, double q, double lu, double lct) {
+    this->mm = mm;
+    this->bm = bm;
+    this->pm = pm;
+    this->dp = dp;
+    this->th = th;
+    this->di = di;
+    this->p = p;
+    this->q = q;
+    this->lu = lu;
+    this->lct = lct;
+  }
+
+  double mm;
+  double bm;
+  double pm;
+  double dp;
+  double th;
+  double di;
+  double p;
+  double q;
+  double lu;
+  double lct;
+};
+
+class CMoonRiseLcDMYL6680 {
+public:
+  CMoonRiseLcDMYL6680(double ut, double lct, double dy1, int mn1, int yr1,
+                      double gdy, int gmn, int gyr) {
+    this->ut = ut;
+    this->lct = lct;
+    this->dy1 = dy1;
+    this->mn1 = mn1;
+    this->yr1 = yr1;
+    this->gdy = gdy;
+    this->gmn = gmn;
+    this->gyr = gyr;
+  }
+
+  double ut;
+  double lct;
+  double dy1;
+  int mn1;
+  int yr1;
+  double gdy;
+  int gmn;
+  int gyr;
+};
+
+class CMoonSetLcDMYL6680 {
+public:
+  CMoonSetLcDMYL6680(double ut, double lct, double dy1, int mn1, int yr1,
+                     double gdy, int gmn, int gyr) {
+    this->ut = ut;
+    this->lct = lct;
+    this->dy1 = dy1;
+    this->mn1 = mn1;
+    this->yr1 = yr1;
+    this->gdy = gdy;
+    this->gmn = gmn;
+    this->gyr = gyr;
+  }
+
+  double ut;
+  double lct;
+  double dy1;
+  int mn1;
+  int yr1;
+  double gdy;
+  int gmn;
+  int gyr;
+};
+
+class CMoonRiseLcDMYL6700 {
+public:
+  CMoonRiseLcDMYL6700(double mm, double bm, double pm, double dp, double th,
+                      double di, double p, double q, double lu, double lct) {
+    this->mm = mm;
+    this->bm = bm;
+    this->pm = pm;
+    this->dp = dp;
+    this->th = th;
+    this->di = di;
+    this->p = p;
+    this->q = q;
+    this->lu = lu;
+    this->lct = lct;
+  }
+
+  double mm;
+  double bm;
+  double pm;
+  double dp;
+  double th;
+  double di;
+  double p;
+  double q;
+  double lu;
+  double lct;
+};
+
+class CMoonSetLcDMYL6700 {
+public:
+  CMoonSetLcDMYL6700(double mm, double bm, double pm, double dp, double th,
+                     double di, double p, double q, double lu, double lct) {
+    this->mm = mm;
+    this->bm = bm;
+    this->pm = pm;
+    this->dp = dp;
+    this->th = th;
+    this->di = di;
+    this->p = p;
+    this->q = q;
+    this->lu = lu;
+    this->lct = lct;
+  }
+
+  double mm;
+  double bm;
+  double pm;
+  double dp;
+  double th;
+  double di;
+  double p;
+  double q;
+  double lu;
+  double lct;
+};
+
+class CMoonRiseAzL6680 {
+public:
+  CMoonRiseAzL6680(double ut, double lct, double dy1, int mn1, int yr1,
+                   double gdy, int gmn, int gyr) {
+    this->ut = ut;
+    this->lct = lct;
+    this->dy1 = dy1;
+    this->mn1 = mn1;
+    this->yr1 = yr1;
+    this->gdy = gdy;
+    this->gmn = gmn;
+    this->gyr = gyr;
+  }
+
+  double ut;
+  double lct;
+  double dy1;
+  int mn1;
+  int yr1;
+  double gdy;
+  int gmn;
+  int gyr;
+};
+
+class CMoonSetAzL6680 {
+public:
+  CMoonSetAzL6680(double ut, double lct, double dy1, int mn1, int yr1,
+                  double gdy, int gmn, int gyr) {
+    this->ut = ut;
+    this->lct = lct;
+    this->dy1 = dy1;
+    this->mn1 = mn1;
+    this->yr1 = yr1;
+    this->gdy = gdy;
+    this->gmn = gmn;
+    this->gyr = gyr;
+  }
+
+  double ut;
+  double lct;
+  double dy1;
+  int mn1;
+  int yr1;
+  double gdy;
+  int gmn;
+  int gyr;
+};
+
+class CMoonRiseAzL6700 {
+public:
+  CMoonRiseAzL6700(double mm, double bm, double pm, double dp, double th,
+                   double di, double p, double q, double lu, double lct,
+                   double au) {
+    this->mm = mm;
+    this->bm = bm;
+    this->pm = pm;
+    this->dp = dp;
+    this->th = th;
+    this->di = di;
+    this->p = p;
+    this->q = q;
+    this->lu = lu;
+    this->lct = lct;
+    this->au = au;
+  }
+
+  double mm;
+  double bm;
+  double pm;
+  double dp;
+  double th;
+  double di;
+  double p;
+  double q;
+  double lu;
+  double lct;
+  double au;
+};
+
+class CMoonSetAzL6700 {
+public:
+  CMoonSetAzL6700(double mm, double bm, double pm, double dp, double th,
+                  double di, double p, double q, double lu, double lct,
+                  double au) {
+    this->mm = mm;
+    this->bm = bm;
+    this->pm = pm;
+    this->dp = dp;
+    this->th = th;
+    this->di = di;
+    this->p = p;
+    this->q = q;
+    this->lu = lu;
+    this->lct = lct;
+    this->au = au;
+  }
+
+  double mm;
+  double bm;
+  double pm;
+  double dp;
+  double th;
+  double di;
+  double p;
+  double q;
+  double lu;
+  double lct;
+  double au;
+};
+
+class CFullDatePrecise {
+public:
+  CFullDatePrecise(int month, double day, int year) {
+    this->month = month;
+    this->day = day;
+    this->year = year;
+  }
+  int month;
+  double day;
+  int year;
+};
+
 } // namespace pa_models
 #endif

@@ -129,3 +129,35 @@ SCENARIO(
     }
   }
 }
+
+SCENARIO("") {
+  GIVEN("A PAMoon object") {
+    PAMoon paMoon;
+
+    WHEN("Local Date is 3/6/1986 and Geographical Longitude/Latitude is "
+         "-71.05d/42.3667d") {
+      CMoonRiseSet result =
+          paMoon.MoonriseAndMoonset(6, 3, 1986, false, -5, -71.05, 42.3667);
+
+      THEN("[Rise] Local Time is 4:21 and Local Date is 3/6/1986 and Azimuth "
+           "is 127.34d, [Set] Local Time is 13:08 and Local Date is 3/6/1986 "
+           "and Azimuth is 234.05d") {
+        CMoonRiseSet expected =
+            CMoonRiseSet(4, 21, 6, 3, 1986, 127.34, 13, 8, 6, 3, 1986, 234.05);
+
+        REQUIRE(result.mrAzimuthDeg == expected.mrAzimuthDeg);
+        REQUIRE(result.mrLocalDateDay == expected.mrLocalDateDay);
+        REQUIRE(result.mrLocalDateMonth == expected.mrLocalDateMonth);
+        REQUIRE(result.mrLocalDateYear == expected.mrLocalDateYear);
+        REQUIRE(result.mrLocalTimeHour == expected.mrLocalTimeHour);
+        REQUIRE(result.mrLocalTimeMin == expected.mrLocalTimeMin);
+        REQUIRE(result.msAzimuthDeg == expected.msAzimuthDeg);
+        REQUIRE(result.msLocalDateDay == expected.msLocalDateDay);
+        REQUIRE(result.msLocalDateMonth == expected.msLocalDateMonth);
+        REQUIRE(result.msLocalDateYear == expected.msLocalDateYear);
+        REQUIRE(result.msLocalTimeHour == expected.msLocalTimeHour);
+        REQUIRE(result.msLocalTimeMin == expected.msLocalTimeMin);
+      }
+    }
+  }
+}

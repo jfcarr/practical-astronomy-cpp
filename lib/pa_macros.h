@@ -7,6 +7,8 @@
 
 #ifndef _pa_macros
 #define _pa_macros
+
+using namespace pa_models;
 using namespace pa_types;
 
 namespace pa_macros {
@@ -345,6 +347,68 @@ double Lint(double w);
 double IInt(double w);
 
 double Sign(double number_to_check);
+
+double UTDayAdjust(double ut, double g1);
+
+double MoonRiseLCT(double dy, int mn, int yr, int ds, int zc, double gLong,
+                   double gLat);
+
+CMoonRiseLCTL6680 MoonRiseLCTL6680(double x, int ds, int zc, double gdy,
+                                   int gmn, int gyr, double g1, double ut);
+
+CMoonRiseLCTL6700 MoonRiseLCTL6700(double lct, int ds, int zc, double dy1,
+                                   int mn1, int yr1, double gdy, int gmn,
+                                   int gyr, double gLat);
+
+CFullDatePrecise MoonRiseLCDMY(double dy, int mn, int yr, int ds, int zc,
+                               double gLong, double gLat);
+
+CMoonRiseLcDMYL6680 MoonRiseLCDMYL6680(double x, int ds, int zc, double gdy,
+                                       int gmn, int gyr, double g1, double ut);
+
+CMoonRiseLcDMYL6700 MoonRiseLCDMYL6700(double lct, int ds, int zc, double dy1,
+                                       int mn1, int yr1, double gdy, int gmn,
+                                       int gyr, double gLat);
+
+double MoonRiseAz(double dy, int mn, int yr, int ds, int zc, double gLong,
+                  double gLat);
+
+CMoonRiseAzL6680 MoonRiseAzL6680(double x, int ds, int zc, double gdy, int gmn,
+                                 int gyr, double g1, double ut);
+
+CMoonRiseAzL6700 MoonRiseAzL6700(double lct, int ds, int zc, double dy1,
+                                 int mn1, int yr1, double gdy, int gmn, int gyr,
+                                 double gLat);
+
+double MoonSetLCT(double dy, int mn, int yr, int ds, int zc, double gLong,
+                  double gLat);
+
+CMoonSetLCTL6680 MoonSetLCTL6680(double x, int ds, int zc, double gdy, int gmn,
+                                 int gyr, double g1, double ut);
+
+CMoonSetLCTL6700 MoonSetLCTL6700(double lct, int ds, int zc, double dy1,
+                                 int mn1, int yr1, double gdy, int gmn, int gyr,
+                                 double gLat);
+
+CFullDatePrecise MoonSetLCDMY(double dy, int mn, int yr, int ds, int zc,
+                              double gLong, double gLat);
+
+CMoonSetLcDMYL6680 MoonSetLCDMYL6680(double x, int ds, int zc, double gdy,
+                                     int gmn, int gyr, double g1, double ut);
+
+CMoonSetLcDMYL6700 MoonSetLCDMYL6700(double lct, int ds, int zc, double dy1,
+                                     int mn1, int yr1, double gdy, int gmn,
+                                     int gyr, double gLat);
+
+double MoonSetAz(double dy, int mn, int yr, int ds, int zc, double gLong,
+                 double gLat);
+
+CMoonSetAzL6680 MoonSetAzL6680(double x, int ds, int zc, double gdy, int gmn,
+                               int gyr, double g1, double ut);
+
+CMoonSetAzL6700 MoonSetAzL6700(double lct, int ds, int zc, double dy1, int mn1,
+                               int yr1, double gdy, int gmn, int gyr,
+                               double gLat);
 
 } // namespace pa_macros
 #endif
