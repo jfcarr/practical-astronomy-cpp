@@ -1348,5 +1348,137 @@ public:
   double b;
 };
 
+class CSolarEclipseCircumstances {
+public:
+  CSolarEclipseCircumstances(double certainDateDay, int certainDateMonth,
+                             int certainDateYear, double utFirstContactHour,
+                             double utFirstContactMinutes,
+                             double utMidEclipseHour,
+                             double utMidEclipseMinutes,
+                             double utLastContactHour,
+                             double utLastContactMinutes,
+                             double eclipseMagnitude) {
+    this->certainDateDay = certainDateDay;
+    this->certainDateMonth = certainDateMonth;
+    this->certainDateYear = certainDateYear;
+    this->utFirstContactHour = utFirstContactHour;
+    this->utFirstContactMinutes = utFirstContactMinutes;
+    this->utMidEclipseHour = utMidEclipseHour;
+    this->utMidEclipseMinutes = utMidEclipseMinutes;
+    this->utLastContactHour = utLastContactHour;
+    this->utLastContactMinutes = utLastContactMinutes;
+    this->eclipseMagnitude = eclipseMagnitude;
+  }
+
+  double certainDateDay;
+  int certainDateMonth;
+  int certainDateYear;
+  double utFirstContactHour;
+  double utFirstContactMinutes;
+  double utMidEclipseHour;
+  double utMidEclipseMinutes;
+  double utLastContactHour;
+  double utLastContactMinutes;
+  double eclipseMagnitude;
+};
+
+class CUTMaxSolarEclipseL7390 {
+public:
+  CUTMaxSolarEclipseL7390(double paa, double qaa, double xaa, double pbb,
+                          double qbb, double xbb, double p, double q) {
+    this->paa = paa;
+    this->qaa = qaa;
+    this->xaa = xaa;
+    this->pbb = pbb;
+    this->qbb = qbb;
+    this->xbb = xbb;
+    this->p = p;
+    this->q = q;
+  }
+
+  double paa;
+  double qaa;
+  double xaa;
+  double pbb;
+  double qbb;
+  double xbb;
+  double p;
+  double q;
+};
+
+class CUTFirstContactSolarEclipseL7390 {
+public:
+  CUTFirstContactSolarEclipseL7390(double paa, double qaa, double xaa,
+                                   double pbb, double qbb, double xbb, double p,
+                                   double q) {
+    this->paa = paa;
+    this->qaa = qaa;
+    this->xaa = xaa;
+    this->pbb = pbb;
+    this->qbb = qbb;
+    this->xbb = xbb;
+    this->p = p;
+    this->q = q;
+  }
+
+  double paa;
+  double qaa;
+  double xaa;
+  double pbb;
+  double qbb;
+  double xbb;
+  double p;
+  double q;
+};
+
+class CUTLastContactSolarEclipseL7390 {
+public:
+  CUTLastContactSolarEclipseL7390(double paa, double qaa, double xaa,
+                                  double pbb, double qbb, double xbb, double p,
+                                  double q) {
+    this->paa = paa;
+    this->qaa = qaa;
+    this->xaa = xaa;
+    this->pbb = pbb;
+    this->qbb = qbb;
+    this->xbb = xbb;
+    this->p = p;
+    this->q = q;
+  }
+
+  double paa;
+  double qaa;
+  double xaa;
+  double pbb;
+  double qbb;
+  double xbb;
+  double p;
+  double q;
+};
+
+class CMagSolarEclipseL7390 {
+public:
+  CMagSolarEclipseL7390(double paa, double qaa, double xaa, double pbb,
+                        double qbb, double xbb, double p, double q) {
+    this->paa = paa;
+    this->qaa = qaa;
+    this->xaa = xaa;
+    this->pbb = pbb;
+    this->qbb = qbb;
+    this->xbb = xbb;
+    this->p = p;
+    this->q = q;
+  }
+
+  double paa;
+  double qaa;
+  double xaa;
+  double pbb;
+  double qbb;
+  double xbb;
+  double p;
+  double q;
+};
+
 } // namespace pa_models
 #endif
