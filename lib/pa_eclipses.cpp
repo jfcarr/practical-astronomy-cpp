@@ -179,3 +179,45 @@ PAEclipses::LunarEclipseCircumstances(double localDateDay, int localDateMonth,
       utEndUmbralPhaseMinutes, utEndPenPhaseHour, utEndPenPhaseMinutes,
       eclipseMagnitude);
 }
+
+/**
+ * Determine if a solar eclipse is likely to occur.
+ */
+CSolarEclipseOccurrence
+PAEclipses::SolarEclipseOccurrence(double localDateDay, int localDateMonth,
+                                   int localDateYear, bool isDaylightSaving,
+                                   int zoneCorrectionHours) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
+
+  double julianDateOfNewMoon =
+      NewMoon(daylightSaving, zoneCorrectionHours, localDateDay, localDateMonth,
+              localDateYear);
+  double gDateOfNewMoonDay = JulianDateDay(julianDateOfNewMoon);
+  double integerDay = floor(gDateOfNewMoonDay);
+  int gDateOfNewMoonMonth = JulianDateMonth(julianDateOfNewMoon);
+  int gDateOfNewMoonYear = JulianDateYear(julianDateOfNewMoon);
+  double utOfNewMoonHours = gDateOfNewMoonDay - integerDay;
+
+  double localCivilDateDay = UniversalTimeLocalCivilDay(
+      utOfNewMoonHours, 0.0, 0.0, daylightSaving, zoneCorrectionHours,
+      integerDay, gDateOfNewMoonMonth, gDateOfNewMoonYear);
+  int localCivilDateMonth = UniversalTimeLocalCivilMonth(
+      utOfNewMoonHours, 0.0, 0.0, daylightSaving, zoneCorrectionHours,
+      integerDay, gDateOfNewMoonMonth, gDateOfNewMoonYear);
+  int localCivilDateYear = UniversalTimeLocalCivilYear(
+      utOfNewMoonHours, 0.0, 0.0, daylightSaving, zoneCorrectionHours,
+      integerDay, gDateOfNewMoonMonth, gDateOfNewMoonYear);
+
+  enum ESolarEclipseStatus eclipseOccurrence =
+      pa_macros::SolarEclipseOccurrence(daylightSaving, zoneCorrectionHours,
+                                        localDateDay, localDateMonth,
+                                        localDateYear);
+
+  enum ESolarEclipseStatus status = eclipseOccurrence;
+  double eventDateDay = localCivilDateDay;
+  int eventDateMonth = localCivilDateMonth;
+  int eventDateYear = localCivilDateYear;
+
+  return CSolarEclipseOccurrence(status, eventDateDay, eventDateMonth,
+                                 eventDateYear);
+}
