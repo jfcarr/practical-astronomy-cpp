@@ -20,6 +20,12 @@ public:
                                                        int localDateYear,
                                                        bool isDaylightSaving,
                                                        int zoneCorrectionHours);
+
+  CSolarEclipseOccurrence SolarEclipseOccurrence(double localDateDay,
+                                                 int localDateMonth,
+                                                 int localDateYear,
+                                                 bool isDaylightSaving,
+                                                 int zoneCorrectionHours);
 };
 
 #endif

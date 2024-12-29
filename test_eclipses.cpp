@@ -71,3 +71,24 @@ SCENARIO("Lunar Eclipse Circumstances") {
     }
   }
 }
+
+SCENARIO("Solar Eclipse Occurrence") {
+  GIVEN("A PAEclipses object") {
+    PAEclipses paEclipses;
+
+    WHEN("Local Date is 4/1/2015") {
+      CSolarEclipseOccurrence result =
+          paEclipses.SolarEclipseOccurrence(1, 4, 2015, false, 10);
+
+      THEN("Status is Certain and Event Date is 3/20/2015") {
+        CSolarEclipseOccurrence expected =
+            CSolarEclipseOccurrence(ESolarEclipseStatus::Certain, 20, 3, 2015);
+
+        REQUIRE(result.eventDateDay == expected.eventDateDay);
+        REQUIRE(result.eventDateMonth == expected.eventDateMonth);
+        REQUIRE(result.eventDateYear == expected.eventDateYear);
+        REQUIRE(result.status == expected.status);
+      }
+    }
+  }
+}

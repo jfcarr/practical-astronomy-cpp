@@ -436,5 +436,10 @@ double UTEndTotalLunarEclipse(double dy, int mn, int yr, int ds, int zc);
 
 double MagLunarEclipse(double dy, int mn, int yr, int ds, int zc);
 
+ESolarEclipseStatus SolarEclipseOccurrence(int ds, int zc, double dy, int mn,
+                                           int yr);
+
+CSolarEclipseOccurrenceL6855 SolarEclipseOccurrenceL6855(double t, double k);
+
 } // namespace pa_macros
 #endif
