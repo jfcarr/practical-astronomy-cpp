@@ -92,3 +92,32 @@ SCENARIO("Solar Eclipse Occurrence") {
     }
   }
 }
+
+SCENARIO("Solar Eclipse Circumstances") {
+  GIVEN("A PAEclipses object") {
+    PAEclipses paEclipses;
+
+    WHEN("Local Date is 3/20/2015 and Geographical Longitude/Latitude is "
+         "0d/68.65d") {
+      CSolarEclipseCircumstances result =
+          paEclipses.SolarEclipseCircumstances(20, 3, 2015, false, 0, 0, 68.65);
+
+      THEN("Certain Date is 3/20/2015 and First Contact is 8:55 and Mid "
+           "Eclipse is 9:57 and Last Contact is 10:58 and Magnitude is 1.016") {
+        CSolarEclipseCircumstances expected = CSolarEclipseCircumstances(
+            20, 3, 2015, 8, 55, 9, 57, 10, 58, 1.016);
+
+        REQUIRE(result.certainDateDay == expected.certainDateDay);
+        REQUIRE(result.certainDateMonth == expected.certainDateMonth);
+        REQUIRE(result.certainDateYear == expected.certainDateYear);
+        REQUIRE(result.eclipseMagnitude == expected.eclipseMagnitude);
+        REQUIRE(result.utFirstContactHour == expected.utFirstContactHour);
+        REQUIRE(result.utFirstContactMinutes == expected.utFirstContactMinutes);
+        REQUIRE(result.utLastContactHour == expected.utLastContactHour);
+        REQUIRE(result.utLastContactMinutes == expected.utLastContactMinutes);
+        REQUIRE(result.utMidEclipseHour == expected.utMidEclipseHour);
+        REQUIRE(result.utMidEclipseMinutes == expected.utMidEclipseMinutes);
+      }
+    }
+  }
+}

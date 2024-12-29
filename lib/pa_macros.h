@@ -441,5 +441,37 @@ ESolarEclipseStatus SolarEclipseOccurrence(int ds, int zc, double dy, int mn,
 
 CSolarEclipseOccurrenceL6855 SolarEclipseOccurrenceL6855(double t, double k);
 
+double UTMaxSolarEclipse(double dy, int mn, int yr, int ds, int zc,
+                         double glong, double glat);
+
+CUTMaxSolarEclipseL7390 UTMaxSolarEclipseL7390(double x, double y, double igday,
+                                               int gmonth, int gyear, double tm,
+                                               double glong, double glat,
+                                               double hp);
+
+double UTFirstContactSolarEclipse(double dy, int mn, int yr, int ds, int zc,
+                                  double glong, double glat);
+
+CUTFirstContactSolarEclipseL7390
+UTFirstContactSolarEclipseL7390(double x, double y, double igday, int gmonth,
+                                int gyear, double tm, double glong, double glat,
+                                double hp);
+
+double UTLastContactSolarEclipse(double dy, int mn, int yr, int ds, int zc,
+                                 double glong, double glat);
+
+CUTLastContactSolarEclipseL7390
+UTLastContactSolarEclipseL7390(double x, double y, double igday, int gmonth,
+                               int gyear, double tm, double glong, double glat,
+                               double hp);
+
+double MagSolarEclipse(double dy, int mn, int yr, int ds, int zc, double glong,
+                       double glat);
+
+CMagSolarEclipseL7390 MagSolarEclipseL7390(double x, double y, double igday,
+                                           int gmonth, int gyear, double tm,
+                                           double glong, double glat,
+                                           double hp);
+
 } // namespace pa_macros
 #endif

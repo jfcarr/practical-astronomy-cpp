@@ -221,3 +221,77 @@ PAEclipses::SolarEclipseOccurrence(double localDateDay, int localDateMonth,
   return CSolarEclipseOccurrence(status, eventDateDay, eventDateMonth,
                                  eventDateYear);
 }
+
+/**
+ * Calculate the circumstances of a solar eclipse.
+ */
+CSolarEclipseCircumstances PAEclipses::SolarEclipseCircumstances(
+    double localDateDay, int localDateMonth, int localDateYear,
+    bool isDaylightSaving, int zoneCorrectionHours, double geogLongitudeDeg,
+    double geogLatitudeDeg) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
+
+  double julianDateOfNewMoon =
+      NewMoon(daylightSaving, zoneCorrectionHours, localDateDay, localDateMonth,
+              localDateYear);
+  double gDateOfNewMoonDay = JulianDateDay(julianDateOfNewMoon);
+  double integerDay = floor(gDateOfNewMoonDay);
+  int gDateOfNewMoonMonth = JulianDateMonth(julianDateOfNewMoon);
+  int gDateOfNewMoonYear = JulianDateYear(julianDateOfNewMoon);
+  double ut_of_new_moon_hours = gDateOfNewMoonDay - integerDay;
+  double localCivilDateDay = UniversalTimeLocalCivilDay(
+      ut_of_new_moon_hours, 0.0, 0.0, daylightSaving, zoneCorrectionHours,
+      integerDay, gDateOfNewMoonMonth, gDateOfNewMoonYear);
+  int localCivilDateMonth = UniversalTimeLocalCivilMonth(
+      ut_of_new_moon_hours, 0.0, 0.0, daylightSaving, zoneCorrectionHours,
+      integerDay, gDateOfNewMoonMonth, gDateOfNewMoonYear);
+  int localCivilDateYear = UniversalTimeLocalCivilYear(
+      ut_of_new_moon_hours, 0.0, 0.0, daylightSaving, zoneCorrectionHours,
+      integerDay, gDateOfNewMoonMonth, gDateOfNewMoonYear);
+
+  double utMaxEclipse = UTMaxSolarEclipse(
+      localDateDay, localDateMonth, localDateYear, daylightSaving,
+      zoneCorrectionHours, geogLongitudeDeg, geogLatitudeDeg);
+  double utFirstContact = UTFirstContactSolarEclipse(
+      localDateDay, localDateMonth, localDateYear, daylightSaving,
+      zoneCorrectionHours, geogLongitudeDeg, geogLatitudeDeg);
+  double utLastContact = UTLastContactSolarEclipse(
+      localDateDay, localDateMonth, localDateYear, daylightSaving,
+      zoneCorrectionHours, geogLongitudeDeg, geogLatitudeDeg);
+  double magnitude = MagSolarEclipse(
+      localDateDay, localDateMonth, localDateYear, daylightSaving,
+      zoneCorrectionHours, geogLongitudeDeg, geogLatitudeDeg);
+
+  double solarEclipseCertainDateDay = localCivilDateDay;
+  int solarEclipseCertainDateMonth = localCivilDateMonth;
+  int solarEclipseCertainDateYear = localCivilDateYear;
+
+  double utFirstContactHour = (utFirstContact == -99.0)
+                                  ? -99.0
+                                  : DecimalHoursHour(utFirstContact + 0.008333);
+  double utFirstContactMinutes =
+      (utFirstContact == -99.0) ? -99.0
+                                : DecimalHoursMinute(utFirstContact + 0.008333);
+
+  double utMidEclipseHour = (utMaxEclipse == -99.0)
+                                ? -99.0
+                                : DecimalHoursHour(utMaxEclipse + 0.008333);
+  double utMidEclipseMinutes =
+      (utMaxEclipse == -99.0) ? -99.0
+                              : DecimalHoursMinute(utMaxEclipse + 0.008333);
+
+  double utLastContactHour = (utLastContact == -99.0)
+                                 ? -99.0
+                                 : DecimalHoursHour(utLastContact + 0.008333);
+  double utLastContactMinutes =
+      (utLastContact == -99.0) ? -99.0
+                               : DecimalHoursMinute(utLastContact + 0.008333);
+
+  double eclipseMagnitude = (magnitude == -99.0) ? -99.0 : Round(magnitude, 3);
+
+  return CSolarEclipseCircumstances(
+      solarEclipseCertainDateDay, solarEclipseCertainDateMonth,
+      solarEclipseCertainDateYear, utFirstContactHour, utFirstContactMinutes,
+      utMidEclipseHour, utMidEclipseMinutes, utLastContactHour,
+      utLastContactMinutes, eclipseMagnitude);
+}
