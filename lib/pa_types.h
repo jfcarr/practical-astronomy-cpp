@@ -75,5 +75,7 @@ enum class EAngleMeasure {
  */
 enum class EAccuracyLevel { Approximate, Precise };
 
+enum class ELunarEclipseStatus { Certain, Possible, None };
+
 } // namespace pa_types
 #endif

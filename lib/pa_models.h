@@ -1224,5 +1224,61 @@ public:
   int year;
 };
 
+class CLunarEclipseOccurrence {
+public:
+  CLunarEclipseOccurrence(enum ELunarEclipseStatus status, double eventDateDay,
+                          int eventDateMonth, int eventDateYear) {
+    this->status = status;
+    this->eventDateDay = eventDateDay;
+    this->eventDateMonth = eventDateMonth;
+    this->eventDateYear = eventDateYear;
+  }
+
+  enum ELunarEclipseStatus status;
+  double eventDateDay;
+  int eventDateMonth;
+  int eventDateYear;
+};
+
+class CLunarEclipseOccurrenceL6855 {
+public:
+  CLunarEclipseOccurrenceL6855(double f, double dd, double e1, double b1,
+                               double a, double b) {
+    this->f = f;
+    this->dd = dd;
+    this->e1 = e1;
+    this->b1 = b1;
+    this->a = a;
+    this->b = b;
+  }
+
+  double f;
+  double dd;
+  double e1;
+  double b1;
+  double a;
+  double b;
+};
+
+class CSolarEclipseOccurrenceL6855 {
+public:
+  CSolarEclipseOccurrenceL6855(double f, double dd, double e1, double b1,
+                               double a, double b) {
+    this->f = f;
+    this->dd = dd;
+    this->e1 = e1;
+    this->b1 = b1;
+    this->a = a;
+    this->b = b;
+  }
+
+  double f;
+  double dd;
+  double e1;
+  double b1;
+  double a;
+  double b;
+};
+
 } // namespace pa_models
 #endif

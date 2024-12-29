@@ -347,6 +347,14 @@ double Sign(double number_to_check);
 
 double UTDayAdjust(double ut, double g1);
 
+double FPart(double w);
+
+double EQELat(double rah, double ram, double ras, double dd, double dm,
+              double ds, double gd, int gm, int gy);
+
+double EQELong(double rah, double ram, double ras, double dd, double dm,
+               double ds, double gd, int gm, int gy);
+
 double MoonRiseLCT(double dy, int mn, int yr, int ds, int zc, double gLong,
                    double gLat);
 
@@ -406,6 +414,11 @@ CMoonSetAzL6680 MoonSetAzL6680(double x, int ds, int zc, double gdy, int gmn,
 CMoonSetAzL6700 MoonSetAzL6700(double lct, int ds, int zc, double dy1, int mn1,
                                int yr1, double gdy, int gmn, int gyr,
                                double gLat);
+
+ELunarEclipseStatus LunarEclipseOccurrence(int ds, int zc, double dy, int mn,
+                                           int yr);
+
+CLunarEclipseOccurrenceL6855 LunarEclipseOccurrenceL6855(double t, double k);
 
 } // namespace pa_macros
 #endif

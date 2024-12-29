@@ -1,6 +1,6 @@
-LIB_OBJS1 = pa_datetime.o pa_coordinates.o pa_sun.o pa_planet.o pa_comet.o pa_binary.o pa_moon.o
+LIB_OBJS1 = pa_datetime.o pa_coordinates.o pa_sun.o pa_planet.o pa_comet.o pa_binary.o pa_moon.o pa_eclipses.o
 LIB_OBJS2 = pa_data.o pa_macros.o pa_util.o 
-TEST_OBJS = test.o test_datetime.o test_coordinates.o test_sun.o test_planet.o test_comet.o test_binary.o test_moon.o
+TEST_OBJS = test.o test_datetime.o test_coordinates.o test_sun.o test_planet.o test_comet.o test_binary.o test_moon.o test_eclipses.o
 SUPPORT_HEADERS = lib/pa_models.h lib/pa_types.h
 COMPILER = g++
 CPP_STD = c++17
@@ -56,6 +56,9 @@ pa_binary.o: lib/pa_binary.cpp lib/pa_binary.h $(SUPPORT_HEADERS)
 pa_moon.o: lib/pa_moon.cpp lib/pa_moon.h $(SUPPORT_HEADERS)
 	$(COMPILER) -std=$(CPP_STD) -c lib/pa_moon.cpp
 
+pa_eclipses.o: lib/pa_eclipses.cpp lib/pa_eclipses.h $(SUPPORT_HEADERS)
+	$(COMPILER) -std=$(CPP_STD) -c lib/pa_eclipses.cpp
+
 pa_data.o: lib/pa_data.cpp lib/pa_data.h
 	$(COMPILER) -std=$(CPP_STD) -c lib/pa_data.cpp
 
@@ -77,6 +80,7 @@ format:
 	$(FORMATTER) -i lib/pa_comet.cpp lib/pa_comet.h
 	$(FORMATTER) -i lib/pa_binary.cpp lib/pa_binary.h
 	$(FORMATTER) -i lib/pa_moon.cpp lib/pa_moon.h
+	$(FORMATTER) -i lib/pa_eclipses.cpp lib/pa_eclipses.h
 	$(FORMATTER) -i lib/pa_data.cpp lib/pa_data.h
 	$(FORMATTER) -i lib/pa_macros.cpp lib/pa_macros.h
 	$(FORMATTER) -i lib/pa_util.cpp lib/pa_util.h
