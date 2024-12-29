@@ -10,6 +10,8 @@ var dir_97aefd0d527b934f1d99a682da8fe6a9 =
     [ "pa_data.h", "pa__data_8h.html", "pa__data_8h" ],
     [ "pa_datetime.cpp", "pa__datetime_8cpp.html", null ],
     [ "pa_datetime.h", "pa__datetime_8h.html", "pa__datetime_8h" ],
+    [ "pa_eclipses.cpp", "pa__eclipses_8cpp.html", null ],
+    [ "pa_eclipses.h", "pa__eclipses_8h.html", "pa__eclipses_8h" ],
     [ "pa_macros.cpp", "pa__macros_8cpp.html", "pa__macros_8cpp" ],
     [ "pa_macros.h", "pa__macros_8h.html", "pa__macros_8h" ],
     [ "pa_models.h", "pa__models_8h.html", "pa__models_8h" ],

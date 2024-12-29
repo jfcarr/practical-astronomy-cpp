@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_0',['a',['../classpa__models_1_1CNewMoonFullMoonL6855.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CNewMoonFullMoonL6855::a'],['../classpa__models_1_1CPlanetLongLatL4810.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CPlanetLongLatL4810::a']]],
+  ['a_0',['a',['../classpa__models_1_1CNewMoonFullMoonL6855.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CNewMoonFullMoonL6855::a'],['../classpa__models_1_1CPlanetLongLatL4810.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CPlanetLongLatL4810::a'],['../classpa__models_1_1CSolarEclipseOccurrenceL6855.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CSolarEclipseOccurrenceL6855::a'],['../classpa__models_1_1CLunarEclipseOccurrenceL6855.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CLunarEclipseOccurrenceL6855::a']]],
   ['altitudedegrees_1',['altitudeDegrees',['../classpa__models_1_1CHorizonCoordinates.html#a71140c42a94c47a1481676b1d3ac0125',1,'pa_models::CHorizonCoordinates']]],
   ['altitudeminutes_2',['altitudeMinutes',['../classpa__models_1_1CHorizonCoordinates.html#a11ac0292a93039d8c909f5f57417273b',1,'pa_models::CHorizonCoordinates']]],
   ['altitudeseconds_3',['altitudeSeconds',['../classpa__models_1_1CHorizonCoordinates.html#a99cbe98fc470c862dcd36270762b61b6',1,'pa_models::CHorizonCoordinates']]],

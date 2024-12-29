@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_0',['a',['../classpa__models_1_1CNewMoonFullMoonL6855.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CNewMoonFullMoonL6855::a'],['../classpa__models_1_1CPlanetLongLatL4810.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CPlanetLongLatL4810::a']]],
+  ['a_0',['a',['../classpa__models_1_1CNewMoonFullMoonL6855.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CNewMoonFullMoonL6855::a'],['../classpa__models_1_1CLunarEclipseOccurrenceL6855.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CLunarEclipseOccurrenceL6855::a'],['../classpa__models_1_1CSolarEclipseOccurrenceL6855.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CSolarEclipseOccurrenceL6855::a'],['../classpa__models_1_1CPlanetLongLatL4810.html#a1031d0e0a97a340abfe0a6ab9e831045',1,'pa_models::CPlanetLongLatL4810::a']]],
   ['actual_1',['Actual',['../namespacepa__types.html#a273235efb08270e20c9dca0562cc06dfad57ceb4533b61b9746f4fc10d958f5c5',1,'pa_types']]],
   ['altitudedegrees_2',['altitudeDegrees',['../classpa__models_1_1CHorizonCoordinates.html#a71140c42a94c47a1481676b1d3ac0125',1,'pa_models::CHorizonCoordinates']]],
   ['altitudeminutes_3',['altitudeMinutes',['../classpa__models_1_1CHorizonCoordinates.html#a11ac0292a93039d8c909f5f57417273b',1,'pa_models::CHorizonCoordinates']]],
@@ -32,7 +32,7 @@ var searchData=
   ['arg_5fperi_29',['arg_peri',['../classpa__data_1_1CometDataParabolic.html#a2df7c39690ba9b7e27565644e6f6fbc7',1,'pa_data::CometDataParabolic']]],
   ['astronomical_30',['Astronomical',['../namespacepa__types.html#adfa9e65e662efb9fd3e811b17946be6aa6d7c07b63245a59a523763203e9c6ca3',1,'pa_types']]],
   ['atmosphericrefraction_31',['AtmosphericRefraction',['../classPACoordinates.html#a647886b20da716845165e7cf6bffd27f',1,'PACoordinates']]],
-  ['au_32',['au',['../classpa__models_1_1CMoonRiseAzL6700.html#a4c279691da1dc461996439ad2f43228c',1,'pa_models::CMoonRiseAzL6700::au'],['../classpa__models_1_1CMoonSetAzL6700.html#a4c279691da1dc461996439ad2f43228c',1,'pa_models::CMoonSetAzL6700::au']]],
+  ['au_32',['au',['../classpa__models_1_1CMoonSetAzL6700.html#a4c279691da1dc461996439ad2f43228c',1,'pa_models::CMoonSetAzL6700::au'],['../classpa__models_1_1CMoonRiseAzL6700.html#a4c279691da1dc461996439ad2f43228c',1,'pa_models::CMoonRiseAzL6700::au']]],
   ['axis_33',['axis',['../classpa__data_1_1BinaryStarData.html#ac4b45ba6fcb0ff1c20fa3e34c8a9a7db',1,'pa_data::BinaryStarData']]],
   ['axis_5faxisorbit_34',['axis_AxisOrbit',['../classpa__data_1_1PlanetData.html#a0ba8a02d2e5ab801b3be6ed2b81f1029',1,'pa_data::PlanetData']]],
   ['axis_5fsemimajoraxisoforbit_35',['axis_SemiMajorAxisOfOrbit',['../classpa__data_1_1CometDataElliptical.html#a36e54f33aead0a87affd6565b43ae863',1,'pa_data::CometDataElliptical']]],

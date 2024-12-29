@@ -22,6 +22,10 @@ var namespacepa__models =
     [ "CHorizonCoordinates", "classpa__models_1_1CHorizonCoordinates.html", "classpa__models_1_1CHorizonCoordinates" ],
     [ "CHourAngle", "classpa__models_1_1CHourAngle.html", "classpa__models_1_1CHourAngle" ],
     [ "CLocalSiderealTime", "classpa__models_1_1CLocalSiderealTime.html", "classpa__models_1_1CLocalSiderealTime" ],
+    [ "CLunarEclipseCircumstances", "classpa__models_1_1CLunarEclipseCircumstances.html", "classpa__models_1_1CLunarEclipseCircumstances" ],
+    [ "CLunarEclipseOccurrence", "classpa__models_1_1CLunarEclipseOccurrence.html", "classpa__models_1_1CLunarEclipseOccurrence" ],
+    [ "CLunarEclipseOccurrenceL6855", "classpa__models_1_1CLunarEclipseOccurrenceL6855.html", "classpa__models_1_1CLunarEclipseOccurrenceL6855" ],
+    [ "CMagSolarEclipseL7390", "classpa__models_1_1CMagSolarEclipseL7390.html", "classpa__models_1_1CMagSolarEclipseL7390" ],
     [ "CMonthDayYear", "classpa__models_1_1CMonthDayYear.html", "classpa__models_1_1CMonthDayYear" ],
     [ "CMoonApproximatePosition", "classpa__models_1_1CMoonApproximatePosition.html", "classpa__models_1_1CMoonApproximatePosition" ],
     [ "CMoonDistDiameterHP", "classpa__models_1_1CMoonDistDiameterHP.html", "classpa__models_1_1CMoonDistDiameterHP" ],
@@ -58,8 +62,14 @@ var namespacepa__models =
     [ "CRiseSet", "classpa__models_1_1CRiseSet.html", "classpa__models_1_1CRiseSet" ],
     [ "CSelenographicCoordinates1", "classpa__models_1_1CSelenographicCoordinates1.html", "classpa__models_1_1CSelenographicCoordinates1" ],
     [ "CSelenographicCoordinates2", "classpa__models_1_1CSelenographicCoordinates2.html", "classpa__models_1_1CSelenographicCoordinates2" ],
+    [ "CSolarEclipseCircumstances", "classpa__models_1_1CSolarEclipseCircumstances.html", "classpa__models_1_1CSolarEclipseCircumstances" ],
+    [ "CSolarEclipseOccurrence", "classpa__models_1_1CSolarEclipseOccurrence.html", "classpa__models_1_1CSolarEclipseOccurrence" ],
+    [ "CSolarEclipseOccurrenceL6855", "classpa__models_1_1CSolarEclipseOccurrenceL6855.html", "classpa__models_1_1CSolarEclipseOccurrenceL6855" ],
     [ "CSunDistanceAngularSize", "classpa__models_1_1CSunDistanceAngularSize.html", "classpa__models_1_1CSunDistanceAngularSize" ],
     [ "CSunriseAndSunset", "classpa__models_1_1CSunriseAndSunset.html", "classpa__models_1_1CSunriseAndSunset" ],
     [ "CUniversalDateTime", "classpa__models_1_1CUniversalDateTime.html", "classpa__models_1_1CUniversalDateTime" ],
-    [ "CUniversalTime", "classpa__models_1_1CUniversalTime.html", "classpa__models_1_1CUniversalTime" ]
+    [ "CUniversalTime", "classpa__models_1_1CUniversalTime.html", "classpa__models_1_1CUniversalTime" ],
+    [ "CUTFirstContactSolarEclipseL7390", "classpa__models_1_1CUTFirstContactSolarEclipseL7390.html", "classpa__models_1_1CUTFirstContactSolarEclipseL7390" ],
+    [ "CUTLastContactSolarEclipseL7390", "classpa__models_1_1CUTLastContactSolarEclipseL7390.html", "classpa__models_1_1CUTLastContactSolarEclipseL7390" ],
+    [ "CUTMaxSolarEclipseL7390", "classpa__models_1_1CUTMaxSolarEclipseL7390.html", "classpa__models_1_1CUTMaxSolarEclipseL7390" ]
 ];

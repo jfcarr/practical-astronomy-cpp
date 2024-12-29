@@ -13,9 +13,10 @@ var searchData=
   ['node_10',['node',['../classpa__data_1_1CometDataParabolic.html#a1dca287b605d75653288be51bff8e9d5',1,'pa_data::CometDataParabolic']]],
   ['node_5flongitudeascendingnode_11',['node_LongitudeAscendingNode',['../classpa__data_1_1PlanetData.html#a931ac73757066655564d11e87be0993c',1,'pa_data::PlanetData']]],
   ['node_5flongitudeofascendingnode_12',['node_LongitudeOfAscendingNode',['../classpa__data_1_1CometDataElliptical.html#aba5d24bfee4450543db51ea2992610a7',1,'pa_data::CometDataElliptical']]],
-  ['nutationineclipticlongitudeandobliquity_13',['NutationInEclipticLongitudeAndObliquity',['../classPACoordinates.html#a4766eb2844e101c7d2f7d2ec41e982dc',1,'PACoordinates']]],
-  ['nutatlong_14',['NutatLong',['../namespacepa__macros.html#a3fdd50bcda8c29ef59f7c834c2dba1d4',1,'pa_macros']]],
-  ['nutatobl_15',['NutatObl',['../namespacepa__macros.html#aacb18548390e65ce1a2920611d404dee',1,'pa_macros']]],
-  ['nutinlongdeg_16',['nutInLongDeg',['../classpa__models_1_1CNutation.html#a661345fcec4bef6bd275046a7de13125',1,'pa_models::CNutation']]],
-  ['nutinobldeg_17',['nutInOblDeg',['../classpa__models_1_1CNutation.html#a5cc79441a2df926ccffd0be495da38e2',1,'pa_models::CNutation']]]
+  ['none_13',['none',['../namespacepa__types.html#ac0517c12eeebcf57a1c630cc9d68765ea6adf97f83acf6453d4a6a4b1070f3754',1,'pa_types::None'],['../namespacepa__types.html#a021e632738bf386896441fb4a338559aa6adf97f83acf6453d4a6a4b1070f3754',1,'pa_types::None']]],
+  ['nutationineclipticlongitudeandobliquity_14',['NutationInEclipticLongitudeAndObliquity',['../classPACoordinates.html#a4766eb2844e101c7d2f7d2ec41e982dc',1,'PACoordinates']]],
+  ['nutatlong_15',['NutatLong',['../namespacepa__macros.html#a3fdd50bcda8c29ef59f7c834c2dba1d4',1,'pa_macros']]],
+  ['nutatobl_16',['NutatObl',['../namespacepa__macros.html#aacb18548390e65ce1a2920611d404dee',1,'pa_macros']]],
+  ['nutinlongdeg_17',['nutInLongDeg',['../classpa__models_1_1CNutation.html#a661345fcec4bef6bd275046a7de13125',1,'pa_models::CNutation']]],
+  ['nutinobldeg_18',['nutInOblDeg',['../classpa__models_1_1CNutation.html#a5cc79441a2df926ccffd0be495da38e2',1,'pa_models::CNutation']]]
 ];

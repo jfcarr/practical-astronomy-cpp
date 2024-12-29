@@ -61,5 +61,15 @@ var pa__models_8h =
     [ "CMoonSetAzL6680", "classpa__models_1_1CMoonSetAzL6680.html", "classpa__models_1_1CMoonSetAzL6680" ],
     [ "CMoonRiseAzL6700", "classpa__models_1_1CMoonRiseAzL6700.html", "classpa__models_1_1CMoonRiseAzL6700" ],
     [ "CMoonSetAzL6700", "classpa__models_1_1CMoonSetAzL6700.html", "classpa__models_1_1CMoonSetAzL6700" ],
-    [ "CFullDatePrecise", "classpa__models_1_1CFullDatePrecise.html", "classpa__models_1_1CFullDatePrecise" ]
+    [ "CFullDatePrecise", "classpa__models_1_1CFullDatePrecise.html", "classpa__models_1_1CFullDatePrecise" ],
+    [ "CLunarEclipseOccurrence", "classpa__models_1_1CLunarEclipseOccurrence.html", "classpa__models_1_1CLunarEclipseOccurrence" ],
+    [ "CLunarEclipseOccurrenceL6855", "classpa__models_1_1CLunarEclipseOccurrenceL6855.html", "classpa__models_1_1CLunarEclipseOccurrenceL6855" ],
+    [ "CLunarEclipseCircumstances", "classpa__models_1_1CLunarEclipseCircumstances.html", "classpa__models_1_1CLunarEclipseCircumstances" ],
+    [ "CSolarEclipseOccurrence", "classpa__models_1_1CSolarEclipseOccurrence.html", "classpa__models_1_1CSolarEclipseOccurrence" ],
+    [ "CSolarEclipseOccurrenceL6855", "classpa__models_1_1CSolarEclipseOccurrenceL6855.html", "classpa__models_1_1CSolarEclipseOccurrenceL6855" ],
+    [ "CSolarEclipseCircumstances", "classpa__models_1_1CSolarEclipseCircumstances.html", "classpa__models_1_1CSolarEclipseCircumstances" ],
+    [ "CUTMaxSolarEclipseL7390", "classpa__models_1_1CUTMaxSolarEclipseL7390.html", "classpa__models_1_1CUTMaxSolarEclipseL7390" ],
+    [ "CUTFirstContactSolarEclipseL7390", "classpa__models_1_1CUTFirstContactSolarEclipseL7390.html", "classpa__models_1_1CUTFirstContactSolarEclipseL7390" ],
+    [ "CUTLastContactSolarEclipseL7390", "classpa__models_1_1CUTLastContactSolarEclipseL7390.html", "classpa__models_1_1CUTLastContactSolarEclipseL7390" ],
+    [ "CMagSolarEclipseL7390", "classpa__models_1_1CMagSolarEclipseL7390.html", "classpa__models_1_1CMagSolarEclipseL7390" ]
 ];

@@ -1,8 +1,26 @@
 var searchData=
 [
-  ['ut_0',['ut',['../classpa__models_1_1CMoonRiseLCTL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonRiseLCTL6680::ut'],['../classpa__models_1_1CMoonSetLCTL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonSetLCTL6680::ut'],['../classpa__models_1_1CMoonRiseLcDMYL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonRiseLcDMYL6680::ut'],['../classpa__models_1_1CMoonSetLcDMYL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonSetLcDMYL6680::ut'],['../classpa__models_1_1CMoonRiseAzL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonRiseAzL6680::ut'],['../classpa__models_1_1CMoonSetAzL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonSetAzL6680::ut']]],
-  ['utrisehour_1',['utRiseHour',['../classpa__models_1_1CRiseSet.html#a3f50138c545ca70fc7eaec187beffa8a',1,'pa_models::CRiseSet']]],
-  ['utrisemin_2',['utRiseMin',['../classpa__models_1_1CRiseSet.html#ae7221c963c7e7354f382a0284bd6706d',1,'pa_models::CRiseSet']]],
-  ['utsethour_3',['utSetHour',['../classpa__models_1_1CRiseSet.html#ae125909bbbedd8c47e17f350d438ea3f',1,'pa_models::CRiseSet']]],
-  ['utsetmin_4',['utSetMin',['../classpa__models_1_1CRiseSet.html#afa268c51f3c02f0f9850a6f7c75b61d7',1,'pa_models::CRiseSet']]]
+  ['ut_0',['ut',['../classpa__models_1_1CMoonSetLCTL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonSetLCTL6680::ut'],['../classpa__models_1_1CMoonRiseLcDMYL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonRiseLcDMYL6680::ut'],['../classpa__models_1_1CMoonSetLcDMYL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonSetLcDMYL6680::ut'],['../classpa__models_1_1CMoonRiseAzL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonRiseAzL6680::ut'],['../classpa__models_1_1CMoonSetAzL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonSetAzL6680::ut'],['../classpa__models_1_1CMoonRiseLCTL6680.html#a9c83ab68b44ccd69b1a1ac655fcb5a02',1,'pa_models::CMoonRiseLCTL6680::ut']]],
+  ['utendpenphasehour_1',['utEndPenPhaseHour',['../classpa__models_1_1CLunarEclipseCircumstances.html#ac2d56195ffbfc2c54148e38eb4601dc2',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utendpenphaseminutes_2',['utEndPenPhaseMinutes',['../classpa__models_1_1CLunarEclipseCircumstances.html#a341e6fbbc2ed0cc4ff474f623dc343a2',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utendtotalphasehour_3',['utEndTotalPhaseHour',['../classpa__models_1_1CLunarEclipseCircumstances.html#aa79141042e7f22e3c42f22d53a8c2ff8',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utendtotalphaseminutes_4',['utEndTotalPhaseMinutes',['../classpa__models_1_1CLunarEclipseCircumstances.html#ac1b17a3779fc9e7bf9eee1f0aa6cf123',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utendumbralphasehour_5',['utEndUmbralPhaseHour',['../classpa__models_1_1CLunarEclipseCircumstances.html#a8c07691d248cd61e41167ba74dea425e',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utendumbralphaseminutes_6',['utEndUmbralPhaseMinutes',['../classpa__models_1_1CLunarEclipseCircumstances.html#a8a218d9094807e1543fcdf16c93a2566',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utfirstcontacthour_7',['utFirstContactHour',['../classpa__models_1_1CSolarEclipseCircumstances.html#a711eac9e7a6232b1954b8dcf17bde636',1,'pa_models::CSolarEclipseCircumstances']]],
+  ['utfirstcontactminutes_8',['utFirstContactMinutes',['../classpa__models_1_1CSolarEclipseCircumstances.html#a8530a85a8eb04dbfe00251608ab3bc22',1,'pa_models::CSolarEclipseCircumstances']]],
+  ['utlastcontacthour_9',['utLastContactHour',['../classpa__models_1_1CSolarEclipseCircumstances.html#ac47e2a5ce9f897242e344adf04fd4442',1,'pa_models::CSolarEclipseCircumstances']]],
+  ['utlastcontactminutes_10',['utLastContactMinutes',['../classpa__models_1_1CSolarEclipseCircumstances.html#a13a6f4d7824bef23b537fb3a553d8c81',1,'pa_models::CSolarEclipseCircumstances']]],
+  ['utmideclipsehour_11',['utmideclipsehour',['../classpa__models_1_1CLunarEclipseCircumstances.html#ac6beaf08c09423d8c37cdc093dc9bfb3',1,'pa_models::CLunarEclipseCircumstances::utMidEclipseHour'],['../classpa__models_1_1CSolarEclipseCircumstances.html#ac6beaf08c09423d8c37cdc093dc9bfb3',1,'pa_models::CSolarEclipseCircumstances::utMidEclipseHour']]],
+  ['utmideclipseminutes_12',['utmideclipseminutes',['../classpa__models_1_1CLunarEclipseCircumstances.html#a3402afd791073c3d77dc47617b86f4b6',1,'pa_models::CLunarEclipseCircumstances::utMidEclipseMinutes'],['../classpa__models_1_1CSolarEclipseCircumstances.html#a3402afd791073c3d77dc47617b86f4b6',1,'pa_models::CSolarEclipseCircumstances::utMidEclipseMinutes']]],
+  ['utrisehour_13',['utRiseHour',['../classpa__models_1_1CRiseSet.html#a3f50138c545ca70fc7eaec187beffa8a',1,'pa_models::CRiseSet']]],
+  ['utrisemin_14',['utRiseMin',['../classpa__models_1_1CRiseSet.html#ae7221c963c7e7354f382a0284bd6706d',1,'pa_models::CRiseSet']]],
+  ['utsethour_15',['utSetHour',['../classpa__models_1_1CRiseSet.html#ae125909bbbedd8c47e17f350d438ea3f',1,'pa_models::CRiseSet']]],
+  ['utsetmin_16',['utSetMin',['../classpa__models_1_1CRiseSet.html#afa268c51f3c02f0f9850a6f7c75b61d7',1,'pa_models::CRiseSet']]],
+  ['utstartpenphasehour_17',['utStartPenPhaseHour',['../classpa__models_1_1CLunarEclipseCircumstances.html#acf389e87a604297231efd8f1160bb30a',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utstartpenphaseminutes_18',['utStartPenPhaseMinutes',['../classpa__models_1_1CLunarEclipseCircumstances.html#a9b5e0054955fc1ad921b210aee3f6a0e',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utstarttotalphasehour_19',['utStartTotalPhaseHour',['../classpa__models_1_1CLunarEclipseCircumstances.html#a294fcc9861b267d8c86b4d12528c5f25',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utstarttotalphaseminutes_20',['utStartTotalPhaseMinutes',['../classpa__models_1_1CLunarEclipseCircumstances.html#ae46f97c377060369427b347a5b9c5641',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utstartumbralphasehour_21',['utStartUmbralPhaseHour',['../classpa__models_1_1CLunarEclipseCircumstances.html#acf95f2ddd65c64d0639093b817609598',1,'pa_models::CLunarEclipseCircumstances']]],
+  ['utstartumbralphaseminutes_22',['utStartUmbralPhaseMinutes',['../classpa__models_1_1CLunarEclipseCircumstances.html#a371fcdfbc832ad295bfbc0405bb5338e',1,'pa_models::CLunarEclipseCircumstances']]]
 ];

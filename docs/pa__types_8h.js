@@ -16,11 +16,21 @@ var pa__types_8h =
       [ "Actual", "pa__types_8h.html#a273235efb08270e20c9dca0562cc06dfad57ceb4533b61b9746f4fc10d958f5c5", null ],
       [ "Apparent", "pa__types_8h.html#a273235efb08270e20c9dca0562cc06dfa49a24e1e94b9d8ab152beaf7cc6bb7c7", null ]
     ] ],
+    [ "ELunarEclipseStatus", "pa__types_8h.html#ac0517c12eeebcf57a1c630cc9d68765e", [
+      [ "Certain", "pa__types_8h.html#ac0517c12eeebcf57a1c630cc9d68765eaaa4b4102e451e189b143942d11d96da0", null ],
+      [ "Possible", "pa__types_8h.html#ac0517c12eeebcf57a1c630cc9d68765ea7ed6c322b81093217dd80a7d098736eb", null ],
+      [ "None", "pa__types_8h.html#ac0517c12eeebcf57a1c630cc9d68765ea6adf97f83acf6453d4a6a4b1070f3754", null ]
+    ] ],
     [ "ERiseSetStatus", "pa__types_8h.html#a2f13200855fded61e33730e2c04d49b3", [
       [ "Ok", "pa__types_8h.html#a2f13200855fded61e33730e2c04d49b3aa60852f204ed8028c1c58808b746d115", null ],
       [ "NeverRises", "pa__types_8h.html#a2f13200855fded61e33730e2c04d49b3a448c26a93f4364a2a05bcf836cee0370", null ],
       [ "Circumpolar", "pa__types_8h.html#a2f13200855fded61e33730e2c04d49b3ac634c35809215d6c4b402cf365e57126", null ],
       [ "GstToUtConversionWarning", "pa__types_8h.html#a2f13200855fded61e33730e2c04d49b3aa10bd0205c5cd4975c44256a626d2fc0", null ]
+    ] ],
+    [ "ESolarEclipseStatus", "pa__types_8h.html#a021e632738bf386896441fb4a338559a", [
+      [ "Certain", "pa__types_8h.html#a021e632738bf386896441fb4a338559aaaa4b4102e451e189b143942d11d96da0", null ],
+      [ "Possible", "pa__types_8h.html#a021e632738bf386896441fb4a338559aa7ed6c322b81093217dd80a7d098736eb", null ],
+      [ "None", "pa__types_8h.html#a021e632738bf386896441fb4a338559aa6adf97f83acf6453d4a6a4b1070f3754", null ]
     ] ],
     [ "ESunRiseSetStatus", "pa__types_8h.html#aa1688329a4d32e0033decb8812a54db1", [
       [ "Ok", "pa__types_8h.html#aa1688329a4d32e0033decb8812a54db1aa60852f204ed8028c1c58808b746d115", null ],

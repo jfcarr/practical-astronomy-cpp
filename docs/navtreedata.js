@@ -52,12 +52,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classpa__models_1_1CAtmosphericRefraction.html#a60b0a544e884f96ab79f9ae0a8a942df",
-"classpa__models_1_1CMoonLongLatHP.html#aade05b24a26c68ef3ce92f0e9c908f84",
-"classpa__models_1_1CMoonSetAzL6700.html#aa78c78a33ff8aacecd1105f94444acd3",
-"classpa__models_1_1CPrecisePositionOfPlanet.html#a18c9d59884dfac1fd659d0c00b06fa31",
-"namespacepa__macros.html#a9068027321816d1d7eb53d80efcf350c",
-"pa__macros_8cpp.html#afe4407c53cfed2efad3bdb03015dab70"
+"classpa__models_1_1CAtmosphericRefraction.html#a3f812cf3632a86f464f2f656cb7536bb",
+"classpa__models_1_1CLunarEclipseOccurrence.html#a1241e2ea6fc23a5d4e33b3cd07339bd9",
+"classpa__models_1_1CMoonRiseLcDMYL6680.html#a8c2723c60d370242139bb8e442e05911",
+"classpa__models_1_1CPlanetLongLatL4685.html#acf57e14bcf72a813e62c1af503b1a4c0",
+"classpa__models_1_1CUTFirstContactSolarEclipseL7390.html#a27ec3ca002d34d156604074f61816ba2",
+"namespacepa__macros.html#ac2248fc2a1ae553e4fc602e12248fd0d",
+"pa__macros_8cpp.html#ae40f65305890e6aec6ecdd43964d783c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
