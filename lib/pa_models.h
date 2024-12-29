@@ -1280,5 +1280,57 @@ public:
   double b;
 };
 
+class CLunarEclipseCircumstances {
+public:
+  CLunarEclipseCircumstances(
+      double certainDateDay, double certainDateMonth, double certainDateYear,
+      double utStartPenPhaseHour, double utStartPenPhaseMinutes,
+      double utStartUmbralPhaseHour, double utStartUmbralPhaseMinutes,
+      double utStartTotalPhaseHour, double utStartTotalPhaseMinutes,
+      double utMidEclipseHour, double utMidEclipseMinutes,
+      double utEndTotalPhaseHour, double utEndTotalPhaseMinutes,
+      double utEndUmbralPhaseHour, double utEndUmbralPhaseMinutes,
+      double utEndPenPhaseHour, double utEndPenPhaseMinutes,
+      double eclipseMagnitude) {
+    this->certainDateDay = certainDateDay;
+    this->certainDateMonth = certainDateMonth;
+    this->certainDateYear = certainDateYear;
+    this->utStartPenPhaseHour = utStartPenPhaseHour;
+    this->utStartPenPhaseMinutes = utStartPenPhaseMinutes;
+    this->utStartUmbralPhaseHour = utStartUmbralPhaseHour;
+    this->utStartUmbralPhaseMinutes = utStartUmbralPhaseMinutes;
+    this->utStartTotalPhaseHour = utStartTotalPhaseHour;
+    this->utStartTotalPhaseMinutes = utStartTotalPhaseMinutes;
+    this->utMidEclipseHour = utMidEclipseHour;
+    this->utMidEclipseMinutes = utMidEclipseMinutes;
+    this->utEndTotalPhaseHour = utEndTotalPhaseHour;
+    this->utEndTotalPhaseMinutes = utEndTotalPhaseMinutes;
+    this->utEndUmbralPhaseHour = utEndUmbralPhaseHour;
+    this->utEndUmbralPhaseMinutes = utEndUmbralPhaseMinutes;
+    this->utEndPenPhaseHour = utEndPenPhaseHour;
+    this->utEndPenPhaseMinutes = utEndPenPhaseMinutes;
+    this->eclipseMagnitude = eclipseMagnitude;
+  }
+
+  double certainDateDay;
+  double certainDateMonth;
+  double certainDateYear;
+  double utStartPenPhaseHour;
+  double utStartPenPhaseMinutes;
+  double utStartUmbralPhaseHour;
+  double utStartUmbralPhaseMinutes;
+  double utStartTotalPhaseHour;
+  double utStartTotalPhaseMinutes;
+  double utMidEclipseHour;
+  double utMidEclipseMinutes;
+  double utEndTotalPhaseHour;
+  double utEndTotalPhaseMinutes;
+  double utEndUmbralPhaseHour;
+  double utEndUmbralPhaseMinutes;
+  double utEndPenPhaseHour;
+  double utEndPenPhaseMinutes;
+  double eclipseMagnitude;
+};
+
 } // namespace pa_models
 #endif

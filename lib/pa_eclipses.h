@@ -14,6 +14,12 @@ public:
                                                  int localDateYear,
                                                  bool isDaylightSaving,
                                                  int zoneCorrectionHours);
+
+  CLunarEclipseCircumstances LunarEclipseCircumstances(double localDateDay,
+                                                       int localDateMonth,
+                                                       int localDateYear,
+                                                       bool isDaylightSaving,
+                                                       int zoneCorrectionHours);
 };
 
 #endif
