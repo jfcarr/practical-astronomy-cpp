@@ -36,6 +36,11 @@ public:
                              bool isDaylightSaving, int zoneCorrectionHours,
                              double localDateDay, int localDateMonth,
                              int localDateYear);
+
+  CMoonRiseSet MoonriseAndMoonset(double localDateDay, int localDateMonth,
+                                  int localDateYear, bool isDaylightSaving,
+                                  int zoneCorrectionHours, double geogLongDeg,
+                                  double geogLatDeg);
 };
 
 #endif

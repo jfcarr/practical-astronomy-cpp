@@ -281,3 +281,52 @@ PAMoon::MoonDistAngDiamHorParallax(double lctHour, double lctMin, double lctSec,
   return CMoonDistDiameterHP(earthMoonDist, angDiameterDeg, angDiameterMin,
                              horParallaxDeg, horParallaxMin, horParallaxSec);
 }
+
+/**
+ * Calculate date/time of local moonrise and moonset.
+ */
+CMoonRiseSet PAMoon::MoonriseAndMoonset(double localDateDay, int localDateMonth,
+                                        int localDateYear,
+                                        bool isDaylightSaving,
+                                        int zoneCorrectionHours,
+                                        double geogLongDeg, double geogLatDeg) {
+  int daylightSaving = isDaylightSaving ? 1 : 0;
+
+  double localTimeOfMoonriseHours =
+      MoonRiseLCT(localDateDay, localDateMonth, localDateYear, daylightSaving,
+                  zoneCorrectionHours, geogLongDeg, geogLatDeg);
+  CFullDatePrecise moonRiseLcResult =
+      MoonRiseLCDMY(localDateDay, localDateMonth, localDateYear, daylightSaving,
+                    zoneCorrectionHours, geogLongDeg, geogLatDeg);
+  double localAzimuthDeg1 =
+      MoonRiseAz(localDateDay, localDateMonth, localDateYear, daylightSaving,
+                 zoneCorrectionHours, geogLongDeg, geogLatDeg);
+
+  double localTimeOfMoonsetHours =
+      MoonSetLCT(localDateDay, localDateMonth, localDateYear, daylightSaving,
+                 zoneCorrectionHours, geogLongDeg, geogLatDeg);
+  CFullDatePrecise moonSetLcResult =
+      MoonSetLCDMY(localDateDay, localDateMonth, localDateYear, daylightSaving,
+                   zoneCorrectionHours, geogLongDeg, geogLatDeg);
+  double localAzimuthDeg2 =
+      MoonSetAz(localDateDay, localDateMonth, localDateYear, daylightSaving,
+                zoneCorrectionHours, geogLongDeg, geogLatDeg);
+
+  int mrLTHour = DecimalHoursHour(localTimeOfMoonriseHours + 0.008333);
+  int mrLTMin = DecimalHoursMinute(localTimeOfMoonriseHours + 0.008333);
+  double mrLocalDateDay = moonRiseLcResult.day;
+  int mrLocalDateMonth = moonRiseLcResult.month;
+  int mrLocalDateYear = moonRiseLcResult.year;
+  double mrAzimuthDeg = Round(localAzimuthDeg1, 2);
+  int msLTHour = DecimalHoursHour(localTimeOfMoonsetHours + 0.008333);
+  int msLTMin = DecimalHoursMinute(localTimeOfMoonsetHours + 0.008333);
+  double msLocalDateDay = moonSetLcResult.day;
+  int msLocalDateMonth = moonSetLcResult.month;
+  int msLocalDateYear = moonSetLcResult.year;
+  double msAzimuthDeg = Round(localAzimuthDeg2, 2);
+
+  return CMoonRiseSet(mrLTHour, mrLTMin, mrLocalDateDay, mrLocalDateMonth,
+                      mrLocalDateYear, mrAzimuthDeg, msLTHour, msLTMin,
+                      msLocalDateDay, msLocalDateMonth, msLocalDateYear,
+                      msAzimuthDeg);
+}
